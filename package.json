@@ -1,0 +1,36 @@
+{
+  "name": "ellis-canberra-service",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "test:legacy": "node --input-type=module -e \"import { readdirSync } from 'node:fs'; import { spawnSync } from 'node:child_process'; const files=readdirSync('tests').filter((file)=>file.endsWith('.mjs')&&!file.includes('.vitest.test.')).map((file)=>'tests/'+file); const result=spawnSync(process.execPath,['--test',...files],{stdio:'inherit'}); process.exit(result.status??1)\"",
+    "test:unit": "vitest run",
+    "test": "pnpm run test:legacy && pnpm run test:unit",
+    "test:watch": "vitest",
+    "audit:prod": "pnpm audit --prod --audit-level=high"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "6.1.1",
+    "file-type": "22.0.2",
+    "lucide-react": "1.39.0",
+    "multer": "2.3.0",
+    "nodemailer": "9.1.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "typescript": "7.0.2",
+    "vite": "8.2.2"
+  },
+  "devDependencies": {
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.7",
+    "@types/node": "26.4.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "jsdom": "30.0.1",
+    "supertest": "7.2.2",
+    "vitest": "4.1.11"
+  }
+}
