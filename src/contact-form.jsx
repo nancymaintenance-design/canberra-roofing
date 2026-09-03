@@ -83,7 +83,7 @@ export function ContactForm({ defaultArea = '', defaultService = '', submitEnqui
       <small>JPG, PNG or WebP. Maximum 4 MB.</small>
       {error('photo')}
     </div>
-    <input className="honeypot" name="website" aria-hidden="true" tabIndex={-1} autoComplete="off" />
+    <input className="honeypot" name="website" aria-hidden="true" tabIndex={-1} autoComplete="off" readOnly />
     <label className="check"><input name="privacy" type="checkbox" required aria-invalid={Boolean(errors.privacy)} aria-describedby={errors.privacy ? 'privacy-error' : undefined} /> {privacyCopy}</label>
     {error('privacy')}
     <button className="button" disabled={pending}>{pending ? 'Sending enquiry...' : 'Send enquiry'}</button>
