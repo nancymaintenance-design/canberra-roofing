@@ -2,7 +2,7 @@
 
 Generated from the verified strict-whitelist candidate on 2026-09-03.
 
-This manifest lists all 51 upload payload files, their byte lengths, and their SHA-256 digests. `UPLOAD-MANIFEST.md` is intentionally not self-hashed.
+This manifest lists all 52 upload payload files, their byte lengths, and their SHA-256 digests. `UPLOAD-MANIFEST.md` is intentionally not self-hashed.
 
 | Relative path | Bytes | SHA-256 |
 |---|---:|---|
@@ -13,7 +13,7 @@ This manifest lists all 51 upload payload files, their byte lengths, and their S
 | `api/_lib/contact-handler.js` | 4995 | `DF19B3D247F36714C873A0099326ED48E4863A32460F233C8BD05DEF7A358CF4` |
 | `api/_lib/contact-validation.js` | 5367 | `069350FF7BB7989984F3EFF4A7AECA2ED5C07F2EFDF7788FA9EE57F10FFEE8AF` |
 | `api/contact.js` | 2544 | `AC3408C52138D4069418D2EC0064146C895298DA7E9BDD0191C5362AFA56E8B1` |
-| `index.html` | 392 | `BC3053CEAA5434C1D7DDFADE37C412DCFF99B402CE8BB3625DFA4EFCB7AB0BBB` |
+| `index.html` | 474 | `F759EC0C76A5FCE5EBFD239186E2D3595EDF0C0036E34C01AC915C320344DEFC` |
 | `ops/asset-authorization-ledger.md` | 1764 | `3369183E73BA41EE1DDD5C2F32907EDA88DEA9D6C67E6F7B0B1E37C583FEDC31` |
 | `ops/release-checklist.md` | 2004 | `FD47606D811E71A30EB7F7430706804F745D05ACBBBC153B3FFC8BB925BA1960` |
 | `ops/rollback.md` | 491 | `80F23CD89817529BD6732F3ED43E89CE693E2EE489FE7A2D6CE6CD1CE45E8E1F` |
@@ -51,6 +51,7 @@ This manifest lists all 51 upload payload files, their byte lengths, and their S
 | `tests/storage-migration.test.mjs` | 3994 | `17F2A2F6E4FD4A205D32AA9769FE55F93A34355A37DE739F4CE5BF189EFA4586` |
 | `tests/tc-web-020-visible-copy.test.mjs` | 1499 | `80ED2F11A3E1A2B788EF078AB5E1FC819BE9AF3D33A3197B42155942F7DE9230` |
 | `tests/tc-web-022-logo.test.mjs` | 1416 | `38A893B7B994ECE141F12715595731E5CF74F7E2E46480B7C648DACB00844C17` |
+| `tests/tc-web-027-favicon.test.mjs` | 517 | `6A2D4934DD90ABD76C383605E848B3D6E1BE74FD63947382422DF46F1CA3107B` |
 | `tests/ui-contract.test.mjs` | 3741 | `7FE1B38412693738C525FD9CCB85C9AA074D1296BB686AF04B3D63D88775E79B` |
 | `tsconfig.json` | 411 | `BA947379CB68EBC9E87A11CA92C0F130EE4C58161AABED1664DD4556FE0E27B8` |
 | `tsconfig.node.json` | 151 | `872700580DC5A46665F48E54724D41CF09CF9FE001CA182DA43535C3AC036042` |
