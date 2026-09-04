@@ -1,7 +1,6 @@
 export const REQUIRED_CONTACT_ENV = [
   'RESEND_API_KEY',
-  'CONTACT_TO',
-  'CONTACT_FROM',
+  'CONTACT_EMAIL_TO',
 ];
 
 const permittedRecipients = new Set([
@@ -11,7 +10,7 @@ const permittedRecipients = new Set([
 
 export class ContactConfigError extends Error {
   constructor(variable) {
-    super(`Invalid environment variable ${variable}.`);
+    super('Invalid environment variable ' + variable + '.');
     this.name = 'ContactConfigError';
     this.variable = variable;
   }
@@ -25,12 +24,16 @@ function required(env, variable) {
 
 export function loadContactConfig(env = process.env) {
   const values = Object.fromEntries(REQUIRED_CONTACT_ENV.map((variable) => [variable, required(env, variable)]));
-  if (!values.RESEND_API_KEY.startsWith('re_')) throw new ContactConfigError('RESEND_API_KEY');
-  if (!permittedRecipients.has(values.CONTACT_TO)) throw new ContactConfigError('CONTACT_TO');
+  if (!permittedRecipients.has(values.CONTACT_EMAIL_TO)) throw new ContactConfigError('CONTACT_EMAIL_TO');
+
+  const customSender = env.CONTACT_EMAIL_FROM;
+  if (customSender !== undefined && (typeof customSender !== 'string' || !customSender.trim() || customSender.includes(String.fromCharCode(13)) || customSender.includes(String.fromCharCode(10)))) {
+    throw new ContactConfigError('CONTACT_EMAIL_FROM');
+  }
 
   return {
-    resendApiKey: values.RESEND_API_KEY,
-    to: values.CONTACT_TO,
-    from: values.CONTACT_FROM,
+    apiKey: values.RESEND_API_KEY,
+    to: values.CONTACT_EMAIL_TO,
+    from: customSender?.trim() || 'Canberraroofkind <onboarding@resend.dev>',
   };
 }
