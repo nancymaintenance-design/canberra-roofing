@@ -8,9 +8,39 @@
     <title>Roof Repair Enquiries in Canberra ACT | Ellis Services</title>
     <meta name="description" content="Canberra roof repair enquiry pathways from Ellis Services, including roof leaks, tile roofs, chimney flashing, repointing and roof inspections." />
     <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","RoofingContractor"],"name":"Ellis Services","alternateName":"Canberraroofkind","url":"https://www.canberraroofkind.com.au/","telephone":"+61405878406","email":"elliservices.group@gmail.com","address":{"@type":"PostalAddress","streetAddress":"121 Marcus Clarke St","addressLocality":"Canberra","addressRegion":"ACT","postalCode":"2600","addressCountry":"AU"},"areaServed":{"@type":"City","name":"Canberra"}}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EGMWJKX6M4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EGMWJKX6M4');
+
+      window.addEventListener('DOMContentLoaded', function () {
+        if (window.location.hostname !== 'www.canberraroofkind.com.au') return;
+
+        document.addEventListener('click', function (event) {
+          var link = event.target instanceof Element ? event.target.closest('a') : null;
+          if (!link) return;
+          var href = link.getAttribute('href') || '';
+          if (href.indexOf('tel:') === 0) gtag('event', 'phone_click', { contact_method: 'phone' });
+          if (href.indexOf('mailto:') === 0) gtag('event', 'email_click', { contact_method: 'email' });
+          if (link.classList.contains('contactTop')) gtag('event', 'contact_cta_click', { contact_method: 'contact_cta' });
+        });
+
+        var formStatus = document.querySelector('.contactStatus');
+        if (formStatus) new MutationObserver(function () {
+          if (formStatus.textContent.trim() === 'Enquiry sent successfully.' && formStatus.dataset.ga4Tracked !== 'true') {
+            formStatus.dataset.ga4Tracked = 'true';
+            gtag('event', 'generate_lead', { form_name: 'roof_enquiry' });
+          }
+          if (formStatus.textContent.trim() !== 'Enquiry sent successfully.') delete formStatus.dataset.ga4Tracked;
+        }).observe(formStatus, { childList: true, characterData: true, subtree: true });
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
