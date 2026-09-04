@@ -12,7 +12,7 @@ export function createContactEmailService({ config, fetchImpl = fetch, now = () 
     const timestamp = now().toISOString();
     const mail = { to: config.to, from: config.from, reply_to: headerValue(fields.email), subject: `Website enquiry: ${headerValue(fields.service)} - ${headerValue(fields.area)}`, text: textBody(fields, requestId, timestamp), html: htmlBody(fields, requestId, timestamp), ...(photo ? { attachments: [{ filename: photo.filename, content: photo.buffer.toString('base64'), content_type: photo.mimetype }] } : {}) };
     let response;
-    try { response = await fetchImpl('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${config.resendApiKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify(mail) }); } catch { throw new ContactDeliveryError(); }
+    try { response = await fetchImpl('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${config.apiKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify(mail) }); } catch { throw new ContactDeliveryError(); }
     if (!response.ok) throw new ContactDeliveryError();
     let result;
     try { result = await response.json(); } catch { throw new ContactDeliveryError(); }
