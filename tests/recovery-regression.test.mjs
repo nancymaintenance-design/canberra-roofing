@@ -28,7 +28,10 @@ test('recovery retains service navigation and the development-only local editor'
 });
 
 test('only AppV3 is mounted and removed legacy components stay absent', () => {
-  assert.match(source, /createRoot\(document\.getElementById\('root'\)!\)\.render\(<AppV3\/>\)/);
+  const client = fs.readFileSync(new URL('../src/entry-client.tsx', import.meta.url), 'utf8');
+  assert.match(client, /hydrateRoot/);
+  assert.match(client, /AppV3/);
+  assert.doesNotMatch(source, /createRoot|hydrateRoot/);
   for (const removed of ['Layout', 'LegacyContact', 'AdminV2', 'App', 'AppV2']) {
     assert.doesNotMatch(source, new RegExp(`function ${removed}\\(`));
   }

@@ -8,20 +8,104 @@
       "maxDuration": 60
     }
   },
-  "rewrites": [
-    {
-      "source": "/((?!api(?:/|$)|\\.well-known(?:/|$)).*)",
-      "destination": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/insights",
+      "destination": "/faq",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html"
+    },
+    {
+      "source": "/services/roof-leak-repairs",
+      "destination": "/services/roof-leak-repairs.html"
+    },
+    {
+      "source": "/services/tile-roof-repairs",
+      "destination": "/services/tile-roof-repairs.html"
+    },
+    {
+      "source": "/services/chimney-flashing-repairs",
+      "destination": "/services/chimney-flashing-repairs.html"
+    },
+    {
+      "source": "/services/rebedding-repointing",
+      "destination": "/services/rebedding-repointing.html"
+    },
+    {
+      "source": "/services/roof-inspections",
+      "destination": "/services/roof-inspections.html"
+    },
+    {
+      "source": "/solutions",
+      "destination": "/solutions.html"
+    },
+    {
+      "source": "/areas",
+      "destination": "/areas.html"
+    },
+    {
+      "source": "/news",
+      "destination": "/news.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/news/after-rain-roof-leak-check-canberra",
+      "destination": "/news/after-rain-roof-leak-check-canberra.html"
+    },
+    {
+      "source": "/news/cracked-slipped-missing-roof-tiles-canberra",
+      "destination": "/news/cracked-slipped-missing-roof-tiles-canberra.html"
+    },
+    {
+      "source": "/news/chimney-flashing-water-entry-signs",
+      "destination": "/news/chimney-flashing-water-entry-signs.html"
+    },
+    {
+      "source": "/news/rebedding-vs-repointing-canberra-roofs",
+      "destination": "/news/rebedding-vs-repointing-canberra-roofs.html"
+    },
+    {
+      "source": "/news/when-to-arrange-roof-inspection-canberra",
+      "destination": "/news/when-to-arrange-roof-inspection-canberra.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
     }
   ]
 }

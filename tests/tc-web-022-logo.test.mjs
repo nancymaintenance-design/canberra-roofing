@@ -10,7 +10,7 @@ const activeLayout = source.match(/function LayoutV2[\s\S]*?function AdminDrawer
 test('active global header uses the authorized Canberraroofkind logo without replacing brand navigation', () => {
   assert.match(activeLayout, /<a className="brand" href="\/">/);
   assert.match(activeLayout, /src="\/assets\/brand\/canberraroofkind-logo\.png"/);
-  assert.match(activeLayout, /alt="Canberraroofkind logo"/);
+  assert.match(activeLayout, /alt="Ellis Services Group logo"/);
   assert.match(activeLayout, /\{data\.company\}/);
   assert.match(activeLayout, /aria-label="Primary navigation"/);
   assert.match(activeLayout, /aria-label="Open main menu"/);

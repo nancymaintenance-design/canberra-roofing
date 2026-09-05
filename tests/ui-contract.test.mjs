@@ -42,7 +42,8 @@ for (const asset of [
 
 assert.match(renderedAbout, /\/assets\/home\/canberra-roof-hero\.png/);
 assert.match(renderedSolutions, /\/assets\/home\/australian-residential-roof-context\.png/);
-assert.match(renderedNews, /\/assets\/home\/tile-roof-detail\.png/);
+assert.match(renderedNews, /className="newsGrid"/);
+assert.match(renderedNews, /className="articleBody"/);
 
 assert.doesNotMatch(renderedHomeMedia, /canberra-roof-hero|australian-residential-roof-context|tile-roof-detail/);
 assert.doesNotMatch(renderedAbout, /australian-residential-roof-context|tile-roof-detail|\/assets\/home\/au-/);

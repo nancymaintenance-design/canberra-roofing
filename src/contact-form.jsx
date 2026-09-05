@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { sendContactEnquiry } from './contact-api.js';
 import { AREA_OPTIONS, PHOTO_ACCEPT, SERVICE_TITLES } from './contact-options.js';
@@ -15,6 +15,18 @@ export function ContactForm({ defaultArea = '', defaultService = '', submitEnqui
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('');
   const [pending, setPending] = useState(false);
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+  useEffect(() => {
+    for (const [name, value, options] of [['area', defaultArea, AREA_OPTIONS], ['service', defaultService, SERVICE_TITLES]]) {
+      const select = formRef.current?.elements.namedItem(name);
+      // Parameter values arrive after hydration; preserve any user selection.
+      if (select && !select.value && options.includes(value)) {
+        for (const option of select.options) option.defaultSelected = option.value === value;
+        select.value = value;
+      }
+    }
+  }, [defaultArea, defaultService]);
   const error = (field) => errors[field] ? <span id={`${field}-error`} className="fieldError" role="alert">{errors[field]}</span> : null;
 
   function valuesFrom(form) {
@@ -28,7 +40,7 @@ export function ContactForm({ defaultArea = '', defaultService = '', submitEnqui
 
   async function submit(event) {
     event.preventDefault();
-    if (pending || submittingRef.current) return;
+    if (!ready || pending || submittingRef.current) return;
     const form = event.currentTarget;
     const nextErrors = validateEnquiry(valuesFrom(form));
     setErrors(nextErrors);
@@ -62,7 +74,7 @@ export function ContactForm({ defaultArea = '', defaultService = '', submitEnqui
     setErrors((current) => ({ ...current, photo: undefined }));
   }
 
-  return <form ref={formRef} onSubmit={submit} noValidate>
+  return <form ref={formRef} onSubmit={submit} method="post" action="/api/contact" encType="multipart/form-data" noValidate>
     <div className="formGrid">
       <label>Name<input name="name" required autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? 'name-error' : undefined} />{error('name')}</label>
       <label>Email<input name="email" type="email" required autoComplete="email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? 'email-error' : undefined} />{error('email')}</label>
@@ -84,9 +96,9 @@ export function ContactForm({ defaultArea = '', defaultService = '', submitEnqui
       {error('photo')}
     </div>
     <input className="honeypot" name="website" aria-hidden="true" tabIndex={-1} autoComplete="off" readOnly />
-    <label className="check"><input name="privacy" type="checkbox" required aria-invalid={Boolean(errors.privacy)} aria-describedby={errors.privacy ? 'privacy-error' : undefined} /> {privacyCopy}</label>
+    <label className="check"><input name="privacy" type="checkbox" value="true" required aria-invalid={Boolean(errors.privacy)} aria-describedby={errors.privacy ? 'privacy-error' : undefined} /> {privacyCopy}</label>
     {error('privacy')}
-    <button className="button" disabled={pending}>{pending ? 'Sending enquiry...' : 'Send enquiry'}</button>
+    <button className="button" disabled={!ready || pending}>{pending ? 'Sending enquiry...' : 'Send enquiry'}</button>
     <p className="contactStatus" role="status" aria-live="polite">{status}</p>
   </form>;
 }

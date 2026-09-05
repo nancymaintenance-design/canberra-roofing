@@ -25,15 +25,7 @@ const requiredIgnoreEntries = [
   '.DS_Store',
   'Thumbs.db',
 ];
-const approvedEnvironmentNames = [
-  'CONTACT_SMTP_HOST',
-  'CONTACT_SMTP_PORT',
-  'CONTACT_SMTP_SECURE',
-  'CONTACT_SMTP_USER',
-  'CONTACT_SMTP_PASS',
-  'CONTACT_SMTP_TO',
-  'CONTACT_SMTP_FROM',
-];
+const approvedEnvironmentNames = ['RESEND_API_KEY', 'CONTACT_EMAIL_TO', 'CONTACT_EMAIL_FROM'];
 
 test('release candidate keeps secrets and generated artifacts outside the upload boundary', () => {
   const gitignoreUrl = new URL('.gitignore', root);
@@ -68,10 +60,10 @@ test('Vercel candidate pins Node 22, preserves API routes, and applies the appro
   assert.equal(config.outputDirectory, 'dist');
   assert.deepEqual(config.functions, { 'api/contact.js': { maxDuration: 60 } });
   assert.doesNotMatch(JSON.stringify(config), /nodejs22\.x/);
-  assert.equal(config.rewrites.length, 1);
-  assert.match(config.rewrites[0].source, /api/);
-  assert.match(config.rewrites[0].source, /well-known/);
-  assert.equal(config.rewrites[0].destination, '/index.html');
+  assert.notEqual(config.cleanUrls, true, 'existing HTML verification and fallback files keep their URLs');
+  const published = JSON.parse(fs.readFileSync(new URL('src/route-meta.json', root), 'utf8'));
+  assert.deepEqual(config.rewrites, Object.keys(published).filter((pathname) => pathname !== '/').map((pathname) => ({ source: pathname, destination: pathname + '.html' })));
+  assert.deepEqual(config.redirects, [{source:'/insights',destination:'/faq',permanent:false}]);
   const headers = Object.fromEntries(config.headers[0].headers.map(({ key, value }) => [key, value]));
   assert.equal(headers['X-Content-Type-Options'], 'nosniff');
   assert.equal(headers['Referrer-Policy'], 'strict-origin-when-cross-origin');
@@ -99,7 +91,7 @@ test('public candidate uses owner-supplied copy and makes the browser editor dev
   const source = fs.readFileSync(new URL('src/main.tsx', root), 'utf8');
 
   assert.equal(packageJson.name, 'canberraroofkind-website');
-  assert.match(source, /Welcome to Canberraroofkind/);
+  assert.match(source, /Welcome to Ellis Services Group/);
   assert.match(source, /Homeowners can browse roof repair services, the Canberra areas directory and frequently asked questions, then send an enquiry with one optional photo\./);
   assert.match(source, /Scope and any fees are confirmed before work is arranged\./);
   assert.match(source, /import\.meta\.env\.DEV/);

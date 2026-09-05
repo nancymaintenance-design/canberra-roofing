@@ -72,7 +72,7 @@ test('email must look valid and surrounding whitespace is ignored', () => {
 test('contact form owns accessible error presentation and submission control', async () => {
   const source = await readFile(new URL('../src/contact-form.jsx', import.meta.url), 'utf8');
 
-  assert.match(source, /<form ref=\{formRef\} onSubmit=\{submit\} noValidate>/);
+  assert.match(source, /<form ref=\{formRef\} onSubmit=\{submit\}[^>]*noValidate>/);
   for (const field of ['name', 'email', 'phone', 'area', 'service', 'message', 'privacy']) {
     assert.match(source, new RegExp(`aria-describedby=\\{errors\\.${field} \\? '${field}-error' : undefined\\}`));
   }
