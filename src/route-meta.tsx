@@ -4,10 +4,17 @@ import registry from './route-meta.json';
 export const publishedRoutes = registry;
 export const pagePaths = Object.keys(publishedRoutes);
 
+// Match the acceptance server: never turn encoded separators, percent signs or
+// dot segments into route syntax. That prevents a second decode or traversal.
+const unsafeEncodedPath = /%(?:2f|5c|25|2e)/i;
+
 export function resolvePath(pathname: string) {
-  if (pathname === '/insights' || pathname === '/insights/') return '/faq';
-  if (pathname === '/index.html' || pathname === '/index.html/') return '/';
-  const path = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+  if (pathname.includes('//') || unsafeEncodedPath.test(pathname)) return pathname;
+  let decoded: string;
+  try { decoded = decodeURIComponent(pathname); } catch { return pathname; }
+  if (decoded === '/insights' || decoded === '/insights/') return '/faq';
+  if (decoded === '/index.html' || decoded === '/index.html/') return '/';
+  const path = decoded.endsWith('/') ? decoded.slice(0, -1) : decoded;
   const clean = path.endsWith('.html') ? path.slice(0, -5) : path;
   // Static previews may expose published HTML before an edge redirect runs.
   // Resolve only known aliases so hydration and head metadata match that HTML;

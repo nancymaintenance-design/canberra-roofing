@@ -6,6 +6,7 @@ import { createContactFunction } from '../api/contact.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.xml': 'application/xml', '.txt': 'text/plain', '.json': 'application/json' };
+const unsafeEncodedPath = /%(?:2f|5c|25|2e)/i;
 
 // Local acceptance server for this static site's vercel.json contract.
 // It is not the Vercel runtime. Preview/production must repeat HTTP acceptance.
@@ -23,18 +24,22 @@ export async function startPreview({ port = 0, directory = path.join(root, 'dist
   const server = createServer(async (req, res) => {
     try {
       const url = new URL(req.url, 'http://localhost');
-      let pathname = decodeURIComponent(url.pathname);
+      // URL normalizes encoded dot segments. Inspect req.url first so a request
+      // such as /%2e%2e/about cannot become /about before the route guard.
+      const rawPathname = req.url.split('?', 1)[0];
+      const unsafePath = rawPathname.includes('//') || unsafeEncodedPath.test(rawPathname);
+      const pathname = decodeURIComponent(rawPathname);
       for (const rule of config.headers ?? []) {
         if (new RegExp(`^${rule.source}$`).test(pathname)) {
           for (const { key, value } of rule.headers) res.setHeader(key, value);
         }
       }
-      if (pathname === '/api/contact') {
+      if (!unsafePath && pathname === '/api/contact') {
         req.headers['x-forwarded-host'] = req.headers.host;
         req.headers['x-forwarded-proto'] = 'http';
         return await contact(req, res);
       }
-      for (const rule of config.redirects ?? []) {
+      for (const rule of unsafePath ? [] : config.redirects ?? []) {
         if (pathname === rule.source) {
           res.writeHead(rule.statusCode ?? (rule.permanent ? 308 : 307), { Location: rule.destination + url.search });
           return res.end();
@@ -45,10 +50,10 @@ export async function startPreview({ port = 0, directory = path.join(root, 'dist
         res.writeHead(308, { Location: destination + url.search });
         return res.end();
       }
-      let filename = await fileAt(pathname === '/' ? '/index.html' : pathname);
-      if (!filename && config.cleanUrls) filename = await fileAt(`${pathname.replace(/\/$/, '')}.html`);
+      let filename = unsafePath ? null : await fileAt(pathname === '/' ? '/index.html' : pathname);
+      if (!filename && !unsafePath && config.cleanUrls) filename = await fileAt(`${pathname.replace(/\/$/, '')}.html`);
       if (!filename) {
-        for (const rule of config.rewrites ?? []) {
+        for (const rule of unsafePath ? [] : config.rewrites ?? []) {
           if (new RegExp(`^${rule.source}$`).test(pathname)) {
             filename = await fileAt(rule.destination);
             break;

@@ -94,8 +94,15 @@ for (const [device, viewport] of [['desktop', { width: 1440, height: 1000 }], ['
       });
     }
 
+    test('valid encoded published paths preserve prerendered content through hydration', async () => {
+      for (const [pathname, route] of [['/%61bout', routes.find(candidate => candidate.pathname === '/about')], ['/services/r%6fof-leak-repairs', routes.find(candidate => candidate.pathname === '/services/roof-leak-repairs')]]) {
+        expect((await page.goto(pathname + query)).status()).toBe(200);
+        await checkPage(page, route);
+      }
+    });
+
     test('unknown variants remain 404 after hydration', async () => {
-      for (const pathname of ['/missing', '/missing/', '/missing.html', '/missing.html/', '/services/missing/', '/news/missing.html', '/about//', '/wrong/about.html', '/index', '/insights.html']) {
+      for (const pathname of ['/missing', '/missing/', '/missing.html', '/missing.html/', '/services/missing/', '/news/missing.html', '/about//', '/about.html//', '/wrong/about.html', '/index', '/insights.html', '/services%2Froof-leak-repairs', '/services%5croof-leak-repairs', '/%2561bout', '/about%2ehtml', '/unknown%2dpath']) {
         const response = await page.goto(pathname + query);
         expect(response.status()).toBe(404);
         expect(response.request().redirectedFrom()).toBeNull();
