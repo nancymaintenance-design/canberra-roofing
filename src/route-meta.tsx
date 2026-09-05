@@ -5,8 +5,14 @@ export const publishedRoutes = registry;
 export const pagePaths = Object.keys(publishedRoutes);
 
 export function resolvePath(pathname: string) {
-  const path = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
-  return path === '/insights' ? '/faq' : path;
+  if (pathname === '/insights' || pathname === '/insights/') return '/faq';
+  if (pathname === '/index.html' || pathname === '/index.html/') return '/';
+  const path = pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+  const clean = path.endsWith('.html') ? path.slice(0, -5) : path;
+  // Static previews may expose published HTML before an edge redirect runs.
+  // Resolve only known aliases so hydration and head metadata match that HTML;
+  // leave unknown paths intact, including extra slashes and missing pages.
+  return clean !== '/' && Object.hasOwn(publishedRoutes, clean) ? clean : pathname;
 }
 
 export function getRouteHead(pathname: string) {

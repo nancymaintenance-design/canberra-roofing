@@ -15,7 +15,7 @@ The browser suite uses installed Microsoft Edge. `pnpm preview` starts the local
 
 The HTML contract suite additionally compares all 19 complete main texts and original links with fixtures captured before SEO implementation. Titles/descriptions come from the approved audit v1.1 CSV; H1/body copy remains the existing version. Raw results can be saved by setting `SEO_REPORT_DIR` before `pnpm test:seo`.
 
-Routes use exact rewrites to published HTML files, with no homepage catch-all and no global `.html` redirects. Unknown paths rely on the provider's static `404.html` behavior. Recheck real HTTP status, MIME, query preservation and all 19 page heads on the authorized Preview before production release.
+Routes use exact rewrites to published HTML files, with no homepage catch-all and no global `.html` redirects. FIX-CBR-001 adds explicit permanent redirects for published HTML and trailing-slash aliases, plus client alias handling for static previews. See `ops/fix-cbr-001.md` for the complete routing and regression contract. Unknown paths rely on the provider's static `404.html` behavior. Recheck real HTTP status, MIME, query preservation and all 19 page heads on the authorized Preview before production release.
 
 Deploy only the complete verified build from this commit. Do not publish the intermediate Vite `dist/index.html` before prerender and integrity verification. Client assets, all HTML files and routing configuration are one release unit. Keep the last verified production deployment as the rollback target; the source baseline has a truncated Contact client module and is not a rebuildable rollback artifact.
 

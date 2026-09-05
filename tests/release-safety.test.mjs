@@ -63,7 +63,7 @@ test('Vercel candidate pins Node 22, preserves API routes, and applies the appro
   assert.notEqual(config.cleanUrls, true, 'existing HTML verification and fallback files keep their URLs');
   const published = JSON.parse(fs.readFileSync(new URL('src/route-meta.json', root), 'utf8'));
   assert.deepEqual(config.rewrites, Object.keys(published).filter((pathname) => pathname !== '/').map((pathname) => ({ source: pathname, destination: pathname + '.html' })));
-  assert.deepEqual(config.redirects, [{source:'/insights',destination:'/faq',permanent:false}]);
+  assert.deepEqual(config.redirects.filter(rule => !rule.permanent), [{source:'/insights',destination:'/faq',permanent:false}, {source:'/insights/',destination:'/faq',permanent:false}]);
   const headers = Object.fromEntries(config.headers[0].headers.map(({ key, value }) => [key, value]));
   assert.equal(headers['X-Content-Type-Options'], 'nosniff');
   assert.equal(headers['Referrer-Policy'], 'strict-origin-when-cross-origin');

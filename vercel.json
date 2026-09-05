@@ -32,6 +32,291 @@
       "source": "/insights",
       "destination": "/faq",
       "permanent": false
+    },
+    {
+      "source": "/insights/",
+      "destination": "/faq",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about.html/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services.html/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-leak-repairs.html",
+      "destination": "/services/roof-leak-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-leak-repairs/",
+      "destination": "/services/roof-leak-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-leak-repairs.html/",
+      "destination": "/services/roof-leak-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/tile-roof-repairs.html",
+      "destination": "/services/tile-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/tile-roof-repairs/",
+      "destination": "/services/tile-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/tile-roof-repairs.html/",
+      "destination": "/services/tile-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/chimney-flashing-repairs.html",
+      "destination": "/services/chimney-flashing-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/chimney-flashing-repairs/",
+      "destination": "/services/chimney-flashing-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/chimney-flashing-repairs.html/",
+      "destination": "/services/chimney-flashing-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/rebedding-repointing.html",
+      "destination": "/services/rebedding-repointing",
+      "permanent": true
+    },
+    {
+      "source": "/services/rebedding-repointing/",
+      "destination": "/services/rebedding-repointing",
+      "permanent": true
+    },
+    {
+      "source": "/services/rebedding-repointing.html/",
+      "destination": "/services/rebedding-repointing",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-inspections.html",
+      "destination": "/services/roof-inspections",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-inspections/",
+      "destination": "/services/roof-inspections",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-inspections.html/",
+      "destination": "/services/roof-inspections",
+      "permanent": true
+    },
+    {
+      "source": "/solutions.html",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/solutions/",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/solutions.html/",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/areas.html",
+      "destination": "/areas",
+      "permanent": true
+    },
+    {
+      "source": "/areas/",
+      "destination": "/areas",
+      "permanent": true
+    },
+    {
+      "source": "/areas.html/",
+      "destination": "/areas",
+      "permanent": true
+    },
+    {
+      "source": "/news.html",
+      "destination": "/news",
+      "permanent": true
+    },
+    {
+      "source": "/news/",
+      "destination": "/news",
+      "permanent": true
+    },
+    {
+      "source": "/news.html/",
+      "destination": "/news",
+      "permanent": true
+    },
+    {
+      "source": "/faq.html",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/faq/",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/faq.html/",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/news/after-rain-roof-leak-check-canberra.html",
+      "destination": "/news/after-rain-roof-leak-check-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/after-rain-roof-leak-check-canberra/",
+      "destination": "/news/after-rain-roof-leak-check-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/after-rain-roof-leak-check-canberra.html/",
+      "destination": "/news/after-rain-roof-leak-check-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/cracked-slipped-missing-roof-tiles-canberra.html",
+      "destination": "/news/cracked-slipped-missing-roof-tiles-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/cracked-slipped-missing-roof-tiles-canberra/",
+      "destination": "/news/cracked-slipped-missing-roof-tiles-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/cracked-slipped-missing-roof-tiles-canberra.html/",
+      "destination": "/news/cracked-slipped-missing-roof-tiles-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/chimney-flashing-water-entry-signs.html",
+      "destination": "/news/chimney-flashing-water-entry-signs",
+      "permanent": true
+    },
+    {
+      "source": "/news/chimney-flashing-water-entry-signs/",
+      "destination": "/news/chimney-flashing-water-entry-signs",
+      "permanent": true
+    },
+    {
+      "source": "/news/chimney-flashing-water-entry-signs.html/",
+      "destination": "/news/chimney-flashing-water-entry-signs",
+      "permanent": true
+    },
+    {
+      "source": "/news/rebedding-vs-repointing-canberra-roofs.html",
+      "destination": "/news/rebedding-vs-repointing-canberra-roofs",
+      "permanent": true
+    },
+    {
+      "source": "/news/rebedding-vs-repointing-canberra-roofs/",
+      "destination": "/news/rebedding-vs-repointing-canberra-roofs",
+      "permanent": true
+    },
+    {
+      "source": "/news/rebedding-vs-repointing-canberra-roofs.html/",
+      "destination": "/news/rebedding-vs-repointing-canberra-roofs",
+      "permanent": true
+    },
+    {
+      "source": "/news/when-to-arrange-roof-inspection-canberra.html",
+      "destination": "/news/when-to-arrange-roof-inspection-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/when-to-arrange-roof-inspection-canberra/",
+      "destination": "/news/when-to-arrange-roof-inspection-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/when-to-arrange-roof-inspection-canberra.html/",
+      "destination": "/news/when-to-arrange-roof-inspection-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html/",
+      "destination": "/privacy",
+      "permanent": true
     }
   ],
   "rewrites": [
