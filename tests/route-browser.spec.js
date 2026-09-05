@@ -43,6 +43,7 @@ for (const [device, viewport] of [['desktop', { width: 1440, height: 1000 }], ['
     let errors;
     let context;
     let page;
+    let documentResponse;
     // These GET-only route walks need fresh documents, not a new Edge context
     // per URL. Reuse one device context to avoid Windows context-startup stalls.
     test.beforeAll(async ({ browser }) => {
@@ -51,14 +52,23 @@ for (const [device, viewport] of [['desktop', { width: 1440, height: 1000 }], ['
       errors = [];
       page.on('pageerror', error => errors.push(error.message));
       page.on('console', msg => { if (msg.type() === 'error' && /react|hydrat|#418|didn't match/i.test(msg.text())) errors.push(msg.text()); });
-      await context.route('**/*', route => new URL(route.request().url()).hostname === '127.0.0.1' && route.request().method() === 'GET' ? route.continue() : route.abort());
+      // Keep one handler registered: removing a page handler after fallback can
+      // race the context handler's continue while a request is still in flight.
+      await context.route('**/*', route => {
+        const request = route.request();
+        if (new URL(request.url()).hostname !== '127.0.0.1' || request.method() !== 'GET') return route.abort();
+        const response = request.isNavigationRequest() ? documentResponse?.(request) : null;
+        return response ? route.fulfill(response) : route.continue();
+      });
     });
-    test.beforeEach(() => { errors = []; });
+    test.beforeEach(() => { errors = []; documentResponse = undefined; });
     test.afterEach(async () => {
-      await page.unrouteAll({ behavior: 'wait' });
       expect(errors).toEqual([]);
     });
-    test.afterAll(async () => { await context?.close(); });
+    test.afterAll(async () => {
+      await context?.unrouteAll({ behavior: 'wait' });
+      await context?.close();
+    });
 
     for (const route of routes) {
       const aliases = route.pathname === '/' ? ['/index.html', '/index.html/'] : [`${route.pathname}.html`, `${route.pathname}/`, `${route.pathname}.html/`];
@@ -84,7 +94,7 @@ for (const [device, viewport] of [['desktop', { width: 1440, height: 1000 }], ['
         // an alias, with no redirect; load the actual production client bundle.
         const filename = route.pathname === '/' ? 'index.html' : `${route.pathname.slice(1)}.html`;
         const html = await readFile(new URL(`../dist/${filename}`, import.meta.url), 'utf8');
-        await page.route('**/*', request => request.request().isNavigationRequest() ? request.fulfill({ status: 200, contentType: 'text/html', body: html }) : request.fallback());
+        documentResponse = () => ({ status: 200, contentType: 'text/html', body: html });
         for (const alias of aliases) {
           expect((await page.goto(alias + query)).status()).toBe(200);
           expect(new URL(page.url()).pathname).toBe(alias);
@@ -94,10 +104,36 @@ for (const [device, viewport] of [['desktop', { width: 1440, height: 1000 }], ['
       });
     }
 
-    test('valid encoded published paths preserve prerendered content through hydration', async () => {
-      for (const [pathname, route] of [['/%61bout', routes.find(candidate => candidate.pathname === '/about')], ['/services/r%6fof-leak-repairs', routes.find(candidate => candidate.pathname === '/services/roof-leak-repairs')]]) {
-        expect((await page.goto(pathname + query)).status()).toBe(200);
-        await checkPage(page, route);
+    test('Vercel document selection, rather than encoded request text, controls first hydration', async () => {
+      const documents = [
+        { pathname: '/%61bout', filename: '404.html', status: 404, route: '/404', h1: 'Page not found', canonical: null },
+        ...['/services/r%6fof-leak-repairs', '/services%2froof-leak-repairs', '/services%2Froof-leak-repairs', '/services%5croof-leak-repairs', '/%25', '/%2561bout', '/%252e%252e%252fabout', '/unknown', '/about//'].map(pathname => ({ pathname, filename: '404.html', status: 404, route: '/404', h1: 'Page not found', canonical: null })),
+        { pathname: '/about%2ehtml', filename: 'about.html', status: 200, route: '/about', h1: routes.find(candidate => candidate.pathname === '/about').h1, canonical: domain + '/about' },
+      ];
+      const html = new Map(await Promise.all(documents.map(async ({ filename }) => [filename, await readFile(new URL(`../dist/${filename}`, import.meta.url), 'utf8')])));
+      documentResponse = request => {
+        const match = documents.find(({ pathname }) => new URL(request.url()).pathname === pathname);
+        return match ? { status: match.status, contentType: 'text/html', body: html.get(match.filename) } : null;
+      };
+      for (const expected of documents) {
+        expect((await page.goto(expected.pathname + query)).status()).toBe(expected.status);
+        expect(new URL(page.url()).pathname).toBe(expected.pathname);
+        await settled(page);
+        expect(await page.locator('html').getAttribute('data-route')).toBe(expected.route);
+        await expect(page.locator('main h1')).toHaveText(expected.h1);
+        if (expected.canonical) {
+          await expect(page.locator('head link[rel="canonical"]')).toHaveAttribute('href', expected.canonical);
+          await expect(page.locator('head meta[name="robots"]')).toHaveCount(0);
+        } else {
+          await expect(page.locator('head link[rel="canonical"]')).toHaveCount(0);
+          await expect(page.locator('head meta[name="robots"]')).toHaveAttribute('content', 'noindex,follow');
+        }
+        // Leave the encoded document through a normal site link. The initial
+        // document identity must not pin subsequent canonical navigation.
+        await page.locator('.headerActions .contactTop').click();
+        await expect(page).toHaveURL('http://127.0.0.1:4175/contact');
+        await expect(page.locator('main h1')).toHaveText(routes.find(route => route.pathname === '/contact').h1);
+        await expect(page.locator('head link[rel="canonical"]')).toHaveAttribute('href', domain + '/contact');
       }
     });
 

@@ -22,6 +22,7 @@ export function validateDocument(html, pathname, expected) {
   const dom = new JSDOM(html);
   try {
     const document = dom.window.document;
+    assert.equal(document.documentElement.getAttribute('data-route'), pathname, `${pathname}: document route marker missing or mismatched`);
     const app = document.querySelector('body > #root');
     assert.ok(app && app.children.length >= 3, `${pathname}: missing populated application root`);
     assert.equal(app.querySelectorAll('main').length, 1, `${pathname}: one main content region`);

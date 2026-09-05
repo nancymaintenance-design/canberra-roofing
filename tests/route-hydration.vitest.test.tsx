@@ -5,7 +5,10 @@ import { hydrateRoot } from 'react-dom/client';
 import { expect, it, vi } from 'vitest';
 import { AppV3 } from '../src/main';
 import { HeadMarkup, getRouteHead, resolvePath } from '../src/route-meta';
+import { getDocumentRoute } from '../src/document-route';
 import routes from './fixtures/seo-routes.json';
+
+(globalThis as typeof globalThis & { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 
 for (const route of routes) {
   const aliases = route.pathname === '/' ? ['/index.html', '/index.html/'] : [`${route.pathname}.html`, `${route.pathname}/`, `${route.pathname}.html/`];
@@ -67,4 +70,46 @@ it.each(['/services%2Froof-leak-repairs', '/services%2froof-leak-repairs', '/ser
   expect(resolvePath(pathname)).toBe(pathname);
   expect(getRouteHead(pathname).canonical).toBeNull();
   expect(renderToString(<AppV3 pathname={pathname} />)).toContain('<h1>Page not found</h1>');
+});
+
+it.each(['/%61bout', '/services/r%6fof-leak-repairs', '/services%2froof-leak-repairs', '/services%5croof-leak-repairs', '/%25', '/%2561bout', '/%252e%252e%252fabout', '/unknown', '/about//'])('uses the server-rendered 404 marker for the edge 404 at %s', async pathname => {
+  window.history.replaceState(null, '', pathname);
+  document.documentElement.dataset.route = '/404';
+  document.head.innerHTML = renderToStaticMarkup(<HeadMarkup pathname="/404" />);
+  document.body.innerHTML = `<div id="root">${renderToString(<AppV3 pathname="/404" />)}</div>`;
+  const before = document.querySelector('main')!.textContent;
+  const recoverable: unknown[] = [];
+  let root: ReturnType<typeof hydrateRoot>;
+  try {
+    await act(async () => { root = hydrateRoot(document.getElementById('root')!, <AppV3 pathname={getDocumentRoute()} />, { onRecoverableError: error => recoverable.push(error) }); });
+    expect(getDocumentRoute()).toBe('/404');
+    expect(document.querySelector('main')!.textContent).toBe(before);
+    expect(document.querySelector('main h1')!.textContent).toBe('Page not found');
+    expect(document.querySelector('link[rel="canonical"]')).toBeNull();
+    expect(recoverable).toEqual([]);
+  } finally {
+    await act(async () => root?.unmount());
+    delete document.documentElement.dataset.route;
+  }
+});
+
+it('uses the server-rendered About marker when Vercel resolves encoded dot HTML to about.html', async () => {
+  window.history.replaceState(null, '', '/about%2ehtml');
+  document.documentElement.dataset.route = '/about';
+  document.head.innerHTML = renderToStaticMarkup(<HeadMarkup pathname="/about" />);
+  document.body.innerHTML = `<div id="root">${renderToString(<AppV3 pathname="/about" />)}</div>`;
+  const before = document.querySelector('main')!.textContent;
+  const recoverable: unknown[] = [];
+  let root: ReturnType<typeof hydrateRoot>;
+  try {
+    await act(async () => { root = hydrateRoot(document.getElementById('root')!, <AppV3 pathname={getDocumentRoute()} />, { onRecoverableError: error => recoverable.push(error) }); });
+    expect(getDocumentRoute()).toBe('/about');
+    expect(document.querySelector('main')!.textContent).toBe(before);
+    expect(document.querySelector('main h1')!.textContent).toBe('Your home is precious. Its care deserves to be taken seriously.');
+    expect(document.querySelector('link[rel="canonical"]')!.getAttribute('href')).toBe('https://www.canberraroofkind.com.au/about');
+    expect(recoverable).toEqual([]);
+  } finally {
+    await act(async () => root?.unmount());
+    delete document.documentElement.dataset.route;
+  }
 });
