@@ -59,6 +59,30 @@ for (const route of expected) {
   });
 }
 
+test('homepage provides a safe roof-leak observation block with verified entity details', async () => {
+  const response = await fetch(preview.origin + '/');
+  const dom = new JSDOM(await response.text());
+  const document = dom.window.document;
+  try {
+    const guidance = [...document.querySelectorAll('main section')].find((section) => section.textContent.includes('Roof leak: safe observations before an inspection'));
+    assert.ok(guidance, 'homepage includes the roof-leak observation block');
+    assert.match(guidance.textContent, /Do not climb onto the roof or touch wet electrical areas\./);
+    assert.ok(guidance.querySelector('a[href="/services/roof-leak-repairs"]'));
+    assert.ok(guidance.querySelector('a[href="/contact?service=Roof%20Leak%20Repairs"]'));
+
+    const entity = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent);
+    assert.equal(entity.name, 'Ellis Services Group');
+    assert.equal(entity.telephone, '+61405878406');
+    assert.equal(entity.address.streetAddress, '121 Marcus Clarke St');
+    assert.equal(entity.address.addressLocality, 'Canberra');
+    assert.equal(entity.address.addressRegion, 'ACT');
+    assert.equal(entity.address.postalCode, '2600');
+    assert.equal(entity.openingHours, 'Mo-Su 00:00-23:59');
+  } finally {
+    dom.window.close();
+  }
+});
+
 test('raw HTML pages have distinct titles, descriptions and response bodies; sitemap stays at its 18 published URLs', async () => {
   const xml = await (await fetch(preview.origin + '/sitemap.xml')).text();
   const dom = new JSDOM(xml, { contentType: 'application/xml' });
