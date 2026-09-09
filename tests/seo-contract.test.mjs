@@ -83,6 +83,50 @@ test('homepage provides a safe roof-leak observation block with verified entity 
   }
 });
 
+test('priority service pages show intent-specific FAQs alongside their two related pathways', async () => {
+  const expectations = [
+    {
+      pathname: '/services/roof-leak-repairs',
+      questions: [
+        'Is the water mark always below the leak entry point?',
+        'Can dry weather make a roof leak harder to assess?',
+      ],
+      links: ['/services/roof-inspections', '/services/rebedding-repointing'],
+    },
+    {
+      pathname: '/services/rebedding-repointing',
+      questions: [
+        'Does every crack mean all ridge caps need repointing?',
+        'What is the difference between roof rebedding and repointing?',
+      ],
+      links: ['/services/roof-leak-repairs', '/services/roof-inspections'],
+    },
+    {
+      pathname: '/services/roof-inspections',
+      questions: [
+        'Is a roof inspection a structural or compliance certificate?',
+        'What does a roof inspection enquiry cover?',
+      ],
+      links: ['/services/roof-leak-repairs', '/services/rebedding-repointing'],
+    },
+  ];
+
+  for (const { pathname, questions, links } of expectations) {
+    const dom = new JSDOM(await (await fetch(preview.origin + pathname)).text());
+    const document = dom.window.document;
+    try {
+      const faq = document.querySelector('.pageFaq');
+      assert.equal(faq?.querySelectorAll('details').length, 2, `${pathname} has two visible page-specific FAQs`);
+      assert.deepEqual([...faq.querySelectorAll('summary')].map((summary) => normal(summary.textContent)), questions);
+      for (const href of links) {
+        assert.ok(document.querySelector(`.relatedServices a[href="${href}"]`), `${pathname} links to ${href}`);
+      }
+    } finally {
+      dom.window.close();
+    }
+  }
+});
+
 test('raw HTML pages have distinct titles, descriptions and response bodies; sitemap stays at its 18 published URLs', async () => {
   const xml = await (await fetch(preview.origin + '/sitemap.xml')).text();
   const dom = new JSDOM(xml, { contentType: 'application/xml' });
