@@ -59,10 +59,10 @@
     ]
   },
   "/services": {
-    "title": "Roof Repair Enquiry Options in Canberra | Canberra Roof Kind",
-    "description": "Compare five Canberra roof enquiry options. Read about visible signs, assessment scope and limitations, then choose the pathway that fits your concern.",
+    "title": "Roof Repairs Canberra | Ellis Services Group",
+    "description": "Roof Repairs Canberra: compare five repair enquiry pathways, visible signs and assessment considerations before you choose the closest service topic.",
     "canonical": "https://www.canberraroofkind.com.au/services",
-    "h1": "Roof repair topics, explained in plain English.",
+    "h1": "Roof Repairs Canberra",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -90,10 +90,10 @@
     ]
   },
   "/services/roof-leak-repairs": {
-    "title": "Roof Leak Repairs in Canberra | Canberra Roof Kind",
-    "description": "Read about roof leak signs, possible water-entry points and assessment limitations in Canberra. Share the visible concern and your suburb in an enquiry.",
+    "title": "Leaking Roof Repair Canberra | Ellis Services Group",
+    "description": "Leaking Roof Repair Canberra: record visible roof leak signs, possible water-entry context and your suburb before making an enquiry.",
     "canonical": "https://www.canberraroofkind.com.au/services/roof-leak-repairs",
-    "h1": "Roof Leak Repairs",
+    "h1": "Leaking Roof Repair Canberra",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -115,10 +115,10 @@
     ]
   },
   "/services/tile-roof-repairs": {
-    "title": "Tile Roof Repairs in Canberra | Canberra Roof Kind",
-    "description": "Learn which cracked, slipped or missing tile signs to record for a Canberra roof enquiry, and what access, matching materials and roof condition may affect.",
+    "title": "Tile Roof Repair Canberra | Ellis Services Group",
+    "description": "Tile Roof Repair Canberra: learn which cracked, slipped or missing tile signs to record safely before making an enquiry.",
     "canonical": "https://www.canberraroofkind.com.au/services/tile-roof-repairs",
-    "h1": "Tile Roof Repairs",
+    "h1": "Tile Roof Repair Canberra",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -165,10 +165,10 @@
     ]
   },
   "/services/rebedding-repointing": {
-    "title": "Roof Rebedding & Repointing in Canberra | Canberra Roof Kind",
-    "description": "Explore ridge-cap, bedding and pointing concerns on Canberra tile roofs. Learn what to record safely and which conditions can affect the scope of work.",
+    "title": "Ridge Capping Repair Canberra | Ellis Services Group",
+    "description": "Ridge Capping Repair Canberra: understand visible ridge-cap, bedding and pointing concerns and what to record safely before an enquiry.",
     "canonical": "https://www.canberraroofkind.com.au/services/rebedding-repointing",
-    "h1": "Rebedding & Repointing",
+    "h1": "Ridge Capping Repair Canberra",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
