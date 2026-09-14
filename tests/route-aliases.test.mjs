@@ -4,7 +4,10 @@ import { readFile } from 'node:fs/promises';
 import { request } from 'node:http';
 import { startPreview } from '../scripts/preview.mjs';
 
-const routes = JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8'));
+const fixtureRoutes = JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8'));
+const addedServiceRoutes = ['/services/metal-colorbond-roof-repairs', '/services/roof-restoration', '/services/reroof-replacement', '/services/gutter-fascia-repairs'].map(pathname => ({ pathname }));
+const solutionIndex = fixtureRoutes.findIndex(({ pathname }) => pathname === '/solutions');
+const routes = [...fixtureRoutes.slice(0, solutionIndex), ...addedServiceRoutes, ...fixtureRoutes.slice(solutionIndex)];
 const config = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
 const aliases = routes.flatMap(({ pathname }) => (pathname === '/' ? ['/index.html', '/index.html/'] : [`${pathname}.html`, `${pathname}/`, `${pathname}.html/`]).map(source => ({ source, destination: pathname })));
 const query = '?service=Rebedding%20%26%20Repointing&area=Belconnen%20%E2%80%94%20Belconnen&utm_source=fix&tag=one&tag=two';

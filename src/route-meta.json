@@ -60,7 +60,7 @@
   },
   "/services": {
     "title": "Roof Repairs Canberra | Ellis Services Group",
-    "description": "Roof Repairs Canberra: compare five repair enquiry pathways, visible signs and assessment considerations before you choose the closest service topic.",
+    "description": "Roof Repairs Canberra: compare service pathways, visible signs and assessment considerations before you choose the closest service topic.",
     "canonical": "https://www.canberraroofkind.com.au/services",
     "h1": "Roof Repairs Canberra",
     "indexability": "index,follow",
@@ -213,6 +213,38 @@
       "/contact",
       "/privacy"
     ]
+  },
+  "/services/metal-colorbond-roof-repairs": {
+    "title": "Metal & Colorbond Roof Repairs Canberra | Ellis Services Group",
+    "description": "Metal and Colorbond roof repairs Canberra: record visible sheet, fixing, flashing or water-entry concerns before an assessment.",
+    "canonical": "https://www.canberraroofkind.com.au/services/metal-colorbond-roof-repairs",
+    "h1": "Metal & Colorbond Roof Repairs",
+    "indexability": "index,follow",
+    "contentSource": "src/main.tsx"
+  },
+  "/services/roof-restoration": {
+    "title": "Roof Restoration Canberra | Ellis Services Group",
+    "description": "Roof restoration Canberra: understand the visible roof condition, assessment considerations and written-quote process before you enquire.",
+    "canonical": "https://www.canberraroofkind.com.au/services/roof-restoration",
+    "h1": "Roof Restoration",
+    "indexability": "index,follow",
+    "contentSource": "src/main.tsx"
+  },
+  "/services/reroof-replacement": {
+    "title": "Re-roofing & Roof Replacement Canberra | Ellis Services Group",
+    "description": "Re-roofing and roof replacement Canberra: explore material, roof-layout and assessment considerations before agreeing a written scope.",
+    "canonical": "https://www.canberraroofkind.com.au/services/reroof-replacement",
+    "h1": "Re-roofing & Roof Replacement",
+    "indexability": "index,follow",
+    "contentSource": "src/main.tsx"
+  },
+  "/services/gutter-fascia-repairs": {
+    "title": "Gutter & Fascia Repairs Canberra | Ellis Services Group",
+    "description": "Gutter and fascia repairs Canberra: record visible overflow, eave, drainage or fascia concerns before an assessment.",
+    "canonical": "https://www.canberraroofkind.com.au/services/gutter-fascia-repairs",
+    "h1": "Gutter & Fascia Repairs",
+    "indexability": "index,follow",
+    "contentSource": "src/main.tsx"
   },
   "/solutions": {
     "title": "Choose a Roof Enquiry Pathway | Canberra Roof Kind",

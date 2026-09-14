@@ -154,6 +154,66 @@
       "permanent": true
     },
     {
+      "source": "/services/metal-colorbond-roof-repairs.html",
+      "destination": "/services/metal-colorbond-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/metal-colorbond-roof-repairs/",
+      "destination": "/services/metal-colorbond-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/metal-colorbond-roof-repairs.html/",
+      "destination": "/services/metal-colorbond-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-restoration.html",
+      "destination": "/services/roof-restoration",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-restoration/",
+      "destination": "/services/roof-restoration",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-restoration.html/",
+      "destination": "/services/roof-restoration",
+      "permanent": true
+    },
+    {
+      "source": "/services/reroof-replacement.html",
+      "destination": "/services/reroof-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/services/reroof-replacement/",
+      "destination": "/services/reroof-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/services/reroof-replacement.html/",
+      "destination": "/services/reroof-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-fascia-repairs.html",
+      "destination": "/services/gutter-fascia-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-fascia-repairs/",
+      "destination": "/services/gutter-fascia-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-fascia-repairs.html/",
+      "destination": "/services/gutter-fascia-repairs",
+      "permanent": true
+    },
+    {
       "source": "/solutions.html",
       "destination": "/solutions",
       "permanent": true
@@ -347,6 +407,22 @@
     {
       "source": "/services/roof-inspections",
       "destination": "/services/roof-inspections.html"
+    },
+    {
+      "source": "/services/metal-colorbond-roof-repairs",
+      "destination": "/services/metal-colorbond-roof-repairs.html"
+    },
+    {
+      "source": "/services/roof-restoration",
+      "destination": "/services/roof-restoration.html"
+    },
+    {
+      "source": "/services/reroof-replacement",
+      "destination": "/services/reroof-replacement.html"
+    },
+    {
+      "source": "/services/gutter-fascia-repairs",
+      "destination": "/services/gutter-fascia-repairs.html"
     },
     {
       "source": "/solutions",
