@@ -4,11 +4,11 @@ import test from 'node:test';
 
 const source = fs.readFileSync(new URL('../src/main.tsx', import.meta.url), 'utf8');
 
-test('recovery retains the five detailed service records', () => {
+test('recovery retains the nine detailed service records', () => {
   const serviceBlock = source.match(/const serviceSeed:Service\[\]=\[([\s\S]*?)\n\];/)?.[1] || '';
-  assert.equal((serviceBlock.match(/\{slug:/g) || []).length, 5);
+  assert.equal((serviceBlock.match(/\{slug:/g) || []).length, 9);
   for (const field of ['direct', 'causes', 'assessment', 'pathways', 'scope', 'faqQ', 'faqA', 'next']) {
-    assert.equal((serviceBlock.match(new RegExp(`[,\\{]${field}:'`, 'g')) || []).length, 5, `missing ${field} on a service record`);
+    assert.equal((serviceBlock.match(new RegExp(`[,\\{]${field}:'`, 'g')) || []).length, 9, `missing ${field} on a service record`);
   }
 });
 
