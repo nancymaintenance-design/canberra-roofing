@@ -1,7 +1,7 @@
 {
   "/": {
     "title": "Roof Repair Enquiries in Canberra | Canberra Roof Kind",
-    "description": "Explore Canberra roof enquiry options for leaks, tile roofs, chimney flashing, rebedding, repointing and inspections. Describe your concern to Ellis Services Group.",
+    "description": "Explore Canberra roof enquiry options for leaks, tile roofs, chimney flashing, rebedding, repointing and inspections. Describe your concern to Ellis Services.",
     "canonical": "https://www.canberraroofkind.com.au/",
     "h1": "A clear path from roof concern to next step.",
     "indexability": "index,follow",
@@ -215,7 +215,7 @@
     ]
   },
   "/services/metal-colorbond-roof-repairs": {
-    "title": "Metal & Colorbond Roof Repairs Canberra | Ellis Services Group",
+    "title": "Metal & Colorbond Roof Repairs Canberra | Ellis",
     "description": "Metal and Colorbond roof repairs Canberra: record visible sheet, fixing, flashing or water-entry concerns before an assessment.",
     "canonical": "https://www.canberraroofkind.com.au/services/metal-colorbond-roof-repairs",
     "h1": "Metal & Colorbond Roof Repairs",
@@ -231,7 +231,7 @@
     "contentSource": "src/main.tsx"
   },
   "/services/reroof-replacement": {
-    "title": "Re-roofing & Roof Replacement Canberra | Ellis Services Group",
+    "title": "Re-roofing & Roof Replacement Canberra | Ellis",
     "description": "Re-roofing and roof replacement Canberra: explore material, roof-layout and assessment considerations before agreeing a written scope.",
     "canonical": "https://www.canberraroofkind.com.au/services/reroof-replacement",
     "h1": "Re-roofing & Roof Replacement",
@@ -431,7 +431,7 @@
   },
   "/contact": {
     "title": "Contact Canberra Roof Kind | Canberra Roof Enquiries",
-    "description": "Contact Ellis Services Group about a Canberra roof concern. Choose your suburb and service interest, describe the visible signs, or use the listed phone and email.",
+    "description": "Contact Ellis Services Group about a Canberra roof concern. Choose your suburb and service interest, then describe the visible signs you noticed.",
     "canonical": "https://www.canberraroofkind.com.au/contact",
     "h1": "Tell us what you are seeing.",
     "indexability": "index,follow",
@@ -480,7 +480,7 @@
     ]
   },
   "/news/cracked-slipped-missing-roof-tiles-canberra": {
-    "title": "Cracked or Missing Roof Tiles: What to Record | Canberra Roof Kind",
+    "title": "Cracked or Missing Roof Tiles | Canberra Roof Kind",
     "description": "See which visible tile-roof signs are useful to record before making a roof repair enquiry in Canberra.",
     "canonical": "https://www.canberraroofkind.com.au/news/cracked-slipped-missing-roof-tiles-canberra",
     "h1": "Cracked, Slipped or Missing Roof Tiles: What to Record Before You Enquire",
@@ -532,7 +532,7 @@
     ]
   },
   "/news/rebedding-vs-repointing-canberra-roofs": {
-    "title": "Rebedding vs Repointing: Canberra Roof Guide | Canberra Roof Kind",
+    "title": "Rebedding vs Repointing Guide | Canberra Roof Kind",
     "description": "Understand the plain-English difference between roof rebedding and repointing, and the signs worth recording safely.",
     "canonical": "https://www.canberraroofkind.com.au/news/rebedding-vs-repointing-canberra-roofs",
     "h1": "Rebedding and Repointing: A Plain-English Guide for Canberra Tile Roofs",
