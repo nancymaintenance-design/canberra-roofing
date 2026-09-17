@@ -7,9 +7,9 @@ import { startPreview } from '../scripts/preview.mjs';
 
 const expected = [
   ...JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8')),
-  { pathname: '/services/metal-colorbond-roof-repairs', title: 'Metal & Colorbond Roof Repairs Canberra | Ellis Services Group', description: 'Metal and Colorbond roof repairs Canberra: record visible sheet, fixing, flashing or water-entry concerns before an assessment.', h1: 'Metal & Colorbond Roof Repairs', mainText: '', links: [] },
+  { pathname: '/services/metal-colorbond-roof-repairs', title: 'Metal & Colorbond Roof Repairs Canberra | Ellis', description: 'Metal and Colorbond roof repairs Canberra: record visible sheet, fixing, flashing or water-entry concerns before an assessment.', h1: 'Metal & Colorbond Roof Repairs', mainText: '', links: [] },
   { pathname: '/services/roof-restoration', title: 'Roof Restoration Canberra | Ellis Services Group', description: 'Roof restoration Canberra: understand the visible roof condition, assessment considerations and written-quote process before you enquire.', h1: 'Roof Restoration', mainText: '', links: [] },
-  { pathname: '/services/reroof-replacement', title: 'Re-roofing & Roof Replacement Canberra | Ellis Services Group', description: 'Re-roofing and roof replacement Canberra: explore material, roof-layout and assessment considerations before agreeing a written scope.', h1: 'Re-roofing & Roof Replacement', mainText: '', links: [] },
+  { pathname: '/services/reroof-replacement', title: 'Re-roofing & Roof Replacement Canberra | Ellis', description: 'Re-roofing and roof replacement Canberra: explore material, roof-layout and assessment considerations before agreeing a written scope.', h1: 'Re-roofing & Roof Replacement', mainText: '', links: [] },
   { pathname: '/services/gutter-fascia-repairs', title: 'Gutter & Fascia Repairs Canberra | Ellis Services Group', description: 'Gutter and fascia repairs Canberra: record visible overflow, eave, drainage or fascia concerns before an assessment.', h1: 'Gutter & Fascia Repairs', mainText: '', links: [] },
 ];
 const normal = (text) => text.replace(/\s+/g, ' ').trim();
@@ -140,10 +140,10 @@ test('raw HTML pages have distinct titles, descriptions and response bodies; sit
   const xml = await (await fetch(preview.origin + '/sitemap.xml')).text();
   const dom = new JSDOM(xml, { contentType: 'application/xml' });
   const urls = [...dom.window.document.querySelectorAll('loc')].map((n) => n.textContent);
-  const publishedCount = expected.filter((r) => r.pathname !== '/privacy').length;
+  const publishedCount = expected.length;
   assert.equal(urls.length, publishedCount);
   assert.equal(new Set(urls).size, publishedCount);
-  assert.deepEqual(new Set(urls), new Set(expected.filter((r) => r.pathname !== '/privacy').map((r) => `https://www.canberraroofkind.com.au${r.pathname}`)));
+  assert.deepEqual(new Set(urls), new Set(expected.map((r) => `https://www.canberraroofkind.com.au${r.pathname}`)));
   assert.equal(new Set(report.map((r) => r.sha256)).size, expected.length);
   assert.equal(new Set(report.map((r) => r.title)).size, expected.length);
   const descriptions = await Promise.all(expected.map(async ({ pathname }) => {
