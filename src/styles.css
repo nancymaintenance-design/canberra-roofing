@@ -56,6 +56,7 @@ input[aria-invalid="false"]:invalid,textarea[aria-invalid="false"]:invalid,selec
 .articleLead{max-width:680px;margin:0;color:var(--color-steel);font-size:1.18rem;line-height:1.55}
 .articleLayout{display:grid;grid-template-columns:minmax(0,720px) minmax(240px,320px);gap:clamp(2.5rem,7vw,7rem);max-width:1120px;padding-top:2.6rem}
 .articleBody{max-width:720px}
+.articleLeadImage{margin:0 0 1.75rem;overflow:hidden;aspect-ratio:16/10;background:var(--color-cloud);border-radius:var(--radius-media)}.articleLeadImage img{width:100%;height:100%;object-fit:cover}
 .articleBody p{margin:0 0 1.45rem;font-size:1.08rem;line-height:1.8}
 .articleSidebar{position:sticky;top:106px;align-self:start;padding:1.5rem;border-top:5px solid var(--color-action);background:var(--color-cloud)}
 .articleSidebar h2{max-width:none;margin:.2rem 0 .8rem;font-size:1.65rem;line-height:1.1}
