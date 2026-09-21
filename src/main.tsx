@@ -45,7 +45,19 @@ const serviceGalleries:Record<string,{title:string;intro:string;images:{src:stri
   {src:'/assets/services/ridge-capping-rebedding.png',alt:'Roofing workers placing a ridge cap onto fresh bedding material'},
   {src:'/assets/services/ridge-capping-pointing.png',alt:'Worker applying pointing material along a tiled roof ridge line'},
   {src:'/assets/services/ridge-capping-completed-line.png',alt:'Completed ridge capping line visible beside older roof tiles'},
-  {src:'/assets/services/ridge-capping-repair-process.png',alt:'Roofing workers preparing a ridge line during a controlled repair process'},
+ {src:'/assets/services/ridge-capping-repair-process.png',alt:'Roofing workers preparing a ridge line during a controlled repair process'},
+ ]},
+ 'chimney-flashing-repairs':{title:'What chimney flashing work can involve.',intro:'These owner-supplied images show visible chimney-to-roof junction details and work stages. They are context only and do not confirm the cause of a water-entry concern, repair scope or outcome for another property.',images:[
+  {src:'/assets/services/chimney-flashing-condition.png',alt:'Existing chimney flashing condition being reviewed beside tiled roofing'},
+  {src:'/assets/services/chimney-flashing-assessment.png',alt:'Roofing workers reviewing chimney flashing and recording visible junction details'},
+  {src:'/assets/services/chimney-flashing-installation.png',alt:'Worker forming flashing details around a brick chimney on a tiled roof'},
+  {src:'/assets/services/chimney-flashing-completed-detail.png',alt:'Completed chimney flashing detail visible around a brick chimney base'},
+ ]},
+ 'roof-inspections':{title:'What a visual roof inspection can involve.',intro:'These owner-supplied images show safe work practices, visible observations and recorded site details. They are context only; visual and non-invasive observations do not constitute structural engineering, certification or a guarantee that every concealed issue will be found.',images:[
+  {src:'/assets/services/roof-inspection-roofline-review.png',alt:'Roofing worker reviewing visible ridge-line condition while holding an inspection clipboard'},
+  {src:'/assets/services/roof-inspection-team-review.png',alt:'Roof inspection team reviewing roof tiles and chimney junction from controlled access'},
+  {src:'/assets/services/roof-inspection-photo-record.png',alt:'Roofing worker recording visible chimney and flashing details with a phone and notes'},
+  {src:'/assets/services/roof-inspection-checklist.png',alt:'Roof inspection checklist being completed while a worker reviews visible roof tiles'},
  ]},
 };
 serviceBySlug['roof-leak-repairs'].related=[
