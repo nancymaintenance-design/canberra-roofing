@@ -110,7 +110,7 @@ test('priority service pages show intent-specific FAQs alongside their two relat
       pathname: '/services/roof-inspections',
       questions: [
         'Is a roof inspection a structural or compliance certificate?',
-        'What does a roof inspection enquiry cover?',
+        'Can I arrange a roof inspection before deciding what to repair?',
       ],
       links: ['/services/roof-leak-repairs', '/services/rebedding-repointing'],
     },
@@ -121,8 +121,9 @@ test('priority service pages show intent-specific FAQs alongside their two relat
     const document = dom.window.document;
     try {
       const faq = document.querySelector('.pageFaq');
-      assert.equal(faq?.querySelectorAll('details').length, 2, `${pathname} has two visible page-specific FAQs`);
-      assert.deepEqual([...faq.querySelectorAll('summary')].map((summary) => normal(summary.textContent)), questions);
+      const summaries = [...faq.querySelectorAll('summary')].map((summary) => normal(summary.textContent));
+      assert.ok(summaries.length >= questions.length, `${pathname} keeps its original page-specific FAQs`);
+      for (const question of questions) assert.ok(summaries.includes(question), `${pathname} retains FAQ: ${question}`);
       for (const href of links) {
         assert.ok(document.querySelector(`.relatedServices a[href="${href}"]`), `${pathname} links to ${href}`);
       }

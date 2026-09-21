@@ -28,12 +28,39 @@ async function page(pathname) {
 test('the home page serves Canberra roofer and small-repair enquiry intent without promising acceptance', async () => {
   const dom = await page('/');
   try {
-    const copy = dom.window.document.querySelector('main')?.textContent ?? '';
+    const document = dom.window.document;
+    const copy = document.querySelector('main')?.textContent ?? '';
+    assert.equal(document.title, 'Canberra Roofer for Roof Repair Enquiries | Ellis Services Group');
+    assert.equal(document.querySelector('main h1')?.textContent, 'Roof Repairs Canberra: A Clear Next Step');
     assert.match(copy, /roofer in Canberra/i);
     assert.match(copy, /small roof repair/i);
     assert.match(copy, /does not confirm that a job can be accepted/i);
   } finally {
     dom.window.close();
+  }
+});
+
+test('every priority service page gives substantial, question-led guidance', async () => {
+  const expectations = [
+    ['/services/roof-leak-repairs', ['roof leak detection', 'roof flashing', 'still leaks after a repair']],
+    ['/services/tile-roof-repairs', ['terracotta', 'concrete', 'one or two damaged tiles']],
+    ['/services/chimney-flashing-repairs', ['chimney flashing repairs', 'wind-driven rain', 'roof inspection']],
+    ['/services/rebedding-repointing', ['roof repointing', 'roof rebedding', 'ridge capping']],
+    ['/services/roof-inspections', ['roof inspection', 'before deciding what to repair', 'visual and non-invasive']],
+  ];
+
+  for (const [pathname, phrases] of expectations) {
+    const dom = await page(pathname);
+    try {
+      const document = dom.window.document;
+      const copy = document.querySelector('main')?.textContent ?? '';
+      const words = copy.match(/[A-Za-z0-9][A-Za-z0-9'-]*/g)?.length ?? 0;
+      assert.ok(words >= 500, `${pathname} has at least 500 visible English words`);
+      assert.ok(document.querySelectorAll('.pageFaq details').length >= 3, `${pathname} has at least three page-specific FAQs`);
+      for (const phrase of phrases) assert.match(copy, new RegExp(phrase, 'i'));
+    } finally {
+      dom.window.close();
+    }
   }
 });
 
