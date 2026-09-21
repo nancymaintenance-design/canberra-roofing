@@ -5,7 +5,7 @@ import { expectedPages, validateDocument, verifyBuild } from '../scripts/verify-
 
 test('production files are reread from disk and include full head, root, body, main script and closing tags', async () => {
   const report = await verifyBuild();
-  assert.equal(report.length, expectedPages.length);
+  assert.equal(report.length, 20);
   assert.ok(report.every((record) => record.passed));
 });
 

@@ -4,17 +4,6 @@ import registry from './route-meta.json';
 export const publishedRoutes = registry;
 export const pagePaths = Object.keys(publishedRoutes);
 
-const SITE_NAME = 'Canberra Roof Kind';
-const OG_LOCALE = 'en_AU';
-const OG_IMAGE = 'https://www.canberraroofkind.com.au/assets/home/au-hero-act-tile-roof.png';
-const OG_IMAGE_ALT = 'Tiled residential roof on a Canberra home';
-const OG_IMAGE_WIDTH = '1693';
-const OG_IMAGE_HEIGHT = '929';
-// The homepage LCP element is the .tradeHero CSS background image, so it cannot
-// carry a fetchpriority attribute. Preload it instead so the hero is fetched at
-// high priority during head parsing.
-const HOME_HERO_IMAGE = '/assets/home/au-hero-act-tile-roof.png';
-
 // Match the acceptance server: never turn encoded separators, percent signs or
 // dot segments into route syntax. That prevents a second decode or traversal.
 const unsafeEncodedPath = /%(?:2f|5c|25|2e)/i;
@@ -55,28 +44,11 @@ export function getRouteHead(pathname: string) {
 
 export function HeadMarkup({ pathname }: { pathname: string }) {
   const head = getRouteHead(pathname);
-  const isHome = resolvePath(pathname) === '/';
   return <>
     <title>{head.title}</title>
     <meta name="description" content={head.description} />
     {head.canonical && <link rel="canonical" href={head.canonical} />}
     {head.robots && <meta name="robots" content={head.robots} />}
-    {isHome && <link rel="preload" as="image" href={HOME_HERO_IMAGE} fetchPriority="high" />}
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={SITE_NAME} />
-    <meta property="og:locale" content={OG_LOCALE} />
-    {head.canonical && <meta property="og:url" content={head.canonical} />}
-    <meta property="og:title" content={head.title} />
-    <meta property="og:description" content={head.description} />
-    <meta property="og:image" content={OG_IMAGE} />
-    <meta property="og:image:alt" content={OG_IMAGE_ALT} />
-    <meta property="og:image:width" content={OG_IMAGE_WIDTH} />
-    <meta property="og:image:height" content={OG_IMAGE_HEIGHT} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={head.title} />
-    <meta name="twitter:description" content={head.description} />
-    <meta name="twitter:image" content={OG_IMAGE} />
-    <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
     {head.article && <script id="news-article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(head.article).replace(/</g, '\\u003c') }} />}
   </>;
 }
@@ -86,7 +58,6 @@ export function HeadMarkup({ pathname }: { pathname: string }) {
 export function HeadManager({ pathname }: { pathname: string }) {
   useEffect(() => {
     const head = getRouteHead(pathname);
-    const isHome = resolvePath(pathname) === '/';
     const update = (selector: string, tag: string, attributes: Record<string, string>, text?: string) => {
       const [existing, ...duplicates] = Array.from(document.head.querySelectorAll(selector));
       duplicates.forEach((element) => element.remove());
@@ -100,24 +71,6 @@ export function HeadManager({ pathname }: { pathname: string }) {
     else document.head.querySelectorAll('link[rel="canonical"]').forEach((element) => element.remove());
     if (head.robots) update('meta[name="robots"]', 'meta', { name: 'robots', content: head.robots });
     else document.head.querySelectorAll('meta[name="robots"]').forEach((element) => element.remove());
-    update('meta[property="og:type"]', 'meta', { property: 'og:type', content: 'website' });
-    update('meta[property="og:site_name"]', 'meta', { property: 'og:site_name', content: SITE_NAME });
-    update('meta[property="og:locale"]', 'meta', { property: 'og:locale', content: OG_LOCALE });
-    if (head.canonical) update('meta[property="og:url"]', 'meta', { property: 'og:url', content: head.canonical });
-    else document.head.querySelectorAll('meta[property="og:url"]').forEach((element) => element.remove());
-    update('meta[property="og:title"]', 'meta', { property: 'og:title', content: head.title });
-    update('meta[property="og:description"]', 'meta', { property: 'og:description', content: head.description });
-    update('meta[property="og:image"]', 'meta', { property: 'og:image', content: OG_IMAGE });
-    update('meta[property="og:image:alt"]', 'meta', { property: 'og:image:alt', content: OG_IMAGE_ALT });
-    update('meta[property="og:image:width"]', 'meta', { property: 'og:image:width', content: OG_IMAGE_WIDTH });
-    update('meta[property="og:image:height"]', 'meta', { property: 'og:image:height', content: OG_IMAGE_HEIGHT });
-    update('meta[name="twitter:card"]', 'meta', { name: 'twitter:card', content: 'summary_large_image' });
-    update('meta[name="twitter:title"]', 'meta', { name: 'twitter:title', content: head.title });
-    update('meta[name="twitter:description"]', 'meta', { name: 'twitter:description', content: head.description });
-    update('meta[name="twitter:image"]', 'meta', { name: 'twitter:image', content: OG_IMAGE });
-    update('meta[name="twitter:image:alt"]', 'meta', { name: 'twitter:image:alt', content: OG_IMAGE_ALT });
-    if (isHome) update('link[rel="preload"][as="image"]', 'link', { rel: 'preload', as: 'image', href: HOME_HERO_IMAGE, fetchpriority: 'high' });
-    else document.head.querySelectorAll('link[rel="preload"][as="image"]').forEach((element) => element.remove());
     if (head.article) update('#news-article-schema', 'script', { id: 'news-article-schema', type: 'application/ld+json' }, JSON.stringify(head.article));
     else document.head.querySelectorAll('#news-article-schema').forEach((element) => element.remove());
   }, [pathname]);

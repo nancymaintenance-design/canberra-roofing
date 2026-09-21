@@ -25,33 +25,6 @@
           "value": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
         }
       ]
-    },
-    {
-      "source": "/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico|woff|woff2)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)\\.(css|js)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*)\\.(js|css)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
     }
   ],
   "redirects": [
@@ -178,66 +151,6 @@
     {
       "source": "/services/roof-inspections.html/",
       "destination": "/services/roof-inspections",
-      "permanent": true
-    },
-    {
-      "source": "/services/metal-colorbond-roof-repairs.html",
-      "destination": "/services/metal-colorbond-roof-repairs",
-      "permanent": true
-    },
-    {
-      "source": "/services/metal-colorbond-roof-repairs/",
-      "destination": "/services/metal-colorbond-roof-repairs",
-      "permanent": true
-    },
-    {
-      "source": "/services/metal-colorbond-roof-repairs.html/",
-      "destination": "/services/metal-colorbond-roof-repairs",
-      "permanent": true
-    },
-    {
-      "source": "/services/roof-restoration.html",
-      "destination": "/services/roof-restoration",
-      "permanent": true
-    },
-    {
-      "source": "/services/roof-restoration/",
-      "destination": "/services/roof-restoration",
-      "permanent": true
-    },
-    {
-      "source": "/services/roof-restoration.html/",
-      "destination": "/services/roof-restoration",
-      "permanent": true
-    },
-    {
-      "source": "/services/reroof-replacement.html",
-      "destination": "/services/reroof-replacement",
-      "permanent": true
-    },
-    {
-      "source": "/services/reroof-replacement/",
-      "destination": "/services/reroof-replacement",
-      "permanent": true
-    },
-    {
-      "source": "/services/reroof-replacement.html/",
-      "destination": "/services/reroof-replacement",
-      "permanent": true
-    },
-    {
-      "source": "/services/gutter-fascia-repairs.html",
-      "destination": "/services/gutter-fascia-repairs",
-      "permanent": true
-    },
-    {
-      "source": "/services/gutter-fascia-repairs/",
-      "destination": "/services/gutter-fascia-repairs",
-      "permanent": true
-    },
-    {
-      "source": "/services/gutter-fascia-repairs.html/",
-      "destination": "/services/gutter-fascia-repairs",
       "permanent": true
     },
     {
@@ -434,22 +347,6 @@
     {
       "source": "/services/roof-inspections",
       "destination": "/services/roof-inspections.html"
-    },
-    {
-      "source": "/services/metal-colorbond-roof-repairs",
-      "destination": "/services/metal-colorbond-roof-repairs.html"
-    },
-    {
-      "source": "/services/roof-restoration",
-      "destination": "/services/roof-restoration.html"
-    },
-    {
-      "source": "/services/reroof-replacement",
-      "destination": "/services/reroof-replacement.html"
-    },
-    {
-      "source": "/services/gutter-fascia-repairs",
-      "destination": "/services/gutter-fascia-repairs.html"
     },
     {
       "source": "/solutions",

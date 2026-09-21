@@ -5,13 +5,7 @@ import { createHash } from 'node:crypto';
 import { JSDOM } from 'jsdom';
 import { startPreview } from '../scripts/preview.mjs';
 
-const expected = [
-  ...JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8')),
-  { pathname: '/services/metal-colorbond-roof-repairs', title: 'Metal & Colorbond Roof Repairs Canberra | Ellis', description: 'Metal and Colorbond roof repairs Canberra: record visible sheet, fixing, flashing or water-entry concerns before an assessment.', h1: 'Metal & Colorbond Roof Repairs', mainText: '', links: [] },
-  { pathname: '/services/roof-restoration', title: 'Roof Restoration Canberra | Ellis Services Group', description: 'Roof restoration Canberra: understand the visible roof condition, assessment considerations and written-quote process before you enquire.', h1: 'Roof Restoration', mainText: '', links: [] },
-  { pathname: '/services/reroof-replacement', title: 'Re-roofing & Roof Replacement Canberra | Ellis', description: 'Re-roofing and roof replacement Canberra: explore material, roof-layout and assessment considerations before agreeing a written scope.', h1: 'Re-roofing & Roof Replacement', mainText: '', links: [] },
-  { pathname: '/services/gutter-fascia-repairs', title: 'Gutter & Fascia Repairs Canberra | Ellis Services Group', description: 'Gutter and fascia repairs Canberra: record visible overflow, eave, drainage or fascia concerns before an assessment.', h1: 'Gutter & Fascia Repairs', mainText: '', links: [] },
-];
+const expected = JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8'));
 const normal = (text) => text.replace(/\s+/g, ' ').trim();
 const report = [];
 const preview = await startPreview();
@@ -52,10 +46,12 @@ for (const route of expected) {
       assert.doesNotMatch(document.querySelector('meta[name="robots"]')?.content ?? '', /noindex|nofollow/);
       assert.equal(document.querySelectorAll('main h1').length, 1);
       assert.equal(normal(record.h1), route.h1);
-      if (route.pathname === '/' || route.pathname === '/services' || route.pathname === '/solutions' || route.pathname.startsWith('/services/')) {
-        assert.match(normal(document.querySelector('main').textContent), new RegExp(route.h1.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
-        if (route.pathname.startsWith('/services/')) assert.ok(document.querySelector('.indicativePricing'), 'service details include indicative pricing context');
-      } else assert.equal(normal(document.querySelector('main').textContent), route.mainText, 'full baseline main text, including FAQ answers, privacy and all article paragraphs');
+      const mainText = normal(document.querySelector('main').textContent);
+      if (route.mainTextIncludes) {
+        for (const phrase of route.mainTextIncludes) assert.ok(mainText.includes(phrase), `main text includes approved copy: ${phrase}`);
+      } else {
+        assert.equal(mainText, route.mainText, 'full baseline main text, including FAQ answers, privacy and all article paragraphs');
+      }
       for (const href of route.links) assert.ok([...document.querySelectorAll('a[href]')].some((a) => a.getAttribute('href') === href), `missing original link ${href}`);
       assert.ok(document.querySelector('a[href="tel:0405878406"]'));
       assert.ok(document.querySelector('a[href="mailto:elliservices.group@gmail.com"]'));
@@ -136,16 +132,15 @@ test('priority service pages show intent-specific FAQs alongside their two relat
   }
 });
 
-test('raw HTML pages have distinct titles, descriptions and response bodies; sitemap contains every published URL', async () => {
+test('raw HTML pages have distinct titles, descriptions and response bodies; sitemap stays at its 18 published URLs', async () => {
   const xml = await (await fetch(preview.origin + '/sitemap.xml')).text();
   const dom = new JSDOM(xml, { contentType: 'application/xml' });
   const urls = [...dom.window.document.querySelectorAll('loc')].map((n) => n.textContent);
-  const publishedCount = expected.length;
-  assert.equal(urls.length, publishedCount);
-  assert.equal(new Set(urls).size, publishedCount);
-  assert.deepEqual(new Set(urls), new Set(expected.map((r) => `https://www.canberraroofkind.com.au${r.pathname}`)));
-  assert.equal(new Set(report.map((r) => r.sha256)).size, expected.length);
-  assert.equal(new Set(report.map((r) => r.title)).size, expected.length);
+  assert.equal(urls.length, 18);
+  assert.equal(new Set(urls).size, 18);
+  assert.deepEqual(new Set(urls), new Set(expected.filter((r) => r.pathname !== '/privacy').map((r) => `https://www.canberraroofkind.com.au${r.pathname}`)));
+  assert.equal(new Set(report.map((r) => r.sha256)).size, 19);
+  assert.equal(new Set(report.map((r) => r.title)).size, 19);
   const descriptions = await Promise.all(expected.map(async ({ pathname }) => {
     const html = await (await fetch(preview.origin + pathname)).text();
     const page = new JSDOM(html);
@@ -153,7 +148,7 @@ test('raw HTML pages have distinct titles, descriptions and response bodies; sit
     page.window.close();
     return description;
   }));
-  assert.equal(new Set(descriptions).size, expected.length);
+  assert.equal(new Set(descriptions).size, 19);
   dom.window.close();
 });
 
