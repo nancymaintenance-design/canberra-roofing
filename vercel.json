@@ -229,6 +229,21 @@
       "permanent": true
     },
     {
+      "source": "/case-studies/tile-roof-repair-canberra.html",
+      "destination": "/case-studies/tile-roof-repair-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/tile-roof-repair-canberra/",
+      "destination": "/case-studies/tile-roof-repair-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/tile-roof-repair-canberra.html/",
+      "destination": "/case-studies/tile-roof-repair-canberra",
+      "permanent": true
+    },
+    {
       "source": "/news/after-rain-roof-leak-check-canberra.html",
       "destination": "/news/after-rain-roof-leak-check-canberra",
       "permanent": true
@@ -367,6 +382,10 @@
     {
       "source": "/contact",
       "destination": "/contact.html"
+    },
+    {
+      "source": "/case-studies/tile-roof-repair-canberra",
+      "destination": "/case-studies/tile-roof-repair-canberra.html"
     },
     {
       "source": "/news/after-rain-roof-leak-check-canberra",

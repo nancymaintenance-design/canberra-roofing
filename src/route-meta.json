@@ -1,9 +1,9 @@
 {
   "/": {
-    "title": "Roof Repair Enquiries in Canberra | Canberra Roof Kind",
-    "description": "Explore Canberra roof enquiry options for leaks, tile roofs, chimney flashing, rebedding, repointing and inspections. Describe your concern to Ellis Services Group.",
+    "title": "Canberra Roofer for Roof Repair Enquiries | Ellis Services Group",
+    "description": "Looking for a Canberra roofer? Explore roof leak, tile, chimney flashing, ridge capping and roof inspection enquiry pathways before describing your visible concern.",
     "canonical": "https://www.canberraroofkind.com.au/",
-    "h1": "A clear path from roof concern to next step.",
+    "h1": "Roof Repairs Canberra: A Clear Next Step",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -140,10 +140,10 @@
     ]
   },
   "/services/chimney-flashing-repairs": {
-    "title": "Chimney Flashing Repairs in Canberra | Canberra Roof Kind",
+    "title": "Chimney Flashing Repairs Canberra | Ellis Services Group",
     "description": "Read about visible signs near chimney flashing and roof junctions in Canberra. Record the concern safely and enquire about the next assessment step.",
     "canonical": "https://www.canberraroofkind.com.au/services/chimney-flashing-repairs",
-    "h1": "Chimney Flashing Repairs",
+    "h1": "Chimney Flashing Repairs Canberra",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -190,10 +190,10 @@
     ]
   },
   "/services/roof-inspections": {
-    "title": "Roof Inspection Enquiries in Canberra | Canberra Roof Kind",
+    "title": "Roof Inspection Canberra | Ellis Services Group",
     "description": "Find out when a Canberra roof inspection enquiry may help, what visible signs to record, and how access, weather and inspection limits shape the next step.",
     "canonical": "https://www.canberraroofkind.com.au/services/roof-inspections",
-    "h1": "Roof Inspections",
+    "h1": "Roof Inspection Canberra",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -421,9 +421,33 @@
       "/privacy"
     ]
   },
+  "/case-studies/tile-roof-repair-canberra": {
+    "title": "98% Customer Satisfaction | Tile Roof Repair Canberra Case Study",
+    "description": "See a documented Canberra tile roof repair sequence: visible displaced tiles, controlled work access and the visible roof covering retiled, with a 98% customer satisfaction measure.",
+    "canonical": "https://www.canberraroofkind.com.au/case-studies/tile-roof-repair-canberra",
+    "h1": "Tile Roof Repair Canberra Case Study",
+    "indexability": "index,follow",
+    "contentSource": "src/main.tsx",
+    "links": [
+      "/",
+      "/about",
+      "/solutions",
+      "/areas",
+      "/news",
+      "/faq",
+      "/contact",
+      "tel:0405878406",
+      "/services/tile-roof-repairs",
+      "/services/roof-inspections",
+      "/news/cracked-slipped-missing-roof-tiles-canberra",
+      "/contact?service=Tile%20Roof%20Repairs",
+      "mailto:elliservices.group@gmail.com",
+      "/privacy"
+    ]
+  },
   "/news/after-rain-roof-leak-check-canberra": {
     "title": "Roof Leak Signs After Rain in Canberra | Canberra Roof Kind",
-    "description": "A practical, safety-first guide to recording signs of a suspected roof leak after rain in Canberra.",
+    "description": "Roof leak signs after rain in Canberra: safely record visible water-entry details before following the Roof Leak Repairs enquiry pathway.",
     "canonical": "https://www.canberraroofkind.com.au/news/after-rain-roof-leak-check-canberra",
     "h1": "After Rain: A Safe First Check for a Suspected Roof Leak in Canberra",
     "indexability": "index,follow",
@@ -527,7 +551,7 @@
   },
   "/news/when-to-arrange-roof-inspection-canberra": {
     "title": "When to Enquire About a Roof Inspection | Canberra Roof Kind",
-    "description": "A practical guide to deciding when a roof inspection enquiry may be useful for a Canberra property.",
+    "description": "Roof inspection guidance for Canberra properties: decide when an inspection enquiry is useful, then record the visible concern and relevant service path.",
     "canonical": "https://www.canberraroofkind.com.au/news/when-to-arrange-roof-inspection-canberra",
     "h1": "When Is a Roof Inspection a Sensible Next Step?",
     "indexability": "index,follow",
