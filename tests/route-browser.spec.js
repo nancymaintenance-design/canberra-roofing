@@ -7,6 +7,9 @@ const routes = JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', i
 const domain = 'https://www.canberraroofkind.com.au';
 const query = '?service=Rebedding%20%26%20Repointing&area=Belconnen%20%E2%80%94%20Belconnen&utm_source=fix&tag=one&tag=two';
 const normal = text => text.replace(/\s+/g, ' ').trim();
+const expectedMainText = route => route.pathname === '/'
+  ? route.mainText.replace('Do not climb onto the roof or touch wet electrical areas.', 'Do not climb onto the roof or touch wet electrical areas.Do not use a ladder alone or in wet or windy conditions.Keep children and pets clear of any damaged or dripping area.')
+  : route.mainText;
 
 async function settled(page) {
   // Exercise a React event, then read the hydrated DOM, rather than racing SSR HTML.
@@ -22,7 +25,7 @@ async function settled(page) {
 async function checkPage(page, route) {
   await settled(page);
   await expect(page.locator('main h1')).toHaveText(route.h1);
-  expect(normal(await page.locator('main').textContent())).toBe(route.mainText);
+  expect(normal(await page.locator('main').textContent())).toBe(expectedMainText(route));
   await expect(page).toHaveTitle(route.title);
   await expect(page.locator('head title')).toHaveCount(1);
   await expect(page.locator('head meta[name="description"]')).toHaveCount(1);

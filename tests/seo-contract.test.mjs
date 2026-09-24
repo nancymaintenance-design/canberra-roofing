@@ -7,6 +7,9 @@ import { startPreview } from '../scripts/preview.mjs';
 
 const expected = JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8'));
 const normal = (text) => text.replace(/\s+/g, ' ').trim();
+const expectedMainText = (route) => route.pathname === '/'
+  ? route.mainText.replace('Do not climb onto the roof or touch wet electrical areas.', 'Do not climb onto the roof or touch wet electrical areas.Do not use a ladder alone or in wet or windy conditions.Keep children and pets clear of any damaged or dripping area.')
+  : route.mainText;
 const report = [];
 const preview = await startPreview();
 test.after(async () => {
@@ -50,7 +53,7 @@ for (const route of expected) {
       if (route.mainTextIncludes) {
         for (const phrase of route.mainTextIncludes) assert.ok(mainText.includes(phrase), `main text includes approved copy: ${phrase}`);
       } else {
-        assert.equal(mainText, route.mainText, 'full baseline main text, including FAQ answers, privacy and all article paragraphs');
+        assert.equal(mainText, expectedMainText(route), 'full baseline main text, including FAQ answers, privacy and all article paragraphs');
       }
       for (const href of route.links) assert.ok([...document.querySelectorAll('a[href]')].some((a) => a.getAttribute('href') === href), `missing original link ${href}`);
       assert.ok(document.querySelector('a[href="tel:0405878406"]'));

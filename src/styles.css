@@ -122,6 +122,9 @@ details{border-color:#c7d0cb;box-shadow:0 5px 16px #1823280a;transition:box-shad
 @media(max-width:640px){.homeServices{width:calc(100% - 1rem);padding:1.5rem}.pageMediaIntro{padding:1.25rem;margin-inline:0;border-left-width:4px}.homeCta::after{right:-15rem}.card:hover,.newsCard:hover,details:hover{transform:none}}
 .areasPage .pageMediaIntro{margin-bottom:clamp(2.5rem,5vw,4rem)}.areasPage .pageFeatureMedia{aspect-ratio:16/9}.contactIntro{align-self:start}.contactFeatureMedia{margin-top:clamp(1.5rem,4vw,2.5rem);aspect-ratio:4/3}
 
+.safetyNotes{grid-column:2;display:grid;gap:.75rem}.safetyNotes .safetyNote{margin:0;padding:1rem 1.2rem;border-left:5px solid var(--color-action);background:var(--color-on-dark);font-weight:800}
+@media(max-width:640px){.safetyNotes{grid-column:auto}}
+
 /* Compact, repeatable case-study rail for future documented work. */
 .caseStudyRail{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1rem 1.5rem;align-items:center;margin:clamp(1.75rem,3vw,2.75rem) 0 1.25rem;padding:1rem 1.15rem;border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border);background:linear-gradient(90deg,#f7f4ed,#edf3ef)}.caseStudyRailLabel{margin:0;padding:.48rem .55rem;background:var(--color-roof-charcoal);color:var(--color-on-dark);font-size:.7rem;font-weight:800;letter-spacing:.12em;line-height:1;text-transform:uppercase}.caseStudyRail .eyebrow{margin:0 0 .2rem}.caseStudyRail h2{max-width:none;margin:0;font-size:clamp(1.15rem,2vw,1.6rem);line-height:1.08}.caseStudyRail h2+p{margin:.2rem 0 0;color:var(--color-steel);font-size:.95rem}.caseStudyRail>a{display:inline-flex;align-items:center;justify-content:space-between;gap:.6rem;min-height:44px;padding:.7rem .9rem;background:var(--color-action);color:var(--color-on-dark);font-weight:800;line-height:1.2;white-space:nowrap}.caseStudyRail>a:hover{background:var(--color-roof-charcoal)}
 
