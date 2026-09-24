@@ -18,6 +18,8 @@ assert.match(renderedHome, /className="safetyNotes"/);
 assert.match(renderedHome, /Do not use a ladder alone or in wet or windy conditions\./);
 assert.match(renderedHome, /Keep children and pets clear of any damaged or dripping area\./);
 assert.match(css, /\.safetyNotes\s*\{[^}]*grid-column:\s*2/s);
+assert.match(css, /\.safeObservationActions\s*\{[^}]*grid-column:\s*1[^}]*grid-row:\s*2/s);
+assert.match(css, /\.safeObservationActions::before\s*\{[^}]*Observe safely/s);
 assert.match(source, /aria-label="Open main menu"/);
 assert.match(source, /aria-expanded=\{mobileOpen\}/);
 assert.match(source, /Close main menu/);
