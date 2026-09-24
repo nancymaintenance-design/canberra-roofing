@@ -34,13 +34,15 @@ for (const asset of [
   'au-hero-act-tile-roof.png',
   'au-concrete-tile-detail.png',
   'au-colorbond-flashing-detail.png',
-  'au-safety-inspection-distance.png',
-  'au-act-rooftop-aerial-concept.png',
 ]) {
   assert.match(renderedHomeMedia, new RegExp(`/assets/home/${asset.replace('.', '\\.')}`));
 }
 
 assert.match(renderedAbout, /\/assets\/home\/canberra-roof-hero\.png/);
+assert.match(renderedAbout, /REAL CASE STUDY/);
+assert.match(renderedAbout, /98% Customer Satisfaction/);
+assert.match(renderedAbout, /href="\/case-studies\/tile-roof-repair-canberra"/);
+assert.doesNotMatch(renderedAbout, /\/assets\/about\/ellis-brand-safety-equipment\.png/);
 assert.match(renderedSolutions, /\/assets\/home\/australian-residential-roof-context\.png/);
 assert.match(renderedNews, /className="newsGrid"/);
 assert.match(renderedNews, /className="articleBody"/);
