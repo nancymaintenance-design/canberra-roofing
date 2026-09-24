@@ -133,15 +133,16 @@ test('priority service pages show intent-specific FAQs alongside their two relat
   }
 });
 
-test('raw HTML pages have distinct titles, descriptions and response bodies; sitemap stays at its 18 published URLs', async () => {
+test('raw HTML pages have distinct titles, descriptions and response bodies; sitemap stays aligned with published URLs', async () => {
   const xml = await (await fetch(preview.origin + '/sitemap.xml')).text();
   const dom = new JSDOM(xml, { contentType: 'application/xml' });
   const urls = [...dom.window.document.querySelectorAll('loc')].map((n) => n.textContent);
-  assert.equal(urls.length, 18);
-  assert.equal(new Set(urls).size, 18);
-  assert.deepEqual(new Set(urls), new Set(expected.filter((r) => r.pathname !== '/privacy').map((r) => `https://www.canberraroofkind.com.au${r.pathname}`)));
-  assert.equal(new Set(report.map((r) => r.sha256)).size, 19);
-  assert.equal(new Set(report.map((r) => r.title)).size, 19);
+  const expectedSitemapUrls = new Set(expected.filter((r) => r.pathname !== '/privacy').map((r) => `https://www.canberraroofkind.com.au${r.pathname}`));
+  assert.equal(urls.length, expectedSitemapUrls.size);
+  assert.equal(new Set(urls).size, expectedSitemapUrls.size);
+  assert.deepEqual(new Set(urls), expectedSitemapUrls);
+  assert.equal(new Set(report.map((r) => r.sha256)).size, report.length);
+  assert.equal(new Set(report.map((r) => r.title)).size, report.length);
   const descriptions = await Promise.all(expected.map(async ({ pathname }) => {
     const html = await (await fetch(preview.origin + pathname)).text();
     const page = new JSDOM(html);
@@ -149,7 +150,7 @@ test('raw HTML pages have distinct titles, descriptions and response bodies; sit
     page.window.close();
     return description;
   }));
-  assert.equal(new Set(descriptions).size, 19);
+  assert.equal(new Set(descriptions).size, expected.length);
   dom.window.close();
 });
 
