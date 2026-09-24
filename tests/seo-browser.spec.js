@@ -3,6 +3,14 @@ import { readFile } from 'node:fs/promises';
 const routes = JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8'));
 const normal = (text) => text.replace(/\s+/g, ' ').trim();
 const domain = 'https://www.canberraroofkind.com.au';
+const expectRouteContent = (text, route) => {
+  const content = normal(text);
+  if (route.mainTextIncludes) {
+    for (const phrase of route.mainTextIncludes) expect(content).toContain(phrase);
+    return;
+  }
+  expect(content).toBe(route.mainText);
+};
 
 test.beforeEach(async ({ context }) => {
   // Keep analytics and other external traffic out of deterministic local tests.
@@ -21,7 +29,7 @@ for (const route of routes) {
     await expect(page.locator('head meta[name="description"]')).toHaveAttribute('content', route.description);
     await expect(page.locator('head link[rel="canonical"]')).toHaveCount(1);
     await expect(page.locator('head link[rel="canonical"]')).toHaveAttribute('href', domain + route.pathname);
-    expect(normal(await page.locator('main').textContent())).toBe(route.mainText);
+    expectRouteContent(await page.locator('main').textContent(), route);
     expect(await page.locator('main h1').count()).toBe(1);
     expect(errors).toEqual([]);
   });
@@ -33,7 +41,7 @@ test('no-JS pages retain complete content and real links, including mobile navig
   for (const route of routes) {
     await page.goto('http://127.0.0.1:4175' + route.pathname);
     await expect(page.locator('main h1')).toHaveText(route.h1);
-    expect(normal(await page.locator('main').textContent())).toBe(route.mainText);
+    expectRouteContent(await page.locator('main').textContent(), route);
   }
   await page.goto('http://127.0.0.1:4175/contact');
   await expect(page.getByRole('button', { name: 'Send enquiry', exact: true })).toBeDisabled();

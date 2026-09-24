@@ -39,11 +39,14 @@
   },
   {
     "pathname": "/about",
-    "title": "About Ellis Services Group | Canberra Roof Kind",
-    "description": "Learn about Ellis Services Group and the Canberra Roof Kind enquiry website, including how to discuss roof concerns, access requirements and the next steps.",
+    "title": "About Ellis Services Group | Canberra Roof Repairs",
+    "description": "Learn how Ellis Services Group handles Canberra roof repair enquiries, business details, access considerations and clear next steps before work is arranged.",
     "h1": "Your home is precious. Its care deserves to be taken seriously.",
     "mainTextIncludes": [
     "Ellis Services Group was established in 2011.",
+    "How a roof repair enquiry is arranged.",
+    "Business record & work requirements",
+    "The Australian Business Register link is provided for public business-record checking.",
     "The details behind a prepared visit.",
     "98% Customer Satisfaction",
     "Service scope, access requirements and any fees are confirmed before work is arranged."
@@ -63,6 +66,7 @@
       "/contact",
       "tel:0405878406",
       "mailto:elliservices.group@gmail.com",
+      "https://abr.business.gov.au/ABN/View?id=645821745",
       "/contact",
       "/privacy"
     ]
