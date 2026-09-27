@@ -1,9 +1,9 @@
 {
   "/": {
-    "title": "Canberra Roofer for Roof Repair Enquiries | Ellis Services Group",
-    "description": "Looking for a Canberra roofer? Explore roof leak, tile, chimney flashing, ridge capping and roof inspection enquiry pathways before describing your visible concern.",
+    "title": "Roof Repairs Canberra | Ellis Services Group",
+    "description": "Roof Repairs Canberra: explore roof leak, tile, metal and Colorbond, chimney flashing, ridge capping and roof inspection enquiry pathways.",
     "canonical": "https://www.canberraroofkind.com.au/",
-    "h1": "Roof Repairs Canberra: A Clear Next Step",
+    "h1": "Roof Repairs Canberra | Ellis Services Group",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -25,6 +25,7 @@
       "/services/chimney-flashing-repairs",
       "/services/rebedding-repointing",
       "/services/roof-inspections",
+      "/services/metal-roof-repairs",
       "/services",
       "/services",
       "/contact",
@@ -38,7 +39,7 @@
     "title": "About Ellis Services Group | Canberra Roof Repairs",
     "description": "Learn how Ellis Services Group handles Canberra roof repair enquiries, business details, access considerations and clear next steps before work is arranged.",
     "canonical": "https://www.canberraroofkind.com.au/about",
-    "h1": "Your home is precious. Its care deserves to be taken seriously.",
+    "h1": "Canberra Roof Repairs by Ellis Services Group",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -60,8 +61,8 @@
     ]
   },
   "/services": {
-    "title": "Roof Repairs Canberra | Ellis Services Group",
-    "description": "Roof Repairs Canberra: compare five repair enquiry pathways, visible signs and assessment considerations before you choose the closest service topic.",
+    "title": "Canberra Roof Repair Services | Ellis Services Group",
+    "description": "Roof Repairs Canberra: compare six repair enquiry pathways, visible signs and assessment considerations before you choose the closest service topic.",
     "canonical": "https://www.canberraroofkind.com.au/services",
     "h1": "Roof Repairs Canberra",
     "indexability": "index,follow",
@@ -82,6 +83,7 @@
       "/services/chimney-flashing-repairs",
       "/services/rebedding-repointing",
       "/services/roof-inspections",
+      "/services/metal-roof-repairs",
       "/contact",
       "/contact",
       "tel:0405878406",
@@ -215,11 +217,34 @@
       "/privacy"
     ]
   },
+  "/services/metal-roof-repairs": {
+    "title": "Metal & Colorbond Roof Repairs Canberra | Ellis Services Group",
+    "description": "Metal and Colorbond roof repairs Canberra: record visible sheets, fixings, flashing, roof-penetration and roof-leak concerns before making an enquiry.",
+    "canonical": "https://www.canberraroofkind.com.au/services/metal-roof-repairs",
+    "h1": "Metal & Colorbond Roof Repairs Canberra",
+    "indexability": "index,follow",
+    "contentSource": "src/main.tsx",
+    "links": [
+      "/",
+      "/about",
+      "/solutions",
+      "/areas",
+      "/news",
+      "/faq",
+      "/contact",
+      "tel:0405878406",
+      "/contact?service=Metal%20%26%20Colorbond%20Roof%20Repairs",
+      "/services/roof-leak-repairs",
+      "/services/roof-inspections",
+      "mailto:elliservices.group@gmail.com",
+      "/privacy"
+    ]
+  },
   "/solutions": {
-    "title": "Choose a Roof Enquiry Pathway | Canberra Roof Kind",
-    "description": "Start with a ceiling stain, tile concern, chimney junction or ridge-line change. Compare the relevant roof enquiry pathways and describe what you have noticed.",
+    "title": "Canberra Roof Repair Solutions | Ellis Services Group",
+    "description": "Canberra roof repair solutions for roof leaks, tiles, metal and Colorbond roofing, chimney flashing, ridge capping and inspections.",
     "canonical": "https://www.canberraroofkind.com.au/solutions",
-    "h1": "A practical pathway from concern to next step.",
+    "h1": "Canberra Roof Repair Solutions",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -238,6 +263,7 @@
       "/services/chimney-flashing-repairs",
       "/services/rebedding-repointing",
       "/services/roof-inspections",
+      "/services/metal-roof-repairs",
       "tel:0405878406",
       "mailto:elliservices.group@gmail.com",
       "/contact",
@@ -245,10 +271,10 @@
     ]
   },
   "/areas": {
-    "title": "Serving All Areas of Canberra | Canberra Roof Kind",
-    "description": "Canberra Roof Kind, part of Ellis Services Group, covers all areas of Canberra. Select your suburb to start a roof enquiry with the relevant details.",
+    "title": "Canberra-wide Roof Repair Service Areas | Ellis Services Group",
+    "description": "Canberra-wide roof repair service areas: select your suburb and describe the visible roof concern for an Ellis Services Group enquiry.",
     "canonical": "https://www.canberraroofkind.com.au/areas",
-    "h1": "Select a Canberra suburb for your enquiry.",
+    "h1": "Canberra-wide Roof Repair Service Areas",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -346,10 +372,10 @@
     ]
   },
   "/news": {
-    "title": "Roof Care Guides for Canberra Homes | Canberra Roof Kind",
-    "description": "Read practical guides on roof leaks, damaged tiles, chimney flashing, ridge-line concerns and inspection enquiries for Canberra homes.",
+    "title": "Canberra Roof Repair Guides | Ellis Services Group",
+    "description": "Canberra roof repair guides covering roof leaks, damaged tiles, chimney flashing, ridge capping and roof inspections.",
     "canonical": "https://www.canberraroofkind.com.au/news",
-    "h1": "Roof care guides for Canberra homes.",
+    "h1": "Canberra Roof Repair Guides",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -375,10 +401,10 @@
     ]
   },
   "/faq": {
-    "title": "Canberra Roof Enquiry FAQs | Canberra Roof Kind",
-    "description": "Find answers about roof enquiry details, safe observations, photos, assessment limits, costs and timing before contacting Canberra Roof Kind.",
+    "title": "Canberra Roof Repair FAQs | Ellis Services Group",
+    "description": "Canberra roof repair FAQs about safe observations, photos, inspection limits, costs and timing before contacting Ellis Services Group.",
     "canonical": "https://www.canberraroofkind.com.au/faq",
-    "h1": "Questions for a clearer enquiry.",
+    "h1": "Canberra Roof Repair FAQs",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -399,10 +425,10 @@
     ]
   },
   "/contact": {
-    "title": "Contact Canberra Roof Kind | Canberra Roof Enquiries",
-    "description": "Contact Ellis Services Group about a Canberra roof concern. Choose your suburb and service interest, describe the visible signs, or use the listed phone and email.",
+    "title": "Contact a Canberra Roofer for Roof Repairs | Ellis Services Group",
+    "description": "Contact a Canberra roofer for roof repairs. Describe visible roof leak, tile, metal, chimney or ridge concerns and select your suburb.",
     "canonical": "https://www.canberraroofkind.com.au/contact",
-    "h1": "Tell us what you are seeing.",
+    "h1": "Contact a Canberra Roofer for Roof Repairs",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -473,10 +499,10 @@
     ]
   },
   "/news/cracked-slipped-missing-roof-tiles-canberra": {
-    "title": "Cracked or Missing Roof Tiles: What to Record | Canberra Roof Kind",
+    "title": "Canberra Tile Roof Repairs: Cracked or Missing Roof Tiles | Ellis Services Group",
     "description": "See which visible tile-roof signs are useful to record before making a roof repair enquiry in Canberra.",
     "canonical": "https://www.canberraroofkind.com.au/news/cracked-slipped-missing-roof-tiles-canberra",
-    "h1": "Cracked, Slipped or Missing Roof Tiles: What to Record Before You Enquire",
+    "h1": "Canberra Tile Roof Repairs: Cracked, Slipped or Missing Roof Tiles",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -499,10 +525,10 @@
     ]
   },
   "/news/chimney-flashing-water-entry-signs": {
-    "title": "Water Near a Chimney: Signs to Record | Canberra Roof Kind",
+    "title": "Canberra Chimney Flashing Repairs: Water-Entry Signs | Ellis Services Group",
     "description": "Learn which safe-to-observe signs around chimney flashing are useful when making a Canberra roof enquiry.",
     "canonical": "https://www.canberraroofkind.com.au/news/chimney-flashing-water-entry-signs",
-    "h1": "Water Near a Chimney: What Flashing and Roof Junction Signs Can Tell You",
+    "h1": "Canberra Chimney Flashing Repairs: Water-Entry Signs to Record",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -551,10 +577,10 @@
     ]
   },
   "/news/when-to-arrange-roof-inspection-canberra": {
-    "title": "When to Enquire About a Roof Inspection | Canberra Roof Kind",
+    "title": "Canberra Roof Inspections: When to Arrange One | Ellis Services Group",
     "description": "Roof inspection guidance for Canberra properties: decide when an inspection enquiry is useful, then record the visible concern and relevant service path.",
     "canonical": "https://www.canberraroofkind.com.au/news/when-to-arrange-roof-inspection-canberra",
-    "h1": "When Is a Roof Inspection a Sensible Next Step?",
+    "h1": "Canberra Roof Inspections: When Is an Inspection a Sensible Next Step?",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [

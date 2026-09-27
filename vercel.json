@@ -154,6 +154,21 @@
       "permanent": true
     },
     {
+      "source": "/services/metal-roof-repairs.html",
+      "destination": "/services/metal-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/metal-roof-repairs/",
+      "destination": "/services/metal-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/metal-roof-repairs.html/",
+      "destination": "/services/metal-roof-repairs",
+      "permanent": true
+    },
+    {
       "source": "/solutions.html",
       "destination": "/solutions",
       "permanent": true
@@ -362,6 +377,10 @@
     {
       "source": "/services/roof-inspections",
       "destination": "/services/roof-inspections.html"
+    },
+    {
+      "source": "/services/metal-roof-repairs",
+      "destination": "/services/metal-roof-repairs.html"
     },
     {
       "source": "/solutions",
