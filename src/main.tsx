@@ -521,6 +521,10 @@ const serviceGalleries: Record<
         src: "/assets/services/chimney-flashing-completed-detail.png",
         alt: "Completed chimney flashing detail visible around a brick chimney base",
       },
+      {
+        src: "/assets/services/chimney-flashing-completed-roof-detail.png",
+        alt: "Completed lead flashing detail around a brick chimney on a tiled roof",
+      },
     ],
   },
   "roof-inspections": {
@@ -543,6 +547,37 @@ const serviceGalleries: Record<
       {
         src: "/assets/services/roof-inspection-checklist.png",
         alt: "Roof inspection checklist being completed while a worker reviews visible roof tiles",
+      },
+      {
+        src: "/assets/services/roof-inspection-solar-roof-review.png",
+        alt: "Roofing worker recording visible tile and solar-panel roof details from controlled access",
+      },
+    ],
+  },
+  "metal-roof-repairs": {
+    title: "What metal roof repair work can involve.",
+    intro:
+      "These owner-supplied images show visible metal-roof conditions, controlled work practices and completed roof details. They are context only and do not confirm the cause of a concern, repair scope or outcome for another property.",
+    images: [
+      {
+        src: "/assets/services/metal-roof-repair-team-work.png",
+        alt: "Two roofing workers carrying out controlled repair work on a metal roof",
+      },
+      {
+        src: "/assets/services/metal-roof-wall-flashing-condition.png",
+        alt: "Visible metal roof wall-flashing condition and aged fasteners",
+      },
+      {
+        src: "/assets/services/metal-roof-secure-fixing.png",
+        alt: "Roofing worker securing metal roof sheet fixings from a tethered position",
+      },
+      {
+        src: "/assets/services/metal-roof-gutter-edge-repair.png",
+        alt: "Roofing worker repairing a metal roof edge and gutter junction",
+      },
+      {
+        src: "/assets/services/metal-roof-completed-roof.png",
+        alt: "Completed dark metal roof with ridge and roof ventilation details",
       },
     ],
   },
