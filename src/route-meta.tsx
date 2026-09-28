@@ -48,6 +48,13 @@ export function HeadMarkup({ pathname }: { pathname: string }) {
     <title>{head.title}</title>
     <meta name="description" content={head.description} />
     {head.canonical && <link rel="canonical" href={head.canonical} />}
+    {head.canonical && <>
+      <meta property="og:title" content={head.title} />
+      <meta property="og:description" content={head.description} />
+      <meta property="og:url" content={head.canonical} />
+      <meta property="og:type" content={head.article ? 'article' : 'website'} />
+      <meta name="twitter:card" content="summary" />
+    </>}
     {head.robots && <meta name="robots" content={head.robots} />}
     {head.article && <script id="news-article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(head.article).replace(/</g, '\\u003c') }} />}
   </>;
@@ -67,7 +74,14 @@ export function HeadManager({ pathname }: { pathname: string }) {
     };
     update('title', 'title', {}, head.title);
     update('meta[name="description"]', 'meta', { name: 'description', content: head.description });
-    if (head.canonical) update('link[rel="canonical"]', 'link', { rel: 'canonical', href: head.canonical });
+    if (head.canonical) {
+      update('link[rel="canonical"]', 'link', { rel: 'canonical', href: head.canonical });
+      update('meta[property="og:title"]', 'meta', { property: 'og:title', content: head.title });
+      update('meta[property="og:description"]', 'meta', { property: 'og:description', content: head.description });
+      update('meta[property="og:url"]', 'meta', { property: 'og:url', content: head.canonical });
+      update('meta[property="og:type"]', 'meta', { property: 'og:type', content: head.article ? 'article' : 'website' });
+      update('meta[name="twitter:card"]', 'meta', { name: 'twitter:card', content: 'summary' });
+    }
     else document.head.querySelectorAll('link[rel="canonical"]').forEach((element) => element.remove());
     if (head.robots) update('meta[name="robots"]', 'meta', { name: 'robots', content: head.robots });
     else document.head.querySelectorAll('meta[name="robots"]').forEach((element) => element.remove());
