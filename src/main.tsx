@@ -1341,7 +1341,7 @@ function About({ data }: { data: Data }) {
           <p className="eyebrow">COMMON QUESTIONS</p>
           <h2 id="about-faq-title">Clear information before you enquire.</h2>
         </div>
-        <div className="aboutFaqList">
+        <div className="aboutFaqList rooflineFaq">
           <details>
             <summary>
               Do I need to know the exact roof problem before I contact you?

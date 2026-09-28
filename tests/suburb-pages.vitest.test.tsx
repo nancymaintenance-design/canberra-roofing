@@ -16,3 +16,9 @@ it("renders dense service cards with a practical assessment focus", () => {
   expect(html).toContain("Assessment focus");
   expect(html).toContain("Water marks, drips and rain-related damp patches.");
 });
+
+it("uses the roofline FAQ treatment on the About page", () => {
+  const html = renderToString(<AppV3 pathname="/about" />);
+  expect(html).toContain("rooflineFaq");
+  expect(html).toContain("Do I need to know the exact roof problem before I contact you?");
+});
