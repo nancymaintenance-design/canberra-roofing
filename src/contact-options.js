@@ -122,14 +122,7 @@ export const AREA_OPTIONS = AREA_GROUPS.flatMap(({ district, suburbs }) =>
   suburbs.map((suburb) => `${suburb} — ${district}`),
 );
 
-export const SERVICE_TITLES = [
-  "Roof Leak Repairs",
-  "Tile Roof Repairs",
-  "Chimney Flashing Repairs",
-  "Rebedding & Repointing",
-  "Roof Inspections",
-  "Metal & Colorbond Roof Repairs",
-];
+export { SERVICE_TITLES };
 
 export const FIELD_LIMITS = {
   name: 100,
@@ -148,3 +141,5 @@ export const PHOTO_LIMIT_BYTES = 4 * 1024 * 1024;
 export const PHOTO_ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 export const PHOTO_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
 export const PHOTO_ACCEPT = `${PHOTO_ALLOWED_TYPES.join(",")},${PHOTO_EXTENSIONS.join(",")}`;
+import { SERVICE_TITLES } from "./service-catalog.js";
+

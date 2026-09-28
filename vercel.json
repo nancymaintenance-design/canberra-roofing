@@ -169,6 +169,36 @@
       "permanent": true
     },
     {
+      "source": "/services/roof-renovation.html",
+      "destination": "/services/roof-renovation",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-renovation/",
+      "destination": "/services/roof-renovation",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-cleaning.html",
+      "destination": "/services/roof-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/services/roof-cleaning/",
+      "destination": "/services/roof-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-downpipe-maintenance.html",
+      "destination": "/services/gutter-downpipe-maintenance",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-downpipe-maintenance/",
+      "destination": "/services/gutter-downpipe-maintenance",
+      "permanent": true
+    },
+    {
       "source": "/solutions.html",
       "destination": "/solutions",
       "permanent": true
@@ -381,6 +411,18 @@
     {
       "source": "/services/metal-roof-repairs",
       "destination": "/services/metal-roof-repairs.html"
+    },
+    {
+      "source": "/services/roof-renovation",
+      "destination": "/services/roof-renovation.html"
+    },
+    {
+      "source": "/services/roof-cleaning",
+      "destination": "/services/roof-cleaning.html"
+    },
+    {
+      "source": "/services/gutter-downpipe-maintenance",
+      "destination": "/services/gutter-downpipe-maintenance.html"
     },
     {
       "source": "/solutions",

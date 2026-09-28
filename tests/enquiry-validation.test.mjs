@@ -194,6 +194,9 @@ test("canonical area membership and service titles preserve their approved order
     "Rebedding & Repointing",
     "Roof Inspections",
     "Metal & Colorbond Roof Repairs",
+    "Roof Renovation",
+    "Roof Cleaning",
+    "Gutter & Downpipe Cleaning and Maintenance",
   ]);
 });
 

@@ -4,6 +4,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import "./styles.css";
 import { migrateStoredData } from "./storage.js";
 import { AREA_GROUPS } from "./contact-options.js";
+import { SERVICE_CATALOG } from "./service-catalog.js";
 import { ContactForm } from "./contact-form.jsx";
 
 type RelatedService = { label: string; path: string; description: string };
@@ -157,6 +158,9 @@ const serviceAnchorLabels: Record<string, string> = {
   "Rebedding & Repointing": "Ridge Capping Repairs",
   "Roof Inspections": "Roof Inspections",
   "Metal & Colorbond Roof Repairs": "Metal & Colorbond Roof Repairs",
+  "Roof Renovation": "Roof Renovation",
+  "Roof Cleaning": "Roof Cleaning",
+  "Gutter & Downpipe Cleaning and Maintenance": "Gutter & Downpipe Maintenance",
 };
 type CaseStudy = {
   slug: string;
@@ -403,6 +407,60 @@ const serviceSeed: Service[] = [
     ],
     next: "Send the visible metal-roof area, any related interior signs, the weather conditions, your Canberra suburb and safe ground-level photos.",
   },
+  {
+    slug: "roof-renovation",
+    title: "Roof Renovation",
+    direct: "Roof renovation enquiries begin with the property owner's maintenance goals, the visible roof condition and the materials involved. A renovation discussion does not establish a replacement method, price, timing or outcome before the roof and the requested scope are considered.",
+    symptoms: "Useful context can include widespread visible weathering, repeated maintenance concerns, an older roof finish, ongoing water-entry signs or a desire to refresh a roof surface. Record the material you can identify from ground level, the roof areas that concern you and any known previous work.",
+    causes: "A renovation decision can involve the roof covering, ridge and flashing details, drainage, access, material age and the condition that can be safely seen. A photo alone cannot establish concealed conditions, material compatibility or the extent of work that may be suitable.",
+    assessment: "A discussion may consider the stated renovation purpose, accessible visible roof condition, material type, roof layout, drainage details and access. Safety, weather and the agreed scope affect what can be reviewed and whether a repair, maintenance or renovation pathway is the closest next step.",
+    pathways: "Roof renovation may overlap with tile, metal, ridge, flashing or drainage maintenance concerns. The appropriate pathway depends on the actual condition and the agreed purpose; it is not assumed from roof age or appearance alone.",
+    scope: "Access, roof height, material profile, visible condition, drainage, weather and the agreed project purpose affect any scope. This page does not promise a re-roof, material match, schedule, price or outcome before assessment.",
+    faqQ: "Does a roof renovation enquiry automatically mean full roof replacement?",
+    faqA: "No. The suitable next step depends on the condition that can be assessed, the property owner's objective and the agreed scope.",
+    faqExtras: [{ q: "Can I send photos of the roof I want renovated?", a: "Yes. Safe ground-level photos can provide context, but they do not confirm hidden condition, final materials or a complete scope." }],
+    next: "Send your renovation objective, the visible roof material or concern, your Canberra suburb and any safe photos.",
+    related: [
+      { label: "Roof Inspections", path: "/services/roof-inspections", description: "Choose an inspection enquiry when the visible condition or closest pathway is unclear." },
+      { label: "Roof Cleaning", path: "/services/roof-cleaning", description: "Choose cleaning when the main concern is visible surface growth or debris rather than a renovation decision." },
+    ],
+  },
+  {
+    slug: "roof-cleaning",
+    title: "Roof Cleaning",
+    direct: "Roof cleaning enquiries can start with a clear description of visible surface growth, loose debris or the roof areas that need attention. Safe access, material condition and the agreed cleaning scope need to be considered before a method, timing or outcome can be discussed.",
+    symptoms: "From the ground, note visible moss, lichen, leaf debris, dirt build-up or discolouration and whether it is concentrated near valleys, gutters, solar panels, roof edges or shaded areas. Do not climb onto the roof to inspect or remove material.",
+    causes: "Surface build-up can vary with roof material, weather exposure, surrounding trees, drainage and the roof's age. Visible growth or debris does not by itself confirm a leak, a structural condition or the best cleaning method.",
+    assessment: "A cleaning enquiry may consider the visible roof surface, material type, roof pitch, drainage, solar or roof penetrations, safe access and the property context. The discussion is limited by what can be safely observed and the work agreed.",
+    pathways: "Roof cleaning may be considered alongside gutter and downpipe maintenance where debris is visible near drainage lines. Where there is water entry or damaged roofing, a repair or inspection pathway may be more appropriate than assuming cleaning will resolve the concern.",
+    scope: "Roof height, material, surface condition, access, weather, nearby services and debris location can affect scope. This page does not promise that cleaning will repair a leak, restore a particular finish or remove every condition from a roof surface.",
+    faqQ: "Can roof cleaning fix a roof leak?",
+    faqA: "No. Cleaning and repair are separate pathways. If there is a drip, ceiling stain or uncertain water-entry concern, include that information so the closest next step can be discussed.",
+    faqExtras: [{ q: "Should I pressure-clean a roof myself?", a: "Do not climb onto a roof or use cleaning equipment from an unsafe position. Record what is visible from the ground and describe it in an enquiry." }],
+    next: "Send the visible build-up area, roof material if known, your Canberra suburb and safe ground-level photos.",
+    related: [
+      { label: "Gutter & Downpipe Maintenance", path: "/services/gutter-downpipe-maintenance", description: "Choose this pathway when visible debris or overflow is concentrated in the drainage system." },
+      { label: "Roof Inspections", path: "/services/roof-inspections", description: "Choose an inspection enquiry when you are not sure whether cleaning is the closest pathway." },
+    ],
+  },
+  {
+    slug: "gutter-downpipe-maintenance",
+    title: "Gutter & Downpipe Cleaning and Maintenance",
+    direct: "Gutter and downpipe cleaning and maintenance enquiries begin with visible debris, overflow, drainage changes or the roof-edge area that concerns you. The condition of concealed drainage connections and the suitable scope cannot be confirmed from a ground-level photo alone.",
+    symptoms: "Note leaf build-up, overflow during rain, visible sagging, water running near a wall, a blocked-looking outlet or a downpipe concern. Record the weather context and the general roof edge or side of the property without using an unsafe ladder or roof access.",
+    causes: "Drainage performance can be affected by debris, roof runoff, gutter fall, joints, outlets, downpipes and conditions that are not visible from the ground. An overflow does not by itself establish the location or cause of a blockage.",
+    assessment: "An enquiry may consider visible roof-edge drainage, safe access, the reported overflow path, nearby roof material and the agreed maintenance purpose. Weather, access, property layout and what can be safely observed affect the limits of a review.",
+    pathways: "Where water entry occurs inside the property or roofing materials appear damaged, a roof leak repair or inspection pathway may also be relevant. Cleaning or maintenance does not by itself confirm a repair to concealed roof or drainage conditions.",
+    scope: "Height, access, debris, gutter and downpipe condition, weather and the agreed work area affect scope. This page does not promise that maintenance will correct hidden defects, drainage design issues or all sources of water entry.",
+    faqQ: "Does gutter overflow always mean a downpipe is blocked?",
+    faqA: "Not necessarily. Debris, outlet condition, gutter fall, roof runoff and other drainage details can all be relevant.",
+    faqExtras: [{ q: "Should I clear a high gutter from a ladder myself?", a: "Do not use a ladder or roof access beyond a safe and appropriate position. Record the visible overflow or debris area and include it in an enquiry." }],
+    next: "Send the gutter or downpipe area, when overflow occurs, your Canberra suburb and any safe photos.",
+    related: [
+      { label: "Roof Cleaning", path: "/services/roof-cleaning", description: "Choose roof cleaning when visible surface debris or growth extends beyond the drainage line." },
+      { label: "Roof Leak Repairs", path: "/services/roof-leak-repairs", description: "Choose roof leak repairs when there is an indoor water sign or the source is uncertain." },
+    ],
+  },
 ];
 const serviceBySlug = Object.fromEntries(
   serviceSeed.map((service) => [service.slug, service]),
@@ -414,6 +472,9 @@ const seoHeadings: Record<string, string> = {
   "rebedding-repointing": "Ridge Capping Repair Canberra",
   "roof-inspections": "Roof Inspection Canberra",
   "metal-roof-repairs": "Metal & Colorbond Roof Repairs Canberra",
+  "roof-renovation": "Roof Renovation Canberra",
+  "roof-cleaning": "Roof Cleaning Canberra",
+  "gutter-downpipe-maintenance": "Gutter & Downpipe Cleaning Canberra",
 };
 const serviceGalleries: Record<
   string,
@@ -1471,6 +1532,9 @@ function Services({
               Roof Repairs
             </li>
             <li>Unsure where to begin → Roof Inspections</li>
+            <li>Wider roof refresh → Roof Renovation</li>
+            <li>Visible roof surface build-up → Roof Cleaning</li>
+            <li>Overflow or drainage debris → Gutter &amp; Downpipe Maintenance</li>
           </ul>
         </aside>
       </section>
