@@ -1,0 +1,34 @@
+import { AREA_GROUPS } from "./contact-options.js";
+import { SERVICE_CATALOG } from "./service-catalog.js";
+
+export function slugify(value) {
+  return value
+    .normalize("NFKD")
+    .replace(/[’']/g, "-")
+    .replace(/&/g, " ")
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .toLowerCase();
+}
+
+const featuredServiceSlugs = ["roof-leak-repairs", "roof-inspections", "roof-cleaning"];
+export const SUBURB_PROFILES = Object.freeze(AREA_GROUPS.flatMap(({ district, suburbs }) => suburbs.map((suburb) => {
+  const path = `/areas/${slugify(district)}/${slugify(suburb)}-roof-repairs`;
+  return Object.freeze({
+    suburb, district, path, slug: `${slugify(district)}/${slugify(suburb)}-roof-repairs`,
+    areaOption: `${suburb} — ${district}`,
+    title: `Roof Repairs ${suburb}, ${district} | Ellis Services Group`,
+    description: `Roof repairs in ${suburb}, ${district}: compare repair, renovation, roof cleaning and gutter or downpipe maintenance enquiry pathways with Ellis Services Group.`,
+    h1: `Roof Repairs in ${suburb}, ${district}`,
+    featuredServiceSlugs,
+    servicePaths: SERVICE_CATALOG.map(({ path: servicePath }) => servicePath),
+  });
+})));
+
+export const SUBURB_PATHS = Object.freeze(SUBURB_PROFILES.map(({ path }) => path));
+const byPath = new Map(SUBURB_PROFILES.map((profile) => [profile.path, profile]));
+const byArea = new Map(SUBURB_PROFILES.map((profile) => [`${profile.suburb}\u0000${profile.district}`, profile.path]));
+if (byPath.size !== SUBURB_PROFILES.length) throw new Error("Suburb route collision");
+
+export function getSuburbProfile(pathname) { return byPath.get(pathname) ?? null; }
+export function getSuburbRoute(suburb, district) { return byArea.get(`${suburb}\u0000${district}`) ?? null; }

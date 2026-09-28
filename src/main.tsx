@@ -5,6 +5,7 @@ import "./styles.css";
 import { migrateStoredData } from "./storage.js";
 import { AREA_GROUPS } from "./contact-options.js";
 import { SERVICE_CATALOG } from "./service-catalog.js";
+import { getSuburbRoute } from "./suburb-profiles.js";
 import { ContactForm } from "./contact-form.jsx";
 
 type RelatedService = { label: string; path: string; description: string };
@@ -1746,7 +1747,7 @@ function Areas() {
             <div>
               {suburbs.map((s) => (
                 <a
-                  href={`/contact?area=${encodeURIComponent(`${s} — ${district}`)}`}
+                  href={getSuburbRoute(s, district) ?? "/areas"}
                   key={s}
                 >
                   {s}
