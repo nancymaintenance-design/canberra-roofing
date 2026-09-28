@@ -27,6 +27,12 @@ business claims:
   availability.
 - Trusted by more than 1,000 customers.
 
+The business also confirms the following service categories are in scope:
+
+- roof renovation;
+- roof cleaning;
+- gutter and downpipe cleaning and maintenance.
+
 These statements are not expressed as guarantees of a repair outcome, an
 availability promise, a local project-history claim or a claim of being the
 "best" provider in any suburb.
@@ -39,7 +45,8 @@ district names. A new derived suburb-profile model will assign each entry:
 - `suburb`, `district` and a stable URL-safe slug;
 - canonical route, such as `/areas/belconnen/aranda-roof-repairs`;
 - title, description and H1 based on the visible local service intent;
-- the three most relevant existing service pages;
+- three featured service pathways plus a complete list of every approved
+  service page;
 - one localised, non-diagnostic introduction and FAQ variation;
 - a preselected Contact form query value.
 
@@ -54,9 +61,12 @@ suburb and district context:
 1. **Hero:** `Roof Repairs in {Suburb}, {District} | Ellis Services Group`.
    It explains that the page is an enquiry pathway for nearby properties, not a
    claim of a permanent local base or a completed project in that suburb.
-2. **Service pathways:** three contextual links chosen from roof leaks, tile
-   repairs, chimney flashing, ridge capping, roof inspections and metal or
-   Colorbond roof repairs.
+2. **Service pathways:** three featured pathways plus a complete linked service
+   list covering roof leaks, tile repairs, chimney flashing, ridge capping,
+   roof inspections, metal or Colorbond roof repairs, roof renovation, roof
+   cleaning, and gutter and downpipe cleaning and maintenance. The new
+   categories receive their own approved service routes before they appear as
+   links.
 3. **What to record safely:** roof/interior signs, weather context and safe
    ground-level photos; no DIY diagnosis or unsafe roof access.
 4. **Why property owners contact Ellis:** the five business-provided statements
@@ -95,16 +105,17 @@ suburb and district context:
   the existing patterns without broad route catch-alls.
 - Reuse the existing Contact form component and its existing validation,
   consent, file-upload and selected-area behaviour.
-- The current verified scope is repair and inspection pathways. Roof renovation
-  and roof cleaning are not marketed as standalone services until an approved
-  service scope is supplied.
+- Roof renovation, roof cleaning, and gutter and downpipe cleaning and
+  maintenance are approved service categories; their published descriptions
+  remain specific to their actual scope and do not imply unrelated work.
 - Keep all public website copy in English.
 
 ## Acceptance checks
 
 1. Every current suburb chip resolves to a unique, indexable direct HTML page.
 2. Each suburb page has one H1, unique title/description/canonical, three
-   relevant service links and a preselected bottom Contact form.
+   featured pathways, the full approved service list and a preselected bottom
+   Contact form.
 3. Sitemap, JSON feed, `llms.txt`, JSON-LD and visible page content agree.
 4. Unknown suburb routes return 404 rather than the Areas page or homepage.
 5. The generated content makes no unverified local project, ranking, outcome or
