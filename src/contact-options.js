@@ -1,3 +1,5 @@
+import { SERVICE_TITLES } from "./service-catalog.js";
+
 export const AREA_GROUPS = [
   {
     district: "Belconnen",
@@ -141,5 +143,3 @@ export const PHOTO_LIMIT_BYTES = 4 * 1024 * 1024;
 export const PHOTO_ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 export const PHOTO_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
 export const PHOTO_ACCEPT = `${PHOTO_ALLOWED_TYPES.join(",")},${PHOTO_EXTENSIONS.join(",")}`;
-import { SERVICE_TITLES } from "./service-catalog.js";
-
