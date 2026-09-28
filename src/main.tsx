@@ -1450,20 +1450,77 @@ function About({ data }: { data: Data }) {
     </section>
   );
 }
+const serviceCardDetails: Record<string, { intro: string; focus: string; next: string }> = {
+  "roof-leak-repairs": {
+    intro: "Water marks, drips and rain-related damp patches.",
+    focus: "Visible water signs, weather pattern and nearby roof junctions.",
+    next: "Send the room, timing and safe ground-level photos.",
+  },
+  "tile-roof-repairs": {
+    intro: "Cracked, slipped, missing or visibly displaced roof tiles.",
+    focus: "Tile condition near ridges, valleys, chimneys and roof edges.",
+    next: "Describe the visible tile area and when it changed.",
+  },
+  "chimney-flashing-repairs": {
+    intro: "Water-entry signs or visible wear around a chimney junction.",
+    focus: "Flashing, adjacent tiles, mortar and weather-related changes.",
+    next: "Include the chimney-side room and any safe exterior view.",
+  },
+  "rebedding-repointing": {
+    intro: "Worn, cracked or loose-looking ridge and hip line material.",
+    focus: "Visible ridge caps, pointing condition and related water signs.",
+    next: "Record the roof line and whether the concern is isolated.",
+  },
+  "roof-inspections": {
+    intro: "A clear starting point when the roof concern is uncertain.",
+    focus: "Safe visible observations, access limits and enquiry purpose.",
+    next: "Share the signs you have seen and your Canberra suburb.",
+  },
+  "metal-roof-repairs": {
+    intro: "Metal or Colorbond sheets, fasteners, flashings and roof edges.",
+    focus: "Visible sheet condition, penetrations, junctions and water signs.",
+    next: "Do not access the roof; send safe photos from ground level.",
+  },
+  "roof-renovation": {
+    intro: "An older roof requiring a considered renovation pathway.",
+    focus: "Roof material, widespread weathering and known prior work.",
+    next: "Tell us the roof areas you would like to discuss.",
+  },
+  "roof-cleaning": {
+    intro: "Moss, lichen, leaf debris and visible roof-surface build-up.",
+    focus: "Surface condition around valleys, solar panels and roof edges.",
+    next: "Identify the visible build-up without climbing onto the roof.",
+  },
+  "gutter-downpipe-maintenance": {
+    intro: "Overflow, debris, blocked outlets and drainage concerns.",
+    focus: "Gutters, downpipes, roof runoff and visible drainage paths.",
+    next: "Note the weather, roof edge and side of the property.",
+  },
+};
+
 function ServiceCards({ data }: { data: Data }) {
   return (
     <div className="cards serviceCards">
-      {data.services.map((s, i) => (
-        <article className="card" key={s.slug}>
-          <span>0{i + 1}</span>
+      {data.services.map((s, i) => {
+        const detail = serviceCardDetails[s.slug] ?? {
+          intro: s.direct,
+          focus: s.assessment,
+          next: s.next,
+        };
+        return <article className="card serviceCard" key={s.slug}>
+          <div className="serviceCardTopline"><span>0{i + 1}</span><span>Canberra service</span></div>
           <h3>{s.title}</h3>
-          <p>{s.symptoms}</p>
-          <a href={`/services/${s.slug}`}>
-            Explore {serviceAnchorLabels[s.title] ?? s.title} in Canberra{" "}
+          <p className="serviceCardLead">{detail.intro}</p>
+          <dl className="serviceCardFacts">
+            <div><dt>Assessment focus</dt><dd>{detail.focus}</dd></div>
+            <div><dt>Useful next step</dt><dd>{detail.next}</dd></div>
+          </dl>
+          <a className="serviceCardAction" href={`/services/${s.slug}`}>
+            Explore {serviceAnchorLabels[s.title] ?? s.title}
             <ArrowRight size={15} />
           </a>
-        </article>
-      ))}
+        </article>;
+      })}
     </div>
   );
 }
