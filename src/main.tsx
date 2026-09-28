@@ -1051,12 +1051,16 @@ function HomeV2({ data }: { data: Data }) {
           <img
             src="/assets/home/ellis-team-trust.png"
             alt="Ellis Services Group team beside a branded work vehicle at a residential roofing site"
+            width={1672}
+            height={941}
           />
         </figure>
         <figure>
           <img
             src="/assets/home/ellis-site-consultation.png"
             alt="Ellis Services Group team discussing roof work beside a branded vehicle at a home"
+            width={1672}
+            height={941}
           />
         </figure>
       </section>
@@ -2189,6 +2193,8 @@ function LayoutV2({
               className="brandLogo"
               src="/assets/brand/canberraroofkind-logo.png"
               alt="Ellis Services Group logo"
+              width={1254}
+              height={1254}
             />
             <span className="brandCopy">
               <strong>{data.company}</strong>
@@ -2302,7 +2308,7 @@ function LayoutV2({
           rel="noreferrer"
           aria-label="Follow Ellis Services Group on Instagram"
         >
-          <img src="/assets/brand/instagram-gradient.png" alt="" />
+          <img src="/assets/brand/instagram-gradient.png" alt="" width={1254} height={1254} />
           <span>Instagram</span>
         </a>
       </footer>
