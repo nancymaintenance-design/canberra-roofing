@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import registry from './route-meta.json';
+import { SUBURB_PROFILES, getSuburbProfile } from './suburb-profiles.js';
 
-export const publishedRoutes = registry;
+const suburbRoutes = Object.fromEntries(SUBURB_PROFILES.map((profile) => [profile.path, profile]));
+export const publishedRoutes = { ...registry, ...suburbRoutes };
 export const pagePaths = Object.keys(publishedRoutes);
 
 // Match the acceptance server: never turn encoded separators, percent signs or
@@ -24,7 +26,7 @@ export function resolvePath(pathname: string) {
 
 export function getRouteHead(pathname: string) {
   const path = resolvePath(pathname);
-  const route = publishedRoutes[path as keyof typeof publishedRoutes];
+  const route = publishedRoutes[path as keyof typeof publishedRoutes] as any;
   if (!route) return { title: 'Page not found | Canberra Roof Kind', description: 'This page could not be found. Browse roof enquiry services or contact Ellis Services Group.', canonical: null, robots: 'noindex,follow', article: null };
   return {
     title: route.title,
@@ -38,6 +40,11 @@ export function getRouteHead(pathname: string) {
       description: route.description,
       mainEntityOfPage: route.canonical,
       publisher: { '@type': 'Organization', name: 'Ellis Services Group' },
+    } : null,
+    serviceAreaSchema: getSuburbProfile(path) ? {
+      '@context': 'https://schema.org', '@type': 'WebPage', name: route.h1,
+      description: route.description, url: route.canonical,
+      mainEntity: { '@type': 'Service', name: 'Roof repair enquiry', provider: { '@type': 'Organization', name: 'Ellis Services Group' } },
     } : null,
   };
 }
@@ -57,6 +64,7 @@ export function HeadMarkup({ pathname }: { pathname: string }) {
     </>}
     {head.robots && <meta name="robots" content={head.robots} />}
     {head.article && <script id="news-article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(head.article).replace(/</g, '\\u003c') }} />}
+    {head.serviceAreaSchema && <script id="service-area-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(head.serviceAreaSchema).replace(/</g, '\\u003c') }} />}
   </>;
 }
 
@@ -87,6 +95,8 @@ export function HeadManager({ pathname }: { pathname: string }) {
     else document.head.querySelectorAll('meta[name="robots"]').forEach((element) => element.remove());
     if (head.article) update('#news-article-schema', 'script', { id: 'news-article-schema', type: 'application/ld+json' }, JSON.stringify(head.article));
     else document.head.querySelectorAll('#news-article-schema').forEach((element) => element.remove());
+    if (head.serviceAreaSchema) update('#service-area-schema', 'script', { id: 'service-area-schema', type: 'application/ld+json' }, JSON.stringify(head.serviceAreaSchema));
+    else document.head.querySelectorAll('#service-area-schema').forEach((element) => element.remove());
   }, [pathname]);
   return null;
 }

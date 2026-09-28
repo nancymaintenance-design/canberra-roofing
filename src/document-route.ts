@@ -1,6 +1,7 @@
 import routes from './route-meta.json';
+import { SUBURB_PATHS } from './suburb-profiles.js';
 
-const documentRoutes = new Set([...Object.keys(routes), '/404']);
+const documentRoutes = new Set([...Object.keys(routes), ...SUBURB_PATHS, '/404']);
 
 // This value is written by the prerenderer, never derived from the request URL.
 export function isDocumentRoute(pathname: string) {

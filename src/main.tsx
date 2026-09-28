@@ -5,7 +5,7 @@ import "./styles.css";
 import { migrateStoredData } from "./storage.js";
 import { AREA_GROUPS } from "./contact-options.js";
 import { SERVICE_CATALOG } from "./service-catalog.js";
-import { getSuburbRoute } from "./suburb-profiles.js";
+import { getSuburbRoute, getSuburbProfile } from "./suburb-profiles.js";
 import { ContactForm } from "./contact-form.jsx";
 
 type RelatedService = { label: string; path: string; description: string };
@@ -1760,6 +1760,18 @@ function Areas() {
     </section>
   );
 }
+function SuburbServiceAreaPage({ profile }: { profile: any }) {
+  const featured = SERVICE_CATALOG.filter(({ slug }) => profile.featuredServiceSlugs.includes(slug));
+  return <section className="page suburbPage">
+    <p className="eyebrow">LOCAL ROOF SERVICE ENQUIRIES</p><h1>{profile.h1}</h1>
+    <p className="directAnswer">This page helps property owners in or near {profile.suburb}, {profile.district} select a roof-service enquiry pathway. It does not claim a fixed local office or a completed project in this suburb.</p>
+    <section className="suburbFeatured"><h2>Choose a roof service pathway in {profile.suburb}</h2><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
+    <section className="suburbEvidence"><h2>Clear information before you enquire</h2><ul><li>More than a decade focused on roof repairs, supported by a standardised repair team.</li><li>Experienced roofing technicians with more than 10 years of hands-on industry experience.</li><li>A methodical approach to identifying visible roof concerns and the right next step.</li><li>Enquiry response from as little as 30 minutes, with prompt booking subject to availability.</li><li>Trusted by more than 1,000 customers.</li></ul></section>
+    <section className="suburbAllServices"><h2>Roof services available for enquiry</h2><div>{SERVICE_CATALOG.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
+    <section className="suburbFaq"><h2>Before arranging roof work in {profile.suburb}</h2><details open><summary>What should I include in an enquiry?</summary><p>Describe what you can see safely, the weather context, your property access and the relevant roof area. Do not climb onto the roof or touch wet electrical areas.</p></details><details><summary>Can I send a photo?</summary><p>Yes. Safe ground-level photos can provide useful context, but they do not confirm concealed conditions or a final repair scope.</p></details></section>
+    <section className="suburbContact"><h2>Contact Ellis Services Group</h2><ContactForm defaultArea={profile.areaOption}/></section>
+  </section>;
+}
 function News() {
   return (
     <section className="page newsIndex">
@@ -2547,6 +2559,7 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
   else if (path === "/services") content = <Services data={data} />;
   else if (path === "/solutions") content = <Services data={data} solution />;
   else if (path === "/areas") content = <Areas />;
+  else if (path.startsWith("/areas/")) { const profile = getSuburbProfile(path); content = profile ? <SuburbServiceAreaPage profile={profile} /> : <NotFound />; }
   else if (path === "/news") content = <News />;
   else if (path === "/faq") content = <FAQ data={data} />;
   else if (path === "/contact") content = <Contact data={data} />;

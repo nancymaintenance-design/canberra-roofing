@@ -2485,3 +2485,4 @@ details:hover {
     grid-template-columns: 2.8rem minmax(0, 1fr);
   }
 }
+.suburbPage{max-width:1180px}.suburbPage h1{max-width:850px}.suburbFeatured,.suburbEvidence,.suburbAllServices,.suburbFaq,.suburbContact{margin-top:2.5rem}.suburbEvidence{background:#e7eeeb;padding:1.5rem;border-left:4px solid #f15a24}.suburbEvidence ul{margin:0;padding-left:1.25rem}.suburbEvidence li+li{margin-top:.6rem}.suburbAllServices>div{display:flex;flex-wrap:wrap;gap:.6rem}.suburbAllServices a{border:1px solid #36564a;padding:.55rem .8rem;color:inherit}.suburbFaq details{border-top:1px solid #c8d2ce;padding:1rem 0}.suburbFaq summary{font-weight:700}.suburbContact{padding:1.5rem;background:#f4f5f1}@media(max-width:600px){.suburbEvidence,.suburbContact{padding:1rem}.suburbAllServices a{width:100%}}
