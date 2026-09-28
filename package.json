@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/prerender.mjs && node scripts/verify-dist.mjs",
+    "build": "node scripts/generate-discovery.mjs && tsc -b && vite build && node scripts/prerender.mjs && node scripts/verify-dist.mjs",
     "test:legacy": "node --input-type=module -e \"import { readdirSync } from 'node:fs'; import { spawnSync } from 'node:child_process'; const files=readdirSync('tests').filter((file)=>file.endsWith('.test.mjs')&&!file.includes('.vitest.test.')).map((file)=>'tests/'+file); const result=spawnSync(process.execPath,['--test',...files],{stdio:'inherit'}); process.exit(result.status??1)\"",
     "test:unit": "vitest run",
     "test": "pnpm run test:legacy && pnpm run test:unit",

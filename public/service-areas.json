@@ -1,0 +1,1236 @@
+{
+  "serviceAreas": [
+    {
+      "suburb": "Aranda",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/aranda-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Belconnen",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/belconnen-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Bruce",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/bruce-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Cook",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/cook-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Hawker",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/hawker-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Macquarie",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/macquarie-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "McKellar",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/mckellar-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Scullin",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/scullin-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Weetangera",
+      "district": "Belconnen",
+      "url": "https://www.canberraroofkind.com.au/areas/belconnen/weetangera-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Campbell",
+      "district": "East Canberra",
+      "url": "https://www.canberraroofkind.com.au/areas/east-canberra/campbell-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Duntroon",
+      "district": "East Canberra",
+      "url": "https://www.canberraroofkind.com.au/areas/east-canberra/duntroon-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Harman",
+      "district": "East Canberra",
+      "url": "https://www.canberraroofkind.com.au/areas/east-canberra/harman-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Kowen",
+      "district": "East Canberra",
+      "url": "https://www.canberraroofkind.com.au/areas/east-canberra/kowen-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Majura",
+      "district": "East Canberra",
+      "url": "https://www.canberraroofkind.com.au/areas/east-canberra/majura-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Pialligo",
+      "district": "East Canberra",
+      "url": "https://www.canberraroofkind.com.au/areas/east-canberra/pialligo-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Queanbeyan fringe",
+      "district": "East Canberra",
+      "url": "https://www.canberraroofkind.com.au/areas/east-canberra/queanbeyan-fringe-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Amaroo",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/amaroo-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Bonner",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/bonner-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Casey",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/casey-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Crace",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/crace-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Forde",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/forde-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Franklin",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/franklin-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Gungahlin",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/gungahlin-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Harrison",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/harrison-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Nicholls",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/nicholls-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Ngunnawal",
+      "district": "Gungahlin",
+      "url": "https://www.canberraroofkind.com.au/areas/gungahlin/ngunnawal-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Acton",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/acton-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Ainslie",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/ainslie-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Braddon",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/braddon-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "City",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/city-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Dickson",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/dickson-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Downer",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/downer-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Lyneham",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/lyneham-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "O’Connor",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/o-connor-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Turner",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/turner-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Watson",
+      "district": "Inner North & City",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-north-city/watson-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Barton",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/barton-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Deakin",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/deakin-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Forrest",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/forrest-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Griffith",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/griffith-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Kingston",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/kingston-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Manuka",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/manuka-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Narrabundah",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/narrabundah-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Red Hill",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/red-hill-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Yarralumla",
+      "district": "Inner South",
+      "url": "https://www.canberraroofkind.com.au/areas/inner-south/yarralumla-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Coombs",
+      "district": "Molonglo Valley",
+      "url": "https://www.canberraroofkind.com.au/areas/molonglo-valley/coombs-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Denman Prospect",
+      "district": "Molonglo Valley",
+      "url": "https://www.canberraroofkind.com.au/areas/molonglo-valley/denman-prospect-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Molonglo",
+      "district": "Molonglo Valley",
+      "url": "https://www.canberraroofkind.com.au/areas/molonglo-valley/molonglo-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Wright",
+      "district": "Molonglo Valley",
+      "url": "https://www.canberraroofkind.com.au/areas/molonglo-valley/wright-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Calwell",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/calwell-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Conder",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/conder-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Erindale",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/erindale-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Fadden",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/fadden-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Gordon",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/gordon-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Kambah",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/kambah-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Lanyon",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/lanyon-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Tuggeranong",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/tuggeranong-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Wanniassa",
+      "district": "Tuggeranong",
+      "url": "https://www.canberraroofkind.com.au/areas/tuggeranong/wanniassa-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Chapman",
+      "district": "Weston Creek",
+      "url": "https://www.canberraroofkind.com.au/areas/weston-creek/chapman-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Duffy",
+      "district": "Weston Creek",
+      "url": "https://www.canberraroofkind.com.au/areas/weston-creek/duffy-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Fisher",
+      "district": "Weston Creek",
+      "url": "https://www.canberraroofkind.com.au/areas/weston-creek/fisher-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Holder",
+      "district": "Weston Creek",
+      "url": "https://www.canberraroofkind.com.au/areas/weston-creek/holder-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Rivett",
+      "district": "Weston Creek",
+      "url": "https://www.canberraroofkind.com.au/areas/weston-creek/rivett-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Stirling",
+      "district": "Weston Creek",
+      "url": "https://www.canberraroofkind.com.au/areas/weston-creek/stirling-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Warambanga",
+      "district": "Weston Creek",
+      "url": "https://www.canberraroofkind.com.au/areas/weston-creek/warambanga-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Weston",
+      "district": "Weston Creek",
+      "url": "https://www.canberraroofkind.com.au/areas/weston-creek/weston-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Chifley",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/chifley-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Curtin",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/curtin-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Farrer",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/farrer-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Garran",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/garran-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Hughes",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/hughes-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Isaacs",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/isaacs-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Mawson",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/mawson-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "O’Malley",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/o-malley-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Pearce",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/pearce-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Phillip",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/phillip-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    },
+    {
+      "suburb": "Torrens",
+      "district": "Woden",
+      "url": "https://www.canberraroofkind.com.au/areas/woden/torrens-roof-repairs",
+      "servicePaths": [
+        "/services/roof-leak-repairs",
+        "/services/tile-roof-repairs",
+        "/services/chimney-flashing-repairs",
+        "/services/rebedding-repointing",
+        "/services/roof-inspections",
+        "/services/metal-roof-repairs",
+        "/services/roof-renovation",
+        "/services/roof-cleaning",
+        "/services/gutter-downpipe-maintenance"
+      ]
+    }
+  ]
+}
