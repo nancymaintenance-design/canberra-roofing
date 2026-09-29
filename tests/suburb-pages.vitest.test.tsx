@@ -22,3 +22,9 @@ it("uses the roofline FAQ treatment on the About page", () => {
   expect(html).toContain("rooflineFaq");
   expect(html).toContain("Do I need to know the exact roof problem before I contact you?");
 });
+
+it("uses the Canberra roof repair search intent in the home service heading", () => {
+  const html = renderToString(<AppV3 pathname="/" />);
+  expect(html).toContain("Canberra Roof Repair Services");
+  expect(html).toContain("Specific roof repair, roof maintenance and cleaning services for Canberra homes.");
+});

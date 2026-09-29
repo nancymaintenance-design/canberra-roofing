@@ -1021,12 +1021,12 @@ function HomeV2({ data }: { data: Data }) {
         </div>
       </section>
       <section className="homeServices">
-        <div className="sectionIntro">
-          <p className="eyebrow">START WITH THE VISIBLE CONCERN</p>
-          <h2>Six focused roof repair pathways in Canberra.</h2>
+        <div className="sectionIntro homeServicesIntro">
+          <p className="eyebrow">CANBERRA ROOF REPAIR SERVICES</p>
+          <h2>Canberra Roof Repair Services</h2>
           <p>
-            Each service page explains what you may notice, what an assessment
-            may cover and the limitations that can affect scope.
+            Specific roof repair, roof maintenance and cleaning services for
+            Canberra homes.
           </p>
         </div>
         <ServiceCards data={data} />
