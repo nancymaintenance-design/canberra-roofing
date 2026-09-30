@@ -216,9 +216,9 @@ const serviceSeed: Service[] = [
     pathways:
       "The next step may range from clarifying the concern to discussing a defined repair scope after assessment. If a roof still leaks after a previous repair, the prior work, the timing of the recurrence and the location of the new sign are useful context; they do not establish a cause or warranty outcome by themselves. A temporary measure and a completed repair are not assumed to be the same thing.",
     scope:
-      "Roof height, access, weather, the location of the reported trace, material condition and what can be safely observed all affect the discussion. We do not promise a fixed diagnosis, repair method, price or response time from an enquiry alone.",
+      "Roof height, access, weather, the reported water path and material condition shape the assessment. After reviewing the available evidence, we explain the recommended repair approach, scope and any applicable costs before work is arranged.",
     faqQ: "Is the water mark always below the leak entry point?",
-    faqA: "Not necessarily. Water can travel along roof elements or ceilings before it becomes visible indoors, so the location of a stain is useful context rather than proof of the entry point.",
+    faqA: "Water can travel along roof elements or ceilings before it becomes visible indoors, so the location of a stain is useful context rather than proof of the entry point.",
     faqExtras: [
       {
         q: "Can roof leak detection be confirmed from a photo?",
@@ -253,9 +253,9 @@ const serviceSeed: Service[] = [
     pathways:
       "A focused discussion can consider one or two damaged tiles where that is appropriate, together with the visible condition around the area. An individual replacement, a material match or a wider repair cannot be confirmed from a photo alone. Older tile colour, profile and finish can vary, even where a similar tile is available.",
     scope:
-      "Roof height, safe access, tile availability, material condition, weathering and visible or non-visible conditions around a small defect can affect the scope. This page does not promise an exact match, a particular repair method or replacement of a defined number of tiles before assessment.",
+      "Roof height, safe access, tile availability, material condition and weathering shape the assessment. We review the surrounding roof area, then explain the suitable repair approach, available material options and any applicable costs before work is arranged.",
     faqQ: "Will a replacement tile look exactly the same as an older roof tile?",
-    faqA: "Not necessarily. Existing tile colour and finish can vary with age and weathering, even where a similar option is available.",
+    faqA: "Existing tile colour and finish can vary with age and weathering, even where a similar option is available.",
     faqExtras: [
       {
         q: "Can one or two damaged tiles be replaced?",
@@ -284,9 +284,9 @@ const serviceSeed: Service[] = [
     assessment:
       "An assessment may review safely accessible flashing, the chimney junction, adjacent tiles or mortar, and the reported water-entry path. A roof inspection can be a useful starting point where the visible concern is unclear or more than one roof area may be involved. Ground-level photos provide context but cannot show concealed flashing, underlay or the full roof-space condition.",
     pathways:
-      "Any material choice or repair pathway depends on the site condition, safe access and applicable requirements. This page is specific to the chimney-to-roof junction; it does not claim to cover chimney structural work, fireplace work or every type of roof flashing repair. A broader roof leak pathway may be more appropriate if the reported water sign extends beyond the chimney area.",
+      "Any material choice or repair pathway depends on the site condition, safe access and applicable requirements. This service focuses on the chimney-to-roof junction. If the water sign extends beyond that area, we will guide you to the most suitable roof-leak or inspection service.",
     scope:
-      "Access, roof pitch, chimney junction condition, surrounding material, existing temporary work, weather and the available observations all influence what can be considered. An enquiry does not confirm a cause, a fixed repair method, a price or a response timeframe.",
+      "Access, roof pitch, chimney-junction condition, surrounding materials, prior work and weather shape the assessment. We review the junction and explain the recommended repair approach, timing and any applicable costs before work is arranged.",
     faqQ: "Does cracked sealant identify the whole problem?",
     faqA: "No. It may be relevant, but the surrounding junction, adjacent tiles or mortar and reported water path also need consideration.",
     faqExtras: [
@@ -319,7 +319,7 @@ const serviceSeed: Service[] = [
     pathways:
       "A local ridge capping repair, roof repointing discussion or a broader approach depends on what is visible across the area and what can be safely assessed. Full repointing is not assumed as a default response, and rebedding is not presumed solely because pointing has surface cracks.",
     scope:
-      "The extent of cracking, cap stability, roof height, safe access, layout, weather, surrounding tile condition and the available observations can all influence the next step. This page does not guarantee a defined repair scope, material choice, price or outcome before assessment.",
+      "The extent of cracking, cap stability, safe access, roof layout, weather and surrounding tile condition shape the assessment. We then outline the recommended ridge repair or repointing scope, material options and any applicable costs.",
     faqQ: "Does every crack mean all ridge caps need repointing?",
     faqA: "No. Surface cracking does not automatically determine a whole-roof approach; local and wider pathways depend on the observed condition.",
     faqExtras: [
@@ -352,7 +352,7 @@ const serviceSeed: Service[] = [
     pathways:
       "Observations may help frame a repair or maintenance enquiry and identify whether roof leak repairs, tile roof repairs, chimney flashing repairs, rebedding and repointing or metal roof repairs is the closest next conversation. A roof inspection does not automatically include a repair quote, report, certification, roof-space access or a guarantee that every hidden condition will be found.",
     scope:
-      "The agreed purpose, access, safety conditions, weather, roof layout and whether supporting material is arranged affect the scope. Scope and any fees are confirmed before work is arranged; this page does not advertise every inspection or quote as free.",
+      "The agreed purpose, access, safety conditions, weather, roof layout and any supporting material shape the assessment. We confirm the inspection scope and any applicable fee before booking.",
     faqQ: "Is a roof inspection a structural or compliance certificate?",
     faqA: "No. This pathway describes a visual, non-invasive assessment only, not engineering, valuation or certification.",
     faqExtras: [
@@ -381,11 +381,11 @@ const serviceSeed: Service[] = [
     causes:
       "A metal roof system includes sheets, laps, fasteners, flashings, penetrations, ridges, valleys and drainage details. Water can travel along a sheet or beneath adjoining materials before it appears inside. Visible surface weathering, an old patch or a nearby screw may be relevant, but it does not by itself identify every condition around the roof system.",
     assessment:
-      "An assessment may consider safely accessible sheet and flashing condition, visible penetrations, fixings, overlaps, roof-to-wall interfaces and the reported water path. Access, roof pitch, weather, material condition and what can be safely observed determine the limits of a review. The term Colorbond is used here to describe a common roof-material search term; it does not imply a product affiliation, material match or warranty outcome.",
+      "An assessment reviews safely accessible sheets, flashings, penetrations, fixings, overlaps, roof-to-wall interfaces and the reported water path. We service Colorbond and other metal roofing, then explain the appropriate repair approach for the property.",
     pathways:
       "A discussion may range from a local metal roof repair enquiry to a broader roof-leak or roof-inspection pathway when the entry area is uncertain. The appropriate approach, material selection, fixings and flashing details depend on the actual roof condition and agreed scope. A photo or phone enquiry does not confirm that a local repair, a material match, a fixed price or a particular outcome is suitable.",
     scope:
-      "Roof height, access, roof pitch, sheet profile, material age, visible condition, weather, penetrations and surrounding interfaces can all affect what is considered. This page does not advertise re-roofing, a guaranteed leak diagnosis, a fixed repair method, a response time or a particular product outcome before assessment.",
+      "Roof height, access, roof pitch, sheet profile, material age, visible condition, weather, penetrations and surrounding interfaces shape the assessment. We explain the recommended metal-roof repair option, scope and any applicable costs after assessing the property.",
     faqQ: "Can a metal or Colorbond roof be repaired without replacing the whole roof?",
     faqA: "A local repair may be considered where appropriate, but the condition of the surrounding sheets, fixings, flashings, access and the reported concern need to be assessed before a scope can be discussed.",
     faqExtras: [
@@ -411,15 +411,15 @@ const serviceSeed: Service[] = [
   {
     slug: "roof-renovation",
     title: "Roof Renovation",
-    direct: "Roof renovation enquiries begin with the property owner's maintenance goals, the visible roof condition and the materials involved. A renovation discussion does not establish a replacement method, price, timing or outcome before the roof and the requested scope are considered.",
+    direct: "Roof renovation enquiries begin with the property owner's maintenance goals, the visible roof condition and the materials involved. We review these details to discuss a renovation approach, timing and scope that suits the property.",
     symptoms: "Useful context can include widespread visible weathering, repeated maintenance concerns, an older roof finish, ongoing water-entry signs or a desire to refresh a roof surface. Record the material you can identify from ground level, the roof areas that concern you and any known previous work.",
     causes: "A renovation decision can involve the roof covering, ridge and flashing details, drainage, access, material age and the condition that can be safely seen. A photo alone cannot establish concealed conditions, material compatibility or the extent of work that may be suitable.",
     assessment: "A discussion may consider the stated renovation purpose, accessible visible roof condition, material type, roof layout, drainage details and access. Safety, weather and the agreed scope affect what can be reviewed and whether a repair, maintenance or renovation pathway is the closest next step.",
     pathways: "Roof renovation may overlap with tile, metal, ridge, flashing or drainage maintenance concerns. The appropriate pathway depends on the actual condition and the agreed purpose; it is not assumed from roof age or appearance alone.",
-    scope: "Access, roof height, material profile, visible condition, drainage, weather and the agreed project purpose affect any scope. This page does not promise a re-roof, material match, schedule, price or outcome before assessment.",
+    scope: "Access, roof height, material profile, visible condition, drainage, weather and the project goal shape the assessment. We explain whether repair, maintenance or renovation is the best next step, along with the recommended scope and any applicable costs.",
     faqQ: "Does a roof renovation enquiry automatically mean full roof replacement?",
     faqA: "No. The suitable next step depends on the condition that can be assessed, the property owner's objective and the agreed scope.",
-    faqExtras: [{ q: "Can I send photos of the roof I want renovated?", a: "Yes. Safe ground-level photos can provide context, but they do not confirm hidden condition, final materials or a complete scope." }],
+    faqExtras: [{ q: "Can I send photos of the roof I want renovated?", a: "Yes. Safe ground-level photos help us prepare for the assessment; we confirm the recommended scope after reviewing the property." }],
     next: "Send your renovation objective, the visible roof material or concern, your Canberra suburb and any safe photos.",
     related: [
       { label: "Roof Inspections", path: "/services/roof-inspections", description: "Choose an inspection enquiry when the visible condition or closest pathway is unclear." },
@@ -429,12 +429,12 @@ const serviceSeed: Service[] = [
   {
     slug: "roof-cleaning",
     title: "Roof Cleaning",
-    direct: "Roof cleaning enquiries can start with a clear description of visible surface growth, loose debris or the roof areas that need attention. Safe access, material condition and the agreed cleaning scope need to be considered before a method, timing or outcome can be discussed.",
+    direct: "Roof cleaning enquiries can start with a clear description of visible surface growth, loose debris or the roof areas that need attention. We review safe access, material condition and drainage details, then explain the recommended cleaning approach.",
     symptoms: "From the ground, note visible moss, lichen, leaf debris, dirt build-up or discolouration and whether it is concentrated near valleys, gutters, solar panels, roof edges or shaded areas. Do not climb onto the roof to inspect or remove material.",
     causes: "Surface build-up can vary with roof material, weather exposure, surrounding trees, drainage and the roof's age. Visible growth or debris does not by itself confirm a leak, a structural condition or the best cleaning method.",
     assessment: "A cleaning enquiry may consider the visible roof surface, material type, roof pitch, drainage, solar or roof penetrations, safe access and the property context. The discussion is limited by what can be safely observed and the work agreed.",
     pathways: "Roof cleaning may be considered alongside gutter and downpipe maintenance where debris is visible near drainage lines. Where there is water entry or damaged roofing, a repair or inspection pathway may be more appropriate than assuming cleaning will resolve the concern.",
-    scope: "Roof height, material, surface condition, access, weather, nearby services and debris location can affect scope. This page does not promise that cleaning will repair a leak, restore a particular finish or remove every condition from a roof surface.",
+    scope: "Roof height, material, surface condition, access, weather, nearby services and debris location shape the assessment. We confirm the recommended cleaning approach, scope and any applicable costs after assessing the property.",
     faqQ: "Can roof cleaning fix a roof leak?",
     faqA: "No. Cleaning and repair are separate pathways. If there is a drip, ceiling stain or uncertain water-entry concern, include that information so the closest next step can be discussed.",
     faqExtras: [{ q: "Should I pressure-clean a roof myself?", a: "Do not climb onto a roof or use cleaning equipment from an unsafe position. Record what is visible from the ground and describe it in an enquiry." }],
@@ -447,14 +447,14 @@ const serviceSeed: Service[] = [
   {
     slug: "gutter-downpipe-maintenance",
     title: "Gutter & Downpipe Cleaning and Maintenance",
-    direct: "Gutter and downpipe cleaning and maintenance enquiries begin with visible debris, overflow, drainage changes or the roof-edge area that concerns you. The condition of concealed drainage connections and the suitable scope cannot be confirmed from a ground-level photo alone.",
+    direct: "Gutter and downpipe cleaning and maintenance starts with visible debris, overflow, drainage changes or the roof edge that concerns you. Your photos and notes help us prepare for an on-site assessment and recommend the right maintenance approach.",
     symptoms: "Note leaf build-up, overflow during rain, visible sagging, water running near a wall, a blocked-looking outlet or a downpipe concern. Record the weather context and the general roof edge or side of the property without using an unsafe ladder or roof access.",
     causes: "Drainage performance can be affected by debris, roof runoff, gutter fall, joints, outlets, downpipes and conditions that are not visible from the ground. An overflow does not by itself establish the location or cause of a blockage.",
     assessment: "An enquiry may consider visible roof-edge drainage, safe access, the reported overflow path, nearby roof material and the agreed maintenance purpose. Weather, access, property layout and what can be safely observed affect the limits of a review.",
     pathways: "Where water entry occurs inside the property or roofing materials appear damaged, a roof leak repair or inspection pathway may also be relevant. Cleaning or maintenance does not by itself confirm a repair to concealed roof or drainage conditions.",
-    scope: "Height, access, debris, gutter and downpipe condition, weather and the agreed work area affect scope. This page does not promise that maintenance will correct hidden defects, drainage design issues or all sources of water entry.",
+    scope: "Height, access, debris, gutter and downpipe condition, weather and the work area shape the assessment. We confirm the recommended cleaning or maintenance approach, scope and any applicable costs after assessing the property.",
     faqQ: "Does gutter overflow always mean a downpipe is blocked?",
-    faqA: "Not necessarily. Debris, outlet condition, gutter fall, roof runoff and other drainage details can all be relevant.",
+    faqA: "Debris, outlet condition, gutter fall, roof runoff and other drainage details can all be relevant.",
     faqExtras: [{ q: "Should I clear a high gutter from a ladder myself?", a: "Do not use a ladder or roof access beyond a safe and appropriate position. Record the visible overflow or debris area and include it in an enquiry." }],
     next: "Send the gutter or downpipe area, when overflow occurs, your Canberra suburb and any safe photos.",
     related: [
@@ -484,7 +484,7 @@ const serviceGalleries: Record<
   "roof-leak-repairs": {
     title: "What a clear roof-leak enquiry can show.",
     intro:
-      "These owner-supplied images illustrate the kinds of visible detail that can help explain a concern. They are context only and do not confirm a cause, repair scope or outcome for another property.",
+      "Images from Ellis Services Group project work show visible signs, work stages and completed roof details. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/roof-leak-interior-water-mark.png",
@@ -511,7 +511,7 @@ const serviceGalleries: Record<
   "tile-roof-repairs": {
     title: "What tile roof repair concerns can look like.",
     intro:
-      "These owner-supplied images show visible tile condition, access and repair activity. They are provided as context and do not confirm material availability, repair scope or outcome for another property.",
+      "Images from Ellis Services Group project work show tile condition, access and repair activity. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/tile-roof-site-overview.png",
@@ -538,7 +538,7 @@ const serviceGalleries: Record<
   "rebedding-repointing": {
     title: "What ridge capping work can involve.",
     intro:
-      "These owner-supplied images show visible ridge-cap condition and work stages. They are context only and do not establish the extent of work, repair scope or outcome for another property.",
+      "Images from Ellis Services Group project work show ridge-cap condition and repair stages. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/ridge-capping-condition.png",
@@ -565,7 +565,7 @@ const serviceGalleries: Record<
   "chimney-flashing-repairs": {
     title: "What chimney flashing work can involve.",
     intro:
-      "These owner-supplied images show visible chimney-to-roof junction details and work stages. They are context only and do not confirm the cause of a water-entry concern, repair scope or outcome for another property.",
+      "Images from Ellis Services Group project work show chimney-to-roof junction details and repair stages. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/chimney-flashing-condition.png",
@@ -592,7 +592,7 @@ const serviceGalleries: Record<
   "roof-inspections": {
     title: "What a visual roof inspection can involve.",
     intro:
-      "These owner-supplied images show safe work practices, visible observations and recorded site details. They are context only; visual and non-invasive observations do not constitute structural engineering, certification or a guarantee that every concealed issue will be found.",
+      "Images from Ellis Services Group project work show safe work practices, visible observations and recorded site details. We agree the inspection purpose and scope before booking.",
     images: [
       {
         src: "/assets/services/roof-inspection-roofline-review.png",
@@ -619,7 +619,7 @@ const serviceGalleries: Record<
   "metal-roof-repairs": {
     title: "What metal roof repair work can involve.",
     intro:
-      "These owner-supplied images show visible metal-roof conditions, controlled work practices and completed roof details. They are context only and do not confirm the cause of a concern, repair scope or outcome for another property.",
+      "Images from Ellis Services Group project work show metal-roof conditions, controlled work practices and completed roof details. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/metal-roof-repair-team-work.png",
@@ -646,7 +646,7 @@ const serviceGalleries: Record<
   "roof-cleaning": {
     title: "What professional roof cleaning work can show.",
     intro:
-      "These owner-supplied images show visible surface build-up, gutter debris, controlled cleaning activity and a completed roof surface. They are context only and do not confirm a cleaning method, scope or outcome for another property.",
+      "Images from Ellis Services Group project work show visible surface build-up, gutter debris, controlled cleaning activity and a completed roof surface. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/roof-cleaning-surface-condition.png",
@@ -673,7 +673,7 @@ const serviceGalleries: Record<
   "gutter-downpipe-maintenance": {
     title: "What gutter and downpipe maintenance can show.",
     intro:
-      "These owner-supplied images show visible roof-edge channels, gutter debris and drainage areas around metal roofing and solar panels. They are context only and do not confirm the location of a blockage, maintenance scope or outcome for another property.",
+      "Images from Ellis Services Group project work show roof-edge channels, gutter debris and drainage areas around metal roofing and solar panels. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/gutter-downpipe-valley-condition.jpg",
@@ -831,7 +831,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Getting started / Can photos diagnose a roof remotely?",
-    a: "No. Photos can add context, but they cannot confirm a cause, condition or repair scope.",
+    a: "Photos help us understand the visible concern and prepare for assessment. We confirm the recommended scope after reviewing the property.",
   },
   {
     q: "Roof leaks / What should I note after rain?",
@@ -847,7 +847,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Roof leaks / Is a temporary patch a complete repair?",
-    a: "Not necessarily. A temporary measure may limit symptoms but does not define the source or a complete repair scope.",
+    a: "A temporary measure may limit symptoms, while the underlying cause and final repair scope still need assessment.",
   },
   {
     q: "Roof leaks / Can a small leak be ignored?",
@@ -867,7 +867,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Tiles / Will replacement tiles match exactly?",
-    a: "Not necessarily. Older tile colour and finish can vary with weathering even where a similar option is available.",
+    a: "Older tile colour and finish can vary with weathering even where a similar option is available.",
   },
   {
     q: "Ridges / What is rebedding versus repointing?",
@@ -907,11 +907,11 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Costs / Is an inspection or quote free?",
-    a: "We do not advertise every inspection or quote as free. Scope and any fees are confirmed before work is arranged.",
+    a: "Any inspection or booking fee, where applicable, is explained before an appointment is arranged.",
   },
   {
     q: "Timing / How quickly will someone respond?",
-    a: "No response time is promised here. Use the enquiry form to send the details you would like to discuss.",
+    a: "We aim to respond promptly. Booking availability is confirmed when we receive your enquiry.",
   },
   {
     q: "Storm or hail / What should I do?",
@@ -1299,9 +1299,9 @@ function About({ data }: { data: Data }) {
             <div>
               <h3>Agree the next step</h3>
               <p>
-                Service scope, access requirements and any fees are confirmed
-                before work is arranged. An enquiry does not promise a fixed
-                price, timing, material match or repair outcome.
+                Before work begins, we explain the recommended scope, access
+                requirements and any applicable costs so you know the next
+                step.
               </p>
             </div>
           </li>
@@ -1317,10 +1317,10 @@ function About({ data }: { data: Data }) {
             The details behind a prepared visit.
           </h2>
           <p>
-            These owner-supplied images show team coordination, branded
-            equipment and practical preparation. They illustrate our working
-            environment and are not a promise of scope, timing or outcome for
-            every enquiry.
+            Images from Ellis Services Group project work show team
+            coordination, branded equipment and practical preparation. We
+            confirm the recommended scope, timing and any applicable costs
+            after discussing the property.
           </p>
         </div>
         <div className="aboutBrandGalleryGrid">
@@ -1382,12 +1382,10 @@ function About({ data }: { data: Data }) {
           </div>
         </dl>
         <p className="aboutCredentialNote">
-          The Australian Business Register link is provided for public
-          business-record checking. A register record does not by itself confirm
-          a specific insurance policy, trade licence, project scope or repair
-          outcome. Where specialist work, licensing, insurance or approvals are
-          relevant, the applicable requirements are confirmed before work is
-          arranged.
+          The Australian Business Register link allows you to check our public
+          business record. Where specialist work, licensing, insurance or
+          approvals are relevant, we confirm the applicable requirements before
+          work is arranged.
         </p>
       </section>
       <section className="aboutFaq" aria-labelledby="about-faq-title">
@@ -1410,8 +1408,8 @@ function About({ data }: { data: Data }) {
             <summary>Can I send a photo?</summary>
             <p>
               Yes. One optional JPG, PNG or WebP photo can be added to the enquiry
-              form. A safe ground-level image can be useful context, but it cannot
-              confirm concealed conditions or a final scope.
+              form. A safe ground-level image helps us prepare for the assessment;
+              we confirm the recommended scope after reviewing the property.
             </p>
           </details>
           <details>
@@ -1427,8 +1425,8 @@ function About({ data }: { data: Data }) {
           <details>
             <summary>Do you confirm costs before arranging work?</summary>
             <p>
-              Yes. Service scope, access requirements and any fees are confirmed
-              before work is arranged.
+              Yes. Before booking, we explain the recommended scope, access
+              requirements and any applicable costs.
             </p>
           </details>
           <details>
@@ -1883,7 +1881,7 @@ function SuburbServiceAreaPage({ profile }: { profile: any }) {
     <section className="suburbFeatured"><h2>Choose a roof service pathway in {profile.suburb}</h2><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
     <section className="suburbEvidence"><h2>Clear information before you enquire</h2><ul><li>More than a decade focused on roof repairs, supported by a standardised repair team.</li><li>Experienced roofing technicians with more than 10 years of hands-on industry experience.</li><li>A methodical approach to identifying visible roof concerns and the right next step.</li><li>Enquiry response from as little as 30 minutes, with prompt booking subject to availability.</li><li>Trusted by more than 1,000 customers.</li></ul></section>
     <section className="suburbAllServices"><h2>Roof services available for enquiry</h2><div>{SERVICE_CATALOG.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
-    <section className="suburbFaq"><h2>Before arranging roof work in {profile.suburb}</h2><details open><summary>What should I include in an enquiry?</summary><p>Describe what you can see safely, the weather context, your property access and the relevant roof area. Do not climb onto the roof or touch wet electrical areas.</p></details><details><summary>Can I send a photo?</summary><p>Yes. Safe ground-level photos can provide useful context, but they do not confirm concealed conditions or a final repair scope.</p></details></section>
+    <section className="suburbFaq"><h2>Before arranging roof work in {profile.suburb}</h2><details open><summary>What should I include in an enquiry?</summary><p>Describe what you can see safely, the weather context, your property access and the relevant roof area. Do not climb onto the roof or touch wet electrical areas.</p></details><details><summary>Can I send a photo?</summary><p>Yes. Safe ground-level photos help us prepare for the assessment; we confirm the recommended scope after reviewing the property.</p></details></section>
     <section className="suburbContact"><h2>Contact Ellis Services Group</h2><ContactForm defaultArea={profile.areaOption}/></section>
   </section>;
 }
