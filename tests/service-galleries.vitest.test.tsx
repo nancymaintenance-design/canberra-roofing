@@ -36,4 +36,14 @@ describe("service image galleries", () => {
       "/assets/services/metal-roof-completed-roof.png",
     ]);
   });
+
+  it("renders the supplied five-image Roof Cleaning gallery", () => {
+    expect(galleryImages("/services/roof-cleaning")).toEqual([
+      "/assets/services/roof-cleaning-surface-condition.png",
+      "/assets/services/roof-cleaning-gutter-debris.png",
+      "/assets/services/roof-cleaning-controlled-wash.png",
+      "/assets/services/roof-cleaning-site-overview.png",
+      "/assets/services/roof-cleaning-completed-roof.png",
+    ]);
+  });
 });

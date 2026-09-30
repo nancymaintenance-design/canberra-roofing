@@ -643,6 +643,33 @@ const serviceGalleries: Record<
       },
     ],
   },
+  "roof-cleaning": {
+    title: "What professional roof cleaning work can show.",
+    intro:
+      "These owner-supplied images show visible surface build-up, gutter debris, controlled cleaning activity and a completed roof surface. They are context only and do not confirm a cleaning method, scope or outcome for another property.",
+    images: [
+      {
+        src: "/assets/services/roof-cleaning-surface-condition.png",
+        alt: "Tile roof surface with visible moss, lichen and leaf build-up near the gutter line",
+      },
+      {
+        src: "/assets/services/roof-cleaning-gutter-debris.png",
+        alt: "Worker removing leaf debris from a residential roof gutter beside weathered tiles",
+      },
+      {
+        src: "/assets/services/roof-cleaning-controlled-wash.png",
+        alt: "Roofing worker using controlled cleaning equipment on a tiled residential roof with fall protection",
+      },
+      {
+        src: "/assets/services/roof-cleaning-site-overview.png",
+        alt: "Roof cleaning work in progress on a tiled Canberra home viewed from ground level",
+      },
+      {
+        src: "/assets/services/roof-cleaning-completed-roof.png",
+        alt: "Completed clean tiled roof on a Canberra residential home",
+      },
+    ],
+  },
 };
 serviceBySlug["roof-leak-repairs"].related = [
   {
