@@ -46,4 +46,14 @@ describe("service image galleries", () => {
       "/assets/services/roof-cleaning-completed-roof.png",
     ]);
   });
+
+  it("renders the supplied five-image Gutter and Downpipe gallery", () => {
+    expect(galleryImages("/services/gutter-downpipe-maintenance")).toEqual([
+      "/assets/services/gutter-downpipe-valley-condition.jpg",
+      "/assets/services/gutter-downpipe-roof-edge-condition.jpg",
+      "/assets/services/gutter-downpipe-vegetation-build-up.jpg",
+      "/assets/services/gutter-downpipe-solar-channel-debris.jpg",
+      "/assets/services/gutter-downpipe-edge-debris.jpg",
+    ]);
+  });
 });

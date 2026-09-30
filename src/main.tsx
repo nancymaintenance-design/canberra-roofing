@@ -670,6 +670,33 @@ const serviceGalleries: Record<
       },
     ],
   },
+  "gutter-downpipe-maintenance": {
+    title: "What gutter and downpipe maintenance can show.",
+    intro:
+      "These owner-supplied images show visible roof-edge channels, gutter debris and drainage areas around metal roofing and solar panels. They are context only and do not confirm the location of a blockage, maintenance scope or outcome for another property.",
+    images: [
+      {
+        src: "/assets/services/gutter-downpipe-valley-condition.jpg",
+        alt: "Visible debris in a metal roof valley channel above a residential street",
+      },
+      {
+        src: "/assets/services/gutter-downpipe-roof-edge-condition.jpg",
+        alt: "Residential roof edge and gutter line with visible debris build-up",
+      },
+      {
+        src: "/assets/services/gutter-downpipe-vegetation-build-up.jpg",
+        alt: "Overgrown vegetation beside a metal roof drainage channel requiring maintenance context",
+      },
+      {
+        src: "/assets/services/gutter-downpipe-solar-channel-debris.jpg",
+        alt: "Debris visible in a metal roof drainage channel beside solar panels",
+      },
+      {
+        src: "/assets/services/gutter-downpipe-edge-debris.jpg",
+        alt: "Leaf and plant debris visible along a metal roof edge and gutter channel",
+      },
+    ],
+  },
 };
 serviceBySlug["roof-leak-repairs"].related = [
   {
