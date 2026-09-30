@@ -5,7 +5,7 @@ import "./styles.css";
 import { migrateStoredData } from "./storage.js";
 import { AREA_GROUPS } from "./contact-options.js";
 import { SERVICE_CATALOG } from "./service-catalog.js";
-import { getSuburbRoute, getSuburbProfile } from "./suburb-profiles.js";
+import { getDistrictProfile, getSuburbRoute, getSuburbProfile } from "./suburb-profiles.js";
 import { ContactForm } from "./contact-form.jsx";
 
 type RelatedService = { label: string; path: string; description: string };
@@ -819,7 +819,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Getting started / Which suburbs can I select?",
-    a: "The enquiry selector lists suburbs grouped across Canberra planning areas. It is a directory aid, not a claim of a fixed base or project history in each suburb.",
+    a: "The enquiry selector groups Canberra suburbs by district so you can choose the location that best matches your property.",
   },
   {
     q: "Getting started / What should I include in an enquiry?",
@@ -906,6 +906,10 @@ const canonicalFaqs: Faq[] = [
     a: "The concern, visible condition, access, weather, materials and agreed scope can all affect what needs consideration. Scope and any fees are confirmed before work is arranged.",
   },
   {
+    q: "Costs / How much does roof repair cost in Canberra?",
+    a: "The cost depends on the roof concern, access, materials, weather and the work required. After assessing the property, we explain the recommended scope and any applicable costs before work is arranged.",
+  },
+  {
     q: "Costs / Is an inspection or quote free?",
     a: "Any inspection or booking fee, where applicable, is explained before an appointment is arranged.",
   },
@@ -916,6 +920,18 @@ const canonicalFaqs: Faq[] = [
   {
     q: "Storm or hail / What should I do?",
     a: "Observe safely from the ground, record visible changes where safe and contact your insurer or an appropriate professional for insurance or urgent safety matters.",
+  },
+  {
+    q: "Maintenance / Can roof cleaning help prevent blocked gutters?",
+    a: "Roof cleaning and gutter maintenance can remove visible debris from roof and drainage areas. The appropriate cleaning or maintenance approach is confirmed after assessing the property.",
+  },
+  {
+    q: "Inspections / When should I arrange a roof inspection?",
+    a: "A roof inspection is a useful starting point when you have noticed a concern but are unsure whether it relates to tiles, metal roofing, flashing, ridge capping or drainage.",
+  },
+  {
+    q: "Metal roofing / Can metal and Colorbond roof sheets be repaired?",
+    a: "Metal and Colorbond roof repairs can address suitable sheet, fixing, flashing and junction concerns. We assess the visible condition and explain the recommended repair option for the property.",
   },
   {
     q: "Next steps / Which service should I choose?",
@@ -1671,10 +1687,10 @@ function Services({
           </p>
         </details>
         <details>
-          <summary>Does this page confirm a repair outcome?</summary>
+          <summary>How is the recommended scope confirmed?</summary>
           <p>
-            No. It describes an enquiry and assessment pathway only. Any service
-            scope or next action would need to be considered separately.
+            We review the visible concern, access, materials and property context,
+            then explain the recommended scope and next step before work is arranged.
           </p>
         </details>
         <a className="button" href="/contact">
@@ -1834,8 +1850,9 @@ function Areas() {
           <h1>Canberra-wide Roof Repair Service Areas</h1>
           <p>
             Use this directory to find the area that best matches your address.
-            It is a navigation aid, not a claim of a fixed base or project
-            history in each suburb.
+            Start with your district to explore roof repair, renovation, cleaning
+            and drainage maintenance pathways, then select your suburb when you
+            are ready to make an enquiry.
           </p>
         </div>
         <figure className="pageFeatureMedia">
@@ -1856,7 +1873,7 @@ function Areas() {
       <div className="areaGrid">
         {visible.map(([district, suburbs]) => (
           <article key={district}>
-            <h3>{district}</h3>
+            <h3><a href={`/areas/${district.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}`}>{district} roof repair services</a></h3>
             <div>
               {suburbs.map((s) => (
                 <a
@@ -1873,11 +1890,22 @@ function Areas() {
     </section>
   );
 }
+function DistrictServiceAreaPage({ profile, data }: { profile: any; data: Data }) {
+  return <section className="page suburbPage districtPage">
+    <p className="eyebrow">CANBERRA DISTRICT ROOF SERVICES</p>
+    <h1>{profile.h1}</h1>
+    <p className="directAnswer">Explore roof repair, roof renovation, roof cleaning and gutter or downpipe maintenance pathways for properties across {profile.district}. Select the service that matches the visible concern, then send an enquiry with your suburb and safe ground-level observations.</p>
+    <section className="suburbFeatured"><h2>Roof repair and maintenance services in {profile.district}</h2><ServiceCards data={data} /></section>
+    <section className="suburbAllServices"><h2>Suburbs in {profile.district}</h2><p>Choose your suburb to prefill the enquiry location after selecting the most relevant service pathway.</p><div>{profile.suburbs.map((suburb: string) => <a key={suburb} href={getSuburbRoute(suburb, profile.district) ?? "/areas"}>{suburb}</a>)}</div></section>
+    <section className="suburbEvidence"><h2>Plan the next step with clear roof information</h2><ul><li>Roof leak repairs, tile roof repairs, metal and Colorbond roof repairs, ridge capping and chimney flashing pathways.</li><li>Roof renovation, roof cleaning, gutter cleaning and downpipe maintenance service information.</li><li>Clear assessment, booking and contact details for Canberra property owners.</li></ul></section>
+    <section className="suburbContact"><h2>Contact Ellis Services Group for {profile.district} roof services</h2><ContactForm /></section>
+  </section>;
+}
 function SuburbServiceAreaPage({ profile }: { profile: any }) {
   const featured = SERVICE_CATALOG.filter(({ slug }) => profile.featuredServiceSlugs.includes(slug));
   return <section className="page suburbPage">
     <p className="eyebrow">LOCAL ROOF SERVICE ENQUIRIES</p><h1>{profile.h1}</h1>
-    <p className="directAnswer">This page helps property owners in or near {profile.suburb}, {profile.district} select a roof-service enquiry pathway. It does not claim a fixed local office or a completed project in this suburb.</p>
+    <p className="directAnswer">For properties in or near {profile.suburb}, {profile.district}, use this page to select the closest roof-service enquiry pathway and send the visible details of your roof concern.</p>
     <section className="suburbFeatured"><h2>Choose a roof service pathway in {profile.suburb}</h2><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
     <section className="suburbEvidence"><h2>Clear information before you enquire</h2><ul><li>More than a decade focused on roof repairs, supported by a standardised repair team.</li><li>Experienced roofing technicians with more than 10 years of hands-on industry experience.</li><li>A methodical approach to identifying visible roof concerns and the right next step.</li><li>Enquiry response from as little as 30 minutes, with prompt booking subject to availability.</li><li>Trusted by more than 1,000 customers.</li></ul></section>
     <section className="suburbAllServices"><h2>Roof services available for enquiry</h2><div>{SERVICE_CATALOG.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
@@ -1968,6 +1996,8 @@ function FAQ({ data }: { data: Data }) {
     "Chimneys",
     "Inspections",
     "Costs",
+    "Maintenance",
+    "Metal roofing",
     "Timing",
     "Storm or hail",
     "Next steps",
@@ -1977,10 +2007,9 @@ function FAQ({ data }: { data: Data }) {
       <p className="eyebrow">CANBERRA ROOFING FAQ</p>
       <h1>Canberra Roof Repair FAQs</h1>
       <p>
-        These themes are cross-referenced from public roof-safety guidance,
-        Canberra-area roofing FAQ themes and common homeowner enquiry themes.
-        They do not represent a verifiable AI query ranking, search volume,
-        Ellis Services Group customer data or service records.
+        Clear answers to common Canberra roof repair, maintenance, cleaning and
+        inspection questions, designed to help you prepare the right details for
+        an enquiry.
       </p>
       {groups.map((group) => {
         const entries = data.faqs.filter((f) => f.q.startsWith(group));
@@ -2674,7 +2703,11 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
   else if (path === "/services") content = <Services data={data} />;
   else if (path === "/solutions") content = <Services data={data} solution />;
   else if (path === "/areas") content = <Areas />;
-  else if (path.startsWith("/areas/")) { const profile = getSuburbProfile(path); content = profile ? <SuburbServiceAreaPage profile={profile} /> : <NotFound />; }
+  else if (path.startsWith("/areas/")) {
+    const districtProfile = getDistrictProfile(path);
+    const suburbProfile = getSuburbProfile(path);
+    content = districtProfile ? <DistrictServiceAreaPage profile={districtProfile} data={data} /> : suburbProfile ? <SuburbServiceAreaPage profile={suburbProfile} /> : <NotFound />;
+  }
   else if (path === "/news") content = <News />;
   else if (path === "/faq") content = <FAQ data={data} />;
   else if (path === "/contact") content = <Contact data={data} />;

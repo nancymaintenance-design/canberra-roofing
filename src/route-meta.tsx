@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import registry from './route-meta.json';
-import { SUBURB_PROFILES, getSuburbProfile } from './suburb-profiles.js';
+import { DISTRICT_PROFILES, SUBURB_PROFILES, getSuburbProfile } from './suburb-profiles.js';
 
+const districtRoutes = Object.fromEntries(DISTRICT_PROFILES.map((profile) => [profile.path, profile]));
 const suburbRoutes = Object.fromEntries(SUBURB_PROFILES.map((profile) => [profile.path, profile]));
-export const publishedRoutes = { ...registry, ...suburbRoutes };
+export const publishedRoutes = { ...registry, ...districtRoutes, ...suburbRoutes };
 export const pagePaths = Object.keys(publishedRoutes);
 
 // Match the acceptance server: never turn encoded separators, percent signs or
@@ -32,7 +33,7 @@ export function getRouteHead(pathname: string) {
     title: route.title,
     description: route.description,
     canonical: route.canonical,
-    robots: null,
+    robots: getSuburbProfile(path) ? 'noindex,follow' : null,
     article: path.startsWith('/news/') ? {
       '@context': 'https://schema.org',
       '@type': 'Article',

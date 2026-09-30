@@ -42,3 +42,17 @@ it("uses confident, clear service copy without internal SEO explanations", () =>
   expect(faqHtml).toContain("We aim to respond promptly");
   expect(faqHtml).not.toContain("No response time is promised here.");
 });
+
+it("prioritises district landing pages while keeping suburb pages for navigation", () => {
+  const districtPath = "/areas/belconnen";
+  const suburbPath = "/areas/belconnen/aranda-roof-repairs";
+  const districtHtml = renderToString(<AppV3 pathname={districtPath} />);
+  const suburbHtml = renderToString(<AppV3 pathname={suburbPath} />);
+  const faqHtml = renderToString(<AppV3 pathname="/faq" />);
+
+  expect(districtHtml).toContain("Belconnen Roof Repair Services");
+  expect(getRouteHead(districtPath).robots).toBeNull();
+  expect(getRouteHead(suburbPath).robots).toBe("noindex,follow");
+  expect(suburbHtml).not.toContain("not a claim of a fixed local office");
+  expect(faqHtml).toContain("How much does roof repair cost in Canberra?");
+});

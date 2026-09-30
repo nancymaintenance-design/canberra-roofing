@@ -3,12 +3,13 @@ import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
-import { SUBURB_PROFILES } from '../src/suburb-profiles.js';
+import { DISTRICT_PROFILES, SUBURB_PROFILES } from '../src/suburb-profiles.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const registry = JSON.parse(await readFile(path.join(root, 'src/route-meta.json'), 'utf8'));
+const districtPages = DISTRICT_PROFILES.map(({ path: pathname, title, h1, canonical }) => [pathname, { title, h1, canonical }]);
 const suburbPages = SUBURB_PROFILES.map(({ path: pathname, title, h1, canonical }) => [pathname, { title, h1, canonical }]);
-export const expectedPages = [...Object.entries(registry), ...suburbPages, ['/404', { title: 'Page not found | Canberra Roof Kind', h1: 'Page not found' }]];
+export const expectedPages = [...Object.entries(registry), ...districtPages, ...suburbPages, ['/404', { title: 'Page not found | Canberra Roof Kind', h1: 'Page not found' }]];
 
 export function validateDocument(html, pathname, expected) {
   assert.ok(Buffer.byteLength(html) >= 4096, `${pathname}: HTML shorter than 4 KiB`);

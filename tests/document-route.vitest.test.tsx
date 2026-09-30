@@ -2,7 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { afterEach, expect, it } from 'vitest';
 import { renderPage } from '../src/entry-server';
-import { getDocumentRoute } from '../src/document-route';
+import { getDocumentRoute, isDocumentRoute } from '../src/document-route';
 import routes from './fixtures/seo-routes.json';
 
 const template = readFileSync('index.html', 'utf8');
@@ -38,4 +38,8 @@ it.each(['/about', '/404', '/contact'])('registered marker %s takes precedence o
   document.documentElement.setAttribute('data-route', marker);
   window.history.replaceState(null, '', '/services/r%6fof-leak-repairs');
   expect(getDocumentRoute()).toBe(marker);
+});
+
+it('registers the Belconnen district landing page for prerendering', () => {
+  expect(isDocumentRoute('/areas/belconnen')).toBe(true);
 });
