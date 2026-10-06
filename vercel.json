@@ -29,6 +29,16 @@
   ],
   "redirects": [
     {
+      "source": "/roof-inspections",
+      "destination": "/services/roof-inspections",
+      "permanent": true
+    },
+    {
+      "source": "/roof-inspections/",
+      "destination": "/services/roof-inspections",
+      "permanent": true
+    },
+    {
       "source": "/insights",
       "destination": "/faq",
       "permanent": false
