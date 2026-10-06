@@ -433,6 +433,10 @@
       "destination": "/areas.html"
     },
     {
+      "source": "/areas/:district",
+      "destination": "/areas/:district.html"
+    },
+    {
       "source": "/areas/:district/:suburb",
       "destination": "/areas/:district/:suburb.html"
     },
