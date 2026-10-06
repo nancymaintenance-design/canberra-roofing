@@ -32,7 +32,7 @@ export const SUBURB_PROFILES = Object.freeze(AREA_GROUPS.flatMap(({ district, su
     suburb, district, path, slug: `${slugify(district)}/${slugify(suburb)}-roof-repairs`,
     areaOption: `${suburb} — ${district}`,
     title: `Roof Repairs ${suburb}, ${district} | Ellis Services Group`,
-    description: `Roof repairs in ${suburb}, ${district}: compare repair, renovation, roof cleaning and gutter or downpipe maintenance enquiry pathways with Ellis Services Group.`,
+    description: `Roof repairs in ${suburb}, ${district}: repair, renovation, roof cleaning and gutter or downpipe maintenance services from Ellis Services Group.`,
     canonical: `https://www.canberraroofkind.com.au${path}`,
     h1: `Roof Repairs in ${suburb}, ${district}`,
     featuredServiceSlugs,

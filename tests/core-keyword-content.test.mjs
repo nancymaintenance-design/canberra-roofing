@@ -107,6 +107,66 @@ test("every priority service page gives substantial, question-led guidance", asy
   }
 });
 
+test("every Canberra service page foregrounds verified experience, response and customer proof", async () => {
+  const servicePaths = [
+    "/services/roof-leak-repairs",
+    "/services/tile-roof-repairs",
+    "/services/chimney-flashing-repairs",
+    "/services/rebedding-repointing",
+    "/services/roof-inspections",
+    "/services/metal-roof-repairs",
+    "/services/roof-renovation",
+    "/services/roof-cleaning",
+    "/services/gutter-downpipe-maintenance",
+  ];
+
+  for (const pathname of servicePaths) {
+    const dom = await page(pathname);
+    try {
+      const document = dom.window.document;
+      const copy = document.querySelector("main")?.textContent ?? "";
+      assert.equal(
+        document.querySelectorAll(".serviceAdvantages li").length,
+        3,
+        `${pathname} shows the three verified Ellis advantages`,
+      );
+      assert.match(copy, /10\+ years in roof repairs/i);
+      assert.match(copy, /Response from as little as 30 minutes/i);
+      assert.match(copy, /Trusted by 1,000\+ customers/i);
+      assert.match(
+        copy,
+        /Before arranging a visit, we explain any inspection or booking fee that applies\. Repair pricing is confirmed after assessment and before work begins\./i,
+      );
+      assert.doesNotMatch(copy, /enquiry pathway|assessment pathway|compare services|any applicable costs/i);
+    } finally {
+      dom.window.close();
+    }
+  }
+});
+
+test("metal and drainage pages lead with their service value instead of a limitation", async () => {
+  for (const [pathname, phrase] of [
+    [
+      "/services/metal-roof-repairs",
+      "Metal and Colorbond roof repairs in Canberra start with a careful review",
+    ],
+    [
+      "/services/gutter-downpipe-maintenance",
+      "Gutter and downpipe cleaning and maintenance in Canberra starts with visible debris",
+    ],
+  ]) {
+    const dom = await page(pathname);
+    try {
+      const directAnswer =
+        dom.window.document.querySelector(".directAnswer")?.textContent ?? "";
+      assert.match(directAnswer, new RegExp(phrase, "i"));
+      assert.doesNotMatch(directAnswer, /does not confirm|does not by itself/i);
+    } finally {
+      dom.window.close();
+    }
+  }
+});
+
 test("chimney and inspection pages use their approved Canberra P1 wording", async () => {
   for (const [pathname, title, h1] of [
     [
