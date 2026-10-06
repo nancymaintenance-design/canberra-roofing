@@ -206,7 +206,7 @@ const serviceSeed: Service[] = [
     slug: "roof-leak-repairs",
     title: "Roof Leak Repairs",
     direct:
-      "A leaking roof is easier to discuss when the visible sign, the weather conditions and the general roof area are recorded separately. Roof leak detection is not a promise that an entry point can be confirmed from an indoor stain or a photo alone; it is a careful assessment pathway for the available evidence.",
+      "Roof leak repairs in Canberra begin with a careful review of the visible signs, rain conditions and likely roof area. Tell us what you have noticed and we will discuss the most suitable repair pathway and next step for your property.",
     symptoms:
       "Note whether the concern is a fresh drip, a damp patch, a ceiling stain, bubbling paint, a musty smell or water near a light fitting. Record the room, when it first appeared and whether it follows steady rain, wind-driven rain or a storm. From ground level, also note nearby tiles, a roof flashing junction, ridge line, chimney, valley or skylight if they are safely visible.",
     causes:
@@ -342,15 +342,15 @@ const serviceSeed: Service[] = [
     slug: "roof-inspections",
     title: "Roof Inspections",
     direct:
-      "A roof inspection in Canberra can be a sensible first enquiry when you have a visible concern but cannot safely tell whether it relates to tiles, a roof leak, a chimney junction or a ridge line. It is also useful before deciding what to repair, provided the purpose and the limits of a visual review are clear from the start.",
+      "A roof inspection in Canberra is a practical first step when you have noticed a concern but are unsure whether it relates to tiles, a roof leak, a chimney junction or a ridge line. We review the visible condition, discuss the likely next step and help you choose the most suitable repair or maintenance pathway.",
     symptoms:
       "A new water mark, a drip after rain, cracked or slipped tiles seen from the ground, a loose ridge cap, a chimney junction concern or a change near a gutter line can all be useful starting points. Include the property context if it matters, such as a maintenance decision or an upcoming sale, but describe the observable condition rather than asking for a remote diagnosis.",
     causes:
       "A visual observation may identify areas for further discussion, but it does not determine every concealed condition or the source of every water mark. Roof materials, weather, access, roof-space visibility and the location of the reported issue can limit what can be seen during an inspection.",
     assessment:
-      "The scope is visual and non-invasive unless otherwise agreed. Roof-space access, photographs, written notes and any specific focus area are only included where they have been arranged. Safety, weather, access and the agreed purpose can limit observations, and the inspection is not structural engineering, valuation or compliance certification.",
+      "The inspection focuses on the visible roof condition and the concerns you have reported. Before the visit, we clarify the agreed scope, including any roof-space access, photographs, written notes or specific focus areas. Safety, weather and access guide what can be reviewed on the day; this visual service is separate from structural engineering, valuation or compliance certification.",
     pathways:
-      "Observations may help frame a repair or maintenance enquiry and identify whether roof leak repairs, tile roof repairs, chimney flashing repairs, rebedding and repointing or metal roof repairs is the closest next conversation. A roof inspection does not automatically include a repair quote, report, certification, roof-space access or a guarantee that every hidden condition will be found.",
+      "Following the inspection, we discuss the visible findings and the most relevant next step, whether that is roof leak repairs, tile roof repairs, chimney flashing repairs, rebedding and repointing, metal roof repairs or maintenance. We also explain any follow-up work, report, roof-space access or repair pricing that is relevant to the agreed scope.",
     scope:
       "The agreed purpose, access, safety conditions, weather, roof layout and any supporting material shape the assessment. We confirm the inspection scope and any applicable fee before booking.",
     faqQ: "Is a roof inspection a structural or compliance certificate?",
@@ -911,7 +911,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Costs / Is an inspection or quote free?",
-    a: "Any inspection or booking fee, where applicable, is explained before an appointment is arranged.",
+    a: "Before booking, we explain any inspection or booking fee that applies to your property and the proposed visit. Any repair cost is confirmed after assessment and before work is arranged.",
   },
   {
     q: "Timing / How quickly will someone respond?",
@@ -1028,12 +1028,17 @@ function HomeV2({ data }: { data: Data }) {
           </p>
           <div className="heroActions">
             <a className="button" href="/contact">
-              Send an enquiry <ArrowRight size={18} />
+              Request a roof assessment <ArrowRight size={18} />
             </a>
             <a className="textAction" href="/services">
-              Compare services
+              Find the right service
             </a>
           </div>
+          <ul className="heroAdvantages" aria-label="Ellis Services Group experience and response advantages">
+            <li><strong>10+ years</strong> in roof repairs</li>
+            <li><strong>Response from as little as 30 minutes</strong></li>
+            <li><strong>Trusted by 1,000+ customers</strong></li>
+          </ul>
         </div>
         <div className="heroProof">
           <span>Canberra, ACT</span>
@@ -1108,12 +1113,12 @@ function HomeV2({ data }: { data: Data }) {
         <p className="eyebrow">LOCAL ROOF REPAIR ENQUIRIES</p>
         <h2>Looking for a roofer in Canberra for a small roof repair?</h2>
         <p>
-          Describe the visible concern and your suburb. An enquiry helps
-          identify the closest pathway, but it does not confirm that a job can
-          be accepted or define a repair scope before assessment.
+          Tell us what you have noticed and your suburb. We'll review the
+          details, discuss the most suitable next step and confirm the scope
+          before work begins.
         </p>
         <a className="button" href="/contact">
-          Describe a repair concern <ArrowRight size={18} />
+          Request roof repair advice <ArrowRight size={18} />
         </a>
       </section>
       <section className="homeContextGrid trustImageGrid">
@@ -1160,11 +1165,11 @@ function HomeV2({ data }: { data: Data }) {
         <p className="eyebrow">NOT SURE WHERE TO BEGIN?</p>
         <h2>Describe what you have noticed.</h2>
         <p>
-          Use the local enquiry form to select a suburb, service interest and
-          optional photo file name.
+          Select your suburb and service, then add an optional photo to help us
+          understand the visible concern before we speak with you.
         </p>
         <a className="button" href="/contact">
-          Open contact form <ArrowRight size={18} />
+          Request a roof assessment <ArrowRight size={18} />
         </a>
       </section>
     </>
@@ -1630,10 +1635,9 @@ function Services({
       <p className="eyebrow">SERVICES OVERVIEW</p>
       <h1>Roof Repairs Canberra</h1>
       <p>
-        Compare the roof repair topics below and choose the closest visible
-        concern for your Canberra enquiry. Each pathway outlines common
-        symptoms, areas that may be considered in an assessment and a clear next
-        step.
+        Choose the service that best matches the visible concern at your
+        Canberra property. Each page explains what we can review, how the
+        service can help and the next step to request an assessment.
       </p>
       <ServiceCards data={data} />
       <section className="guidance">

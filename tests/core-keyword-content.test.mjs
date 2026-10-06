@@ -28,7 +28,7 @@ async function page(pathname) {
   return new JSDOM(await response.text());
 }
 
-test("the home page serves Canberra roofer and small-repair enquiry intent without promising acceptance", async () => {
+test("the home page invites Canberra repair enquiries with a clear next step and verified proof points", async () => {
   const dom = await page("/");
   try {
     const document = dom.window.document;
@@ -43,7 +43,12 @@ test("the home page serves Canberra roofer and small-repair enquiry intent witho
     );
     assert.match(copy, /roofer in Canberra/i);
     assert.match(copy, /small roof repair/i);
-    assert.match(copy, /does not confirm that a job can be accepted/i);
+    assert.match(copy, /We'll review the details, discuss the most suitable next step and confirm the scope before work begins/i);
+    assert.doesNotMatch(copy, /does not confirm that a job can be accepted/i);
+    assert.match(copy, /Request a roof assessment/i);
+    assert.match(copy, /10\+ years in roof repairs/i);
+    assert.match(copy, /Response from as little as 30 minutes/i);
+    assert.match(copy, /Trusted by 1,000\+ customers/i);
   } finally {
     dom.window.close();
   }

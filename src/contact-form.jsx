@@ -4,7 +4,7 @@ import { sendContactEnquiry } from './contact-api.js';
 import { AREA_OPTIONS, PHOTO_ACCEPT, SERVICE_TITLES } from './contact-options.js';
 import { validateEnquiry } from './enquiry-validation.js';
 
-const privacyCopy = 'I agree that Canberraroofkind may send the details and optional photo I provide to elliservices.group@gmail.com or nancy.maintenance@gmail.com to respond to my enquiry.';
+const privacyCopy = 'I agree that Ellis Services Group may use the details and optional photo I provide to respond to my enquiry via elliservices.group@gmail.com.';
 const genericFailure = "We couldn't send your enquiry. Please try again or call 0405878406.";
 
 export function ContactForm({ defaultArea = '', defaultService = '', submitEnquiry = sendContactEnquiry }) {
@@ -98,7 +98,7 @@ export function ContactForm({ defaultArea = '', defaultService = '', submitEnqui
     <input className="honeypot" name="website" aria-hidden="true" tabIndex={-1} autoComplete="off" readOnly />
     <label className="check"><input name="privacy" type="checkbox" value="true" required aria-invalid={Boolean(errors.privacy)} aria-describedby={errors.privacy ? 'privacy-error' : undefined} /> {privacyCopy}</label>
     {error('privacy')}
-    <button className="button" disabled={!ready || pending}>{pending ? 'Sending enquiry...' : 'Send enquiry'}</button>
+    <button className="button" disabled={!ready || pending}>{pending ? 'Sending request...' : 'Request a roof assessment'}</button>
     <p className="contactStatus" role="status" aria-live="polite">{status}</p>
   </form>;
 }

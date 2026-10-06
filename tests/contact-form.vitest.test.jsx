@@ -20,7 +20,7 @@ function completeValidForm() {
   fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'ellis@example.com' } });
   fireEvent.change(screen.getByLabelText('Phone'), { target: { value: '0400 000 000' } });
   fireEvent.change(screen.getByLabelText('Message'), { target: { value: 'Please arrange an inspection.' } });
-  fireEvent.click(screen.getByLabelText(/I agree that Canberraroofkind/));
+  fireEvent.click(screen.getByLabelText(/I agree that Ellis Services Group/));
 }
 
 describe('ContactForm', () => {
@@ -30,7 +30,7 @@ describe('ContactForm', () => {
     expect(screen.getByRole('button', { name: 'Choose photo' })).toBeTruthy();
     expect(screen.getByText('No photo selected')).toBeTruthy();
     expect(screen.getByText('JPG, PNG or WebP. Maximum 4 MB.')).toBeTruthy();
-    expect(screen.getByText('I agree that Canberraroofkind may send the details and optional photo I provide to elliservices.group@gmail.com or nancy.maintenance@gmail.com to respond to my enquiry.')).toBeTruthy();
+    expect(screen.getByText('I agree that Ellis Services Group may use the details and optional photo I provide to respond to my enquiry via elliservices.group@gmail.com.')).toBeTruthy();
     const photo = screen.getByLabelText('Optional photo');
     expect(photo.getAttribute('accept')).toContain('.jpg,.jpeg,.png,.webp');
     expect(screen.queryByLabelText('Website')).toBeNull();
@@ -42,7 +42,7 @@ describe('ContactForm', () => {
 
   it('focuses the first client validation error without submitting', async () => {
     const { submitEnquiry } = renderForm();
-    fireEvent.click(screen.getByRole('button', { name: 'Send enquiry' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Request a roof assessment' }));
     expect(document.activeElement).toBe(screen.getByRole('textbox', { name: /^Name/ }));
     expect(screen.getByText('Enter your name.')).toBeTruthy();
     expect(submitEnquiry).not.toHaveBeenCalled();
@@ -51,8 +51,8 @@ describe('ContactForm', () => {
   it('uses the live privacy-consent error in the rendered form', () => {
     const { submitEnquiry } = renderForm();
     completeValidForm();
-    fireEvent.click(screen.getByLabelText(/I agree that Canberraroofkind/));
-    fireEvent.click(screen.getByRole('button', { name: 'Send enquiry' }));
+    fireEvent.click(screen.getByLabelText(/I agree that Ellis Services Group/));
+    fireEvent.click(screen.getByRole('button', { name: 'Request a roof assessment' }));
     expect(screen.getByText('Agree to the privacy notice to continue.')).toBeTruthy();
     expect(screen.queryByText('Acknowledge the local demonstration notice to continue.')).toBeNull();
     expect(submitEnquiry).not.toHaveBeenCalled();
@@ -63,7 +63,7 @@ describe('ContactForm', () => {
     const submitEnquiry = vi.fn(() => new Promise((resolve) => { resolveSubmission = resolve; }));
     renderForm(submitEnquiry);
     completeValidForm();
-    const form = screen.getByRole('button', { name: 'Send enquiry' }).form;
+    const form = screen.getByRole('button', { name: 'Request a roof assessment' }).form;
     await act(async () => {
       form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
       form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
@@ -80,10 +80,10 @@ describe('ContactForm', () => {
     completeValidForm();
     const photo = new File(['roof'], 'roof.jpg', { type: 'image/jpeg' });
     fireEvent.change(screen.getByLabelText('Optional photo'), { target: { files: [photo] } });
-    fireEvent.click(screen.getByRole('button', { name: 'Send enquiry' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Sending enquiry...' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Request a roof assessment' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Sending request...' }));
     expect(submitEnquiry).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole('button', { name: 'Sending enquiry...' }).disabled).toBe(true);
+    expect(screen.getByRole('button', { name: 'Sending request...' }).disabled).toBe(true);
     rejectSubmission(new ContactApiError({ status: 400, code: 'VALIDATION_ERROR', fieldErrors: { message: 'Server message error.' }, message: 'Check the highlighted fields and try again.' }));
     await screen.findByText('Check the highlighted fields and try again.');
     expect(screen.getByText('Server message error.')).toBeTruthy();
@@ -94,7 +94,7 @@ describe('ContactForm', () => {
   it('resets only after adapter success', async () => {
     const { submitEnquiry } = renderForm();
     completeValidForm();
-    fireEvent.click(screen.getByRole('button', { name: 'Send enquiry' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Request a roof assessment' }));
     await screen.findByText('Enquiry sent successfully.');
     expect(submitEnquiry).toHaveBeenCalledTimes(1);
     expect(screen.getByLabelText('Name').value).toBe('');

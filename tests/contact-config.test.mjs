@@ -15,13 +15,11 @@ test('requires server-side Resend credentials and recipient without revealing va
     }
   }
 });
-test('accepts either approved enquiry inbox and the existing default sender', () => {
-  for (const recipient of ['elliservices.group@gmail.com', 'nancy.maintenance@gmail.com']) {
-    assert.deepEqual(loadContactConfig({ ...baseEnv(), CONTACT_EMAIL_TO: recipient }), { apiKey: 'synthetic-key-not-valid', to: recipient, from: 'Canberraroofkind <onboarding@resend.dev>' });
-  }
+test('accepts only the official enquiry inbox and the existing default sender', () => {
+  assert.deepEqual(loadContactConfig(baseEnv()), { apiKey: 'synthetic-key-not-valid', to: 'elliservices.group@gmail.com', from: 'Canberraroofkind <onboarding@resend.dev>' });
 });
 test('rejects arbitrary or combined recipients', () => {
-  for (const recipient of ['other@example.test', 'elliservices.group@gmail.com,nancy.maintenance@gmail.com', ' elliservices.group@gmail.com']) {
+  for (const recipient of ['other@example.test', 'nancy.maintenance@gmail.com', 'elliservices.group@gmail.com,nancy.maintenance@gmail.com', ' elliservices.group@gmail.com']) {
     assert.throws(() => loadContactConfig({ ...baseEnv(), CONTACT_EMAIL_TO: recipient }), (error) => error instanceof ContactConfigError && error.variable === 'CONTACT_EMAIL_TO');
   }
 });

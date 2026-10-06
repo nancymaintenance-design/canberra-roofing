@@ -353,6 +353,25 @@ main {
   flex-wrap: wrap;
   margin-top: 1.8rem;
 }
+.heroAdvantages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.1rem;
+  max-width: 700px;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  color: var(--color-cloud);
+  font-size: 0.9rem;
+  list-style: none;
+}
+.heroAdvantages li {
+  display: flex;
+  gap: 0.28rem;
+  align-items: baseline;
+}
+.heroAdvantages strong {
+  color: var(--color-action-light);
+}
 .heroProof {
   position: absolute;
   right: max(1.5rem, calc((100vw - var(--container)) / 2 + 1.5rem));

@@ -5,7 +5,6 @@ export const REQUIRED_CONTACT_ENV = [
 
 const permittedRecipients = new Set([
   'elliservices.group@gmail.com',
-  'nancy.maintenance@gmail.com',
 ]);
 
 export class ContactConfigError extends Error {
