@@ -6,9 +6,9 @@ import { startPreview } from '../scripts/preview.mjs';
 const keywordRoutes = [
   {
     pathname: '/services',
-    title: 'Roof Repairs Canberra | Ellis Services Group',
+    title: 'Canberra Roof Repair Services | Ellis Services Group',
     h1: 'Roof Repairs Canberra',
-    keyword: 'Roof Repairs Canberra',
+    keyword: 'Canberra roof repair services',
   },
   {
     pathname: '/services/roof-leak-repairs',

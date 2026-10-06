@@ -35,7 +35,7 @@ it("uses confident, clear service copy without internal SEO explanations", () =>
   const aboutHtml = renderToString(<AppV3 pathname="/about" />);
   const faqHtml = renderToString(<AppV3 pathname="/faq" />);
 
-  expect(cleaningHtml).toContain("We confirm the recommended cleaning approach, scope and any applicable costs after assessing the property.");
+  expect(cleaningHtml).toContain("We confirm the recommended cleaning approach, scope and relevant costs after assessing the property.");
   expect(cleaningHtml).not.toContain("This page does not promise that cleaning");
   expect(metalHtml).not.toContain("used here to describe a common roof-material search term");
   expect(aboutHtml).toContain("Images from Ellis Services Group project work");

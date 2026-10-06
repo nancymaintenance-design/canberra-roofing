@@ -4,9 +4,20 @@ import { readFile } from 'node:fs/promises';
 import { request } from 'node:http';
 import { startPreview } from '../scripts/preview.mjs';
 
-const routes = JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8'));
+const routeMetadata = JSON.parse(await readFile(new URL('../src/route-meta.json', import.meta.url), 'utf8'));
+const routes = Object.keys(routeMetadata).map((pathname) => ({ pathname }));
 const config = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
 const aliases = routes.flatMap(({ pathname }) => (pathname === '/' ? ['/index.html', '/index.html/'] : [`${pathname}.html`, `${pathname}/`, `${pathname}.html/`]).map(source => ({ source, destination: pathname })));
+const staticRewrites = routes
+  .filter(({ pathname }) => pathname !== '/')
+  .map(({ pathname }) => ({ source: pathname, destination: `${pathname}.html` }));
+const areaIndex = staticRewrites.findIndex(({ source }) => source === '/areas');
+const expectedRewrites = [
+  ...staticRewrites.slice(0, areaIndex + 1),
+  { source: '/areas/:district', destination: '/areas/:district.html' },
+  { source: '/areas/:district/:suburb', destination: '/areas/:district/:suburb.html' },
+  ...staticRewrites.slice(areaIndex + 1),
+];
 const query = '?service=Rebedding%20%26%20Repointing&area=Belconnen%20%E2%80%94%20Belconnen&utm_source=fix&tag=one&tag=two';
 const preview = await startPreview();
 test.after(() => preview.close());
@@ -28,11 +39,13 @@ test('Vercel declares bounded one-hop permanent aliases without changing system 
   assert.notEqual(config.cleanUrls, true);
   assert.equal(config.trailingSlash, undefined, 'no global redirect of unknown trailing-slash paths');
   assert.deepEqual(config.redirects, [
+    { source: '/roof-inspections', destination: '/services/roof-inspections', permanent: true },
+    { source: '/roof-inspections/', destination: '/services/roof-inspections', permanent: true },
     { source: '/insights', destination: '/faq', permanent: false },
     { source: '/insights/', destination: '/faq', permanent: false },
     ...aliases.map(alias => ({ ...alias, permanent: true })),
   ]);
-  assert.deepEqual(config.rewrites, routes.filter(r => r.pathname !== '/').map(r => ({ source: r.pathname, destination: `${r.pathname}.html` })));
+  assert.deepEqual(config.rewrites, expectedRewrites);
 });
 
 for (const { pathname } of routes) {

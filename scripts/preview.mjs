@@ -54,8 +54,18 @@ export async function startPreview({ port = 0, directory = path.join(root, 'dist
       if (!filename && !unsafePath && config.cleanUrls) filename = await fileAt(`${pathname.replace(/\/$/, '')}.html`);
       if (!filename) {
         for (const rule of unsafePath ? [] : config.rewrites ?? []) {
-          if (new RegExp(`^${rule.source}$`).test(pathname)) {
-            filename = await fileAt(rule.destination);
+          const parameterNames = [];
+          const expression = rule.source.replace(/:([A-Za-z][A-Za-z0-9_]*)/g, (_, name) => {
+            parameterNames.push(name);
+            return "([^/]+)";
+          });
+          const match = pathname.match(new RegExp(`^${expression}$`));
+          if (match) {
+            const destination = rule.destination.replace(/:([A-Za-z][A-Za-z0-9_]*)/g, (_, name) => {
+              const index = parameterNames.indexOf(name);
+              return index === -1 ? "" : match[index + 1];
+            });
+            filename = await fileAt(destination);
             break;
           }
         }

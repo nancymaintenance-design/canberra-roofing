@@ -62,7 +62,15 @@ test('Vercel candidate pins Node 22, preserves API routes, and applies the appro
   assert.doesNotMatch(JSON.stringify(config), /nodejs22\.x/);
   assert.notEqual(config.cleanUrls, true, 'existing HTML verification and fallback files keep their URLs');
   const published = JSON.parse(fs.readFileSync(new URL('src/route-meta.json', root), 'utf8'));
-  assert.deepEqual(config.rewrites, Object.keys(published).filter((pathname) => pathname !== '/').map((pathname) => ({ source: pathname, destination: pathname + '.html' })));
+  const publishedRewrites = Object.keys(published)
+    .filter((pathname) => pathname !== '/')
+    .map((pathname) => ({ source: pathname, destination: pathname + '.html' }));
+  assert.deepEqual(config.rewrites, [
+    ...publishedRewrites.slice(0, publishedRewrites.findIndex((rule) => rule.source === '/news')),
+    { source: '/areas/:district', destination: '/areas/:district.html' },
+    { source: '/areas/:district/:suburb', destination: '/areas/:district/:suburb.html' },
+    ...publishedRewrites.slice(publishedRewrites.findIndex((rule) => rule.source === '/news')),
+  ]);
   assert.deepEqual(config.redirects.filter(rule => !rule.permanent), [{source:'/insights',destination:'/faq',permanent:false}, {source:'/insights/',destination:'/faq',permanent:false}]);
   const headers = Object.fromEntries(config.headers[0].headers.map(({ key, value }) => [key, value]));
   assert.equal(headers['X-Content-Type-Options'], 'nosniff');

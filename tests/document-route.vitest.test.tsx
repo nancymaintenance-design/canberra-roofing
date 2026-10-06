@@ -3,7 +3,12 @@ import { readFileSync } from 'node:fs';
 import { afterEach, expect, it } from 'vitest';
 import { renderPage } from '../src/entry-server';
 import { getDocumentRoute, isDocumentRoute } from '../src/document-route';
-import routes from './fixtures/seo-routes.json';
+import routeMetadata from '../src/route-meta.json';
+
+const routes = Object.entries(routeMetadata).map(([pathname, metadata]) => ({
+  pathname,
+  ...metadata,
+}));
 
 const template = readFileSync('index.html', 'utf8');
 afterEach(() => document.documentElement.removeAttribute('data-route'));

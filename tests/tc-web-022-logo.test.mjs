@@ -20,6 +20,6 @@ test('active global header uses the authorized Canberraroofkind logo without rep
 test('logo is contained and sized for desktop and mobile headers', () => {
   assert.match(css, /\.brandLogo\s*\{[^}]*object-fit:\s*contain[^}]*\}/s);
   assert.match(css, /\.brandLogo\s*\{[^}]*width:\s*54px[^}]*height:\s*54px[^}]*\}/s);
-  assert.match(css, /@media\(max-width:640px\)[\s\S]*\.brandLogo\s*\{[^}]*width:\s*42px[^}]*height:\s*42px[^}]*\}/s);
+  assert.match(css, /@media\s*\(max-width:\s*640px\)[\s\S]*\.brandLogo\s*\{[^}]*width:\s*42px[^}]*height:\s*42px[^}]*\}/s);
   assert.match(css, /\.brand\s*\{[^}]*align-items:\s*center[^}]*\}/s);
 });

@@ -7,12 +7,12 @@ const source = fs.readFileSync(
   "utf8",
 );
 
-test("recovery retains the six detailed service records", () => {
+test("recovery retains the nine detailed service records", () => {
   const serviceBlock =
     source.match(
       /const serviceSeed:\s*Service\[\]\s*=\s*\[([\s\S]*?)\n\];/,
     )?.[1] || "";
-  assert.equal((serviceBlock.match(/\{\s*slug:/g) || []).length, 6);
+  assert.equal((serviceBlock.match(/\{\s*slug:/g) || []).length, 9);
   for (const field of [
     "direct",
     "causes",
@@ -25,7 +25,7 @@ test("recovery retains the six detailed service records", () => {
   ]) {
     assert.equal(
       (serviceBlock.match(new RegExp(`[,\\{]\\s*${field}:`, "g")) || []).length,
-      6,
+      9,
       `missing ${field} on a service record`,
     );
   }

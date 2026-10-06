@@ -6,7 +6,12 @@ import { expect, it, vi } from "vitest";
 import { AppV3 } from "../src/main";
 import { HeadMarkup, getRouteHead, resolvePath } from "../src/route-meta";
 import { getDocumentRoute } from "../src/document-route";
-import routes from "./fixtures/seo-routes.json";
+import routeMetadata from "../src/route-meta.json";
+
+const routes = Object.entries(routeMetadata).map(([pathname, metadata]) => ({
+  pathname,
+  ...metadata,
+}));
 
 (
   globalThis as typeof globalThis & { IS_REACT_ACT_ENVIRONMENT: boolean }

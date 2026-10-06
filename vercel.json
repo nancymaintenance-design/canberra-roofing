@@ -189,6 +189,11 @@
       "permanent": true
     },
     {
+      "source": "/services/roof-renovation.html/",
+      "destination": "/services/roof-renovation",
+      "permanent": true
+    },
+    {
       "source": "/services/roof-cleaning.html",
       "destination": "/services/roof-cleaning",
       "permanent": true
@@ -199,12 +204,22 @@
       "permanent": true
     },
     {
+      "source": "/services/roof-cleaning.html/",
+      "destination": "/services/roof-cleaning",
+      "permanent": true
+    },
+    {
       "source": "/services/gutter-downpipe-maintenance.html",
       "destination": "/services/gutter-downpipe-maintenance",
       "permanent": true
     },
     {
       "source": "/services/gutter-downpipe-maintenance/",
+      "destination": "/services/gutter-downpipe-maintenance",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-downpipe-maintenance.html/",
       "destination": "/services/gutter-downpipe-maintenance",
       "permanent": true
     },
