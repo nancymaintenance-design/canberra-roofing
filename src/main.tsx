@@ -116,14 +116,14 @@ const newsArticles: NewsArticle[] = [
   {
     slug: "when-to-arrange-roof-inspection-canberra",
     title:
-      "Canberra Roof Inspections: When Is an Inspection a Sensible Next Step?",
+      "Roof Inspection Canberra: Checks, Repair Scope and Preparation",
     description:
-      "A practical guide to deciding when a roof inspection enquiry may be useful for a Canberra property.",
-    summary: "When a general roof inspection is the clearest place to begin.",
+      "Roof inspection in Canberra: what Ellis checks, how findings shape a repair scope and what to prepare before booking.",
+    summary: "What the inspection checks and how to prepare a clear enquiry.",
     serviceTitle: "Roof Inspections",
     servicePath: "/services/roof-inspections",
     body: [
-      "A roof inspection enquiry can be a sensible starting point when there is a concern but no clear repair category yet. It may be relevant after a new water mark, before a property decision, after visible storm-related changes or when you want to understand an observable roof condition.",
+      "A roof inspection in Canberra helps Ellis Services Group identify the roof detail behind a concern and plan the appropriate repair scope. Arrange one after a new water mark, visible storm-related changes, or before a property decision when you need a clearer account of the roof condition. The inspection purpose, access and findings to be provided are agreed when booking.",
       "Before enquiring, write down what you have noticed and when. Useful details can include a ceiling stain, a drip after rain, a cracked tile seen from the ground, a loose ridge cap, a concern near a chimney or a change around a gutter line. If you are considering buying or selling a property, mention that context in your enquiry.",
       "Photos can be useful when taken safely from ground level. Do not climb onto the roof, walk on tiles or use a ladder beyond a safe and appropriate position just to obtain a closer image.",
       "Choose Roof Inspections if you are unsure whether your concern best fits roof leaks, tiles, chimney flashing or ridge-line work. Include your Canberra suburb, the reason for the enquiry and the visible signs you have recorded. This helps establish the most relevant next conversation.",
@@ -1978,6 +1978,29 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
           {article.body.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
+          {article.slug === "when-to-arrange-roof-inspection-canberra" ? (
+            <>
+              <h2>Confirm the purpose and access before the visit</h2>
+              <p>Tell Ellis whether the visit is for a recurring leak, a visible defect, maintenance planning or a property decision. We use that purpose to identify the areas that need attention and agree the inspection scope, fees and access arrangements. Include the roof material if known, the number of storeys and any locked gates, tenancy arrangements or restricted areas.</p>
+              <p>Confirm roof-space access and the photographs, written notes or other findings to be provided as part of the agreed appointment. Access to concealed or restricted areas is discussed before the visit; any further investigation is identified separately. Our <a href="/services/roof-inspections">roof inspections service</a> explains that booking process.</p>
+              <h2>What the inspection checks</h2>
+              <p>The checklist follows the roof material and the concern being investigated. Within the agreed scope, Ellis connects the condition of the covering with its junctions and drainage rather than treating a ceiling mark as proof of one failed component.</p>
+              <ul>
+                <li><strong>Roof covering:</strong> displaced, cracked or missing tiles; on metal roofs, sheet laps, fasteners, corrosion, coating damage and signs of retained debris or water.</li>
+                <li><strong>Ridges and hips:</strong> ridge-cap condition, bedding and pointing, with attention to loose or separated areas.</li>
+                <li><strong>Flashings and penetrations:</strong> junctions around chimneys, walls, vents and other openings, including the adjoining roof material.</li>
+                <li><strong>Valleys and drainage:</strong> debris, water marks and the route through gutters, outlets and downpipes.</li>
+                <li><strong>Accessible internal evidence:</strong> the reported stain or drip and, where agreed and accessible, relevant roof-space observations.</li>
+              </ul>
+              <p>For a leak that appears after rain, use our <a href="/news/after-rain-roof-leak-check-canberra">after-rain roof leak guide</a> to record the room, timing and weather before the appointment. Keep photographs to safe, accessible positions.</p>
+              <h2>Turn findings into a repair scope</h2>
+              <p>Ellis relates the findings to a named roof area, the defect observed and the component requiring attention. That gives the repair discussion a clear sequence: address the water-entry or loose-material concern, identify connected defects, then plan any broader maintenance. If an area could not be accessed or needs further investigation, that limit is recorded in the agreed findings rather than treated as a confirmed cause.</p>
+              <p>A useful record format is: location; observed condition; inspection finding; proposed component repair; priority; and any access or follow-up required. This is a way to organise findings, not a customer case. An isolated damaged tile requires a different scope from a chimney junction or a blocked valley. Read about <a href="/services/tile-roof-repairs">tile roof repairs</a> and <a href="/services/chimney-flashing-repairs">chimney flashing repairs</a> for those repair pathways.</p>
+              <h2>Prepare an inspection and repair enquiry</h2>
+              <p>Send your Canberra suburb, the reason for the visit, roof type if known, the affected room or exterior area, and when the issue occurs. Include safe photographs and the history of any previous work at that location. Tell us how access can be arranged and whether the property is occupied by tenants.</p>
+              <p>The inspection appointment and a later repair quote have distinct scopes. For the repair quote, confirm the defects and components included, materials, access arrangements, any further investigation, and the completion checks relevant to the work. This makes it clear which work is priced and which items remain to be agreed. <a href="/contact">Contact Ellis Services Group to arrange a roof inspection</a> with those details.</p>
+            </>
+          ) : null}
         </div>
         <aside className="articleSidebar">
           <p className="eyebrow">RELATED SERVICE</p>
