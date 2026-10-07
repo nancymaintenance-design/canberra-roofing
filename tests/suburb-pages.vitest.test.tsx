@@ -39,7 +39,8 @@ it("uses confident, clear service copy without internal SEO explanations", () =>
   expect(cleaningHtml).not.toContain("This page does not promise that cleaning");
   expect(metalHtml).not.toContain("used here to describe a common roof-material search term");
   expect(aboutHtml).toContain("Images from Ellis Services Group project work");
-  expect(faqHtml).toContain("We aim to respond promptly");
+  expect(faqHtml).toContain("Contact Ellis Services Group to arrange your roof assessment.");
+  expect(faqHtml).toContain("Our team confirms the appointment");
   expect(faqHtml).not.toContain("No response time is promised here.");
 });
 

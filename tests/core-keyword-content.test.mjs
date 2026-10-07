@@ -148,7 +148,7 @@ test("metal and drainage pages lead with their service value instead of a limita
   for (const [pathname, phrase] of [
     [
       "/services/metal-roof-repairs",
-      "Metal and Colorbond roof repairs in Canberra start with a careful review",
+      "metal and Colorbond roof repairs in Canberra",
     ],
     [
       "/services/gutter-downpipe-maintenance",
@@ -217,7 +217,8 @@ test("the tile service page distinguishes terracotta and concrete tile context w
     const copy = dom.window.document.querySelector("main")?.textContent ?? "";
     assert.match(copy, /terracotta/i);
     assert.match(copy, /concrete/i);
-    assert.match(copy, /cannot be confirmed from a photo alone/i);
+    assert.match(copy, /inspect.*terracotta or concrete.*on site/i);
+    assert.match(copy, /quote.*tile match.*weathering/i);
   } finally {
     dom.window.close();
   }
