@@ -43,7 +43,7 @@ test("the home page invites Canberra repair enquiries with a clear next step and
     );
     assert.match(copy, /roofer in Canberra/i);
     assert.match(copy, /small roof repair/i);
-    assert.match(copy, /We'll review the details, discuss the most suitable next step and confirm the scope before work begins/i);
+    assert.match(copy, /We arrange an on-site assessment, identify the affected components and confirm the repair plan and written quote before work begins/i);
     assert.doesNotMatch(copy, /does not confirm that a job can be accepted/i);
     assert.match(copy, /Request a roof assessment/i);
     assert.match(copy, /10\+ years in roof repairs/i);
@@ -152,7 +152,7 @@ test("metal and drainage pages lead with their service value instead of a limita
     ],
     [
       "/services/gutter-downpipe-maintenance",
-      "Gutter and downpipe cleaning and maintenance in Canberra starts with visible debris",
+      "provides gutter and downpipe cleaning and maintenance in Canberra",
     ],
   ]) {
     const dom = await page(pathname);

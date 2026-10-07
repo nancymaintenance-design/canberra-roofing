@@ -100,7 +100,7 @@ test('public candidate uses owner-supplied copy and makes the browser editor dev
 
   assert.equal(packageJson.name, 'canberraroofkind-website');
   assert.match(source, /Welcome to Ellis Services Group/);
-  assert.match(source, /Homeowners can browse roof repair services, the Canberra areas directory and frequently asked questions, then send an enquiry with one optional photo\./);
+  assert.match(source, /Ellis provides roof repairs, cleaning and maintenance across Canberra, with an on-site assessment and written quote\./);
   assert.match(source, /Scope and any fees are confirmed before work is arranged\./);
   assert.match(source, /import\.meta\.env\.DEV/);
   assert.match(source, /Company name/);

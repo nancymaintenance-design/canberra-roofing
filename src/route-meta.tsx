@@ -28,7 +28,7 @@ export function resolvePath(pathname: string) {
 export function getRouteHead(pathname: string) {
   const path = resolvePath(pathname);
   const route = publishedRoutes[path as keyof typeof publishedRoutes] as any;
-  if (!route) return { title: 'Page not found | Canberra Roof Kind', description: 'This page could not be found. Browse roof enquiry services or contact Ellis Services Group.', canonical: null, robots: 'noindex,follow', article: null };
+  if (!route) return { title: 'Page not found | Canberra Roof Kind', description: 'This page could not be found. Browse roof repair services or contact Ellis Services Group.', canonical: null, robots: 'noindex,follow', article: null };
   return {
     title: route.title,
     description: route.description,
@@ -45,7 +45,7 @@ export function getRouteHead(pathname: string) {
     serviceAreaSchema: getSuburbProfile(path) ? {
       '@context': 'https://schema.org', '@type': 'WebPage', name: route.h1,
       description: route.description, url: route.canonical,
-      mainEntity: { '@type': 'Service', name: 'Roof repair enquiry', provider: { '@type': 'Organization', name: 'Ellis Services Group' } },
+      mainEntity: { '@type': 'Service', name: 'Roof repair services', provider: { '@type': 'Organization', name: 'Ellis Services Group' } },
     } : null,
   };
 }

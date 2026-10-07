@@ -78,7 +78,7 @@ assert.match(renderedAbout, /98% Customer Satisfaction/);
 assert.match(renderedAbout, /href="\/case-studies\/tile-roof-repair-canberra"/);
 assert.match(renderedAbout, /className="caseStudyRail"/);
 assert.match(renderedAbout, /className="aboutProcess"/);
-assert.match(renderedAbout, /How a roof repair enquiry is arranged\./);
+assert.match(renderedAbout, /How your roof assessment and repair are arranged\./);
 assert.match(renderedAbout, /className="aboutCredentials"/);
 assert.match(renderedAbout, /Business record &amp; work requirements/);
 assert.match(

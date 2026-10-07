@@ -55,7 +55,7 @@ const newsArticles: NewsArticle[] = [
     description:
       "A practical, safety-first guide to recording signs of a suspected roof leak after rain in Canberra.",
     summary:
-      "What to observe safely after rain before making a roof leak enquiry.",
+      "Safe signs to note after rain and how Ellis investigates roof leaks on site.",
     serviceTitle: "Roof Leak Repairs",
     servicePath: "/services/roof-leak-repairs",
     body: [
@@ -69,13 +69,13 @@ const newsArticles: NewsArticle[] = [
     slug: "cracked-slipped-missing-roof-tiles-canberra",
     title: "Canberra Tile Roof Repairs: Cracked, Slipped or Missing Roof Tiles",
     description:
-      "See which visible tile-roof signs are useful to record before making a roof repair enquiry in Canberra.",
+      "Canberra tile roof repair: safe signs to note, replacement materials and how Ellis plans local repairs after inspection.",
     summary:
       "A clear way to record a visible tile concern safely and accurately.",
     serviceTitle: "Tile Roof Repairs",
     servicePath: "/services/tile-roof-repairs",
     body: [
-      "Tile roofs can show wear in different ways. A single cracked tile, a slipped tile near a valley or a loose ridge cap may look similar from the ground, yet the surrounding roof details can matter. Before making an enquiry, focus on observations rather than trying to identify the cause yourself.",
+      "A cracked or slipped tile can expose the roof to water, but the cause and repair scope depend on the surrounding overlaps, ridges and flashing. Ellis inspects these details on site and quotes the tile replacement and related repairs needed. Stay on the ground and describe what you can safely see.",
       "From a safe ground-level position, look for tiles that appear cracked, displaced, missing or different in colour from nearby tiles. Take note of their approximate location: near a ridge line, valley, chimney, roof edge or a visible penetration. If a tile change is visible after a storm or high winds, record when you first noticed it.",
       "Inside the home, look for ceiling staining, dampness or a musty odour below the general area. These signs provide useful context. It can also help to mention whether the roof has been repaired before, if that information is known.",
       "Do not walk on tiled roofing to inspect it closely. Tiles can be fragile, surfaces can be slippery and weight in the wrong area can cause further damage. Include your Canberra suburb, a description of the visible concern, when it was first noticed and any safe photos in a Tile Roof Repairs enquiry.",
@@ -85,13 +85,13 @@ const newsArticles: NewsArticle[] = [
     slug: "chimney-flashing-water-entry-signs",
     title: "Canberra Chimney Flashing Repairs: Water-Entry Signs to Record",
     description:
-      "Learn which safe-to-observe signs around chimney flashing are useful when making a Canberra roof enquiry.",
+      "Canberra chimney flashing repairs: water-entry signs and how Ellis checks the junction before quoting for repairs.",
     summary:
       "What to note when water marks or visible changes appear near a chimney.",
     serviceTitle: "Chimney Flashing Repairs",
     servicePath: "/services/chimney-flashing-repairs",
     body: [
-      "A chimney creates several roof junctions where roofing materials, flashing and mortar meet. When water appears near a chimney, the visible stain indoors may not sit directly beneath the point where water enters. Clear observations provide a useful starting point for the next conversation.",
+      "A chimney creates junctions where roofing materials, flashing and mortar meet. Water can travel before it appears indoors. Ellis inspects the chimney-to-roof junction and adjoining materials on site, traces the entry path and quotes the flashing or related repairs required.",
       "Indoors, note whether water marks or dampness appear on a ceiling or wall close to the chimney breast. Record whether the issue follows rain, wind-driven rain or a particular direction of weather. If there is an older stain, note whether it has recently changed in size or colour.",
       "From the ground, you may be able to observe weathered material around the chimney, loose adjacent tiles, missing mortar or old temporary patching. A safe, zoomed ground-level photo may help show the general area. It cannot show concealed flashing or underlay, but it provides helpful background for an enquiry.",
       "Do not climb onto a roof, lean over a chimney or apply sealant from an unsafe position. When contacting Ellis Services Group, choose Chimney Flashing Repairs and include the location of the interior sign, the weather conditions when it appears and any safe images.",
@@ -119,14 +119,14 @@ const newsArticles: NewsArticle[] = [
       "Roof Inspection Canberra: Checks, Repair Scope and Preparation",
     description:
       "Roof inspection in Canberra: what Ellis checks, how findings shape a repair scope and what to prepare before booking.",
-    summary: "What the inspection checks and how to prepare a clear enquiry.",
+    summary: "What Ellis checks during an on-site inspection and how the findings shape the repair quote.",
     serviceTitle: "Roof Inspections",
     servicePath: "/services/roof-inspections",
     body: [
       "A roof inspection in Canberra helps Ellis Services Group identify the roof detail behind a concern and plan the appropriate repair scope. Arrange one after a new water mark, visible storm-related changes, or before a property decision when you need a clearer account of the roof condition. The inspection purpose, access and findings to be provided are agreed when booking.",
       "Before enquiring, write down what you have noticed and when. Useful details can include a ceiling stain, a drip after rain, a cracked tile seen from the ground, a loose ridge cap, a concern near a chimney or a change around a gutter line. If you are considering buying or selling a property, mention that context in your enquiry.",
       "Photos can be useful when taken safely from ground level. Do not climb onto the roof, walk on tiles or use a ladder beyond a safe and appropriate position just to obtain a closer image.",
-      "Choose Roof Inspections if you are unsure whether your concern best fits roof leaks, tiles, chimney flashing or ridge-line work. Include your Canberra suburb, the reason for the enquiry and the visible signs you have recorded. This helps establish the most relevant next conversation.",
+      "You can arrange a roof inspection without knowing the cause. Send your Canberra suburb and the concern. Ellis confirms the appointment and inspection scope, checks the relevant coverings, junctions and drainage on site, then explains the findings and written repair quote.",
     ],
   },
 ];
@@ -222,7 +222,7 @@ const serviceSeed: Service[] = [
     faqExtras: [
       {
         q: "Can roof leak detection be confirmed from a photo?",
-        a: "Send safe ground-level photos to help us prepare. We inspect the flashing, underlay and accessible roof-space details on site, trace the entry point and confirm the repair plan and quote.",
+        a: "Photos are optional preparation, not a complete diagnosis. We inspect the flashing, underlay and accessible roof-space details on site, trace the entry point and confirm the repair plan and written quote.",
       },
       {
         q: "Can dry weather make a roof leak harder to assess?",
@@ -234,10 +234,10 @@ const serviceSeed: Service[] = [
       },
       {
         q: "What if the roof still leaks after a repair?",
-        a: "Record when the leak returned, the room and weather conditions involved, plus any known previous work. That history helps frame a reassessment enquiry without assuming the cause.",
+        a: "Record when the leak returned, the room and weather conditions involved, plus any known previous work. Ellis reviews the previous work, inspects the recurring water path and confirms the new repair plan and written quote.",
       },
     ],
-    next: "Send the location of the visible trace, when it appears, your Canberra suburb and any safe ground-level photos to start an enquiry.",
+    next: "Send the location of the visible trace, when it appears, your Canberra suburb and any safe ground-level photos to start an enquiry. Photos are optional; a written description is enough to arrange the assessment.",
   },
   {
     slug: "tile-roof-repairs",
@@ -259,7 +259,7 @@ const serviceSeed: Service[] = [
     faqExtras: [
       {
         q: "Can one or two damaged tiles be replaced?",
-        a: "We inspect the damaged tiles and adjoining roof area, confirm suitable replacement materials and quote for the local repair work.",
+        a: "Yes, where the surrounding roof supports a local repair. We inspect the damaged tiles and adjoining area, confirm suitable replacement profiles and quote for the local work.",
       },
       {
         q: "Are terracotta and concrete tile repairs the same?",
@@ -321,7 +321,7 @@ const serviceSeed: Service[] = [
     scope:
       "The extent of cracking, cap stability, safe access, roof layout, weather and surrounding tile condition shape the assessment. We then outline the recommended ridge repair or repointing scope, material options and relevant costs.",
     faqQ: "Does every crack mean all ridge caps need repointing?",
-    faqA: "No. Surface cracking does not automatically determine a whole-roof approach; local and wider pathways depend on the observed condition.",
+    faqA: "No. We check cap stability, bedding, pointing and nearby tiles on site, then specify the ridge sections requiring local repair, rebedding or repointing.",
     faqExtras: [
       {
         q: "What is the difference between roof rebedding and repointing?",
@@ -333,10 +333,10 @@ const serviceSeed: Service[] = [
       },
       {
         q: "Should I use roof leak repairs as well?",
-        a: "If there is a ceiling stain, drip or other interior water sign, include that information. The roof leak pathway may help frame the water-entry concern alongside the ridge-line observation.",
+        a: "Yes, if there is also a ceiling stain or drip. Tell us about both signs so we can trace the water-entry path and check the ridge details during the same assessment.",
       },
     ],
-    next: "Send the ridge or hip area, what has changed, any interior signs, your suburb and safe ground-level photos.",
+    next: "Send the ridge or hip area, what has changed, any interior signs, your suburb and safe ground-level photos. Photos are optional; a written description is enough to arrange the assessment.",
   },
   {
     slug: "roof-inspections",
@@ -358,7 +358,7 @@ const serviceSeed: Service[] = [
     faqExtras: [
       {
         q: "Can I arrange a roof inspection before deciding what to repair?",
-        a: "Yes. It can be a useful enquiry where there is a concern but no clear repair category yet. The purpose, access and limits of the visual scope should be agreed first.",
+        a: "Yes. Ellis can inspect the roof before you decide on repairs. We agree the inspection purpose, safe access, visual scope and any fee before booking, then explain the findings and quote for the proposed work.",
       },
       {
         q: "What should I prepare for a roof inspection enquiry?",
@@ -406,7 +406,7 @@ const serviceSeed: Service[] = [
         a: "Choose Roof Leak Repairs when the source area is uncertain or the main sign is an indoor water mark or drip. Choose Metal & Colorbond Roof Repairs when the concern is clearly associated with a visible metal-roof area or junction.",
       },
     ],
-    next: "Send the visible metal-roof area, any related interior signs, the weather conditions, your Canberra suburb and safe ground-level photos.",
+    next: "Send the visible metal-roof area, any related interior signs, the weather conditions, your Canberra suburb and safe ground-level photos. Photos are optional; a written description is enough to arrange the assessment.",
   },
   {
     slug: "roof-renovation",
@@ -420,7 +420,7 @@ const serviceSeed: Service[] = [
     faqQ: "Does a roof renovation enquiry automatically mean full roof replacement?",
     faqA: "No. The suitable next step depends on the condition that can be assessed, the property owner's objective and the agreed scope.",
     faqExtras: [{ q: "Can I send photos of the roof I want renovated?", a: "Yes. Safe ground-level photos help us prepare for the assessment; we confirm the recommended scope after reviewing the property." }],
-    next: "Send your renovation objective, the visible roof material or concern, your Canberra suburb and any safe photos.",
+    next: "Send your renovation objective, the visible roof material or concern, your Canberra suburb and any safe photos. Photos are optional; a written description is enough to arrange the assessment.",
     related: [
       { label: "Roof Inspections", path: "/services/roof-inspections", description: "Choose an inspection when the visible condition or most suitable service is unclear." },
       { label: "Roof Cleaning", path: "/services/roof-cleaning", description: "Choose cleaning when the main concern is visible surface growth or debris rather than a renovation decision." },
@@ -438,7 +438,7 @@ const serviceSeed: Service[] = [
     faqQ: "Can roof cleaning fix a roof leak?",
     faqA: "Cleaning removes surface build-up; a roof leak needs investigation of the water-entry path. Tell Ellis about the drip or ceiling stain so we can inspect the affected area and confirm the cleaning and repair work required.",
     faqExtras: [{ q: "Should I pressure-clean a roof myself?", a: "Do not climb onto a roof or use cleaning equipment from an unsafe position. Record what is visible from the ground and describe it in an enquiry." }],
-    next: "Send the visible build-up area, roof material if known, your Canberra suburb and safe ground-level photos.",
+    next: "Send the visible build-up area, roof material if known, your Canberra suburb and safe ground-level photos. Photos are optional; a written description is enough to arrange the assessment.",
     related: [
       { label: "Gutter & Downpipe Maintenance", path: "/services/gutter-downpipe-maintenance", description: "Choose this service when visible debris or overflow is concentrated in the drainage system." },
       { label: "Roof Inspections", path: "/services/roof-inspections", description: "Choose an inspection when you are not sure whether cleaning is the most suitable service." },
@@ -447,7 +447,7 @@ const serviceSeed: Service[] = [
   {
     slug: "gutter-downpipe-maintenance",
     title: "Gutter & Downpipe Cleaning and Maintenance",
-    direct: "Gutter and downpipe cleaning and maintenance in Canberra starts with visible debris, overflow, drainage changes or the roof edge that concerns you. Your photos and notes help us prepare for an on-site assessment and recommend the right cleaning or maintenance approach.",
+    direct: "Ellis Services Group provides gutter and downpipe cleaning and maintenance in Canberra. We inspect the run, outlets and downpipes on site, locate blockages or damage and quote the clearing, repair or replacement work needed.",
     symptoms: "Note leaf build-up, overflow during rain, visible sagging, water running near a wall, a blocked-looking outlet or a downpipe concern. Record the weather context and the general roof edge or side of the property without using an unsafe ladder or roof access.",
     causes: "Drainage performance can be affected by debris, roof runoff, gutter fall, joints, outlets, downpipes and conditions that are not visible from the ground. We check the gutter run, outlets and downpipes on site to locate the blockage or damaged component and plan the work.",
     assessment: "We inspect the gutter run, joints, outlets and connected downpipes on site, check the reported overflow route and plan safe access. We identify the blockage or damaged component and explain the cleaning or maintenance work required.",
@@ -456,7 +456,7 @@ const serviceSeed: Service[] = [
     faqQ: "Does gutter overflow always mean a downpipe is blocked?",
     faqA: "Debris, outlet condition, gutter fall, roof runoff and other drainage details can all be relevant.",
     faqExtras: [{ q: "Should I clear a high gutter from a ladder myself?", a: "Do not use a ladder or roof access beyond a safe and appropriate position. Record the visible overflow or debris area and include it in an enquiry." }],
-    next: "Send the gutter or downpipe area, when overflow occurs, your Canberra suburb and any safe photos.",
+    next: "Send the gutter or downpipe area, when overflow occurs, your Canberra suburb and any safe photos. Photos are optional; a written description is enough to arrange the assessment.",
     related: [
       { label: "Roof Cleaning", path: "/services/roof-cleaning", description: "Choose roof cleaning when visible surface debris or growth extends beyond the drainage line." },
       { label: "Roof Leak Repairs", path: "/services/roof-leak-repairs", description: "Choose roof leak repairs when there is an indoor water sign or the source is uncertain." },
@@ -482,7 +482,7 @@ const serviceGalleries: Record<
   { title: string; intro: string; images: { src: string; alt: string }[] }
 > = {
   "roof-leak-repairs": {
-    title: "What a clear roof-leak enquiry can show.",
+    title: "Roof-leak investigation and repair details.",
     intro:
       "Images from Ellis Services Group project work show visible signs, work stages and completed roof details. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
@@ -797,13 +797,13 @@ serviceBySlug["metal-roof-repairs"].related = [
 const defaults: Data = {
   company: "Ellis Services Group",
   tagline:
-    "Clear assessment and repair pathways for Canberra home roof enquiries.",
+    "Roof repairs and inspections for Canberra homes. Ellis arranges an on-site assessment, identifies the cause and explains the repair plan and written quote.",
   phone: "0405878406",
   email: "elliservices.group@gmail.com",
   address: "121 Marcus Clarke St, Canberra, ACT 2600",
   newsTitle: "Welcome to Ellis Services Group",
   newsCopy:
-    "Homeowners can browse roof repair services, the Canberra areas directory and frequently asked questions, then send an enquiry with one optional photo.",
+    "Ellis provides roof repairs, cleaning and maintenance across Canberra, with an on-site assessment and written quote. Send your suburb and concern to arrange a visit; a photo is optional.",
   media: [
     "/assets/home/canberra-roof-hero.png",
     "/assets/home/australian-residential-roof-context.png",
@@ -815,7 +815,7 @@ const defaults: Data = {
 const canonicalFaqs: Faq[] = [
   {
     q: "Getting started / Do you cover Canberra?",
-    a: "The website provides a Canberra coverage directory. Use the suburb selector or see /areas to choose the area that best matches your address.",
+    a: "Yes. Ellis Services Group provides roof repairs and inspections across Canberra. Send your suburb and roof concern to arrange an on-site assessment; we confirm the appointment and provide the repair plan and written quote.",
   },
   {
     q: "Getting started / Which suburbs can I select?",
@@ -827,7 +827,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Getting started / Can I add photos?",
-    a: "Yes. You can attach one optional JPG, PNG or WebP image up to 4 MB to your enquiry.",
+    a: "Yes. You can attach one optional JPG, PNG or WebP image up to 4 MB. You can also request an assessment without a photo.",
   },
   {
     q: "Getting started / Can photos diagnose a roof remotely?",
@@ -851,7 +851,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Roof leaks / Can a small leak be ignored?",
-    a: "Even a small leak can allow moisture to spread beyond the visible mark. Record the concern and arrange a roof repair assessment so the next step can be discussed.",
+    a: "No. Even a small leak can spread moisture beyond the visible mark. Arrange an on-site assessment so Ellis can trace the cause and quote the repair work.",
   },
   {
     q: "Roof leaks / Can dry weather limit an inspection?",
@@ -863,7 +863,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Tiles / Can only a few tiles be replaced?",
-    a: "That depends on the visible condition, access and suitable materials. A small defect can have context that needs consideration.",
+    a: "Yes. A few damaged tiles can be replaced when matching profiles are available and the surrounding roof supports a local repair. Ellis checks the adjoining tiles, ridge and flashing, then confirms materials, scope and the written quote.",
   },
   {
     q: "Tiles / Will replacement tiles match exactly?",
@@ -875,7 +875,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Ridges / Does every crack need full repointing?",
-    a: "No. Surface cracking does not automatically determine a whole-roof approach; local and wider pathways depend on observed condition.",
+    a: "No. Ellis checks cap stability, bedding, pointing and adjoining tiles on site. We identify the sections requiring local or broader ridge work and explain the repair scope and written quote.",
   },
   {
     q: "Chimneys / What does flashing do?",
@@ -915,11 +915,11 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Timing / How quickly will someone respond?",
-    a: "Contact Ellis Services Group to arrange your roof assessment. Our team confirms the appointment, inspects the affected area and explains the repair scope and quote.",
+    a: "Enquiry response is available from as little as 30 minutes. Contact Ellis to arrange an assessment; we confirm the appointment separately, with attendance planned around weather, safe access and the work required.",
   },
   {
     q: "Storm or hail / What should I do?",
-    a: "Observe safely from the ground, record visible changes where safe and contact your insurer or an appropriate professional for insurance or urgent safety matters.",
+    a: "Keep clear of damaged areas and wet electrical fittings. Contact emergency services for immediate danger. For roof damage, contact Ellis to arrange a safe on-site assessment and repair quote; contact your insurer separately about any claim.",
   },
   {
     q: "Maintenance / Can roof cleaning help prevent blocked gutters?",
@@ -1008,8 +1008,7 @@ function Home({ data }: { data: Data }) {
         <p className="eyebrow">PRACTICAL, LOCAL COMMUNICATION</p>
         <h2>A clearer first step for a roof concern.</h2>
         <p>
-          Share what you have noticed, choose the closest service topic and use
-          the service information to frame a considered next conversation.
+          Share what you have noticed, contact Ellis with the visible issue. We arrange an on-site assessment, identify the cause and confirm the repair plan and written quote.
         </p>
       </section>
     </>
@@ -1020,11 +1019,10 @@ function HomeV2({ data }: { data: Data }) {
     <>
       <section className="tradeHero">
         <div className="heroContent">
-          <p className="eyebrow">CANBERRA ROOF REPAIR ENQUIRIES</p>
+          <p className="eyebrow">CANBERRA ROOF REPAIRS</p>
           <h1>Roof Repairs Canberra | Ellis Services Group</h1>
           <p>
-            {data.tagline} Tell us what you can see safely from the ground, then
-            choose the closest service pathway.
+            {data.tagline} Tell us your suburb and what you have noticed; you do not need to identify the cause.
           </p>
           <div className="heroActions">
             <a className="button" href="/contact">
@@ -1055,8 +1053,7 @@ function HomeV2({ data }: { data: Data }) {
             Roof leak: safe observations before an inspection
           </h2>
           <p>
-            Record what you can see from inside and at ground level so a Roof
-            Leak Repairs enquiry starts with clear context, not a DIY diagnosis.
+            Tell us where water appears and when it started, using only safe indoor or ground-level observations. Ellis traces the roof-entry path on site and quotes the repairs needed.
           </p>
         </div>
         <ul>
@@ -1110,15 +1107,13 @@ function HomeV2({ data }: { data: Data }) {
         </a>
       </section>
       <section className="homeCta">
-        <p className="eyebrow">LOCAL ROOF REPAIR ENQUIRIES</p>
+        <p className="eyebrow">LOCAL ROOF REPAIR SERVICES</p>
         <h2>Looking for a roofer in Canberra for a small roof repair?</h2>
         <p>
-          Tell us what you have noticed and your suburb. We'll review the
-          details, discuss the most suitable next step and confirm the scope
-          before work begins.
+          Tell us your suburb and what you have noticed. We arrange an on-site assessment, identify the affected components and confirm the repair plan and written quote before work begins.
         </p>
         <a className="button" href="/contact">
-          Request roof repair advice <ArrowRight size={18} />
+          Request a roof assessment <ArrowRight size={18} />
         </a>
       </section>
       <section className="homeContextGrid trustImageGrid">
@@ -1165,8 +1160,7 @@ function HomeV2({ data }: { data: Data }) {
         <p className="eyebrow">NOT SURE WHERE TO BEGIN?</p>
         <h2>Describe what you have noticed.</h2>
         <p>
-          Select your suburb and service, then add an optional photo to help us
-          understand the visible concern before we speak with you.
+          Select your suburb and service to request an on-site assessment and written quote. A photo is optional; a short description is enough to arrange the visit.
         </p>
         <a className="button" href="/contact">
           Request a roof assessment <ArrowRight size={18} />
@@ -1211,10 +1205,7 @@ function About({ data }: { data: Data }) {
             difficult to keep on top of.
           </p>
           <p>
-            Ellis Services Group provides a clear local point of contact for
-            Canberra homeowners who have noticed a roof concern and want to
-            describe the next step without being pushed into a diagnosis from a
-            photo or a sales pitch.
+            Ellis Services Group provides roof repairs and inspections for Canberra homeowners. We listen to the concern, inspect the roof on site and explain the findings, recommended repairs and written quote in plain language.
           </p>
         </div>
         <figure className="pageFeatureMedia">
@@ -1256,26 +1247,17 @@ function About({ data }: { data: Data }) {
         aria-labelledby="about-approach-title"
       >
         <div>
-          <p className="eyebrow">A PRACTICAL FIRST CONVERSATION</p>
+          <p className="eyebrow">ON-SITE ROOF ASSESSMENT</p>
           <h2 id="about-approach-title">
             Start with what you can see, not a guess about the cause.
           </h2>
         </div>
         <div>
           <p>
-            Roof concerns are often noticed as a ceiling mark after rain, a
-            broken tile seen from the yard, movement around a ridge line or an
-            area near a chimney. Those signs can be useful, but they do not
-            automatically show what sits beneath the roof covering or define a
-            repair method.
+            A ceiling mark, broken tile, loose ridge cap or chimney junction concern tells us where to start. Ellis checks beneath and around the affected area where safe access permits, traces the water path and explains the repairs needed.
           </p>
           <p>
-            That is why our website is built around visible concerns. When you
-            contact us, a clear description of the room or roof area, when it
-            appeared, the weather conditions and your Canberra suburb gives the
-            conversation a practical starting point. A safe ground-level photo
-            can add context, but no photo, email or phone call is treated as a
-            complete diagnosis.
+            When you contact Ellis, your suburb, the affected room or roof area and the timing help us prepare for a site visit. We inspect the connected roof details and trace the cause. A ground-level photo is optional; we confirm the repair scope after the on-site assessment.
           </p>
         </div>
       </section>
@@ -1283,11 +1265,10 @@ function About({ data }: { data: Data }) {
         <div className="aboutSectionIntro">
           <p className="eyebrow">WHAT TO EXPECT</p>
           <h2 id="about-process-title">
-            How a roof repair enquiry is arranged.
+            How your roof assessment and repair are arranged.
           </h2>
           <p>
-            We keep the first conversation focused on the information that helps
-            determine an appropriate next step.
+            We confirm the appointment and safe access, inspect the roof and explain the recommended work and written quote before you approve repairs.
           </p>
         </div>
         <ol>
@@ -1296,10 +1277,7 @@ function About({ data }: { data: Data }) {
             <div>
               <h3>Describe the visible concern</h3>
               <p>
-                Tell us what you have noticed, where it is visible and whether
-                it followed rain, wind or a storm. Choose the service pathway
-                that feels closest, or select Roof Inspections when the category
-                is unclear.
+                Tell us your suburb, what you have noticed and whether it followed rain, wind or a storm. A short description is enough to request an assessment.
               </p>
             </div>
           </li>
@@ -1308,10 +1286,7 @@ function About({ data }: { data: Data }) {
             <div>
               <h3>Confirm practical context</h3>
               <p>
-                Access, roof height, weather, material condition and the agreed
-                purpose of a visit can affect what can be safely observed and
-                discussed. These details are considered before any scope is
-                assumed.
+                We confirm the appointment, inspection purpose and safe access around roof height, weather and material condition. On site, we check the affected area and connected roof details and explain any further investigation.
               </p>
             </div>
           </li>
@@ -1320,9 +1295,7 @@ function About({ data }: { data: Data }) {
             <div>
               <h3>Agree the next step</h3>
               <p>
-                Before work begins, we explain the recommended scope, access
-                requirements and relevant costs so you know the next
-                step.
+                After assessment, we provide the recommended repairs and written quote, including materials, access and any further investigation. We agree the work with you before repairs begin.
               </p>
             </div>
           </li>
@@ -1465,9 +1438,7 @@ function About({ data }: { data: Data }) {
               Can you help if I am unsure whether the roof is tile or metal?
             </summary>
             <p>
-              Yes. Choose the closest service pathway or request a roof
-              inspection, then describe what you can see from ground level. The
-              appropriate scope is confirmed before work is arranged.
+              Yes. Tell us the location and visible issue even if you do not know the roof material. We identify the covering and inspect its condition on site, then explain the repair plan and written quote.
             </p>
           </details>
           <details>
@@ -1531,7 +1502,7 @@ const serviceCardDetails: Record<string, { intro: string; focus: string; next: s
   "roof-leak-repairs": {
     intro: "Water marks, drips and rain-related damp patches.",
     focus: "Visible water signs, weather pattern and nearby roof junctions.",
-    next: "Send the room, timing and safe ground-level photos.",
+    next: "Send the room, timing and safe ground-level photos. Photos are optional; a written description is enough to arrange the assessment.",
   },
   "tile-roof-repairs": {
     intro: "Cracked, slipped, missing or visibly displaced roof tiles.",
@@ -1556,7 +1527,7 @@ const serviceCardDetails: Record<string, { intro: string; focus: string; next: s
   "metal-roof-repairs": {
     intro: "Metal or Colorbond sheets, fasteners, flashings and roof edges.",
     focus: "Visible sheet condition, penetrations, junctions and water signs.",
-    next: "Do not access the roof; send safe photos from ground level.",
+    next: "Do not access the roof; send safe photos from ground level. Photos are optional; a written description is enough to arrange the assessment.",
   },
   "roof-renovation": {
     intro: "An older roof requiring a considered renovation pathway.",
@@ -1635,9 +1606,7 @@ function Services({
       <p className="eyebrow">SERVICES OVERVIEW</p>
       <h1>Roof Repairs Canberra</h1>
       <p>
-        Choose the service that best matches the visible concern at your
-        Canberra property. Each page explains what we can review, how the
-        service can help and the next step to request an assessment.
+        Ellis provides roof repairs, inspections, cleaning and maintenance for Canberra homes. We inspect the property on site and confirm the required work and written quote. Choose a service below, or describe the issue if you are unsure.
       </p>
       <ServiceCards data={data} />
       <section className="guidance">
@@ -1645,10 +1614,7 @@ function Services({
           <p className="eyebrow">ROOF TYPE / CONCERN GUIDANCE</p>
           <h2>Not sure which service is closest?</h2>
           <p>
-            A concern can appear near a tile, ridge line, chimney junction or an
-            interior ceiling. You do not need to identify the cause before
-            making an enquiry—choose the closest visible symptom and add context
-            in your message.
+            Tell us where the problem appears, whether near tiles, ridges, a chimney or an interior ceiling. You do not need to diagnose the cause. Ellis checks the connected roof details on site and provides the repair plan and written quote.
           </p>
           <a className="button" href="/contact">
             Describe your concern <ArrowRight size={17} />
@@ -1679,8 +1645,7 @@ function Services({
           <summary>What information is useful to include?</summary>
           <p>
             A short description of what you have noticed, your suburb and the
-            closest service topic are a useful start. The form also lets you add
-            an optional local photo selection.
+            closest service topic are a useful start. The form also accepts an optional photo; a written description is enough to request an on-site assessment.
           </p>
         </details>
         <details>
@@ -1838,7 +1803,7 @@ function ServiceView({ service }: { service: Service }) {
         className="button"
         href={`/contact?service=${encodeURIComponent(service.title)}`}
       >
-        Send details or photos <ArrowRight size={17} />
+        Request a roof assessment <ArrowRight size={17} />
       </a>
     </section>
   );
@@ -1904,10 +1869,10 @@ function DistrictServiceAreaPage({ profile, data }: { profile: any; data: Data }
   return <section className="page suburbPage districtPage">
     <p className="eyebrow">CANBERRA DISTRICT ROOF SERVICES</p>
     <h1>{profile.h1}</h1>
-    <p className="directAnswer">Explore roof repair, roof renovation, roof cleaning and gutter or downpipe maintenance pathways for properties across {profile.district}. Select the service that matches the visible concern, then send an enquiry with your suburb and safe ground-level observations.</p>
+    <p className="directAnswer">Ellis provides roof repairs, renovation, cleaning and gutter or downpipe maintenance across {profile.district}. Send your suburb and concern to arrange an on-site assessment, the work plan and a written quote.</p>
     <section className="suburbFeatured"><h2>Roof repair and maintenance services in {profile.district}</h2><ServiceCards data={data} /></section>
     <section className="suburbAllServices"><h2>Suburbs in {profile.district}</h2><p>Choose your suburb to prefill the enquiry location after selecting the most relevant service pathway.</p><div>{profile.suburbs.map((suburb: string) => <a key={suburb} href={getSuburbRoute(suburb, profile.district) ?? "/areas"}>{suburb}</a>)}</div></section>
-    <section className="suburbEvidence"><h2>Plan the next step with clear roof information</h2><ul><li>Roof leak repairs, tile roof repairs, metal and Colorbond roof repairs, ridge capping and chimney flashing pathways.</li><li>Roof renovation, roof cleaning, gutter cleaning and downpipe maintenance service information.</li><li>Clear assessment, booking and contact details for Canberra property owners.</li></ul></section>
+    <section className="suburbEvidence"><h2>Arrange roof repairs and maintenance</h2><ul><li>Roof leak repairs, tile and metal roof repairs, ridge capping and chimney flashing repairs.</li><li>Roof renovation, roof cleaning, gutter cleaning and downpipe maintenance.</li><li>An on-site assessment and a written quote for the agreed work.</li></ul></section>
     <section className="suburbContact"><h2>Contact Ellis Services Group for {profile.district} roof services</h2><ContactForm /></section>
   </section>;
 }
@@ -1915,10 +1880,10 @@ function SuburbServiceAreaPage({ profile }: { profile: any }) {
   const featured = SERVICE_CATALOG.filter(({ slug }) => profile.featuredServiceSlugs.includes(slug));
   return <section className="page suburbPage">
     <p className="eyebrow">LOCAL ROOF SERVICES</p><h1>{profile.h1}</h1>
-    <p className="directAnswer">For properties in or near {profile.suburb}, {profile.district}, select the most suitable roof service and send the visible details of your concern.</p>
+    <p className="directAnswer">Ellis Services Group provides roof repairs and maintenance in {profile.suburb}, {profile.district}. Contact us to arrange an on-site assessment; we confirm the appointment, inspect the roof and provide the repair plan and written quote.</p>
     <section className="suburbFeatured"><h2>Choose a roof service in {profile.suburb}</h2><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
     <section className="suburbEvidence"><h2>Clear information before you enquire</h2><ul><li>More than a decade focused on roof repairs, supported by a standardised repair team.</li><li>Experienced roofing technicians with more than 10 years of hands-on industry experience.</li><li>A methodical approach to identifying visible roof concerns and the right next step.</li><li>Enquiry response from as little as 30 minutes. Contact Ellis Services Group to arrange your on-site assessment and confirm the appointment.</li><li>Trusted by more than 1,000 customers.</li></ul></section>
-    <section className="suburbAllServices"><h2>Roof services available for enquiry</h2><div>{SERVICE_CATALOG.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
+    <section className="suburbAllServices"><h2>Roof repair and maintenance services in {profile.suburb}</h2><div>{SERVICE_CATALOG.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
     <section className="suburbFaq"><h2>Before arranging roof work in {profile.suburb}</h2><details open><summary>What should I include in an enquiry?</summary><p>Describe what you can see safely, the weather context, your property access and the relevant roof area. Do not climb onto the roof or touch wet electrical areas.</p></details><details><summary>Can I send a photo?</summary><p>Yes. Safe ground-level photos help us prepare for the assessment; we confirm the recommended scope after reviewing the property.</p></details></section>
     <section className="suburbContact"><h2>Contact Ellis Services Group</h2><ContactForm defaultArea={profile.areaOption}/></section>
   </section>;
@@ -2006,8 +1971,7 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
           <p className="eyebrow">RELATED SERVICE</p>
           <h2>{article.serviceTitle}</h2>
           <p>
-            Explore the service pathway or send an enquiry with the details you
-            have recorded.
+            Contact Ellis to arrange an on-site assessment. We inspect the affected roof details and confirm the repair plan and written quote.
           </p>
           <a className="button" href={article.servicePath}>
             Explore {serviceLabel} in Canberra <ArrowRight size={17} />
@@ -2091,6 +2055,7 @@ function Contact({
       <div className="contactIntro">
         <p className="eyebrow">CONTACT</p>
         <h1>Contact a Canberra Roofer for Roof Repairs</h1>
+        <p>Call, email or use the form to arrange an on-site roof assessment. We confirm the appointment, inspect the affected roof and drainage, then provide the repair plan and written quote. You can request an assessment without a photo.</p>
         <p>
           {data.phone}
           <br />
@@ -2312,7 +2277,7 @@ function LayoutV2({
             />
             <span className="brandCopy">
               <strong>{data.company}</strong>
-              <span>Canberra roof enquiries</span>
+              <span>Canberra roof repairs</span>
             </span>
           </a>
           <button
@@ -2406,7 +2371,7 @@ function LayoutV2({
         <div>
           <strong>{data.company}</strong>
           <span>{data.address}</span>
-          <span>Roof repair enquiries across Canberra</span>
+          <span>Roof repairs and inspections across Canberra</span>
         </div>
         <div className="footerContact">
           <strong>Contact details</strong>
