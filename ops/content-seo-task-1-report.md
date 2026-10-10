@@ -31,3 +31,12 @@ Initial new tests caught an insufficient tile-page contextual link and mistaken 
 ## Self-review and limitations
 
 Reviewed the Canberra keyword map and Task 1/global constraints. New content stays with existing business capabilities and enquiry/decision guidance. Moisture copy asks readers to record roof/plumbing/condensation context without remote diagnosis. No new technical or legal safety claims requiring external verification were introduced. Existing safety copy was retained. Rendered tests exercise all published H1s, heading order and internal destinations, all 9 service FAQs/booking prompts/related links, all 5 article sections/bylines/dates, the contact checklist and protected brand/social proof. No existing assertions were weakened. No push, merge or deployment performed; independent final review/browser acceptance belongs to Task 2.
+
+## Final review polish — guide self-link
+
+The independent final review identified one self-link in the after-rain guide's next-steps paragraph. That paragraph now points readers to the inspection and quote preparation guide; other guides retain their contextual after-rain link. The rendered article test now checks that none of the five guides links to itself within `.guideNextSteps`.
+
+Under the same Node 22 PATH environment above, reran exactly:
+
+- `& 'C:/Users/UFTR/.workbuddy-ai/binaries/node/versions/22.22.2-2/node.exe' node_modules/vitest/vitest.mjs run tests/content-seo.vitest.test.tsx tests/about-faq.vitest.test.tsx tests/suburb-pages.vitest.test.tsx` — PASS, 3 files / 12 tests.
+- `& 'C:/Users/UFTR/.workbuddy-ai/binaries/node/versions/22.22.2-2/node.exe' 'C:/Users/UFTR/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pnpm/bin/pnpm.mjs' run build` — PASS, TypeScript + Vite client/SSR, 110 published pages + 404, integrity 111/111 with Node v22.22.2.

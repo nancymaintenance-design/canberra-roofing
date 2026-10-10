@@ -59,6 +59,7 @@ describe("rendered Canberra content SEO", () => {
       expect(host.querySelectorAll('.articleBody a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
       expect(host.querySelectorAll('.articleBody a[href^="/services/"]').length).toBeGreaterThanOrEqual(1);
       expect(host.querySelector('.articleBody a[href="/contact"]')).not.toBeNull();
+      expect(host.querySelector(`.guideNextSteps a[href="${path}"]`), path).toBeNull();
     }
   });
 
