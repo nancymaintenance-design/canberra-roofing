@@ -104,6 +104,29 @@ h3 {
   font-size: 1.35rem;
   line-height: 1.1;
 }
+.contentGuidance {
+  margin-block: 2rem;
+}
+.contentGuidance h2,
+.articleBody > section > h2,
+.pageFaq > h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2.15rem);
+  line-height: 1.15;
+  max-width: 32ch;
+}
+.articleBody > section,
+.guideNextSteps {
+  margin-block: 2rem;
+}
+.contentGuidance a,
+.articleBody p a,
+.serviceBookingPrompt a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.articleByline {
+  font-size: 0.9rem;
+}
 .eyebrow {
   margin: 0 0 0.75rem;
   color: var(--color-eucalyptus);
