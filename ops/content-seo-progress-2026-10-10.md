@@ -10,4 +10,6 @@ Base: 97790fa3631e7a95ce5e22c30a4bec91cf5ce693
 
 Task 1: complete (commits 97790fa..b787ecf, independent task review approved; no Critical/Important/Minor findings).
 
-Task 2: full local acceptance passed: 110 public paths, no heading skips or broken internal destinations, exact four footer links; 26 browser samples at 390/1440 px, no overflow/page errors. Fresh controller rerun: legacy 215/215, unit 179/179 under Node 22. Whole-branch review pending.
+Task 2: complete. Full local acceptance passed: 110 public paths, no heading skips or broken internal destinations, exact four footer links; 26 browser samples at 390/1440 px, no overflow/page errors. Fresh controller rerun after final fix: legacy 215/215, unit 179/179 under Node 22.
+
+Final review: no Critical/Important findings; one Minor circular next-step link on after-rain guide fixed in aca2eba. Scoped re-review ADDRESSED, no new blockers or outstanding findings. Branch and worktree retained for explicit user local approval; no push/merge/deployment.
