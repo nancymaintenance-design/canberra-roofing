@@ -1033,7 +1033,7 @@ function HomeV2({ data }: { data: Data }) {
             </a>
           </div>
           <ul className="heroAdvantages" aria-label="Ellis Services Group experience and response advantages">
-            <li><strong>10+ years</strong> in roof repairs</li>
+            <li><strong>15 years</strong> in roof repairs</li>
             <li><strong>Response from as little as 30 minutes</strong></li>
             <li><strong>Trusted by 1,000+ customers</strong></li>
           </ul>
@@ -1684,7 +1684,7 @@ function ServiceView({ service }: { service: Service }) {
       <h1>{seoHeadings[service.slug] ?? service.title}</h1>
       <p className="directAnswer">{service.direct}</p>
       <ul className="serviceAdvantages" aria-label="Ellis Services Group experience and response advantages">
-        <li><strong>10+ years</strong> in roof repairs</li>
+        <li><strong>15 years</strong> in roof repairs</li>
         <li><strong>Response from as little as 30 minutes</strong></li>
         <li><strong>Trusted by 1,000+ customers</strong></li>
       </ul>
@@ -1882,7 +1882,7 @@ function SuburbServiceAreaPage({ profile }: { profile: any }) {
     <p className="eyebrow">LOCAL ROOF SERVICES</p><h1>{profile.h1}</h1>
     <p className="directAnswer">Ellis Services Group provides roof repairs and maintenance in {profile.suburb}, {profile.district}. Contact us to arrange an on-site assessment; we confirm the appointment, inspect the roof and provide the repair plan and written quote.</p>
     <section className="suburbFeatured"><h2>Choose a roof service in {profile.suburb}</h2><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
-    <section className="suburbEvidence"><h2>Clear information before you enquire</h2><ul><li>More than a decade focused on roof repairs, supported by a standardised repair team.</li><li>Experienced roofing technicians with more than 10 years of hands-on industry experience.</li><li>A methodical approach to identifying visible roof concerns and the right next step.</li><li>Enquiry response from as little as 30 minutes. Contact Ellis Services Group to arrange your on-site assessment and confirm the appointment.</li><li>Trusted by more than 1,000 customers.</li></ul></section>
+    <section className="suburbEvidence"><h2>Clear information before you enquire</h2><ul><li>15 years focused on roof repairs, supported by a standardised repair team.</li><li>Experienced roofing technicians with 15 years of hands-on industry experience.</li><li>A methodical approach to identifying visible roof concerns and the right next step.</li><li>Enquiry response from as little as 30 minutes. Contact Ellis Services Group to arrange your on-site assessment and confirm the appointment.</li><li>Trusted by more than 1,000 customers.</li></ul></section>
     <section className="suburbAllServices"><h2>Roof repair and maintenance services in {profile.suburb}</h2><div>{SERVICE_CATALOG.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
     <section className="suburbFaq"><h2>Before arranging roof work in {profile.suburb}</h2><details open><summary>What should I include in an enquiry?</summary><p>Describe what you can see safely, the weather context, your property access and the relevant roof area. Do not climb onto the roof or touch wet electrical areas.</p></details><details><summary>Can I send a photo?</summary><p>Yes. Safe ground-level photos help us prepare for the assessment; we confirm the recommended scope after reviewing the property.</p></details></section>
     <section className="suburbContact"><h2>Contact Ellis Services Group</h2><ContactForm defaultArea={profile.areaOption}/></section>
@@ -2380,16 +2380,22 @@ function LayoutV2({
           <a href="/contact">Contact page →</a>
           <a href="/privacy">PRIVACY POLICY</a>
         </div>
-        <a
-          className="footerInstagram"
-          href="https://www.instagram.com/elliservices_group/"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Follow Ellis Services Group on Instagram"
-        >
-          <img src="/assets/brand/instagram-gradient.png" alt="" width={1254} height={1254} />
-          <span>Instagram</span>
-        </a>
+        <div className="footerSocial">
+          <strong>Follow Ellis Services Group</strong>
+          <nav className="footerSocialLinks" aria-label="Social media and Google reviews">
+            {[
+              { label: "Google Reviews", href: "https://share.google/y50AZRJwjOdVOlj5o", icon: "/assets/brand/google.svg" },
+              { label: "Instagram", href: "https://www.instagram.com/elliservices_group/", icon: "/assets/brand/instagram-gradient.png" },
+              { label: "LinkedIn", href: "https://share.google/Z4tImXHToPi9H4LmH", icon: "/assets/brand/linkedin.svg" },
+              { label: "Facebook", href: "https://share.google/tU1c5vEAlELqXCifu", icon: "/assets/brand/facebook.svg" },
+            ].map(({ label, href, icon }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} — Ellis Services Group (opens in a new tab)`}>
+                <img src={icon} alt="" width={24} height={24} loading="lazy" />
+                <span>{label}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
       </footer>
     </>
   );
@@ -2543,10 +2549,9 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
         <p className="caseStudyTrust">98% customer satisfaction</p>
         <h1>{study.title}</h1>
         <p className="articleLead">
-          This owner-supplied sequence documents a local tiled-roof work area
-          before, during and after the visible tile repair process. It is
-          presented as a real work example, not as a promise that every roof
-          will require the same scope, materials, timing or outcome.
+          See our Canberra tile roof repair from start to finish: displaced
+          tiles before repair, preparation of the affected area and the roof
+          covering reinstated after the work.
         </p>
       </header>
       <section className="caseEvidence" aria-labelledby="case-evidence-title">
@@ -2578,12 +2583,10 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
           <p className="eyebrow">WHAT THE PHOTOS SHOW</p>
           <h2>Visible tiled-roof work, recorded clearly.</h2>
           <p>
-            The first image shows displaced and missing tiles within a defined
-            roof area. The work-in-progress image shows tiles lifted and roof
-            elements exposed for controlled access; it does not independently
-            confirm a hidden cause or a universal repair method. The final image
-            shows the visible work area retiled, while the broader weathered
-            roof surface remains visible.
+            Before repair, tiles were displaced or missing in the affected roof
+            area. During the work, tiles were lifted to provide access to that
+            area. The final photo shows the roof covering reinstated. These
+            photos follow the repair through its three stages.
           </p>
         </div>
         <aside>
@@ -2598,12 +2601,12 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
               <dd>Canberra, ACT</dd>
             </div>
             <div>
-              <dt>Evidence</dt>
-              <dd>Owner-supplied before, during and after images</dd>
+              <dt>Project photos</dt>
+              <dd>Before, during and after repair</dd>
             </div>
             <div>
               <dt>Customer satisfaction</dt>
-              <dd>98% business-provided satisfaction measure</dd>
+              <dd>98% customer satisfaction</dd>
             </div>
           </dl>
         </aside>

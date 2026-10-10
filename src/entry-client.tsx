@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { AppV3 } from './main';
 import { getDocumentRoute } from './document-route';
+import { initialiseAnalytics } from './analytics.js';
 
 const root = document.getElementById('root')!;
 if (root.childElementCount > 0) {
@@ -11,3 +12,5 @@ if (root.childElementCount > 0) {
 } else {
   createRoot(root).render(<AppV3 pathname={window.location.pathname} />);
 }
+
+initialiseAnalytics();

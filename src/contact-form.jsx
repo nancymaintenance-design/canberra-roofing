@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import { sendContactEnquiry } from './contact-api.js';
+import { trackSuccessfulEnquiry } from './analytics.js';
 import { AREA_OPTIONS, PHOTO_ACCEPT, SERVICE_TITLES } from './contact-options.js';
 import { validateEnquiry } from './enquiry-validation.js';
 
 const privacyCopy = 'I agree that Ellis Services Group may use the details and optional photo I provide to respond to my enquiry via elliservices.group@gmail.com.';
 const genericFailure = "We couldn't send your enquiry. Please try again or call 0405878406.";
 
-export function ContactForm({ defaultArea = '', defaultService = '', submitEnquiry = sendContactEnquiry }) {
+export function ContactForm({ defaultArea = '', defaultService = '', submitEnquiry = sendContactEnquiry, analyticsFormName = 'roof_enquiry', onSuccessfulEnquiry = trackSuccessfulEnquiry }) {
   const formRef = useRef(null);
   const photoRef = useRef(null);
   const submittingRef = useRef(false);
@@ -58,6 +59,11 @@ export function ContactForm({ defaultArea = '', defaultService = '', submitEnqui
       setPhoto(undefined);
       setErrors({});
       setStatus('Enquiry sent successfully.');
+      try {
+        onSuccessfulEnquiry(analyticsFormName);
+      } catch {
+        // Measurement must never change the outcome of a delivered enquiry.
+      }
     } catch (failure) {
       const fieldErrors = failure?.fieldErrors && typeof failure.fieldErrors === 'object' ? failure.fieldErrors : {};
       setErrors(fieldErrors);

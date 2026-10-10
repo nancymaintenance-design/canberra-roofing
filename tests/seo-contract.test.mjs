@@ -75,14 +75,40 @@ test("structured business data and unknown routes remain safe for search visitor
   const home = new JSDOM(await (await fetch(preview.origin + "/")).text());
   try {
     const entity = JSON.parse(home.window.document.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
+    const organizationId = `${origin}/#organization`;
     assert.equal(entity.name, "Ellis Services Group");
+    assert.equal(entity.legalName, "ELLIS SERVICES GROUP PTY LTD");
+    assert.deepEqual(entity.identifier, { "@type": "PropertyValue", propertyID: "ABN", value: "96 645 821 745" });
+    assert.equal(entity["@id"], organizationId);
+    assert.equal(entity.logo, `${origin}/assets/brand/canberraroofkind-logo.png`);
     assert.equal(entity.email, "elliservices.group@gmail.com");
     assert.equal(entity.telephone, "+61405878406");
+    assert.equal(entity.openingHours, undefined, "do not publish unverified 24/7 hours");
   } finally {
     home.window.close();
+  }
+  const article = new JSDOM(await (await fetch(preview.origin + "/news/after-rain-roof-leak-check-canberra")).text());
+  try {
+    const entity = JSON.parse(article.window.document.querySelector("#news-article-schema")?.textContent ?? "{}");
+    assert.equal(entity.publisher?.["@id"], `${origin}/#organization`);
+  } finally {
+    article.window.close();
+  }
+  const service = new JSDOM(await (await fetch(preview.origin + "/areas/belconnen/aranda-roof-repairs")).text());
+  try {
+    const entity = JSON.parse(service.window.document.querySelector("#service-area-schema")?.textContent ?? "{}");
+    assert.equal(entity.mainEntity?.provider?.["@id"], `${origin}/#organization`);
+  } finally {
+    service.window.close();
   }
   for (const pathname of ["/services/not-published", "/areas/not-published", "/assets/not-published.png", "/api/not-published"]) {
     const response = await fetch(preview.origin + pathname);
     assert.equal(response.status, 404, `${pathname} does not serve an indexable application page`);
   }
+});
+
+test("case-study metadata does not make an unsupported satisfaction claim", () => {
+  const caseStudy = registry["/case-studies/tile-roof-repair-canberra"];
+  assert.doesNotMatch(caseStudy.title, /98%/);
+  assert.doesNotMatch(caseStudy.description, /98%/);
 });

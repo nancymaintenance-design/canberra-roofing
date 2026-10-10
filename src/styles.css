@@ -2312,6 +2312,25 @@ details:hover {
   box-shadow: var(--shadow-lift);
 }
 
+.footerSocialLinks {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 0.1rem 1.2rem;
+  margin-top: 0.5rem;
+}
+.footerSocialLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.3rem 0;
+  color: inherit;
+  font-weight: 800;
+}
+.footerSocialLinks img { width: 1em; height: 1em; flex: 0 0 1em; object-fit: contain; }
+.footerSocialLinks a:hover { color: var(--color-action); }
+.footerSocialLinks a:hover span { text-decoration: underline; }
+@media (max-width: 760px) { .footerSocial { grid-column: 1 / -1; } }
 .footerInstagram {
   display: inline-flex;
   align-items: center;

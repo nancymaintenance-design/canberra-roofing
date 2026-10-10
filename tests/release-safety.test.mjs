@@ -82,7 +82,9 @@ test('fallback and runbooks contain the approved no-form operational contract wi
   const fallback = fs.readFileSync(new URL('public/contact-unavailable.html', root), 'utf8');
   const release = fs.readFileSync(new URL('ops/release-checklist.md', root), 'utf8');
   const rollback = fs.readFileSync(new URL('ops/rollback.md', root), 'utf8');
-  assert.match(fallback, /Online enquiries are temporarily unavailable\. Please call 0405878406 or email elliservices\.group@gmail\.com\./);
+  assert.match(fallback, /If you need help with an online enquiry, contact Ellis Services Group directly\./);
+  assert.match(fallback, /href="tel:\+61405878406"/);
+  assert.match(fallback, /href="mailto:elliservices\.group@gmail\.com"/);
   assert.doesNotMatch(fallback, /<form|<script/i);
   for (const value of ['Method POST', 'Path `/api/contact`', 'source IP', 'fixed window', '5 requests', '10 minutes', 'status 429', 'only after action-time confirmation', 'honeypot requests 1–5', 'sixth']) assert.ok(release.includes(value), `missing WAF runbook value: ${value}`);
   for (const gate of ['Candidate complete', 'Human acceptance', 'GitHub private upload', 'Preview', 'WAF publication', 'Production release', 'GoDaddy DNS', 'one authorized synthetic email', 'rollback evidence']) assert.ok(release.includes(gate), `missing release gate: ${gate}`);

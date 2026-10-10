@@ -46,7 +46,7 @@ test("the home page invites Canberra repair enquiries with a clear next step and
     assert.match(copy, /We arrange an on-site assessment, identify the affected components and confirm the repair plan and written quote before work begins/i);
     assert.doesNotMatch(copy, /does not confirm that a job can be accepted/i);
     assert.match(copy, /Request a roof assessment/i);
-    assert.match(copy, /10\+ years in roof repairs/i);
+    assert.match(copy, /15 years in roof repairs/i);
     assert.match(copy, /Response from as little as 30 minutes/i);
     assert.match(copy, /Trusted by 1,000\+ customers/i);
   } finally {
@@ -130,7 +130,7 @@ test("every Canberra service page foregrounds verified experience, response and 
         3,
         `${pathname} shows the three verified Ellis advantages`,
       );
-      assert.match(copy, /10\+ years in roof repairs/i);
+      assert.match(copy, /15 years in roof repairs/i);
       assert.match(copy, /Response from as little as 30 minutes/i);
       assert.match(copy, /Trusted by 1,000\+ customers/i);
       assert.match(

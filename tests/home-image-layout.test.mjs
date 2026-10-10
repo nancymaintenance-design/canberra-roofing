@@ -8,7 +8,7 @@ test('homepage images reserve their rendered layout space', async () => {
     ['/assets/home/ellis-team-trust.png', '1672', '941'],
     ['/assets/home/ellis-site-consultation.png', '1672', '941'],
     ['/assets/brand/canberraroofkind-logo.png', '1254', '1254'],
-    ['/assets/brand/instagram-gradient.png', '1254', '1254'],
+    ['/assets/brand/instagram-gradient.png', '24', '24'],
   ]) {
     assert.match(html, new RegExp(`<img[^>]+src="${src}"[^>]+width="${width}"[^>]+height="${height}"`));
   }

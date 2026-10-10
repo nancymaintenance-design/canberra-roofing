@@ -6,6 +6,7 @@ const districtRoutes = Object.fromEntries(DISTRICT_PROFILES.map((profile) => [pr
 const suburbRoutes = Object.fromEntries(SUBURB_PROFILES.map((profile) => [profile.path, profile]));
 export const publishedRoutes = { ...registry, ...districtRoutes, ...suburbRoutes };
 export const pagePaths = Object.keys(publishedRoutes);
+const organizationId = 'https://www.canberraroofkind.com.au/#organization';
 
 // Match the acceptance server: never turn encoded separators, percent signs or
 // dot segments into route syntax. That prevents a second decode or traversal.
@@ -40,12 +41,12 @@ export function getRouteHead(pathname: string) {
       headline: route.h1,
       description: route.description,
       mainEntityOfPage: route.canonical,
-      publisher: { '@type': 'Organization', name: 'Ellis Services Group' },
+      publisher: { '@id': organizationId, '@type': 'Organization', name: 'Ellis Services Group' },
     } : null,
     serviceAreaSchema: getSuburbProfile(path) ? {
       '@context': 'https://schema.org', '@type': 'WebPage', name: route.h1,
       description: route.description, url: route.canonical,
-      mainEntity: { '@type': 'Service', name: 'Roof repair services', provider: { '@type': 'Organization', name: 'Ellis Services Group' } },
+      mainEntity: { '@type': 'Service', name: 'Roof repair services', provider: { '@id': organizationId, '@type': 'Organization', name: 'Ellis Services Group' } },
     } : null,
   };
 }

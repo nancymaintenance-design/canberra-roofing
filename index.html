@@ -9,36 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <!--route-head-->
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","RoofingContractor"],"name":"Ellis Services Group","url":"https://www.canberraroofkind.com.au/","telephone":"+61405878406","email":"elliservices.group@gmail.com","address":{"@type":"PostalAddress","streetAddress":"121 Marcus Clarke St","addressLocality":"Canberra","addressRegion":"ACT","postalCode":"2600","addressCountry":"AU"},"openingHours":"Mo-Su 00:00-23:59","areaServed":{"@type":"City","name":"Canberra"}}</script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EGMWJKX6M4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EGMWJKX6M4');
-
-      window.addEventListener('DOMContentLoaded', function () {
-        if (window.location.hostname !== 'www.canberraroofkind.com.au') return;
-
-        document.addEventListener('click', function (event) {
-          var link = event.target instanceof Element ? event.target.closest('a') : null;
-          if (!link) return;
-          var href = link.getAttribute('href') || '';
-          if (href.indexOf('tel:') === 0) gtag('event', 'phone_click', { contact_method: 'phone' });
-          if (href.indexOf('mailto:') === 0) gtag('event', 'email_click', { contact_method: 'email' });
-          if (link.classList.contains('contactTop')) gtag('event', 'contact_cta_click', { contact_method: 'contact_cta' });
-        });
-
-        var formStatus = document.querySelector('.contactStatus');
-        if (formStatus) new MutationObserver(function () {
-          if (formStatus.textContent.trim() === 'Enquiry sent successfully.' && formStatus.dataset.ga4Tracked !== 'true') {
-            formStatus.dataset.ga4Tracked = 'true';
-            gtag('event', 'generate_lead', { form_name: 'roof_enquiry' });
-          }
-          if (formStatus.textContent.trim() !== 'Enquiry sent successfully.') delete formStatus.dataset.ga4Tracked;
-        }).observe(formStatus, { childList: true, characterData: true, subtree: true });
-      });
-    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","RoofingContractor"],"@id":"https://www.canberraroofkind.com.au/#organization","name":"Ellis Services Group","legalName":"ELLIS SERVICES GROUP PTY LTD","identifier":{"@type":"PropertyValue","propertyID":"ABN","value":"96 645 821 745"},"url":"https://www.canberraroofkind.com.au/","logo":"https://www.canberraroofkind.com.au/assets/brand/canberraroofkind-logo.png","telephone":"+61405878406","email":"elliservices.group@gmail.com","address":{"@type":"PostalAddress","streetAddress":"121 Marcus Clarke St","addressLocality":"Canberra","addressRegion":"ACT","postalCode":"2600","addressCountry":"AU"},"areaServed":{"@type":"City","name":"Canberra"}}</script>
   </head>
   <body>
     <noscript><nav class="noScriptNav" aria-label="Navigation without JavaScript"><a href="/">Home</a><a href="/about">About</a><a href="/services">Services</a><a href="/solutions">Solutions</a><a href="/areas">Areas</a><a href="/news">News</a><a href="/faq">FAQ</a><a href="/contact">Contact</a></nav><p class="noScriptNotice">The online enquiry form requires JavaScript. Please enable JavaScript or <a href="tel:0405878406">call 0405878406</a>.</p></noscript>
