@@ -8,6 +8,9 @@ export const SERVICE_CATALOG = Object.freeze([
   { slug: "roof-renovation", title: "Roof Renovation", path: "/services/roof-renovation", shortLabel: "Roof Renovation" },
   { slug: "roof-cleaning", title: "Roof Cleaning", path: "/services/roof-cleaning", shortLabel: "Roof Cleaning" },
   { slug: "gutter-downpipe-maintenance", title: "Gutter & Downpipe Cleaning and Maintenance", path: "/services/gutter-downpipe-maintenance", shortLabel: "Gutter & Downpipe Maintenance" },
+  { slug: "gutter-repairs", title: "Gutter Repairs", path: "/services/gutter-repairs", shortLabel: "Gutter Repairs" },
+  { slug: "emergency-roof-repairs", title: "Emergency & Urgent Roof Repairs", path: "/services/emergency-roof-repairs", shortLabel: "Urgent Roof Repairs" },
+  { slug: "rental-property-roof-repairs", title: "Rental & Property Manager Roof Repairs", path: "/services/rental-property-roof-repairs", shortLabel: "Rental Property Roof Repairs" },
 ]);
 
 export const SERVICE_TITLES = Object.freeze(SERVICE_CATALOG.map(({ title }) => title));

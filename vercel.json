@@ -402,6 +402,156 @@
       "source": "/privacy.html/",
       "destination": "/privacy",
       "permanent": true
+    },
+    {
+      "source": "/news/roof-repair-cost-canberra.html",
+      "destination": "/news/roof-repair-cost-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-repair-cost-canberra/",
+      "destination": "/news/roof-repair-cost-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-repair-cost-canberra.html/",
+      "destination": "/news/roof-repair-cost-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-repointing-cost-canberra.html",
+      "destination": "/news/roof-repointing-cost-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-repointing-cost-canberra/",
+      "destination": "/news/roof-repointing-cost-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-repointing-cost-canberra.html/",
+      "destination": "/news/roof-repointing-cost-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-cleaning-methods-canberra.html",
+      "destination": "/news/roof-cleaning-methods-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-cleaning-methods-canberra/",
+      "destination": "/news/roof-cleaning-methods-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-cleaning-methods-canberra.html/",
+      "destination": "/news/roof-cleaning-methods-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/gutters-overflowing-heavy-rain-canberra.html",
+      "destination": "/news/gutters-overflowing-heavy-rain-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/gutters-overflowing-heavy-rain-canberra/",
+      "destination": "/news/gutters-overflowing-heavy-rain-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/gutters-overflowing-heavy-rain-canberra.html/",
+      "destination": "/news/gutters-overflowing-heavy-rain-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-leak-vs-condensation-canberra.html",
+      "destination": "/news/roof-leak-vs-condensation-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-leak-vs-condensation-canberra/",
+      "destination": "/news/roof-leak-vs-condensation-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-leak-vs-condensation-canberra.html/",
+      "destination": "/news/roof-leak-vs-condensation-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-repair-vs-restoration-vs-replacement-canberra.html",
+      "destination": "/news/roof-repair-vs-restoration-vs-replacement-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-repair-vs-restoration-vs-replacement-canberra/",
+      "destination": "/news/roof-repair-vs-restoration-vs-replacement-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-repair-vs-restoration-vs-replacement-canberra.html/",
+      "destination": "/news/roof-repair-vs-restoration-vs-replacement-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-repairs.html",
+      "destination": "/services/gutter-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-repairs/",
+      "destination": "/services/gutter-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/gutter-repairs.html/",
+      "destination": "/services/gutter-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/emergency-roof-repairs.html",
+      "destination": "/services/emergency-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/emergency-roof-repairs/",
+      "destination": "/services/emergency-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/emergency-roof-repairs.html/",
+      "destination": "/services/emergency-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/rental-property-roof-repairs.html",
+      "destination": "/services/rental-property-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/rental-property-roof-repairs/",
+      "destination": "/services/rental-property-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/services/rental-property-roof-repairs.html/",
+      "destination": "/services/rental-property-roof-repairs",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-leak-information-for-tenants-canberra.html",
+      "destination": "/news/roof-leak-information-for-tenants-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-leak-information-for-tenants-canberra/",
+      "destination": "/news/roof-leak-information-for-tenants-canberra",
+      "permanent": true
+    },
+    {
+      "source": "/news/roof-leak-information-for-tenants-canberra.html/",
+      "destination": "/news/roof-leak-information-for-tenants-canberra",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -504,6 +654,46 @@
     {
       "source": "/privacy",
       "destination": "/privacy.html"
+    },
+    {
+      "source": "/news/roof-repair-cost-canberra",
+      "destination": "/news/roof-repair-cost-canberra.html"
+    },
+    {
+      "source": "/news/roof-repointing-cost-canberra",
+      "destination": "/news/roof-repointing-cost-canberra.html"
+    },
+    {
+      "source": "/news/roof-cleaning-methods-canberra",
+      "destination": "/news/roof-cleaning-methods-canberra.html"
+    },
+    {
+      "source": "/news/gutters-overflowing-heavy-rain-canberra",
+      "destination": "/news/gutters-overflowing-heavy-rain-canberra.html"
+    },
+    {
+      "source": "/news/roof-leak-vs-condensation-canberra",
+      "destination": "/news/roof-leak-vs-condensation-canberra.html"
+    },
+    {
+      "source": "/news/roof-repair-vs-restoration-vs-replacement-canberra",
+      "destination": "/news/roof-repair-vs-restoration-vs-replacement-canberra.html"
+    },
+    {
+      "source": "/services/gutter-repairs",
+      "destination": "/services/gutter-repairs.html"
+    },
+    {
+      "source": "/services/emergency-roof-repairs",
+      "destination": "/services/emergency-roof-repairs.html"
+    },
+    {
+      "source": "/services/rental-property-roof-repairs",
+      "destination": "/services/rental-property-roof-repairs.html"
+    },
+    {
+      "source": "/news/roof-leak-information-for-tenants-canberra",
+      "destination": "/news/roof-leak-information-for-tenants-canberra.html"
     }
   ]
 }

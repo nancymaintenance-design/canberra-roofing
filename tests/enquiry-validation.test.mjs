@@ -197,6 +197,9 @@ test("canonical area membership and service titles preserve their approved order
     "Roof Renovation",
     "Roof Cleaning",
     "Gutter & Downpipe Cleaning and Maintenance",
+    "Gutter Repairs",
+    "Emergency & Urgent Roof Repairs",
+    "Rental & Property Manager Roof Repairs",
   ]);
 });
 

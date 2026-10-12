@@ -7,7 +7,7 @@ import { AppV3 } from "../src/main";
 const galleryImages = (pathname: string) => {
   const host = document.createElement("div");
   host.innerHTML = renderToStaticMarkup(<AppV3 pathname={pathname} />);
-  return Array.from(host.querySelectorAll(".serviceGalleryGrid img")).map(
+  return Array.from(host.querySelectorAll(".serviceGallery:not([data-project]) .serviceGalleryGrid img")).map(
     (image) => image.getAttribute("src"),
   );
 };

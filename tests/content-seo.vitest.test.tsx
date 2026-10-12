@@ -31,7 +31,7 @@ describe("rendered Canberra content SEO", () => {
     }
   }, 15000);
 
-  it("gives all nine services distinct booking FAQs, related services and quote preparation", () => {
+  it("gives all twelve services distinct booking FAQs, related services and quote preparation", () => {
     const questions = new Set<string>();
     for (const service of SERVICE_CATALOG) {
       const host = page(service.path);
@@ -45,17 +45,18 @@ describe("rendered Canberra content SEO", () => {
       expect(host.textContent).toContain("15 years in roof repairs");
       expect(host.textContent).toContain("Trusted by 1,000+ customers");
     }
-    expect(questions.size).toBe(9);
+    expect(questions.size).toBe(12);
   });
 
-  it("sections all five guides with attribution, revision date and contextual links", () => {
+  it("sections all twelve guides with attribution, revision date and contextual links", () => {
     const guides = Object.keys(publishedRoutes).filter(path => path.startsWith("/news/"));
-    expect(guides).toHaveLength(5);
+    expect(guides).toHaveLength(12);
     for (const path of guides) {
       const host = page(path);
       expect(host.querySelectorAll(".articleBody h2").length, path).toBeGreaterThanOrEqual(6);
       expect(host.querySelector(".articleByline")!.textContent).toContain("Ellis Services Group");
-      expect(host.querySelector('time[datetime="2026-10-10"]')).not.toBeNull();
+      const revised = path === "/news/chimney-flashing-water-entry-signs" ? "2026-10-10" : "2026-10-12";
+      expect(host.querySelector(`time[datetime="${revised}"]`)).not.toBeNull();
       expect(host.querySelectorAll('.articleBody a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
       expect(host.querySelectorAll('.articleBody a[href^="/services/"]').length).toBeGreaterThanOrEqual(1);
       expect(host.querySelector('.articleBody a[href="/contact"]')).not.toBeNull();

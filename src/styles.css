@@ -1649,6 +1649,30 @@ select[aria-invalid="false"]:invalid {
     aspect-ratio: 16/10;
   }
 }
+.serviceProjectGallery .serviceGalleryGrid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  align-items: start;
+}
+.serviceProjectGallery .serviceGalleryGrid figure {
+  grid-column: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+.serviceProjectGallery .serviceGalleryGrid figure:only-child {
+  max-width: 640px;
+}
+.serviceProjectGallery .serviceGalleryGrid img {
+  display: block;
+  height: auto;
+  object-fit: contain;
+}
+.serviceProjectGallery .serviceGalleryGrid figure:hover img {
+  transform: none;
+}
+.serviceProjectGallery figcaption {
+  padding: 1rem;
+  line-height: 1.5;
+}
 .relatedGuides {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
@@ -2766,4 +2790,5 @@ details:hover {
     grid-template-columns: 2.8rem minmax(0, 1fr);
   }
 }
+.articleContents{background:#eef2ed;border-left:3px solid #36564a;padding:1.25rem 1.5rem;margin:1.5rem 0 2rem;overflow-wrap:anywhere}.articleContents ol{padding-left:1.3rem}.articleContents li+li,.topicLinks li+li{margin-top:.55rem}.articleContents a,.topicLinks a{color:inherit;text-underline-offset:3px}.topicSection{scroll-margin-top:7rem}.serviceDepth>section+section{margin-top:2rem}.topicHub{margin-top:2.5rem}.topicHub .topicLinks{columns:2;column-gap:2rem}.topicHub li{break-inside:avoid;margin-bottom:.7rem}.articleSources{border-top:1px solid #c8d2ce;margin-top:2rem;padding-top:1rem}.articleSources a{overflow-wrap:anywhere}.articleBody .pageFaq{margin-block:2rem}.articleBody .pageFaq details{padding:1rem 0;border-bottom:1px solid #c8d2ce}.articleBody .pageFaq summary{font-weight:650;cursor:pointer}@media(max-width:640px){.topicHub .topicLinks{columns:1}.articleContents{padding:1rem}.topicSection{scroll-margin-top:5rem}}
 .suburbPage{max-width:1180px}.suburbPage h1{max-width:850px}.suburbFeatured,.suburbEvidence,.suburbAllServices,.suburbFaq,.suburbContact{margin-top:2.5rem}.suburbEvidence{background:#e7eeeb;padding:1.5rem;border-left:4px solid #f15a24}.suburbEvidence ul{margin:0;padding-left:1.25rem}.suburbEvidence li+li{margin-top:.6rem}.suburbAllServices>div{display:flex;flex-wrap:wrap;gap:.6rem}.suburbAllServices a{border:1px solid #36564a;padding:.55rem .8rem;color:inherit}.suburbFaq details{border-top:1px solid #c8d2ce;padding:1rem 0}.suburbFaq summary{font-weight:700}.suburbContact{padding:1.5rem;background:#f4f5f1}@media(max-width:600px){.suburbEvidence,.suburbContact{padding:1rem}.suburbAllServices a{width:100%}}

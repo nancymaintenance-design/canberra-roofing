@@ -8,6 +8,11 @@ import { SERVICE_CATALOG } from "./service-catalog.js";
 import { getDistrictProfile, getSuburbRoute, getSuburbProfile } from "./suburb-profiles.js";
 import { ContactForm } from "./contact-form.jsx";
 import { guideHeadings, ServicePlanning, ServiceBookingFaq, EnquiryChecklist, GuideNextSteps, LocalGuideLinks } from "./content-guidance";
+import { GAP_GUIDES, GUTTER_REPAIR_SERVICE, SERVICE_TOPIC_HEADINGS } from "./keyword-gap-content.js";
+import { ServiceDepth, GapArticleSections, GapHubLinks, GapContextLinks, type GapArticle } from "./keyword-gap-sections";
+import { ADDITIONAL_SERVICES, TENANT_GUIDE, BOOKING_POLICY } from "./keyword-intent-content.js";
+import { IntentServiceContent, IntentFaqs, IntentFaqDirectory, OperatingHours } from "./keyword-intent-sections";
+import { PROJECT_GALLERIES } from "./project-evidence.js";
 
 type RelatedService = { label: string; path: string; description: string };
 type Service = {
@@ -39,7 +44,7 @@ type Data = {
   faqs: Faq[];
   media: string[];
 };
-type NewsArticle = {
+type NewsArticle = GapArticle & {
   slug: string;
   title: string;
   description: string;
@@ -47,6 +52,7 @@ type NewsArticle = {
   serviceTitle: string;
   servicePath: string;
   body: string[];
+  updated?: string;
 };
 const newsArticles: NewsArticle[] = [
   {
@@ -131,7 +137,18 @@ const newsArticles: NewsArticle[] = [
     ],
   },
 ];
+newsArticles.push(...GAP_GUIDES, TENANT_GUIDE);
+for (const article of newsArticles) {
+  if (article.slug !== "chimney-flashing-water-entry-signs") article.updated = "2026-10-12";
+}
 const newsImages: Record<string, { src: string; alt: string }> = {
+  "roof-leak-information-for-tenants-canberra": { src: "/assets/news/roof-leak-after-rain.png", alt: "Indoor ceiling mark that can be recorded in a rental roof leak report" },
+  "roof-repair-cost-canberra": { src: "/assets/news/roof-space-inspection.png", alt: "Roof inspection context for planning the repair scope" },
+  "roof-repointing-cost-canberra": { src: "/assets/news/ridge-repointing-work.png", alt: "Ridge capping detail used when discussing bedding and pointing" },
+  "roof-cleaning-methods-canberra": { src: "/assets/services/roof-cleaning-surface-condition.png", alt: "Roof tile surface with visible build-up before cleaning" },
+  "gutters-overflowing-heavy-rain-canberra": { src: "/assets/services/gutter-downpipe-roof-edge-condition.jpg", alt: "Roof-edge gutter area with debris visible along the drainage line" },
+  "roof-leak-vs-condensation-canberra": { src: "/assets/news/roof-leak-after-rain.png", alt: "Indoor ceiling water mark: an observation for moisture investigation" },
+  "roof-repair-vs-restoration-vs-replacement-canberra": { src: "/assets/news/damaged-tile-record.png", alt: "Roof tile condition considered when planning local repairs or wider work" },
   "after-rain-roof-leak-check-canberra": {
     src: "/assets/news/roof-leak-after-rain.png",
     alt: "Ceiling water staining being checked from inside a home after rain",
@@ -464,6 +481,7 @@ const serviceSeed: Service[] = [
     ],
   },
 ];
+serviceSeed.push(GUTTER_REPAIR_SERVICE, ...ADDITIONAL_SERVICES);
 const serviceBySlug = Object.fromEntries(
   serviceSeed.map((service) => [service.slug, service]),
 );
@@ -474,7 +492,10 @@ const seoHeadings: Record<string, string> = {
   "rebedding-repointing": "Ridge Capping Repair Canberra",
   "roof-inspections": "Roof Inspection Canberra",
   "metal-roof-repairs": "Metal & Colorbond Roof Repairs Canberra",
-  "roof-renovation": "Roof Renovation Canberra",
+  "roof-renovation": "Roof Renovation & Restoration Canberra",
+  "gutter-repairs": "Gutter Repairs Canberra",
+  "emergency-roof-repairs": "Emergency & Urgent Roof Repairs Canberra",
+  "rental-property-roof-repairs": "Rental Property & Property Manager Roof Repairs Canberra",
   "roof-cleaning": "Roof Cleaning Canberra",
   "gutter-downpipe-maintenance": "Gutter & Downpipe Cleaning Canberra",
 };
@@ -1124,6 +1145,8 @@ function HomeV2({ data }: { data: Data }) {
           Request a roof assessment <ArrowRight size={18} />
         </a>
       </section>
+      <IntentServiceContent slug="home" />
+      <OperatingHours />
       <section className="homeContextGrid trustImageGrid">
         <figure>
           <img
@@ -1567,7 +1590,7 @@ function ServiceCards({ data }: { data: Data }) {
           next: s.next,
         };
         return <article className="card serviceCard" key={s.slug}>
-          <div className="serviceCardTopline"><span>0{i + 1}</span><span>Canberra service</span></div>
+          <div className="serviceCardTopline"><span>{String(i + 1).padStart(2, "0")}</span><span>Canberra service</span></div>
           <h3>{s.title}</h3>
           <p className="serviceCardLead">{detail.intro}</p>
           <dl className="serviceCardFacts">
@@ -1622,6 +1645,7 @@ function Services({
       </p>
       <h2>Compare roof repair and maintenance services</h2>
       <ServiceCards data={data} />
+      <GapHubLinks />
       <section className="guidance">
         <div>
           <p className="eyebrow">ROOF TYPE / CONCERN GUIDANCE</p>
@@ -1683,7 +1707,8 @@ function Services({
   );
 }
 function ServiceView({ service }: { service: Service }) {
-  const gallery = serviceGalleries[service.slug];
+  const headings = SERVICE_TOPIC_HEADINGS[service.slug] ?? ["From your roof concern to an agreed repair scope", "Visible signs to describe", "What we inspect on site", "How we plan the repair", "How we help you move forward", "Conditions that matter"];
+  const galleries: { title: string; intro: string; project?: boolean; relatedPath?: string; relatedLabel?: string; images: { src: string; alt: string; srcSet?: string; width?: number; height?: number; caption?: string }[] }[] = [serviceGalleries[service.slug], PROJECT_GALLERIES[service.slug as keyof typeof PROJECT_GALLERIES]].filter(Boolean);
   const guide = newsArticles.find(
     (article) => article.servicePath === `/services/${service.slug}`,
   );
@@ -1702,42 +1727,48 @@ function ServiceView({ service }: { service: Service }) {
         <li><strong>Response from as little as 30 minutes</strong></li>
         <li><strong>Trusted by 1,000+ customers</strong></li>
       </ul>
-      <h2>From your roof concern to an agreed repair scope</h2>
+      <h2>{headings[0]}</h2>
       <div className="serviceDetail">
         <article>
           <span>01 / Signs to describe</span>
-          <h3>Visible signs to describe</h3>
+          <h3>{headings[1]}</h3>
           <p>{service.symptoms}</p>
         </article>
         <article>
           <span>02 / Possible causes</span>
-          <h3>What we inspect on site</h3>
+          <h3>{headings[2]}</h3>
           <p>{service.causes}</p>
         </article>
         <article>
           <span>03 / Our on-site assessment</span>
-          <h3>How we plan the repair</h3>
+          <h3>{headings[3]}</h3>
           <p>{service.assessment}</p>
         </article>
         <article>
           <span>04 / Recommended next steps</span>
-          <h3>How we help you move forward</h3>
+          <h3>{headings[4]}</h3>
           <p>{service.pathways}</p>
         </article>
         <article>
           <span>05 / What affects scope</span>
-          <h3>Conditions that matter</h3>
+          <h3>{headings[5]}</h3>
           <p>{service.scope}</p>
           <p className="serviceCostNote">Before arranging a visit, we explain any inspection or booking fee that applies. Repair pricing is confirmed after assessment and before work begins.</p>
         </article>
       </div>
       <ServicePlanning slug={service.slug} />
-      {gallery ? (
-        <section className="serviceGallery" aria-labelledby={galleryTitleId}>
+      <ServiceDepth slug={service.slug} />
+      <IntentServiceContent slug={service.slug} />
+      {service.slug === "emergency-roof-repairs" && <><OperatingHours /><p><a href="https://esa.act.gov.au/be-emergency-ready/storms" target="_blank" rel="noopener noreferrer">ACT Emergency Services Agency: storm emergency assistance</a>. For an immediate threat to life call 000; for storm or flood emergency assistance call ACTSES on 132 500.</p></>}
+      {service.slug === "rental-property-roof-repairs" && <p><a href="/news/roof-leak-information-for-tenants-canberra">What tenants can include in a roof leak report</a>.</p>}
+      {service.slug === "roof-leak-repairs" && <p><a href="/services/emergency-roof-repairs">Urgent leak enquiries and after-hours fees</a>, or <a href="/services/rental-property-roof-repairs">coordinate a rental property roof assessment</a>.</p>}
+      {galleries.map((gallery) => (
+        <section key={gallery.title} className={`serviceGallery${gallery.project ? " serviceProjectGallery" : ""}`} data-project={gallery.project || undefined} aria-labelledby={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>
           <div className="serviceGalleryIntro">
-            <p className="eyebrow">SERVICE IMAGE GUIDE</p>
-            <h2 id={galleryTitleId}>{gallery.title}</h2>
+            <p className="eyebrow">{gallery.project ? "PROJECT PHOTOS" : "SERVICE IMAGE GUIDE"}</p>
+            <h2 id={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>{gallery.title}</h2>
             <p>{gallery.intro}</p>
+            {gallery.relatedPath && <a href={gallery.relatedPath}>{gallery.relatedLabel}</a>}
           </div>
           <div className="serviceGalleryGrid">
             {gallery.images.map((image, index) => (
@@ -1745,12 +1776,13 @@ function ServiceView({ service }: { service: Service }) {
                 key={image.src}
                 className={index === 0 ? "galleryInterior" : ""}
               >
-                <img src={image.src} alt={image.alt} />
+                <img src={image.src} srcSet={image.srcSet} sizes={image.srcSet ? "(max-width: 760px) calc(100vw - 3rem), 500px" : undefined} alt={image.alt} width={image.width} height={image.height} loading={gallery.project ? "lazy" : undefined} decoding={gallery.project ? "async" : undefined} />
+                {image.caption && <figcaption>{image.caption}</figcaption>}
               </figure>
             ))}
           </div>
         </section>
-      ) : null}
+      ))}
       {guide ? (
         <section
           className="relatedGuides"
@@ -1816,6 +1848,7 @@ function ServiceView({ service }: { service: Service }) {
           </details>
         ))}
         <ServiceBookingFaq slug={service.slug} />
+        <IntentFaqs slug={service.slug} />
       </section>
       <p className="serviceBookingPrompt">{service.next}</p>
       <a
@@ -1956,7 +1989,7 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
         <p className="eyebrow">CANBERRA ROOFING NEWS</p>
         <h1>{article.title}</h1>
         <p className="articleLead">{article.description}</p>
-        <p className="articleByline">By Ellis Services Group · Updated <time dateTime="2026-10-10">10 October 2026</time></p>
+        <p className="articleByline">By Ellis Services Group · Updated <time dateTime={article.updated ?? "2026-10-10"}>{article.updated ? "12 October 2026" : "10 October 2026"}</time></p>
       </header>
       <div className="articleLayout">
         <div className="articleBody">
@@ -1965,7 +1998,7 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
               <img src={image.src} alt={image.alt} />
             </figure>
           ) : null}
-          {article.body.map((paragraph, index) => (
+          {article.sections ? <GapArticleSections article={article} /> : article.body.map((paragraph, index) => (
             <section key={paragraph}><h2>{guideHeadings[article.slug][index]}</h2><p>{paragraph}</p>{index === 1 ? <p>For the on-site assessment and proposed work, see our <a href={article.servicePath}>{serviceLabel.toLowerCase()} service in Canberra</a>.</p> : null}</section>
           ))}
           {article.slug === "after-rain-roof-leak-check-canberra" ? <section><h2>Report dampness that appears without rain too</h2><p>A ceiling stain does not establish the source of moisture. Record whether it also appears in dry weather and mention any known plumbing concern or suspected condensation. Share the pattern with Ellis so the roof assessment begins with the full context and any need for a different investigation can be discussed.</p><p>Our <a href="/services/roof-leak-repairs">roof leak repair service</a> explains the investigation and quote process.</p></section> : null}
@@ -1994,7 +2027,7 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
               <p>Ask for exclusions and any further investigation to be identified. If additional work is found, agree its scope and price before approving it.</p>
             </>
           ) : null}
-          <GuideNextSteps slug={article.slug} />
+          {!article.sections && <><GapContextLinks slug={article.slug} /><GuideNextSteps slug={article.slug} /></>}
         </div>
         <aside className="articleSidebar">
           <p className="eyebrow">RELATED SERVICE</p>
@@ -2052,6 +2085,8 @@ function FAQ({ data }: { data: Data }) {
         ) : null;
       })}
       <LocalGuideLinks />
+      <IntentFaqDirectory />
+      <OperatingHours />
       <section className="safetySources">
         <p className="eyebrow">SAFETY GUIDANCE</p>
         <p>
@@ -2092,6 +2127,9 @@ function Contact({
           {data.email}
         </p>
         <address className="businessAddress">{data.address}</address>
+        <OperatingHours />
+        <IntentServiceContent slug="contact" />
+        <p>For an owner or manager arranging access, see <a href="/services/rental-property-roof-repairs">rental property roof repairs</a>. Tenants can use our <a href="/news/roof-leak-information-for-tenants-canberra">roof leak reporting guide</a>.</p>
         <EnquiryChecklist />
         <figure className="pageFeatureMedia contactFeatureMedia">
           <img
@@ -2350,7 +2388,7 @@ function LayoutV2({
                     <div id="services-menu" className="servicesPopup">
                       <a href="/services">
                         <strong>Services overview</strong>
-                        <small>Compare six roof repair pathways</small>
+                        <small>Compare roof repair and maintenance services</small>
                       </a>
                       {data.services.map((service) => (
                         <a
@@ -2406,6 +2444,8 @@ function LayoutV2({
         </div>
         <div className="footerContact">
           <strong>Contact details</strong>
+          <span>{BOOKING_POLICY.hours}, {BOOKING_POLICY.days}</span>
+          <span>After-hours urgent-service fees are determined in the on-site quote.</span>
           <a href={`tel:${data.phone}`}>{data.phone}</a>
           <a href={`mailto:${data.email}`}>{data.email}</a>
           <a href="/contact">Contact page →</a>

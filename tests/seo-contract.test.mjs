@@ -83,7 +83,8 @@ test("structured business data and unknown routes remain safe for search visitor
     assert.equal(entity.logo, `${origin}/assets/brand/canberraroofkind-logo.png`);
     assert.equal(entity.email, "elliservices.group@gmail.com");
     assert.equal(entity.telephone, "+61405878406");
-    assert.equal(entity.openingHours, undefined, "do not publish unverified 24/7 hours");
+    assert.equal(entity.openingHours, "Mo-Su 09:00-21:00", "owner-confirmed normal hours, not 24/7 opening");
+    assert.match(home.window.document.querySelector('main').textContent, /9:00 am–9:00 pm, seven days a week/);
   } finally {
     home.window.close();
   }

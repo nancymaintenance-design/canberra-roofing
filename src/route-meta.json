@@ -241,10 +241,10 @@
     ]
   },
   "/services/roof-renovation": {
-    "title": "Roof Renovation Canberra | Ellis Services Group",
-    "description": "Roof renovation Canberra: Ellis assesses existing materials and drainage, discusses your goals and confirms repairs, preparation, finishes and a written quote.",
+    "title": "Roof Renovation & Restoration Canberra | Ellis Services Group",
+    "description": "Roof renovation and restoration scope in Canberra: Ellis assesses existing materials, discusses repairs, preparation and finishes, then confirms the quote.",
     "canonical": "https://www.canberraroofkind.com.au/services/roof-renovation",
-    "h1": "Roof Renovation Canberra",
+    "h1": "Roof Renovation & Restoration Canberra",
     "indexability": "index,follow",
     "contentSource": "src/main.tsx",
     "links": [
@@ -696,6 +696,192 @@
       "mailto:elliservices.group@gmail.com",
       "/contact",
       "/privacy"
+    ]
+  },
+  "/news/roof-repair-cost-canberra": {
+    "title": "Roof Repair Costs Canberra | Ellis Services Group",
+    "description": "Understand roof leak repair costs in Canberra, what changes the scope and how to compare an itemised quote before approving work.",
+    "canonical": "https://www.canberraroofkind.com.au/news/roof-repair-cost-canberra",
+    "h1": "Roof Repair Cost Canberra: What Shapes Your Quote",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-gap-content.js",
+    "links": [
+      "/services/roof-leak-repairs",
+      "/services",
+      "/contact",
+      "/news",
+      "/news/roof-repointing-cost-canberra",
+      "/news/roof-leak-vs-condensation-canberra",
+      "/news/when-to-arrange-roof-inspection-canberra",
+      "/news/roof-repointing-cost-canberra",
+      "/services/gutter-repairs",
+      "/news/roof-repair-vs-restoration-vs-replacement-canberra",
+      "/contact"
+    ]
+  },
+  "/news/roof-repointing-cost-canberra": {
+    "title": "Roof Repointing Costs Canberra | Ellis Services Group",
+    "description": "See what affects roof repointing costs, how rebedding changes the scope and which ridge repair details to check in a Canberra quote.",
+    "canonical": "https://www.canberraroofkind.com.au/news/roof-repointing-cost-canberra",
+    "h1": "Roof Repointing Cost Canberra: Compare the Work Included",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-gap-content.js",
+    "links": [
+      "/services/rebedding-repointing",
+      "/services",
+      "/contact",
+      "/news",
+      "/news/rebedding-vs-repointing-canberra-roofs",
+      "/news/roof-repair-cost-canberra",
+      "/news/rebedding-vs-repointing-canberra-roofs",
+      "/news/roof-repair-vs-restoration-vs-replacement-canberra",
+      "/news/roof-repair-cost-canberra",
+      "/contact"
+    ]
+  },
+  "/news/roof-cleaning-methods-canberra": {
+    "title": "Roof Cleaning Methods Canberra | Ellis Services Group",
+    "description": "Compare the questions that matter before cleaning tiled or metal roofing: surface condition, moss and lichen, method suitability and drainage.",
+    "canonical": "https://www.canberraroofkind.com.au/news/roof-cleaning-methods-canberra",
+    "h1": "Roof Cleaning Canberra: Tile, Metal and Moss Removal Methods",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-gap-content.js",
+    "links": [
+      "/services/roof-cleaning",
+      "/services",
+      "/contact",
+      "/news",
+      "/news/gutters-overflowing-heavy-rain-canberra",
+      "/news/roof-repair-vs-restoration-vs-replacement-canberra",
+      "/services/tile-roof-repairs",
+      "/services/metal-roof-repairs",
+      "/services/gutter-downpipe-maintenance",
+      "/news/gutters-overflowing-heavy-rain-canberra",
+      "/contact"
+    ]
+  },
+  "/news/gutters-overflowing-heavy-rain-canberra": {
+    "title": "Gutters Overflowing in Heavy Rain Canberra | Ellis Services Group",
+    "description": "Understand the difference between gutter clearing and repairs, the observations that help an assessment and what to include in an overflow enquiry.",
+    "canonical": "https://www.canberraroofkind.com.au/news/gutters-overflowing-heavy-rain-canberra",
+    "h1": "Gutters Overflowing in Heavy Rain: What Canberra Owners Can Check Safely",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-gap-content.js",
+    "links": [
+      "/services/gutter-downpipe-maintenance",
+      "/services",
+      "/contact",
+      "/news",
+      "/news/after-rain-roof-leak-check-canberra",
+      "/news/roof-cleaning-methods-canberra",
+      "/services/gutter-downpipe-maintenance",
+      "/services/gutter-repairs",
+      "/services/roof-leak-repairs",
+      "/news/roof-cleaning-methods-canberra",
+      "/contact"
+    ]
+  },
+  "/news/roof-leak-vs-condensation-canberra": {
+    "title": "Roof Leak vs Condensation Canberra | Ellis Services Group",
+    "description": "Compare useful observations for rain-related leaks and dry-weather dampness, and learn what to tell Ellis before a roof assessment.",
+    "canonical": "https://www.canberraroofkind.com.au/news/roof-leak-vs-condensation-canberra",
+    "h1": "Roof Leak or Condensation? Understanding Dampness in Canberra Homes",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-gap-content.js",
+    "links": [
+      "/services/roof-leak-repairs",
+      "/services",
+      "/contact",
+      "/news",
+      "/news/after-rain-roof-leak-check-canberra",
+      "/news/roof-repair-cost-canberra",
+      "/news/after-rain-roof-leak-check-canberra",
+      "/services/roof-inspections",
+      "/news/roof-repair-cost-canberra",
+      "/contact"
+    ]
+  },
+  "/news/roof-repair-vs-restoration-vs-replacement-canberra": {
+    "title": "Roof Repair vs Restoration vs Replacement | Ellis Services Group",
+    "description": "Compare local roof repairs, a broader renovation or restoration scope, and replacement questions before deciding what your roof needs.",
+    "canonical": "https://www.canberraroofkind.com.au/news/roof-repair-vs-restoration-vs-replacement-canberra",
+    "h1": "Roof Repair vs Restoration vs Replacement: A Canberra Scope Guide",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-gap-content.js",
+    "links": [
+      "/services/roof-renovation",
+      "/services",
+      "/contact",
+      "/news",
+      "/news/roof-repair-cost-canberra",
+      "/news/roof-repointing-cost-canberra",
+      "/services/tile-roof-repairs",
+      "/services/metal-roof-repairs",
+      "/services/roof-renovation",
+      "/news/roof-cleaning-methods-canberra",
+      "/services/roof-leak-repairs",
+      "/news/roof-repair-cost-canberra",
+      "/contact"
+    ]
+  },
+  "/services/gutter-repairs": {
+    "title": "Gutter Repairs Canberra | Ellis Services Group",
+    "description": "Gutter repairs Canberra: Ellis checks leaking joints, damaged sections and downpipe connections, then confirms the component repairs and written quote.",
+    "canonical": "https://www.canberraroofkind.com.au/services/gutter-repairs",
+    "h1": "Gutter Repairs Canberra",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-gap-content.js",
+    "links": [
+      "/services",
+      "/contact",
+      "/services/gutter-downpipe-maintenance",
+      "/services/roof-leak-repairs",
+      "/news/gutters-overflowing-heavy-rain-canberra"
+    ]
+  },
+  "/services/emergency-roof-repairs": {
+    "title": "Emergency Roof Repairs Canberra | Ellis Services Group",
+    "description": "Urgent roof leak enquiries in Canberra. Normal hours 9 am–9 pm, seven days; outside-hours urgent fees are determined in the on-site quote.",
+    "h1": "Emergency & Urgent Roof Repairs Canberra",
+    "canonical": "https://www.canberraroofkind.com.au/services/emergency-roof-repairs",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-intent-content.js",
+    "links": [
+      "/services",
+      "/contact",
+      "/services/roof-leak-repairs",
+      "/services/roof-inspections"
+    ]
+  },
+  "/services/rental-property-roof-repairs": {
+    "title": "Rental Roof Repairs Canberra | Ellis Services Group",
+    "description": "Roof inspections and repairs for Canberra landlords and property managers. Remote access coordination, photos and written findings for quote review.",
+    "h1": "Rental Property & Property Manager Roof Repairs Canberra",
+    "canonical": "https://www.canberraroofkind.com.au/services/rental-property-roof-repairs",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-intent-content.js",
+    "links": [
+      "/services",
+      "/contact",
+      "/services/roof-inspections",
+      "/services/roof-leak-repairs",
+      "/news/roof-leak-information-for-tenants-canberra"
+    ]
+  },
+  "/news/roof-leak-information-for-tenants-canberra": {
+    "title": "Rental Roof Leak Guide Canberra | Ellis Services Group",
+    "description": "What to report about a rental roof leak in Canberra: safe photos, rain timing, property manager contact, access and inspection findings.",
+    "h1": "Roof Leaks in a Canberra Rental: What to Report and Who to Contact",
+    "canonical": "https://www.canberraroofkind.com.au/news/roof-leak-information-for-tenants-canberra",
+    "indexability": "index,follow",
+    "contentSource": "src/keyword-intent-content.js",
+    "links": [
+      "/news",
+      "/contact",
+      "/services",
+      "/services/rental-property-roof-repairs",
+      "/news/after-rain-roof-leak-check-canberra",
+      "/news/roof-repair-cost-canberra"
     ]
   }
 }
