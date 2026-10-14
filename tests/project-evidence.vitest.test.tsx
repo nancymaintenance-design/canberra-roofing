@@ -9,8 +9,12 @@ function page(path: string) {
  return host;
 }
 describe('owner-supplied project photos on relevant services',()=>{
+ it('retains the original emergency collage caption with its extracted panels',()=>{
+  const gallery=page('/services/emergency-roof-repairs').querySelector('.serviceGallery[data-project]');
+  expect(gallery?.textContent).toContain('Site conditions and work stages from the urgent roof leak project.');
+ });
  it.each([
- ['/services/emergency-roof-repairs',1,'roof leak'],
+ ['/services/emergency-roof-repairs',5,'roof leak'],
  ['/services/rental-property-roof-repairs',3,'equipment'],
  ['/services/gutter-repairs',2,'cleared'],
  ['/services/gutter-downpipe-maintenance',2,'cleared'],
@@ -20,9 +24,11 @@ describe('owner-supplied project photos on relevant services',()=>{
   expect(gallery?.textContent?.toLowerCase()).toContain(work);
   expect(gallery?.querySelectorAll('figure')).toHaveLength(count as number);
   for(const img of gallery!.querySelectorAll('img')){
-   expect(img.getAttribute('src')).toMatch(/^\/assets\/projects\/confirmed-.*-1000.webp$/);
-   expect(img.getAttribute('srcset')).toContain('600w');
-   expect(img.getAttribute('srcset')).toContain('1000w');
+   expect(img.getAttribute('src')).toMatch(/^\/assets\/projects\/(confirmed-.*-1000|urgent-.*).webp$/);
+   if (!path.includes('emergency')) {
+    expect(img.getAttribute('srcset')).toContain('600w');
+    expect(img.getAttribute('srcset')).toContain('1000w');
+   }
    expect(Number(img.getAttribute('width'))).toBeGreaterThan(0);
    expect(Number(img.getAttribute('height'))).toBeGreaterThan(0);
    expect(img.getAttribute('loading')).toBe('lazy');

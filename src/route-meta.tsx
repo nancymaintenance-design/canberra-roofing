@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import registry from './route-meta.json';
+import { getArticleEditorial } from './article-editorial';
+import imageManifest from './image-manifest.json';
+import { SERVICE_CATALOG } from './service-catalog.js';
 import { DISTRICT_PROFILES, SUBURB_PROFILES, getSuburbProfile } from './suburb-profiles.js';
 
 const districtRoutes = Object.fromEntries(DISTRICT_PROFILES.map((profile) => [profile.path, profile]));
@@ -7,6 +10,30 @@ const suburbRoutes = Object.fromEntries(SUBURB_PROFILES.map((profile) => [profil
 export const publishedRoutes = { ...registry, ...districtRoutes, ...suburbRoutes };
 export const pagePaths = Object.keys(publishedRoutes);
 const organizationId = 'https://www.canberraroofkind.com.au/#organization';
+const origin = 'https://www.canberraroofkind.com.au';
+const absolute = (path: string) => new URL(path, origin).href;
+const breadcrumbLabels: Record<string, string> = { '/about': 'About', '/services': 'Services', '/solutions': 'Solutions', '/areas': 'Service areas', '/news': 'Roof repair guides', '/faq': 'FAQs', '/contact': 'Contact', '/privacy': 'Privacy policy' };
+
+export function getBreadcrumbs(pathname: string): { path: string; name: string }[] {
+  const path = resolvePath(pathname);
+  const route = publishedRoutes[path as keyof typeof publishedRoutes] as any;
+  if (!route || path === '/') return [];
+  const parents: string[] = [];
+  if (path.startsWith('/news/')) parents.push('/news');
+  else if (path.startsWith('/services/')) parents.push('/services');
+  else if (path.startsWith('/areas/')) {
+    parents.push('/areas');
+    const districtPath = path.split('/').slice(0, 3).join('/');
+    if (districtPath !== path && Object.hasOwn(publishedRoutes, districtPath)) parents.push(districtPath);
+  }
+  return ['/', ...parents, path].map(p => ({ path: p, name: p === '/' ? 'Home' : breadcrumbLabels[p] ?? (publishedRoutes[p as keyof typeof publishedRoutes] as any).h1 }));
+}
+
+export function Breadcrumbs({ pathname }: { pathname: string }) {
+  const crumbs = getBreadcrumbs(pathname);
+  if (!crumbs.length) return null;
+  return <nav className="breadcrumbs" aria-label="Breadcrumb"><ol>{crumbs.map((crumb, index) => <li key={crumb.path}>{index === crumbs.length - 1 ? <span aria-current="page">{crumb.name}</span> : <a href={crumb.path}>{crumb.name}</a>}</li>)}</ol></nav>;
+}
 
 // Match the acceptance server: never turn encoded separators, percent signs or
 // dot segments into route syntax. That prevents a second decode or traversal.
@@ -29,18 +56,35 @@ export function resolvePath(pathname: string) {
 export function getRouteHead(pathname: string) {
   const path = resolvePath(pathname);
   const route = publishedRoutes[path as keyof typeof publishedRoutes] as any;
-  if (!route) return { title: 'Page not found | Canberra Roof Kind', description: 'This page could not be found. Browse roof repair services or contact Ellis Services Group.', canonical: null, robots: 'noindex,follow', article: null };
+  if (!route) return { title: 'Page not found | Canberra Roof Kind', description: 'This page could not be found. Browse roof repair services or contact Ellis Services Group.', canonical: null, robots: 'noindex,follow', article: null, breadcrumb: null, service: null, serviceAreaSchema: null };
+  const editorial = path.startsWith('/news/') ? getArticleEditorial(path.slice(6)) : null;
+  const image = editorial ? (imageManifest as Record<string, { variants: { src: string; width: number }[] }>)[editorial.image.src]?.variants : null;
+  const service = SERVICE_CATALOG.find(item => item.path === path);
+  const crumbs = getBreadcrumbs(path);
   return {
     title: route.title,
     description: route.description,
     canonical: route.canonical,
     robots: getSuburbProfile(path) ? 'noindex,follow' : null,
-    article: path.startsWith('/news/') ? {
+    breadcrumb: crumbs.length ? {
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList', '@id': route.canonical + '#breadcrumb',
+      itemListElement: crumbs.map((crumb, index) => ({ '@type': 'ListItem', position: index + 1, name: crumb.name, item: absolute(crumb.path) })),
+    } : null,
+    service: service ? {
+      '@context': 'https://schema.org', '@type': 'Service', '@id': route.canonical + '#service',
+      name: service.title, description: route.description, url: route.canonical,
+      provider: { '@id': organizationId }, areaServed: { '@type': 'City', name: 'Canberra' },
+    } : null,
+    article: editorial ? {
       '@context': 'https://schema.org',
       '@type': 'Article',
+      '@id': route.canonical + '#article',
       headline: route.h1,
       description: route.description,
       mainEntityOfPage: route.canonical,
+      author: { '@type': editorial.author.type, '@id': organizationId, name: editorial.author.name, url: absolute(editorial.author.url) },
+      dateModified: editorial.dateModified,
+      image: absolute(image?.slice().sort((a, b) => b.width - a.width)[0]?.src ?? editorial.image.src),
       publisher: { '@id': organizationId, '@type': 'Organization', name: 'Ellis Services Group' },
     } : null,
     serviceAreaSchema: getSuburbProfile(path) ? {
@@ -66,6 +110,8 @@ export function HeadMarkup({ pathname }: { pathname: string }) {
     </>}
     {head.robots && <meta name="robots" content={head.robots} />}
     {head.article && <script id="news-article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(head.article).replace(/</g, '\\u003c') }} />}
+    {head.breadcrumb && <script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(head.breadcrumb).replace(/</g, '\\u003c') }} />}
+    {head.service && <script id="service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(head.service).replace(/</g, '\\u003c') }} />}
     {head.serviceAreaSchema && <script id="service-area-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(head.serviceAreaSchema).replace(/</g, '\\u003c') }} />}
   </>;
 }
@@ -92,13 +138,17 @@ export function HeadManager({ pathname }: { pathname: string }) {
       update('meta[property="og:type"]', 'meta', { property: 'og:type', content: head.article ? 'article' : 'website' });
       update('meta[name="twitter:card"]', 'meta', { name: 'twitter:card', content: 'summary' });
     }
-    else document.head.querySelectorAll('link[rel="canonical"]').forEach((element) => element.remove());
+    else document.head.querySelectorAll('link[rel="canonical"], meta[property^="og:"], meta[name="twitter:card"]').forEach((element) => element.remove());
     if (head.robots) update('meta[name="robots"]', 'meta', { name: 'robots', content: head.robots });
     else document.head.querySelectorAll('meta[name="robots"]').forEach((element) => element.remove());
     if (head.article) update('#news-article-schema', 'script', { id: 'news-article-schema', type: 'application/ld+json' }, JSON.stringify(head.article));
     else document.head.querySelectorAll('#news-article-schema').forEach((element) => element.remove());
     if (head.serviceAreaSchema) update('#service-area-schema', 'script', { id: 'service-area-schema', type: 'application/ld+json' }, JSON.stringify(head.serviceAreaSchema));
     else document.head.querySelectorAll('#service-area-schema').forEach((element) => element.remove());
+    for (const [id, schema] of [['breadcrumb-schema', head.breadcrumb], ['service-schema', head.service]] as const) {
+      if (schema) update('#' + id, 'script', { id, type: 'application/ld+json' }, JSON.stringify(schema));
+      else document.head.querySelectorAll('#' + id).forEach(element => element.remove());
+    }
   }, [pathname]);
   return null;
 }

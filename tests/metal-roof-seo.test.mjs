@@ -13,19 +13,19 @@ test("Metal and Colorbond roof repair has a dedicated Canberra service route", (
   assert.match(source, /title:\s*"Metal & Colorbond Roof Repairs"/);
   assert.equal(
     routes["/services/metal-roof-repairs"]?.h1,
-    "Metal & Colorbond Roof Repairs Canberra",
+    "Metal & Colorbond Roof Repairs",
   );
 });
 
 test("primary enquiry pages use their mapped Canberra search intent in the H1", () => {
   const headings = {
     "/": "Roof Repairs Canberra | Ellis Services Group",
-    "/about": "Canberra Roof Repairs by Ellis Services Group",
-    "/solutions": "Canberra Roof Repair Solutions",
-    "/areas": "Canberra-wide Roof Repair Service Areas",
-    "/news": "Canberra Roof Repair Guides",
-    "/faq": "Canberra Roof Repair FAQs",
-    "/contact": "Contact a Canberra Roofer for Roof Repairs",
+    "/about": "Roof repairs by Ellis Services Group",
+    "/solutions": "Roof repair solutions",
+    "/areas": "Roof repair service areas",
+    "/news": "Roof questions, clearly explained",
+    "/faq": "Roof repair questions",
+    "/contact": "Arrange a roof assessment",
   };
 
   for (const [pathname, h1] of Object.entries(headings)) {

@@ -14,9 +14,10 @@ export type GapArticle = {
 function RelatedLinks({ links }: { links: ContentLink[] }) {
   return <ul className="topicLinks">{links.map(item => <li key={item.path}><a href={item.path}>{item.label}</a></li>)}</ul>;
 }
-export function ServiceDepth({ slug }: { slug: string }) {
+export function ServiceDepth({ slug, headingLevel = 2 }: { slug: string; headingLevel?: 2 | 3 }) {
   const sections: ContentSection[] = SERVICE_DEPTH[slug] ?? [];
-  return sections.length ? <div className="contentGuidance serviceDepth">{sections.map(item => <section key={item.heading}><h2>{item.heading}</h2>{item.paragraphs.map(p => <p key={p}>{p}</p>)}{item.links?.length ? <RelatedLinks links={item.links} /> : null}</section>)}<p><a href="/services">Compare Canberra roof repair and maintenance services</a>.</p></div> : null;
+  const Heading = headingLevel === 3 ? "h3" : "h2";
+  return sections.length ? <>{sections.map((item, index) => <section className="contentGuidance serviceDepthItem serviceAdviceItem" key={item.heading}><Heading>{item.heading}</Heading>{item.paragraphs.map(p => <p key={p}>{p}</p>)}{item.links?.length ? <RelatedLinks links={item.links} /> : null}{index === sections.length - 1 && <p><a href="/services">Compare roof repair and maintenance services</a>.</p>}</section>)}</> : null;
 }
 export function GapArticleSections({ article }: { article: GapArticle }) {
   const sections = article.sections ?? [];

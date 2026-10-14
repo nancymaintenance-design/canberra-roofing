@@ -6,26 +6,26 @@ import { startPreview } from '../scripts/preview.mjs';
 const keywordRoutes = [
   {
     pathname: '/services',
-    title: 'Canberra Roof Repair Services | Ellis Services Group',
-    h1: 'Roof Repairs Canberra',
+    title: 'Roof repair & maintenance services | Ellis Services Group',
+    h1: 'Roof repair & maintenance services',
     keyword: 'Canberra roof repair services',
   },
   {
     pathname: '/services/roof-leak-repairs',
-    title: 'Leaking Roof Repair Canberra | Ellis Services Group',
-    h1: 'Leaking Roof Repair Canberra',
+    title: 'Leaking Roof Repairs | Ellis Services Group',
+    h1: 'Leaking Roof Repairs',
     keyword: 'Leaking Roof Repair Canberra',
   },
   {
     pathname: '/services/tile-roof-repairs',
-    title: 'Tile Roof Repair Canberra | Ellis Services Group',
-    h1: 'Tile Roof Repair Canberra',
+    title: 'Tile Roof Repairs | Ellis Services Group',
+    h1: 'Tile Roof Repairs',
     keyword: 'Tile Roof Repair Canberra',
   },
   {
     pathname: '/services/rebedding-repointing',
-    title: 'Ridge Capping Repair Canberra | Ellis Services Group',
-    h1: 'Ridge Capping Repair Canberra',
+    title: 'Ridge Capping Repairs | Ellis Services Group',
+    h1: 'Ridge Capping Repairs',
     keyword: 'Ridge Capping Repair Canberra',
   },
 ];

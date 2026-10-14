@@ -23,9 +23,10 @@ const planning: Record<string, { heading: string; text: string; question: string
   "gutter-downpipe-maintenance": { heading: "Plan the work around the reported overflow", text: "Tell us which roof edge or downpipe concerns you and when overflow occurs. We assess the drainage route and explain whether the proposed work is clearing, maintenance or repair, with the included areas shown in the quote.", question: "What should a gutter and downpipe maintenance quote include?", answer: "Ask which gutter runs, outlets and downpipes are included, how access will be arranged and whether any component repairs are priced separately. Include indoor water signs so connected roof concerns can also be discussed." },
 };
 
-export function ServicePlanning({ slug }: { slug: string }) {
+export function ServicePlanning({ slug, headingLevel = 2 }: { slug: string; headingLevel?: 2 | 3 }) {
   const item = planning[slug];
-  return item ? <section className="contentGuidance servicePlanning"><h2>{item.heading}</h2><p>{item.text}</p><p>Use our <a href="/news/when-to-arrange-roof-inspection-canberra">inspection and repair quote checklist</a> to prepare the details for your visit.</p></section> : null;
+  const Heading = headingLevel === 3 ? "h3" : "h2";
+  return item ? <section className="contentGuidance servicePlanning"><Heading>{item.heading}</Heading><p>{item.text}</p><p>Use our <a href="/news/when-to-arrange-roof-inspection-canberra">inspection and repair quote checklist</a> to prepare the details for your visit.</p></section> : null;
 }
 
 export function ServiceBookingFaq({ slug }: { slug: string }) {

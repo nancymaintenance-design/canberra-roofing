@@ -148,11 +148,11 @@ test("metal and drainage pages lead with their service value instead of a limita
   for (const [pathname, phrase] of [
     [
       "/services/metal-roof-repairs",
-      "metal and Colorbond roof repairs in Canberra",
+      "metal and Colorbond roof repairs locally",
     ],
     [
       "/services/gutter-downpipe-maintenance",
-      "provides gutter and downpipe cleaning and maintenance in Canberra",
+      "provides gutter and downpipe cleaning and maintenance locally",
     ],
   ]) {
     const dom = await page(pathname);
@@ -171,18 +171,18 @@ test("chimney and inspection pages use their approved Canberra P1 wording", asyn
   for (const [pathname, title, h1] of [
     [
       "/services/chimney-flashing-repairs",
-      "Chimney Flashing Repairs Canberra | Ellis Services Group",
-      "Chimney Flashing Repairs Canberra",
+      "Chimney Flashing Repairs | Ellis Services Group",
+      "Chimney Flashing Repairs",
     ],
     [
       "/services/roof-inspections",
-      "Roof Inspection Canberra | Ellis Services Group",
-      "Roof Inspection Canberra",
+      "Roof Inspections | Ellis Services Group",
+      "Roof Inspections",
     ],
     [
       "/services/metal-roof-repairs",
-      "Metal & Colorbond Roof Repairs Canberra | Ellis Services Group",
-      "Metal & Colorbond Roof Repairs Canberra",
+      "Metal & Colorbond Roof Repairs | Ellis Services Group",
+      "Metal & Colorbond Roof Repairs",
     ],
   ]) {
     const dom = await page(pathname);

@@ -11,7 +11,7 @@ const expectedSocial = [
   'https://share.google/y50AZRJwjOdVOlj5o',
   'https://www.instagram.com/elliservices_group/',
   'https://share.google/Z4tImXHToPi9H4LmH',
-  'https://share.google/tU1c5vEAlELqXCifu',
+  'https://www.facebook.com/p/Ellis-Services-Group-100082926022259/',
 ];
 const preview = await startPreview();
 const errors = [];

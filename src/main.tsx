@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { HeadManager, publishedRoutes, resolvePath } from "./route-meta";
+import { Breadcrumbs, HeadManager, publishedRoutes, resolvePath } from "./route-meta";
 import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import "./styles.css";
 import { migrateStoredData } from "./storage.js";
@@ -7,12 +7,19 @@ import { AREA_GROUPS } from "./contact-options.js";
 import { SERVICE_CATALOG } from "./service-catalog.js";
 import { getDistrictProfile, getSuburbRoute, getSuburbProfile } from "./suburb-profiles.js";
 import { ContactForm } from "./contact-form.jsx";
-import { guideHeadings, ServicePlanning, ServiceBookingFaq, EnquiryChecklist, GuideNextSteps, LocalGuideLinks } from "./content-guidance";
-import { GAP_GUIDES, GUTTER_REPAIR_SERVICE, SERVICE_TOPIC_HEADINGS } from "./keyword-gap-content.js";
-import { ServiceDepth, GapArticleSections, GapHubLinks, GapContextLinks, type GapArticle } from "./keyword-gap-sections";
-import { ADDITIONAL_SERVICES, TENANT_GUIDE, BOOKING_POLICY } from "./keyword-intent-content.js";
-import { IntentServiceContent, IntentFaqs, IntentFaqDirectory, OperatingHours } from "./keyword-intent-sections";
+import { ServicePlanning, ServiceBookingFaq, EnquiryChecklist, LocalGuideLinks } from "./content-guidance";
+import { GUTTER_REPAIR_SERVICE, SERVICE_TOPIC_HEADINGS } from "./keyword-gap-content.js";
+import { ServiceDepth, GapHubLinks } from "./keyword-gap-sections";
+import { ADDITIONAL_SERVICES, BOOKING_POLICY } from "./keyword-intent-content.js";
+import { IntentServiceContent, IntentFaqs, OperatingHours } from "./keyword-intent-sections";
+import { FaqBrowser } from "./faq-browser";
 import { PROJECT_GALLERIES } from "./project-evidence.js";
+import { ResponsiveImage } from "./responsive-image";
+import { NEWS_ARTICLES, type NewsArticle } from "./news-articles";
+import { ARTICLE_IMAGES } from "./article-images";
+import { ProjectWorkNotes } from "./project-work-notes";
+import { ARTICLE_AUTHOR, articleModifiedDate, articleVisibleDate } from "./article-editorial";
+import { ServiceSectionNav, ServiceTheme } from "./service-theme-layout";
 
 type RelatedService = { label: string; path: string; description: string };
 type Service = {
@@ -44,132 +51,8 @@ type Data = {
   faqs: Faq[];
   media: string[];
 };
-type NewsArticle = GapArticle & {
-  slug: string;
-  title: string;
-  description: string;
-  summary: string;
-  serviceTitle: string;
-  servicePath: string;
-  body: string[];
-  updated?: string;
-};
-const newsArticles: NewsArticle[] = [
-  {
-    slug: "after-rain-roof-leak-check-canberra",
-    title:
-      "After Rain: A Safe First Check for a Suspected Roof Leak in Canberra",
-    description:
-      "A practical, safety-first guide to recording signs of a suspected roof leak after rain in Canberra.",
-    summary:
-      "Safe signs to note after rain and how Ellis investigates roof leaks on site.",
-    serviceTitle: "Roof Leak Repairs",
-    servicePath: "/services/roof-leak-repairs",
-    body: [
-      "Rain can make a roof concern more noticeable, but it is not a reason to climb onto a roof or inspect it from an unsafe position. A useful first step is to record what can be seen safely from inside the property and from ground level.",
-      "Start indoors. Look for fresh ceiling stains, damp patches, drips, bubbling paint, musty odours or water around light fittings. Make a note of the room, the time the sign appeared and whether it followed steady rain, wind-driven rain or a storm. If water is close to electrical fittings, avoid touching the area and seek appropriate professional help.",
-      "From the ground, you may be able to see slipped tiles, missing tiles, loose ridge caps, debris in gutters or a change around a chimney junction. A photo taken safely from ground level can be helpful. Water can travel beneath roofing materials before it becomes visible inside, so record what you can see rather than trying to diagnose the source from a distance.",
-      "It also helps to note what has changed. Has the stain become larger? Is it present only after rain? Is there a roof penetration, chimney, valley or skylight nearby? Include the visible signs, your suburb and any safe ground-level photos when you send a Roof Leak Repairs enquiry.",
-    ],
-  },
-  {
-    slug: "cracked-slipped-missing-roof-tiles-canberra",
-    title: "Canberra Tile Roof Repairs: Cracked, Slipped or Missing Roof Tiles",
-    description:
-      "Canberra tile roof repair: safe signs to note, replacement materials and how Ellis plans local repairs after inspection.",
-    summary:
-      "A clear way to record a visible tile concern safely and accurately.",
-    serviceTitle: "Tile Roof Repairs",
-    servicePath: "/services/tile-roof-repairs",
-    body: [
-      "A cracked or slipped tile can expose the roof to water, but the cause and repair scope depend on the surrounding overlaps, ridges and flashing. Ellis inspects these details on site and quotes the tile replacement and related repairs needed. Stay on the ground and describe what you can safely see.",
-      "From a safe ground-level position, look for tiles that appear cracked, displaced, missing or different in colour from nearby tiles. Take note of their approximate location: near a ridge line, valley, chimney, roof edge or a visible penetration. If a tile change is visible after a storm or high winds, record when you first noticed it.",
-      "Inside the home, look for ceiling staining, dampness or a musty odour below the general area. These signs provide useful context. It can also help to mention whether the roof has been repaired before, if that information is known.",
-      "Do not walk on tiled roofing to inspect it closely. Tiles can be fragile, surfaces can be slippery and weight in the wrong area can cause further damage. Include your Canberra suburb, a description of the visible concern, when it was first noticed and any safe photos in a Tile Roof Repairs enquiry.",
-    ],
-  },
-  {
-    slug: "chimney-flashing-water-entry-signs",
-    title: "Canberra Chimney Flashing Repairs: Water-Entry Signs to Record",
-    description:
-      "Canberra chimney flashing repairs: water-entry signs and how Ellis checks the junction before quoting for repairs.",
-    summary:
-      "What to note when water marks or visible changes appear near a chimney.",
-    serviceTitle: "Chimney Flashing Repairs",
-    servicePath: "/services/chimney-flashing-repairs",
-    body: [
-      "A chimney creates junctions where roofing materials, flashing and mortar meet. Water can travel before it appears indoors. Ellis inspects the chimney-to-roof junction and adjoining materials on site, traces the entry path and quotes the flashing or related repairs required.",
-      "Indoors, note whether water marks or dampness appear on a ceiling or wall close to the chimney breast. Record whether the issue follows rain, wind-driven rain or a particular direction of weather. If there is an older stain, note whether it has recently changed in size or colour.",
-      "From the ground, you may be able to observe weathered material around the chimney, loose adjacent tiles, missing mortar or old temporary patching. A safe, zoomed ground-level photo may help show the general area. It cannot show concealed flashing or underlay, but it provides helpful background for an enquiry.",
-      "Do not climb onto a roof, lean over a chimney or apply sealant from an unsafe position. When contacting Ellis Services Group, choose Chimney Flashing Repairs and include the location of the interior sign, the weather conditions when it appears and any safe images.",
-    ],
-  },
-  {
-    slug: "rebedding-vs-repointing-canberra-roofs",
-    title:
-      "Rebedding and Repointing: A Plain-English Guide for Canberra Tile Roofs",
-    description:
-      "Understand the plain-English difference between roof rebedding and repointing, and the signs worth recording safely.",
-    summary: "A simple explanation of two related roof-maintenance terms.",
-    serviceTitle: "Rebedding & Repointing",
-    servicePath: "/services/rebedding-repointing",
-    body: [
-      "On many tiled roofs, ridge and hip tiles are held in place by bedding material and finished with pointing. These terms are often used together, but they describe different parts of the same roof detail.",
-      "Rebedding generally refers to replacing or restoring the bedding that supports ridge or hip tiles. Repointing generally refers to the external finishing material applied along the visible edge of those tiles. The right approach depends on the condition of the roof detail, not simply on whether surface cracking is visible.",
-      "From ground level, you may notice cracking along a ridge line, loose-looking ridge caps, gaps in visible pointing or material that appears weathered. It is useful to note whether the concern is isolated or visible across several roof lines. If there is also water staining inside, mention that separately so the full context is clear.",
-      "Avoid testing ridge caps by hand or walking along roof lines. For an enquiry, provide your suburb, the roof area where the concern is visible, when it was first noticed and any ground-level photos. Choose Rebedding & Repointing when the visible issue is mainly around ridge caps, hip lines or their external finish.",
-    ],
-  },
-  {
-    slug: "when-to-arrange-roof-inspection-canberra",
-    title:
-      "Roof Inspection Canberra: Checks, Repair Scope and Preparation",
-    description:
-      "Roof inspection in Canberra: what Ellis checks, how findings shape a repair scope and what to prepare before booking.",
-    summary: "What Ellis checks during an on-site inspection and how the findings shape the repair quote.",
-    serviceTitle: "Roof Inspections",
-    servicePath: "/services/roof-inspections",
-    body: [
-      "A roof inspection in Canberra helps Ellis Services Group identify the roof detail behind a concern and plan the appropriate repair scope. Arrange one after a new water mark, visible storm-related changes, or before a property decision when you need a clearer account of the roof condition. The inspection purpose, access and findings to be provided are agreed when booking.",
-      "Before enquiring, write down what you have noticed and when. Useful details can include a ceiling stain, a drip after rain, a cracked tile seen from the ground, a loose ridge cap, a concern near a chimney or a change around a gutter line. If you are considering buying or selling a property, mention that context in your enquiry.",
-      "Photos can be useful when taken safely from ground level. Do not climb onto the roof, walk on tiles or use a ladder beyond a safe and appropriate position just to obtain a closer image.",
-      "You can arrange a roof inspection without knowing the cause. Send your Canberra suburb and the concern. Ellis confirms the appointment and inspection scope, checks the relevant coverings, junctions and drainage on site, then explains the findings and written repair quote.",
-    ],
-  },
-];
-newsArticles.push(...GAP_GUIDES, TENANT_GUIDE);
-for (const article of newsArticles) {
-  if (article.slug !== "chimney-flashing-water-entry-signs") article.updated = "2026-10-12";
-}
-const newsImages: Record<string, { src: string; alt: string }> = {
-  "roof-leak-information-for-tenants-canberra": { src: "/assets/news/roof-leak-after-rain.png", alt: "Indoor ceiling mark that can be recorded in a rental roof leak report" },
-  "roof-repair-cost-canberra": { src: "/assets/news/roof-space-inspection.png", alt: "Roof inspection context for planning the repair scope" },
-  "roof-repointing-cost-canberra": { src: "/assets/news/ridge-repointing-work.png", alt: "Ridge capping detail used when discussing bedding and pointing" },
-  "roof-cleaning-methods-canberra": { src: "/assets/services/roof-cleaning-surface-condition.png", alt: "Roof tile surface with visible build-up before cleaning" },
-  "gutters-overflowing-heavy-rain-canberra": { src: "/assets/services/gutter-downpipe-roof-edge-condition.jpg", alt: "Roof-edge gutter area with debris visible along the drainage line" },
-  "roof-leak-vs-condensation-canberra": { src: "/assets/news/roof-leak-after-rain.png", alt: "Indoor ceiling water mark: an observation for moisture investigation" },
-  "roof-repair-vs-restoration-vs-replacement-canberra": { src: "/assets/news/damaged-tile-record.png", alt: "Roof tile condition considered when planning local repairs or wider work" },
-  "after-rain-roof-leak-check-canberra": {
-    src: "/assets/news/roof-leak-after-rain.png",
-    alt: "Ceiling water staining being checked from inside a home after rain",
-  },
-  "cracked-slipped-missing-roof-tiles-canberra": {
-    src: "/assets/news/damaged-tile-record.png",
-    alt: "Visible damaged roof tiles being documented from a controlled roof-work position",
-  },
-  "chimney-flashing-water-entry-signs": {
-    src: "/assets/news/chimney-flashing-review.png",
-    alt: "Roofing worker recording visible condition at a chimney-to-roof flashing junction",
-  },
-  "rebedding-vs-repointing-canberra-roofs": {
-    src: "/assets/news/ridge-repointing-work.png",
-    alt: "Worker applying pointing material along a tiled roof ridge line",
-  },
-  "when-to-arrange-roof-inspection-canberra": {
-    src: "/assets/news/roof-space-inspection.png",
-    alt: "Worker using a torch to observe visible roof-space framing and moisture marks",
-  },
-};
+const newsArticles = NEWS_ARTICLES;
+const newsImages = ARTICLE_IMAGES;
 const serviceAnchorLabels: Record<string, string> = {
   "Roof Leak Repairs": "Roof Leak Repairs",
   "Tile Roof Repairs": "Tile Roof Repairs",
@@ -192,7 +75,7 @@ type CaseStudy = {
 const caseStudies: CaseStudy[] = [
   {
     slug: "tile-roof-repair-canberra",
-    title: "Tile Roof Repair Canberra Case Study",
+    title: "A tile roof repair, step by step",
     summary:
       "A documented tile-roof work sequence: visible displaced and missing tiles, a controlled work area with tiles lifted, then the visible roof covering reinstated.",
     servicePath: "/services/tile-roof-repairs",
@@ -224,7 +107,7 @@ const serviceSeed: Service[] = [
     slug: "roof-leak-repairs",
     title: "Roof Leak Repairs",
     direct:
-      "Contact Ellis Services Group to arrange a roof-leak inspection in Canberra. We check the roof covering, flashing and drainage on site, identify the water-entry cause and explain the repair scope and quote.",
+      "Contact Ellis Services Group to arrange a roof-leak inspection locally. We check the roof covering, flashing and drainage on site, identify the water-entry cause and explain the repair scope and quote.",
     symptoms:
       "Note whether the concern is a fresh drip, a damp patch, a ceiling stain, bubbling paint, a musty smell or water near a light fitting. Record the room, when it first appeared and whether it follows steady rain, wind-driven rain or a storm. From ground level, also note nearby tiles, a roof flashing junction, ridge line, chimney, valley or skylight if they are safely visible.",
     causes:
@@ -255,13 +138,13 @@ const serviceSeed: Service[] = [
         a: "Record when the leak returned, the room and weather conditions involved, plus any known previous work. Ellis reviews the previous work, inspects the recurring water path and confirms the new repair plan and written quote.",
       },
     ],
-    next: "Send the location of the visible trace, when it appears, your Canberra suburb and any safe ground-level photos to start an enquiry. Photos are optional; a written description is enough to arrange the assessment.",
+    next: "Send the location of the visible trace, when it appears, your suburb and any safe ground-level photos to start an enquiry. Photos are optional; a written description is enough to arrange the assessment.",
   },
   {
     slug: "tile-roof-repairs",
     title: "Tile Roof Repairs",
     direct:
-      "Ellis Services Group inspects and repairs cracked, broken, slipped and missing roof tiles in Canberra. We check the surrounding ridge, valley and flashing details, then confirm suitable replacement materials, the repair scope and quote.",
+      "Ellis Services Group inspects and repairs cracked, broken, slipped and missing roof tiles locally. We check the surrounding ridge, valley and flashing details, then confirm suitable replacement materials, the repair scope and quote.",
     symptoms:
       "From a safe ground-level viewpoint, note tiles that look broken, cracked, slipped, missing, displaced or different in colour from nearby tiles. Describe the approximate position: near a ridge line, valley, chimney, roof edge or visible penetration. If the change followed a storm or wind, record when it was first noticed rather than walking on the roof to inspect it closely.",
     causes:
@@ -294,7 +177,7 @@ const serviceSeed: Service[] = [
     slug: "chimney-flashing-repairs",
     title: "Chimney Flashing Repairs",
     direct:
-      "Contact Ellis Services Group for chimney flashing repairs in Canberra. We inspect the roof-to-chimney junction, adjoining roof materials and the reported water path, then explain the repair plan and quote.",
+      "Contact Ellis Services Group for chimney flashing repairs locally. We inspect the roof-to-chimney junction, adjoining roof materials and the reported water path, then explain the repair plan and quote.",
     symptoms:
       "Useful observations include water marks on a ceiling or wall near the chimney breast, dampness after wind-driven rain, cracked sealant, old temporary patches, loose adjacent tiles, weathered mortar or visible gaps around the junction. Record whether the concern changes after particular weather and whether the stain is new, recurring or growing.",
     causes:
@@ -360,7 +243,7 @@ const serviceSeed: Service[] = [
     slug: "roof-inspections",
     title: "Roof Inspections",
     direct:
-      "Contact Ellis Services Group to arrange a roof inspection in Canberra. We inspect the roof covering, ridge, flashing and drainage, identify the cause of the concern and confirm the repair plan and quote.",
+      "Contact Ellis Services Group to arrange a roof inspection locally. We inspect the roof covering, ridge, flashing and drainage, identify the cause of the concern and confirm the repair plan and quote.",
     symptoms:
       "A new water mark, a drip after rain, cracked or slipped tiles seen from the ground, a loose ridge cap, a chimney junction concern or a change near a gutter line can all be useful starting points. Include the property context if it matters, such as a maintenance decision or an upcoming sale, but describe the observable condition rather than asking for a remote diagnosis.",
     causes:
@@ -387,13 +270,13 @@ const serviceSeed: Service[] = [
         a: "No. It means observations are limited to what can be safely and reasonably viewed without invasive investigation, subject to weather and access.",
       },
     ],
-    next: "Send the reason for the inspection, the visible signs, your Canberra suburb and any particular roof area you would like to describe.",
+    next: "Send the reason for the inspection, the visible signs, your suburb and any particular roof area you would like to describe.",
   },
   {
     slug: "metal-roof-repairs",
     title: "Metal & Colorbond Roof Repairs",
     direct:
-      "Contact Ellis Services Group for metal and Colorbond roof repairs in Canberra. We inspect sheets, fixings, flashing and junctions on site, trace the water-entry cause and explain the repair scope and quote.",
+      "Contact Ellis Services Group for metal and Colorbond roof repairs locally. We inspect sheets, fixings, flashing and junctions on site, trace the water-entry cause and explain the repair scope and quote.",
     symptoms:
       "From a safe ground-level position, note any lifted or displaced sheet, loose-looking screw, visible rust, sealant change, roof penetration, ridge or wall flashing junction, valley or gutter area. Record whether you have seen a drip, ceiling mark or damp patch inside, and whether it followed steady rain, wind-driven rain or a storm. Do not climb onto a metal roof to take close-up photos.",
     causes:
@@ -424,12 +307,12 @@ const serviceSeed: Service[] = [
         a: "Choose Roof Leak Repairs when the source area is uncertain or the main sign is an indoor water mark or drip. Choose Metal & Colorbond Roof Repairs when the concern is clearly associated with a visible metal-roof area or junction.",
       },
     ],
-    next: "Send the visible metal-roof area, any related interior signs, the weather conditions, your Canberra suburb and safe ground-level photos. Photos are optional; a written description is enough to arrange the assessment.",
+    next: "Send the visible metal-roof area, any related interior signs, the weather conditions, your suburb and safe ground-level photos. Photos are optional; a written description is enough to arrange the assessment.",
   },
   {
     slug: "roof-renovation",
     title: "Roof Renovation",
-    direct: "Ellis Services Group assesses Canberra roofs for renovation, repairs and maintenance. We inspect the roof covering, ridge, flashing and drainage, then explain the work that suits the roof condition and your goals.",
+    direct: "Ellis Services Group assesses roofs for renovation, repairs and maintenance. We inspect the roof covering, ridge, flashing and drainage, then explain the work that suits the roof condition and your goals.",
     symptoms: "Useful context can include widespread visible weathering, repeated maintenance concerns, an older roof finish, ongoing water-entry signs or a desire to refresh a roof surface. Record the material you can identify from ground level, the roof areas that concern you and any known previous work.",
     causes: "A renovation decision can involve the roof covering, ridge and flashing details, drainage, access, material age and the condition that can be safely seen. We inspect the existing materials and connected roof details on site, identify any further access needed and explain suitable repairs and finishes.",
     assessment: "We inspect the roof materials, layout, ridge, flashing and drainage on site, with safe access arranged for the property. We discuss the renovation goal and recommend the repair, maintenance and finish work supported by the condition found.",
@@ -438,7 +321,7 @@ const serviceSeed: Service[] = [
     faqQ: "Does a roof renovation enquiry automatically mean full roof replacement?",
     faqA: "No. The suitable next step depends on the condition that can be assessed, the property owner's objective and the agreed scope.",
     faqExtras: [{ q: "Can I send photos of the roof I want renovated?", a: "Yes. Safe ground-level photos help us prepare for the assessment; we confirm the recommended scope after reviewing the property." }],
-    next: "Send your renovation objective, the visible roof material or concern, your Canberra suburb and any safe photos. Photos are optional; a written description is enough to arrange the assessment.",
+    next: "Send your renovation objective, the visible roof material or concern, your suburb and any safe photos. Photos are optional; a written description is enough to arrange the assessment.",
     related: [
       { label: "Roof Inspections", path: "/services/roof-inspections", description: "Choose an inspection when the visible condition or most suitable service is unclear." },
       { label: "Roof Cleaning", path: "/services/roof-cleaning", description: "Choose cleaning when the main concern is visible surface growth or debris rather than a renovation decision." },
@@ -447,7 +330,7 @@ const serviceSeed: Service[] = [
   {
     slug: "roof-cleaning",
     title: "Roof Cleaning",
-    direct: "Contact Ellis Services Group for roof cleaning in Canberra. We inspect the surface build-up, roofing material and drainage, then confirm a suitable cleaning method, safe access and quote.",
+    direct: "Contact Ellis Services Group for roof cleaning locally. We inspect the surface build-up, roofing material and drainage, then confirm a suitable cleaning method, safe access and quote.",
     symptoms: "From the ground, note visible moss, lichen, leaf debris, dirt build-up or discolouration and whether it is concentrated near valleys, gutters, solar panels, roof edges or shaded areas. Do not climb onto the roof to inspect or remove material.",
     causes: "Surface build-up can vary with roof material, weather exposure, surrounding trees, drainage and the roof's age. We inspect the material and drainage on site, choose a suitable cleaning method and identify any repair work needed.",
     assessment: "We inspect the roof surface, material condition, pitch, drainage and nearby solar panels or penetrations on site. We plan safe access and a cleaning method suited to the existing roof.",
@@ -456,7 +339,7 @@ const serviceSeed: Service[] = [
     faqQ: "Can roof cleaning fix a roof leak?",
     faqA: "Cleaning removes surface build-up; a roof leak needs investigation of the water-entry path. Tell Ellis about the drip or ceiling stain so we can inspect the affected area and confirm the cleaning and repair work required.",
     faqExtras: [{ q: "Should I pressure-clean a roof myself?", a: "Do not climb onto a roof or use cleaning equipment from an unsafe position. Record what is visible from the ground and describe it in an enquiry." }],
-    next: "Send the visible build-up area, roof material if known, your Canberra suburb and safe ground-level photos. Photos are optional; a written description is enough to arrange the assessment.",
+    next: "Send the visible build-up area, roof material if known, your suburb and safe ground-level photos. Photos are optional; a written description is enough to arrange the assessment.",
     related: [
       { label: "Gutter & Downpipe Maintenance", path: "/services/gutter-downpipe-maintenance", description: "Choose this service when visible debris or overflow is concentrated in the drainage system." },
       { label: "Roof Inspections", path: "/services/roof-inspections", description: "Choose an inspection when you are not sure whether cleaning is the most suitable service." },
@@ -465,7 +348,7 @@ const serviceSeed: Service[] = [
   {
     slug: "gutter-downpipe-maintenance",
     title: "Gutter & Downpipe Cleaning and Maintenance",
-    direct: "Ellis Services Group provides gutter and downpipe cleaning and maintenance in Canberra. We inspect the run, outlets and downpipes on site, locate blockages or damage and quote the clearing, repair or replacement work needed.",
+    direct: "Ellis Services Group provides gutter and downpipe cleaning and maintenance locally. We inspect the run, outlets and downpipes on site, locate blockages or damage and quote the clearing, repair or replacement work needed.",
     symptoms: "Note leaf build-up, overflow during rain, visible sagging, water running near a wall, a blocked-looking outlet or a downpipe concern. Record the weather context and the general roof edge or side of the property without using an unsafe ladder or roof access.",
     causes: "Drainage performance can be affected by debris, roof runoff, gutter fall, joints, outlets, downpipes and conditions that are not visible from the ground. We check the gutter run, outlets and downpipes on site to locate the blockage or damaged component and plan the work.",
     assessment: "We inspect the gutter run, joints, outlets and connected downpipes on site, check the reported overflow route and plan safe access. We identify the blockage or damaged component and explain the cleaning or maintenance work required.",
@@ -474,7 +357,7 @@ const serviceSeed: Service[] = [
     faqQ: "Does gutter overflow always mean a downpipe is blocked?",
     faqA: "Debris, outlet condition, gutter fall, roof runoff and other drainage details can all be relevant.",
     faqExtras: [{ q: "Should I clear a high gutter from a ladder myself?", a: "Do not use a ladder or roof access beyond a safe and appropriate position. Record the visible overflow or debris area and include it in an enquiry." }],
-    next: "Send the gutter or downpipe area, when overflow occurs, your Canberra suburb and any safe photos. Photos are optional; a written description is enough to arrange the assessment.",
+    next: "Send the gutter or downpipe area, when overflow occurs, your suburb and any safe photos. Photos are optional; a written description is enough to arrange the assessment.",
     related: [
       { label: "Roof Cleaning", path: "/services/roof-cleaning", description: "Choose roof cleaning when visible surface debris or growth extends beyond the drainage line." },
       { label: "Roof Leak Repairs", path: "/services/roof-leak-repairs", description: "Choose roof leak repairs when there is an indoor water sign or the source is uncertain." },
@@ -486,18 +369,18 @@ const serviceBySlug = Object.fromEntries(
   serviceSeed.map((service) => [service.slug, service]),
 );
 const seoHeadings: Record<string, string> = {
-  "roof-leak-repairs": "Leaking Roof Repair Canberra",
-  "tile-roof-repairs": "Tile Roof Repair Canberra",
-  "chimney-flashing-repairs": "Chimney Flashing Repairs Canberra",
-  "rebedding-repointing": "Ridge Capping Repair Canberra",
-  "roof-inspections": "Roof Inspection Canberra",
-  "metal-roof-repairs": "Metal & Colorbond Roof Repairs Canberra",
-  "roof-renovation": "Roof Renovation & Restoration Canberra",
-  "gutter-repairs": "Gutter Repairs Canberra",
-  "emergency-roof-repairs": "Emergency & Urgent Roof Repairs Canberra",
-  "rental-property-roof-repairs": "Rental Property & Property Manager Roof Repairs Canberra",
-  "roof-cleaning": "Roof Cleaning Canberra",
-  "gutter-downpipe-maintenance": "Gutter & Downpipe Cleaning Canberra",
+  "roof-leak-repairs": "Leaking Roof Repairs",
+  "tile-roof-repairs": "Tile Roof Repairs",
+  "chimney-flashing-repairs": "Chimney Flashing Repairs",
+  "rebedding-repointing": "Ridge Capping Repairs",
+  "roof-inspections": "Roof Inspections",
+  "metal-roof-repairs": "Metal & Colorbond Roof Repairs",
+  "roof-renovation": "Roof Renovation & Restoration",
+  "gutter-repairs": "Gutter Repairs",
+  "emergency-roof-repairs": "Emergency & Urgent Roof Repairs",
+  "rental-property-roof-repairs": "Roof Repairs for Rental Properties",
+  "roof-cleaning": "Roof Cleaning",
+  "gutter-downpipe-maintenance": "Gutter & Downpipe Cleaning",
 };
 const serviceGalleries: Record<
   string,
@@ -1009,7 +892,7 @@ function Home({ data }: { data: Data }) {
           </a>
         </div>
         <div className="carousel">
-          <img src={data.media[slide]} alt="Australian residential roof" />
+          <ResponsiveImage src={data.media[slide]} alt="Australian residential roof" priority />
           <div className="carouselControls">
             <button
               onClick={() =>
@@ -1044,6 +927,8 @@ function Home({ data }: { data: Data }) {
 function HomeV2({ data }: { data: Data }) {
   return (
     <>
+      <link rel="preload" as="image" type="image/webp" href="/assets/responsive/au-hero-act-tile-roof-800.webp" media="(max-width: 760px)" fetchPriority="high" />
+      <link rel="preload" as="image" type="image/webp" href="/assets/responsive/au-hero-act-tile-roof-1200.webp" media="(min-width: 761px)" fetchPriority="high" />
       <section className="tradeHero">
         <div className="heroContent">
           <p className="eyebrow">CANBERRA ROOF REPAIRS</p>
@@ -1145,11 +1030,13 @@ function HomeV2({ data }: { data: Data }) {
           Request a roof assessment <ArrowRight size={18} />
         </a>
       </section>
-      <IntentServiceContent slug="home" />
-      <OperatingHours />
+      <div className="homeGuidance">
+        <IntentServiceContent slug="home" />
+        <OperatingHours />
+      </div>
       <section className="homeContextGrid trustImageGrid">
         <figure>
-          <img
+          <ResponsiveImage
             src="/assets/home/ellis-team-trust.png"
             alt="Ellis Services Group team beside a branded work vehicle at a residential roofing site"
             width={1672}
@@ -1157,7 +1044,7 @@ function HomeV2({ data }: { data: Data }) {
           />
         </figure>
         <figure>
-          <img
+          <ResponsiveImage
             src="/assets/home/ellis-site-consultation.png"
             alt="Ellis Services Group team discussing roof work beside a branded vehicle at a home"
             width={1672}
@@ -1228,7 +1115,7 @@ function About({ data }: { data: Data }) {
       <div className="pageMediaIntro">
         <div className="pageMediaCopy">
           <p className="eyebrow">ABOUT {data.company.toUpperCase()}</p>
-          <h1>Canberra Roof Repairs by Ellis Services Group</h1>
+          <h1>Roof repairs by Ellis Services Group</h1>
           <p>
             For most of us, home is where we raise our families, spend time
             together and plan for the years ahead. It is often one of life’s
@@ -1241,7 +1128,7 @@ function About({ data }: { data: Data }) {
           <p>15 years in roofing. Trusted by 1,000+ customers, with 98% customer satisfaction.</p>
         </div>
         <figure className="pageFeatureMedia">
-          <img
+          <ResponsiveImage priority
             src="/assets/home/canberra-roof-hero.png"
             alt="Tiled residential roof beneath a clear Canberra sky"
           />
@@ -1357,7 +1244,7 @@ function About({ data }: { data: Data }) {
               key={image.src}
               className={index === 0 ? "galleryFeature" : ""}
             >
-              <img src={image.src} alt={image.alt} />
+              <ResponsiveImage src={image.src} alt={image.alt} />
             </figure>
           ))}
         </div>
@@ -1556,7 +1443,7 @@ const serviceCardDetails: Record<string, { intro: string; focus: string; next: s
   "roof-inspections": {
     intro: "Arrange an Ellis assessment to identify the roof concern and confirm the repair plan and quote.",
     focus: "Safe visible observations, access limits and enquiry purpose.",
-    next: "Share the signs you have seen and your Canberra suburb.",
+    next: "Share the signs you have seen and your suburb.",
   },
   "metal-roof-repairs": {
     intro: "Metal or Colorbond sheets, fasteners, flashings and roof edges.",
@@ -1590,7 +1477,7 @@ function ServiceCards({ data }: { data: Data }) {
           next: s.next,
         };
         return <article className="card serviceCard" key={s.slug}>
-          <div className="serviceCardTopline"><span>{String(i + 1).padStart(2, "0")}</span><span>Canberra service</span></div>
+          <div className="serviceCardTopline"><span>{String(i + 1).padStart(2, "0")}</span><span>Roof care service</span></div>
           <h3>{s.title}</h3>
           <p className="serviceCardLead">{detail.intro}</p>
           <dl className="serviceCardFacts">
@@ -1619,14 +1506,14 @@ function Services({
         <div className="pageMediaIntro">
           <div className="pageMediaCopy">
             <p className="eyebrow">ROOFING SOLUTIONS</p>
-            <h1>Canberra Roof Repair Solutions</h1>
+            <h1>Roof repair solutions</h1>
             <p>
               Explore common repair pathways by the roof area or symptom that
               has prompted your enquiry.
             </p>
           </div>
           <figure className="pageFeatureMedia">
-            <img
+            <ResponsiveImage priority
               src="/assets/home/australian-residential-roof-context.png"
               alt="Australian residential roof and surrounding garden"
             />
@@ -1639,7 +1526,7 @@ function Services({
   return (
     <section className="page servicesOverview">
       <p className="eyebrow">SERVICES OVERVIEW</p>
-      <h1>Roof Repairs Canberra</h1>
+      <h1>Roof repair & maintenance services</h1>
       <p>
         Ellis provides roof repairs, inspections, cleaning and maintenance for Canberra homes. We inspect the property on site and confirm the required work and written quote. Choose a service below, or describe the issue if you are unsure.
       </p>
@@ -1706,19 +1593,47 @@ function Services({
     </section>
   );
 }
+const serviceHeroImages: Record<string, { src: string; alt: string; caption: string }> = {
+  "roof-leak-repairs": { src: "/assets/services/roof-leak-on-roof-assessment.png", alt: "Roof covering being assessed for visible condition", caption: "Assessment starts with the covering, junctions and drainage." },
+  "tile-roof-repairs": { src: "/assets/services/tile-roof-repair-work.png", alt: "Local tile roof repair work", caption: "Tile condition and adjoining details guide the repair scope." },
+  "chimney-flashing-repairs": { src: "/assets/services/chimney-flashing-installation.png", alt: "Flashing at a roof-to-chimney junction", caption: "The chimney junction and adjoining roof materials matter together." },
+  "rebedding-repointing": { src: "/assets/services/ridge-capping-pointing.png", alt: "Pointing along a tiled roof ridge", caption: "Ridge bedding and exposed pointing have different roles." },
+  "roof-inspections": { src: "/assets/services/roof-inspection-roofline-review.png", alt: "Roofline review during an inspection", caption: "A roof review connects visible signs with the condition on site." },
+  "metal-roof-repairs": { src: "/assets/services/metal-roof-wall-flashing-condition.png", alt: "Metal roof and wall flashing detail", caption: "Sheets, fixings and flashing form one weathering system." },
+  "roof-renovation": { src: "/assets/services/tile-roof-site-overview.png", alt: "Overview of an existing tiled roof", caption: "Roof-condition context; not a documented renovation result." },
+  "roof-cleaning": { src: "/assets/services/roof-cleaning-controlled-wash.png", alt: "Controlled cleaning on a tiled roof", caption: "Cleaning methods depend on the roof material and its condition." },
+  "gutter-downpipe-maintenance": { src: "/assets/services/gutter-downpipe-roof-edge-condition.jpg", alt: "Gutter condition along a roof edge", caption: "Gutters, outlets and downpipes share the drainage path." },
+  "gutter-repairs": { src: "/assets/services/metal-roof-gutter-edge-repair.png", alt: "Gutter edge and adjoining metal roof detail", caption: "Check component condition as well as the flow of water." },
+  "emergency-roof-repairs": { src: "/assets/projects/urgent-before-junction.webp", alt: "Roof junction before the documented urgent repair work", caption: "Before work: a junction from the urgent roof leak project." },
+  "rental-property-roof-repairs": { src: "/assets/projects/confirmed-property-roof-work-1000.webp", alt: "Documented property roof maintenance work", caption: "Property roof work, recorded to support clear communication." },
+};
+
+function TileCasePhotos({ context, headingLevel = 2 }: { context: string; headingLevel?: 2 | 3 }) {
+  const study = caseStudies[0];
+  const Heading = headingLevel === 3 ? "h3" : "h2";
+  return <section className="relatedCase" aria-labelledby={`${context}-case-title`}>
+    <p className="eyebrow">DOCUMENTED TILE REPAIR</p>
+    <Heading id={`${context}-case-title`}>{context === "roof-renovation" ? "A local repair comparison, not a renovation result" : "A visible tile repair, before and after"}</Heading>
+    <p>{study.summary}</p>
+    <p>{context === "roof-renovation" ? "This related sequence shows a local tile repair with the surrounding weathered roof retained. It does not document a whole-roof renovation." : "These photographs document visible tile work. They do not establish a particular leak cause or diagnose another property."}</p>
+    <div className="relatedCasePhotos">{study.images.map(image => <figure key={image.src}><ResponsiveImage src={image.src} alt={image.alt} sizes="(max-width: 760px) calc(100vw - 5rem), 440px" /><figcaption>{image.caption}</figcaption><a className="serviceGalleryOriginal" href={image.src}>View original photo</a></figure>)}</div>
+    <a href={`/case-studies/${study.slug}`}>View the tile roof repair case study <ArrowRight size={17} /></a>
+  </section>;
+}
+
 function ServiceView({ service }: { service: Service }) {
   const headings = SERVICE_TOPIC_HEADINGS[service.slug] ?? ["From your roof concern to an agreed repair scope", "Visible signs to describe", "What we inspect on site", "How we plan the repair", "How we help you move forward", "Conditions that matter"];
   const galleries: { title: string; intro: string; project?: boolean; relatedPath?: string; relatedLabel?: string; images: { src: string; alt: string; srcSet?: string; width?: number; height?: number; caption?: string }[] }[] = [serviceGalleries[service.slug], PROJECT_GALLERIES[service.slug as keyof typeof PROJECT_GALLERIES]].filter(Boolean);
   const guide = newsArticles.find(
     (article) => article.servicePath === `/services/${service.slug}`,
   );
-  const caseStudy = caseStudies.find(
-    (study) => study.servicePath === `/services/${service.slug}`,
-  );
+  const caseStudy = ["tile-roof-repairs", "roof-inspections", "roof-leak-repairs", "roof-renovation"].includes(service.slug) ? caseStudies[0] : undefined;
   const galleryTitleId = `${service.slug}-gallery-title`;
   return (
     <section className="page serviceView">
-      <p className="eyebrow">CANBERRA ROOF REPAIR SERVICE</p>
+      <header className="serviceHero pairedHero">
+      <div className="pairedHeroCopy">
+      <p className="eyebrow">ROOF REPAIR & CARE</p>
       <h1>{seoHeadings[service.slug] ?? service.title}</h1>
       <p className="directAnswer">{service.direct}</p>
       {service.slug === "roof-leak-repairs" ? <p>A ceiling stain is a symptom, not a diagnosis. Tell us if dampness appears without rain as well as after it; the assessment needs to distinguish roof water entry from other possible sources, including plumbing or condensation.</p> : null}
@@ -1727,8 +1642,13 @@ function ServiceView({ service }: { service: Service }) {
         <li><strong>Response from as little as 30 minutes</strong></li>
         <li><strong>Trusted by 1,000+ customers</strong></li>
       </ul>
-      <h2>{headings[0]}</h2>
-      <div className="serviceDetail">
+      </div>
+      <figure className="pairedHeroMedia"><ResponsiveImage src={serviceHeroImages[service.slug].src} alt={serviceHeroImages[service.slug].alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>{serviceHeroImages[service.slug].caption}</figcaption></figure>
+      </header>
+      <ServiceSectionNav />
+      <div className="servicePageSections">
+      <ServiceTheme index={0} serviceSlug={service.slug}>
+      <div className="serviceSubtopics">
         <article>
           <span>01 / Signs to describe</span>
           <h3>{headings[1]}</h3>
@@ -1739,6 +1659,20 @@ function ServiceView({ service }: { service: Service }) {
           <h3>{headings[2]}</h3>
           <p>{service.causes}</p>
         </article>
+      </div>
+      {service.related?.length ? (
+        <section className="relatedServices serviceRelatedLinks">
+          <p className="eyebrow">RELATED SERVICES</p>
+          <h3>Choose the closest visible concern.</h3>
+          <ul>
+            {service.related.map(item => <li key={item.path}><p>{item.description}</p><a href={item.path}>Read {item.label} <ArrowRight size={16} /></a></li>)}
+          </ul>
+        </section>
+      ) : null}
+      </ServiceTheme>
+      <ServiceTheme index={1} serviceSlug={service.slug}>
+      <p className="serviceThemeLead">{headings[0]}</p>
+      <div className="serviceSubtopics">
         <article>
           <span>03 / Our on-site assessment</span>
           <h3>{headings[3]}</h3>
@@ -1749,26 +1683,24 @@ function ServiceView({ service }: { service: Service }) {
           <h3>{headings[4]}</h3>
           <p>{service.pathways}</p>
         </article>
-        <article>
-          <span>05 / What affects scope</span>
-          <h3>{headings[5]}</h3>
-          <p>{service.scope}</p>
-          <p className="serviceCostNote">Before arranging a visit, we explain any inspection or booking fee that applies. Repair pricing is confirmed after assessment and before work begins.</p>
-        </article>
       </div>
-      <ServicePlanning slug={service.slug} />
-      <ServiceDepth slug={service.slug} />
-      <IntentServiceContent slug={service.slug} />
-      {service.slug === "emergency-roof-repairs" && <><OperatingHours /><p><a href="https://esa.act.gov.au/be-emergency-ready/storms" target="_blank" rel="noopener noreferrer">ACT Emergency Services Agency: storm emergency assistance</a>. For an immediate threat to life call 000; for storm or flood emergency assistance call ACTSES on 132 500.</p></>}
-      {service.slug === "rental-property-roof-repairs" && <p><a href="/news/roof-leak-information-for-tenants-canberra">What tenants can include in a roof leak report</a>.</p>}
-      {service.slug === "roof-leak-repairs" && <p><a href="/services/emergency-roof-repairs">Urgent leak enquiries and after-hours fees</a>, or <a href="/services/rental-property-roof-repairs">coordinate a rental property roof assessment</a>.</p>}
+      <ServicePlanning slug={service.slug} headingLevel={3} />
+      <ServiceDepth slug={service.slug} headingLevel={3} />
+      <IntentServiceContent slug={service.slug} headingLevel={3} placement="work" />
+      {service.slug === "emergency-roof-repairs" && <p><a href="https://esa.act.gov.au/be-emergency-ready/storms" target="_blank" rel="noopener noreferrer">ACT Emergency Services Agency: storm emergency assistance</a>. For an immediate threat to life call 000; for storm or flood emergency assistance call ACTSES on 132 500.</p>}
+      {guide ? <section className="serviceGuideLink" aria-labelledby={`${service.slug}-guide-title`}><h3 id={`${service.slug}-guide-title`}>Continue with a focused guide.</h3><p>{guide.summary}</p><a href={`/news/${guide.slug}`}>{guide.title} <ArrowRight size={17} /></a></section> : null}
+      </ServiceTheme>
+      <ServiceTheme index={2} serviceSlug={service.slug}>
       {galleries.map((gallery) => (
-        <section key={gallery.title} className={`serviceGallery${gallery.project ? " serviceProjectGallery" : ""}`} data-project={gallery.project || undefined} aria-labelledby={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>
+        <section key={gallery.title} className={`serviceGallery${gallery.project ? " serviceProjectGallery" : ""}`} data-project={gallery.project || undefined} data-image-count={gallery.images.length} aria-labelledby={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>
           <div className="serviceGalleryIntro">
             <p className="eyebrow">{gallery.project ? "PROJECT PHOTOS" : "SERVICE IMAGE GUIDE"}</p>
-            <h2 id={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>{gallery.title}</h2>
-            <p>{gallery.intro}</p>
+            <h3 id={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>{gallery.title}</h3>
+            {!gallery.project && <p>{gallery.intro}</p>}
+            {gallery.project && <ProjectWorkNotes slug={service.slug} />}
             {gallery.relatedPath && <a href={gallery.relatedPath}>{gallery.relatedLabel}</a>}
+            {gallery.project && service.slug === "emergency-roof-repairs" && <a className="serviceGalleryOriginal" href="/assets/projects/confirmed-urgent-leak-1000.webp">View original project collage</a>}
+            {gallery.project && service.slug === "emergency-roof-repairs" && <p>Site conditions and work stages from the urgent roof leak project.</p>}
           </div>
           <div className="serviceGalleryGrid">
             {gallery.images.map((image, index) => (
@@ -1776,67 +1708,37 @@ function ServiceView({ service }: { service: Service }) {
                 key={image.src}
                 className={index === 0 ? "galleryInterior" : ""}
               >
-                <img src={image.src} srcSet={image.srcSet} sizes={image.srcSet ? "(max-width: 760px) calc(100vw - 3rem), 500px" : undefined} alt={image.alt} width={image.width} height={image.height} loading={gallery.project ? "lazy" : undefined} decoding={gallery.project ? "async" : undefined} />
+                <ResponsiveImage src={image.src} srcSet={image.srcSet} sizes={`(max-width: 760px) calc(100vw - 3rem), ${gallery.images.length === 1 ? "(max-width: 1440px) 90vw, 1400px" : gallery.images.length === 2 || gallery.images.length === 4 || (gallery.images.length === 5 && index < 2) ? "(max-width: 1440px) 45vw, 680px" : "(max-width: 1440px) 30vw, 440px"}`} alt={image.alt} width={image.width} height={image.height} />
                 {image.caption && <figcaption>{image.caption}</figcaption>}
+                {service.slug !== "emergency-roof-repairs" && <a className="serviceGalleryOriginal" href={image.src}>View original photo</a>}
               </figure>
             ))}
           </div>
         </section>
       ))}
-      {guide ? (
-        <section
-          className="relatedGuides"
-          aria-labelledby={`${service.slug}-guide-title`}
-        >
-          <div>
-            <p className="eyebrow">RELATED CANBERRA GUIDE</p>
-            <h2 id={`${service.slug}-guide-title`}>
-              Continue with a focused guide.
-            </h2>
-            <p>{guide.summary}</p>
-          </div>
-          <a href={`/news/${guide.slug}`}>
-            {guide.title} <ArrowRight size={17} />
-          </a>
-        </section>
-      ) : null}
-      {caseStudy ? (
-        <section
-          className="relatedCase"
-          aria-labelledby={`${service.slug}-case-title`}
-        >
-          <div>
-            <p className="eyebrow">REAL CASE STUDY</p>
-            <h2 id={`${service.slug}-case-title`}>
-              See this tile roof repair sequence.
-            </h2>
-            <p>{caseStudy.summary}</p>
-          </div>
-          <a href={`/case-studies/${caseStudy.slug}`}>
-            View the tile roof repair case study <ArrowRight size={17} />
-          </a>
-        </section>
-      ) : null}
-      {service.related?.length ? (
-        <section className="relatedServices">
-          <p className="eyebrow">RELATED SERVICES</p>
-          <h2>Choose the closest visible concern.</h2>
-          <div className="serviceDetail">
-            {service.related.map((item) => (
-              <article key={item.path}>
-                <h3>{item.label}</h3>
-                <p>{item.description}</p>
-                <a href={item.path}>
-                  Read {item.label} <ArrowRight size={16} />
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
-      ) : null}
-      <section className="pageFaq">
+      {caseStudy ? <TileCasePhotos context={service.slug} headingLevel={3} /> : null}
+      </ServiceTheme>
+      <ServiceTheme index={3} serviceSlug={service.slug}>
+        <div className="serviceBookingGrid">
+        <div className="serviceBookingScope">
+        <h3>{headings[5]}</h3>
+        <p>{service.scope}</p>
+        <p className="serviceCostNote">Before arranging a visit, we explain any inspection or booking fee that applies. Repair pricing is confirmed after assessment and before work begins.</p>
+        <IntentServiceContent slug={service.slug} headingLevel={3} placement="booking" />
+        </div>
+        <div className="serviceBookingAppointment">
+        <OperatingHours headingLevel={3} />
+        {service.slug === "rental-property-roof-repairs" && <p><a href="/news/roof-leak-information-for-tenants-canberra">What tenants can include in a roof leak report</a>.</p>}
+        {service.slug === "roof-leak-repairs" && <p><a href="/services/emergency-roof-repairs">Urgent leak enquiries and after-hours fees</a>, or <a href="/services/rental-property-roof-repairs">coordinate a rental property roof assessment</a>.</p>}
+        <p className="serviceBookingPrompt">{service.next}</p>
+        <a className="button" href={`/contact?service=${encodeURIComponent(service.title)}`}>Request a roof assessment <ArrowRight size={17} /></a>
+        </div>
+        </div>
+      </ServiceTheme>
+      <ServiceTheme index={4} serviceSlug={service.slug}>
+      <div className="pageFaq serviceThemeFaq">
         <p className="eyebrow">YOUR QUESTIONS</p>
-        <h2>{service.title}: questions before booking</h2>
+        <h3>{service.title}: questions before booking</h3>
         <details open>
           <summary>{service.faqQ}</summary>
           <p>{service.faqA}</p>
@@ -1849,14 +1751,9 @@ function ServiceView({ service }: { service: Service }) {
         ))}
         <ServiceBookingFaq slug={service.slug} />
         <IntentFaqs slug={service.slug} />
-      </section>
-      <p className="serviceBookingPrompt">{service.next}</p>
-      <a
-        className="button"
-        href={`/contact?service=${encodeURIComponent(service.title)}`}
-      >
-        Request a roof assessment <ArrowRight size={17} />
-      </a>
+      </div>
+      </ServiceTheme>
+      </div>
     </section>
   );
 }
@@ -1874,7 +1771,7 @@ function Areas() {
       <div className="pageMediaIntro">
         <div>
           <p className="eyebrow">CANBERRA COVERAGE DIRECTORY</p>
-          <h1>Canberra-wide Roof Repair Service Areas</h1>
+          <h1>Roof repair service areas</h1>
           <p>
             Use this directory to find the area that best matches your address.
             Start with your district to explore roof repair, renovation, cleaning
@@ -1883,7 +1780,7 @@ function Areas() {
           </p>
         </div>
         <figure className="pageFeatureMedia">
-          <img
+          <ResponsiveImage priority
             src="/assets/areas/canberra-coverage-roofscape.png"
             alt="Canberra residential roofs and suburbs beneath Black Mountain on a cloudy day"
           />
@@ -1898,7 +1795,7 @@ function Areas() {
         />
       </label>
       <LocalGuideLinks />
-      <h2>Find your Canberra district and suburb</h2>
+      <h2>Find your district and suburb</h2>
       <div className="areaGrid">
         {visible.map(([district, suburbs]) => (
           <article key={district}>
@@ -1919,60 +1816,58 @@ function Areas() {
     </section>
   );
 }
-function DistrictServiceAreaPage({ profile, data }: { profile: any; data: Data }) {
+function DistrictServiceAreaPage({ profile }: { profile: any; data: Data }) {
   return <section className="page suburbPage districtPage">
     <p className="eyebrow">CANBERRA DISTRICT ROOF SERVICES</p>
     <h1>{profile.h1}</h1>
     <p className="directAnswer">Ellis provides roof repairs, renovation, cleaning and gutter or downpipe maintenance across {profile.district}. Send your suburb and concern to arrange an on-site assessment, the work plan and a written quote.</p>
-    <section className="suburbFeatured"><h2>Roof repair and maintenance services in {profile.district}</h2><ServiceCards data={data} /></section>
-    <section className="suburbAllServices"><h2>Suburbs in {profile.district}</h2><p>Choose your suburb to prefill the enquiry location after selecting the most relevant service pathway.</p><div>{profile.suburbs.map((suburb: string) => <a key={suburb} href={getSuburbRoute(suburb, profile.district) ?? "/areas"}>{suburb}</a>)}</div></section>
-    <section className="suburbEvidence"><h2>Arrange roof repairs and maintenance</h2><ul><li>Roof leak repairs, tile and metal roof repairs, ridge capping and chimney flashing repairs.</li><li>Roof renovation, roof cleaning, gutter cleaning and downpipe maintenance.</li><li>An on-site assessment and a written quote for the agreed work.</li></ul></section>
-    <LocalGuideLinks />
-    <section className="suburbContact"><h2>Contact Ellis Services Group for {profile.district} roof services</h2><ContactForm /></section>
+    <section className="districtDirectory"><h2>Choose your {profile.district} enquiry location</h2><p>This directory lists {profile.suburbs.length} location options for {profile.district}. The enquiry link selects that suburb in the contact form; add your full property address and concern so we can arrange access and confirm the visit. We cover the major ACT districts, including Belconnen, Gungahlin and Tuggeranong. For fringe locations, send the full address to confirm arrangements.</p>
+      <div className="contentTableScroll" tabIndex={0} role="region" aria-label={`${profile.district} suburb directory`}><table><caption>{profile.district}: suburb information and booking links</caption><thead><tr><th scope="col">Location</th><th scope="col">Suburb information</th><th scope="col">Start an enquiry</th></tr></thead><tbody>{profile.bookingLocations.map((location: { suburb: string; enquiryPath: string }) => <tr key={location.suburb}><th scope="row">{location.suburb}</th><td><a href={getSuburbRoute(location.suburb, profile.district) ?? "/areas"}>{location.suburb} roof services</a></td><td><a href={location.enquiryPath}>Enquire for {location.suburb}</a></td></tr>)}</tbody></table></div>
+      <p>Looking for a different location? <a href="/areas">Search the district and suburb directory</a>.</p>
+    </section>
+    <section className="districtServiceChoices"><h2>Match the concern to a service</h2><ul><li>A stain or drip: <a href="/services/roof-leak-repairs">roof leak investigation and repairs</a>. Include when it appears and the affected room.</li><li>A visible damaged tile or metal detail: compare <a href="/services/tile-roof-repairs">tile roof repairs</a> and <a href="/services/metal-roof-repairs">metal roof repairs</a>; describe the material if known.</li><li>Debris or overflowing drainage: compare <a href="/services/gutter-downpipe-maintenance">gutter clearing and downpipe maintenance</a> with <a href="/services/gutter-repairs">gutter component repairs</a>.</li><li>Unsure of the cause or planning wider work: start with <a href="/services/roof-inspections">a roof inspection</a>, or <a href="/services">view all roof services</a>.</li></ul><p>For two-storey properties or a remote owner, include storeys, the access contact and who should receive the photos, written findings and quote. For urgent enquiries, call <a href="tel:0405878406">0405878406</a>; we confirm appointment timing separately.</p></section>
+    <section className="suburbContact" id="local-enquiry" aria-labelledby="local-enquiry-title"><div className="suburbContactIntro"><h2 id="local-enquiry-title">Arrange a roof assessment in {profile.district}</h2><p>Choose your suburb and service below. Include the property address, what you have noticed and the access contact; a photo is optional.</p></div><ContactForm /></section>
   </section>;
 }
 function SuburbServiceAreaPage({ profile }: { profile: any }) {
   const featured = SERVICE_CATALOG.filter(({ slug }) => profile.featuredServiceSlugs.includes(slug));
+  const otherServices = SERVICE_CATALOG.filter(({ slug }) => !profile.featuredServiceSlugs.includes(slug));
+  const serviceSummaries: Record<string, string> = {
+    "roof-leak-repairs": "For ceiling stains, drips after rain or a recurring leak. We inspect the roof-entry path before planning the repair.",
+    "roof-inspections": "For an uncertain roof concern or several affected areas. Arrange an on-site assessment, photos and written findings.",
+    "roof-cleaning": "For moss, lichen and surface debris. We assess the roof material, condition and suitable cleaning approach.",
+  };
   return <section className="page suburbPage">
     <p className="eyebrow">LOCAL ROOF SERVICES</p><h1>{profile.h1}</h1>
     <p className="directAnswer">Ellis Services Group provides roof repairs and maintenance in {profile.suburb}, {profile.district}. Contact us to arrange an on-site assessment; we confirm the appointment, inspect the roof and provide the repair plan and written quote.</p>
-    <section className="suburbFeatured"><h2>Choose a roof service in {profile.suburb}</h2><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
-    <section className="suburbEvidence"><h2>Clear information before you enquire</h2><ul><li>15 years focused on roof repairs, supported by a standardised repair team.</li><li>Experienced roofing technicians backed by Ellis Services Group’s 15 years in roofing.</li><li>A methodical approach to identifying visible roof concerns and the right next step.</li><li>Enquiry response from as little as 30 minutes. Contact Ellis Services Group to arrange your on-site assessment and confirm the appointment.</li><li>Trusted by more than 1,000 customers.</li></ul></section>
-    <section className="suburbAllServices"><h2>Roof repair and maintenance services in {profile.suburb}</h2><div>{SERVICE_CATALOG.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
+    <nav className="suburbPageActions" aria-label="Roof services and booking"><a className="button" href="#local-enquiry">Request a {profile.suburb} roof assessment <ArrowRight size={17}/></a><a className="textAction" href="#local-roof-services">Choose a roof service <ArrowRight size={17}/></a></nav>
+    <section className="suburbFeatured" id="local-roof-services"><h2>Choose a roof service in {profile.suburb}</h2><p>Start with the concern you have noticed. You do not need to identify the cause before contacting us.</p><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><p>{serviceSummaries[service.slug]}</p><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
+    <section className="suburbAllServices"><h2>More roof repair and maintenance services in {profile.suburb}</h2><p>For a specific roof material, damaged component, urgent leak or rental property, choose the relevant service below.</p><div>{otherServices.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
+    <section className="suburbEvidence"><h2>What to expect from Ellis Services Group</h2><ul><li>15 years focused on roof repairs, supported by experienced roofing technicians and a standardised repair team.</li><li>A methodical approach to identifying visible roof concerns and the right next step.</li><li>Enquiry response from as little as 30 minutes. Contact Ellis Services Group to arrange your on-site assessment and confirm the appointment.</li><li>Trusted by more than 1,000 customers.</li></ul></section>
     <section className="suburbFaq"><h2>Before arranging roof work in {profile.suburb}</h2><details open><summary>What should I include in an enquiry?</summary><p>Describe what you can see safely, the weather context, your property access and the relevant roof area. Do not climb onto the roof or touch wet electrical areas.</p></details><details><summary>Can I send a photo?</summary><p>Yes. Safe ground-level photos help us prepare for the assessment; we confirm the recommended scope after reviewing the property.</p></details></section>
     <LocalGuideLinks />
-    <section className="suburbContact"><h2>Contact Ellis Services Group</h2><ContactForm defaultArea={profile.areaOption}/></section>
+    <section className="suburbContact" id="local-enquiry" aria-labelledby="local-enquiry-title"><div className="suburbContactIntro"><h2 id="local-enquiry-title">Arrange a roof assessment in {profile.suburb}</h2><p>Your suburb is already selected. Choose the service and describe the concern below; include the address and access contact if available. A photo is optional.</p></div><ContactForm defaultArea={profile.areaOption}/></section>
   </section>;
 }
 function News() {
   return (
     <section className="page newsIndex">
-      <header className="newsIndexHeader">
-        <p className="eyebrow">CANBERRA ROOFING NEWS</p>
-        <h1>Canberra Roof Repair Guides</h1>
-        <p>
-          Practical information on common roof concerns, what to observe safely
-          and how to prepare a clear enquiry.
-        </p>
+      <header className="newsIndexHeader pairedHero">
+        <div className="pairedHeroCopy">
+        <p className="eyebrow">ROOF CARE JOURNAL</p>
+        <h1>Roof questions, clearly explained</h1>
+        <p>Understand leaks, roof materials and maintenance with practical reading for homeowners, tenants and property managers.</p>
+        </div>
+        <figure className="pairedHeroMedia"><ResponsiveImage src="/assets/services/roof-inspection-team-review.png" alt="Roof details being reviewed and recorded as context for roof-care questions" priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>Roof condition, materials and the questions behind a repair.</figcaption></figure>
       </header>
-      <section className="contentGuidance"><h2>Choose a guide for the concern you can see</h2><p>Start with the after-rain guide for a new stain or drip, the tile guide for visible damaged tiles, or the ridge guide to understand rebedding and repointing. For appointment preparation and written quote details, use the roof inspection guide. If you are ready to arrange a visit, <a href="/services">choose a roof service</a> or <a href="/contact">describe the concern to Ellis</a>.</p></section>
       <div className="newsGrid">
         {newsArticles.map((article) => (
           <article className="newsCard" key={article.slug}>
+            <div className="newsCardImage"><ResponsiveImage src={newsImages[article.slug].src} alt={newsImages[article.slug].alt} /></div>
             <p className="eyebrow">ROOF CARE GUIDE</p>
             <h2>{article.title}</h2>
             <p>{article.summary}</p>
-            <div className="newsCardActions">
-              <a href={`/news/${article.slug}`}>
-                Read guide <ArrowRight size={16} />
-              </a>
-              <a href={article.servicePath}>
-                Explore{" "}
-                {serviceAnchorLabels[article.serviceTitle] ??
-                  article.serviceTitle}{" "}
-                in Canberra
-              </a>
-            </div>
+            <div className="newsCardActions"><a href={`/news/${article.slug}`}>Read article <ArrowRight size={16} /></a></div>
           </article>
         ))}
       </div>
@@ -1980,113 +1875,51 @@ function News() {
   );
 }
 function NewsArticleView({ article }: { article: NewsArticle }) {
+  const modifiedDate = articleModifiedDate(article.slug, article.updated);
   const image = newsImages[article.slug];
-  const serviceLabel =
-    serviceAnchorLabels[article.serviceTitle] ?? article.serviceTitle;
+  const related = article.related.map(slug => newsArticles.find(item => item.slug === slug)!);
   return (
     <article className="page newsArticle">
-      <header className="articleHeader">
-        <p className="eyebrow">CANBERRA ROOFING NEWS</p>
+      <header className="articleHeader pairedHero">
+        <div className="pairedHeroCopy">
+        <p className="eyebrow">ROOF CARE JOURNAL</p>
         <h1>{article.title}</h1>
-        <p className="articleLead">{article.description}</p>
-        <p className="articleByline">By Ellis Services Group · Updated <time dateTime={article.updated ?? "2026-10-10"}>{article.updated ? "12 October 2026" : "10 October 2026"}</time></p>
+        <p className="articleLead">{article.lead}</p>
+        <p className="articleByline">By <a href={ARTICLE_AUTHOR.url}>{ARTICLE_AUTHOR.name}</a> · Updated <time dateTime={modifiedDate}>{articleVisibleDate(modifiedDate)}</time></p>
+        </div>
+        {image ? <figure className="articleLeadImage pairedHeroMedia"><ResponsiveImage src={image.src} alt={image.alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>Illustrative image for this roof-care topic; not a diagnosis of your property.</figcaption></figure> : null}
       </header>
       <div className="articleLayout">
+        <nav className="articleContents" aria-label="On this page"><p>In this article</p><ol>{article.sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.heading}</a></li>)}</ol></nav>
         <div className="articleBody">
-          {image ? (
-            <figure className="articleLeadImage">
-              <img src={image.src} alt={image.alt} />
-            </figure>
-          ) : null}
-          {article.sections ? <GapArticleSections article={article} /> : article.body.map((paragraph, index) => (
-            <section key={paragraph}><h2>{guideHeadings[article.slug][index]}</h2><p>{paragraph}</p>{index === 1 ? <p>For the on-site assessment and proposed work, see our <a href={article.servicePath}>{serviceLabel.toLowerCase()} service in Canberra</a>.</p> : null}</section>
-          ))}
-          {article.slug === "after-rain-roof-leak-check-canberra" ? <section><h2>Report dampness that appears without rain too</h2><p>A ceiling stain does not establish the source of moisture. Record whether it also appears in dry weather and mention any known plumbing concern or suspected condensation. Share the pattern with Ellis so the roof assessment begins with the full context and any need for a different investigation can be discussed.</p><p>Our <a href="/services/roof-leak-repairs">roof leak repair service</a> explains the investigation and quote process.</p></section> : null}
-          {article.slug === "when-to-arrange-roof-inspection-canberra" ? (
-            <>
-              <h2>Confirm the purpose and access before the visit</h2>
-              <p>Tell Ellis whether the visit is for a recurring leak, a visible defect, maintenance planning or a property decision. We use that purpose to identify the areas that need attention and agree the inspection scope, fees and access arrangements. Include the roof material if known, the number of storeys and any locked gates, tenancy arrangements or restricted areas.</p>
-              <p>Confirm roof-space access and the photographs, written notes or other findings to be provided as part of the agreed appointment. Access to concealed or restricted areas is discussed before the visit; any further investigation is identified separately. Our <a href="/services/roof-inspections">roof inspections service</a> explains that booking process.</p>
-              <h2>What the inspection checks</h2>
-              <p>The checklist follows the roof material and the concern being investigated. Within the agreed scope, Ellis connects the condition of the covering with its junctions and drainage rather than treating a ceiling mark as proof of one failed component.</p>
-              <ul>
-                <li><strong>Roof covering:</strong> displaced, cracked or missing tiles; on metal roofs, sheet laps, fasteners, corrosion, coating damage and signs of retained debris or water.</li>
-                <li><strong>Ridges and hips:</strong> ridge-cap condition, bedding and pointing, with attention to loose or separated areas.</li>
-                <li><strong>Flashings and penetrations:</strong> junctions around chimneys, walls, vents and other openings, including the adjoining roof material.</li>
-                <li><strong>Valleys and drainage:</strong> debris, water marks and the route through gutters, outlets and downpipes.</li>
-                <li><strong>Accessible internal evidence:</strong> the reported stain or drip and, where agreed and accessible, relevant roof-space observations.</li>
-              </ul>
-              <p>For a leak that appears after rain, use our <a href="/news/after-rain-roof-leak-check-canberra">after-rain roof leak guide</a> to record the room, timing and weather before the appointment. Keep photographs to safe, accessible positions.</p>
-              <h2>Turn findings into a repair scope</h2>
-              <p>To compare local repair, renovation and replacement, ask how widespread the defects are, what condition the existing materials are in and what previous repairs have addressed. A local repair may address a defined area; renovation involves a broader agreed scope. If replacement is being considered, ask what the repair or renovation would leave unresolved and clarify the replacement scope separately. Explore our <a href="/services/roof-renovation">roof renovation assessment</a> to discuss those options.</p>
-              <p>Ellis relates the findings to a named roof area, the defect observed and the component requiring attention. That gives the repair discussion a clear sequence: address the water-entry or loose-material concern, identify connected defects, then plan any broader maintenance. If an area could not be accessed or needs further investigation, that limit is recorded in the agreed findings rather than treated as a confirmed cause.</p>
-              <p>A useful record format is: location; observed condition; inspection finding; proposed component repair; priority; and any access or follow-up required. Ellis uses this record to explain the findings, repair work and quote for your property. An isolated damaged tile requires a different scope from a chimney junction or a blocked valley. Read about <a href="/services/tile-roof-repairs">tile roof repairs</a> and <a href="/services/chimney-flashing-repairs">chimney flashing repairs</a> for those repair pathways.</p>
-              <h2>Prepare an inspection and repair enquiry</h2>
-              <p>Send your Canberra suburb, the reason for the visit, roof type if known, the affected room or exterior area, and when the issue occurs. Include safe photographs and the history of any previous work at that location. Tell us how access can be arranged and whether the property is occupied by tenants.</p>
-              <p>The inspection appointment and a later repair quote have distinct scopes. For the repair quote, confirm the defects and components included, materials, access arrangements, any further investigation, and the completion checks relevant to the work. This makes it clear which work is priced and which items remain to be agreed. <a href="/contact">Contact Ellis Services Group to arrange a roof inspection</a> with those details.</p>
-              <p>Ask for exclusions and any further investigation to be identified. If additional work is found, agree its scope and price before approving it.</p>
-            </>
-          ) : null}
-          {!article.sections && <><GapContextLinks slug={article.slug} /><GuideNextSteps slug={article.slug} /></>}
+          {article.sections.map(section => <section className="articleSection" id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>)}
+          {["cracked-slipped-missing-roof-tiles-canberra", "after-rain-roof-leak-check-canberra"].includes(article.slug) ? <TileCasePhotos context={article.slug} /> : null}
+          <section className="articleSources" aria-label="Sources and scope"><h2>Sources and further detail</h2><p>Manufacturer guidance applies to the relevant product and system. These references support the technical background; the practical questions in this article are general editorial guidance.</p><ul>{article.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a><span> — {source.note}</span></li>)}</ul></section>
+          <section className="articleRelated"><h2>Continue reading</h2><ul>{related.map(item => <li key={item.slug}><a href={`/news/${item.slug}`}>{item.title}</a><p>{item.summary}</p></li>)}</ul></section>
+          <p className="articleServiceNote">For information about arranging work, see <a href={article.servicePath}>{article.serviceTitle}</a>.</p>
+          <a className="articleBack" href="/news">← All roof care articles</a>
         </div>
-        <aside className="articleSidebar">
-          <p className="eyebrow">RELATED SERVICE</p>
-          <h2>{article.serviceTitle}</h2>
-          <p>
-            Contact Ellis to arrange an on-site assessment. We inspect the affected roof details and confirm the repair plan and written quote.
-          </p>
-          <a className="button" href={article.servicePath}>
-            Explore {serviceLabel} in Canberra <ArrowRight size={17} />
-          </a>
-          <a className="articleBack" href="/news">
-            ← Back to News
-          </a>
-        </aside>
       </div>
     </article>
   );
 }
 function FAQ({ data }: { data: Data }) {
-  const groups = [
-    "Getting started",
-    "Roof leaks",
-    "Tiles",
-    "Ridges",
-    "Chimneys",
-    "Inspections",
-    "Costs",
-    "Maintenance",
-    "Metal roofing",
-    "Timing",
-    "Storm or hail",
-    "Next steps",
-  ];
   return (
     <section className="page faqPage">
+      <div className="faqIntro">
       <p className="eyebrow">CANBERRA ROOFING FAQ</p>
-      <h1>Canberra Roof Repair FAQs</h1>
+      <h1>Roof repair questions</h1>
       <p>
-        Clear answers to common Canberra roof repair, maintenance, cleaning and
+        Clear answers to common roof repair, maintenance, cleaning and
         inspection questions, designed to help you prepare the right details for
         an enquiry.
       </p>
-      {groups.map((group) => {
-        const entries = data.faqs.filter((f) => f.q.startsWith(group));
-        return entries.length ? (
-          <section className="faqGroup" key={group}>
-            <h2>{group}</h2>
-            {entries.map((f) => (
-              <details key={f.q}>
-                <summary>{f.q.split(" / ")[1] || f.q}</summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
-          </section>
-        ) : null;
-      })}
+      </div>
+      <FaqBrowser faqs={data.faqs} />
+      <div className="faqSupport">
       <LocalGuideLinks />
-      <IntentFaqDirectory />
       <OperatingHours />
+      </div>
       <section className="safetySources">
         <p className="eyebrow">SAFETY GUIDANCE</p>
         <p>
@@ -2119,7 +1952,7 @@ function Contact({
     <section className="contact page">
       <div className="contactIntro">
         <p className="eyebrow">CONTACT</p>
-        <h1>Contact a Canberra Roofer for Roof Repairs</h1>
+        <h1>Arrange a roof assessment</h1>
         <p>Call, email or use the form to arrange an on-site roof assessment. We confirm the appointment, inspect the affected roof and drainage, then provide the repair plan and written quote. You can request an assessment without a photo.</p>
         <p>
           {data.phone}
@@ -2128,20 +1961,22 @@ function Contact({
         </p>
         <address className="businessAddress">{data.address}</address>
         <OperatingHours />
-        <IntentServiceContent slug="contact" />
-        <p>For an owner or manager arranging access, see <a href="/services/rental-property-roof-repairs">rental property roof repairs</a>. Tenants can use our <a href="/news/roof-leak-information-for-tenants-canberra">roof leak reporting guide</a>.</p>
-        <EnquiryChecklist />
-        <figure className="pageFeatureMedia contactFeatureMedia">
-          <img
-            src="/assets/contact/service-arrival-consultation.png"
-            alt="Ellis Services Group technician discussing a roof repair enquiry beside a branded service van"
-          />
-        </figure>
       </div>
       <ContactForm
         defaultArea={prefill.area}
         defaultService={prefill.service}
       />
+      <div className="contactPreparation">
+        <IntentServiceContent slug="contact" />
+        <p>For an owner or manager arranging access, see <a href="/services/rental-property-roof-repairs">rental property roof repairs</a>. Tenants can use our <a href="/news/roof-leak-information-for-tenants-canberra">roof leak reporting guide</a>.</p>
+        <EnquiryChecklist />
+        <figure className="pageFeatureMedia contactFeatureMedia">
+          <ResponsiveImage
+            src="/assets/contact/service-arrival-consultation.png"
+            alt="Ellis Services Group technician discussing a roof repair enquiry beside a branded service van"
+          />
+        </figure>
+      </div>
     </section>
   );
 }
@@ -2337,7 +2172,7 @@ function LayoutV2({
       <header className="siteHeader">
         <div className="headerInner">
           <a className="brand" href="/">
-            <img
+            <ResponsiveImage sizes="100px" loading="eager"
               className="brandLogo"
               src="/assets/brand/canberraroofkind-logo.png"
               alt="Ellis Services Group logo"
@@ -2458,10 +2293,10 @@ function LayoutV2({
               { label: "Google Reviews", href: "https://share.google/y50AZRJwjOdVOlj5o", icon: "/assets/brand/google.svg" },
               { label: "Instagram", href: "https://www.instagram.com/elliservices_group/", icon: "/assets/brand/instagram-gradient.png" },
               { label: "LinkedIn", href: "https://share.google/Z4tImXHToPi9H4LmH", icon: "/assets/brand/linkedin.svg" },
-              { label: "Facebook", href: "https://share.google/tU1c5vEAlELqXCifu", icon: "/assets/brand/facebook.svg" },
+              { label: "Facebook", href: "https://www.facebook.com/p/Ellis-Services-Group-100082926022259/", icon: "/assets/brand/facebook.svg" },
             ].map(({ label, href, icon }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} — Ellis Services Group (opens in a new tab)`}>
-                <img src={icon} alt="" width={24} height={24} loading="lazy" />
+                <ResponsiveImage src={icon} alt="" width={24} height={24} sizes="24px" />
                 <span>{label}</span>
               </a>
             ))}
@@ -2615,15 +2450,18 @@ function AdminDrawer({
 function CaseStudyView({ study }: { study: CaseStudy }) {
   return (
     <article className="page caseStudy">
-      <header className="caseStudyHeader">
-        <p className="eyebrow">REAL CANBERRA ROOF REPAIR CASE</p>
+      <header className="caseStudyHeader pairedHero">
+        <div className="pairedHeroCopy">
+        <p className="eyebrow">DOCUMENTED TILE ROOF REPAIR</p>
         <p className="caseStudyTrust">98% customer satisfaction</p>
         <h1>{study.title}</h1>
         <p className="articleLead">
-          See our Canberra tile roof repair from start to finish: displaced
+          Follow the visible tile roof repair from start to finish: displaced
           tiles before repair, preparation of the affected area and the roof
           covering reinstated after the work.
         </p>
+        </div>
+        <figure className="pairedHeroMedia"><ResponsiveImage src={study.images[2].src} alt={study.images[2].alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>{study.images[2].caption}</figcaption></figure>
       </header>
       <section className="caseEvidence" aria-labelledby="case-evidence-title">
         <div className="caseEvidenceIntro">
@@ -2639,12 +2477,12 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
           {study.images.map((image, index) => (
             <figure key={image.src}>
               <span>{["Before", "During", "After"][index]}</span>
-              <img
+              <ResponsiveImage
                 src={image.src}
                 alt={image.alt}
-                loading={index === 0 ? "eager" : "lazy"}
               />
               <figcaption>{image.caption}</figcaption>
+              <a className="serviceGalleryOriginal" href={image.src}>View original photo</a>
             </figure>
           ))}
         </div>
@@ -2803,6 +2641,7 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
     <>
       <HeadManager pathname={path} />
       <LayoutV2 data={data} openAdmin={openAdmin} pathname={path}>
+        <Breadcrumbs pathname={path} />
         {content}
       </LayoutV2>
       {import.meta.env.DEV && admin && (

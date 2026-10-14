@@ -26,8 +26,10 @@ describe('approved keyword-gap routes and content navigation', () => {
     expect(host.querySelector('main h1')?.textContent).not.toBe('Page not found');
     expect(getRouteHead(path).canonical).toBe('https://www.canberraroofkind.com.au' + path);
     expect(getRouteHead(path).robots ?? '').not.toContain('noindex');
-    expect(host.querySelector('main a[href="/services"]')).not.toBeNull();
-    expect(host.querySelector('main a[href^="/contact"]')).not.toBeNull();
+    if (path.startsWith("/services/")) {
+      expect(host.querySelector('main a[href="/services"]')).not.toBeNull();
+      expect(host.querySelector('main a[href^="/contact"]')).not.toBeNull();
+    } else expect(host.querySelector('.articleRelated a[href^="/news/"]')).not.toBeNull();
   });
 
   it('keeps cleaning and repair as different, mutually navigable gutter services', () => {
@@ -47,9 +49,10 @@ describe('approved keyword-gap routes and content navigation', () => {
     for (const link of toc!.querySelectorAll('a')) {
       expect(host.querySelector(link.getAttribute('href')!)).not.toBeNull();
     }
-    expect(host.querySelectorAll('.articleBody h2').length).toBeGreaterThanOrEqual(6);
-    expect(host.querySelectorAll('.articleBody details').length).toBeGreaterThanOrEqual(2);
-    expect(host.querySelector('time[datetime="2026-10-12"]')).not.toBeNull();
+    expect(host.querySelectorAll('.articleSection')).toHaveLength(4);
+    expect(host.querySelectorAll('.articleSection p').length).toBeGreaterThanOrEqual(12);
+    const expectedDate = '2026-10-14';
+    expect(host.querySelector(`time[datetime="${expectedDate}"]`)).not.toBeNull();
     expect(host.querySelector('.articleByline')?.textContent).toContain('Ellis Services Group');
   });
 

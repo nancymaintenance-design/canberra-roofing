@@ -214,7 +214,7 @@ it("uses the server-rendered About marker when Vercel resolves encoded dot HTML 
     expect(getDocumentRoute()).toBe("/about");
     expect(document.querySelector("main")!.textContent).toBe(before);
     expect(document.querySelector("main h1")!.textContent).toBe(
-      "Canberra Roof Repairs by Ellis Services Group",
+      "Roof repairs by Ellis Services Group",
     );
     expect(
       document.querySelector('link[rel="canonical"]')!.getAttribute("href"),

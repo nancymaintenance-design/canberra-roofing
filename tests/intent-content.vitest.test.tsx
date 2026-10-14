@@ -13,7 +13,7 @@ function page(path: string) {
 describe('keyword-map intent answers and confirmed operating hours', () => {
   it('serves urgent enquiries with the real hours, fee boundary and call/booking paths', () => {
     const host = page('/services/emergency-roof-repairs');
-    expect(host.querySelector('main h1')?.textContent).toBe('Emergency & Urgent Roof Repairs Canberra');
+    expect(host.querySelector('main h1')?.textContent).toBe('Emergency & Urgent Roof Repairs');
     expect(host.querySelector('main')?.textContent).toContain('9:00 am–9:00 pm');
     expect(host.querySelector('main')?.textContent).toContain('additional urgent-service fee');
     expect(host.querySelector('main a[href="tel:0405878406"]')).not.toBeNull();
@@ -46,15 +46,15 @@ describe('keyword-map intent answers and confirmed operating hours', () => {
   });
   it('supports remote owners and managers with a real booking path and report guidance', () => {
     const host = page('/services/rental-property-roof-repairs');
-    expect(host.querySelector('main h1')?.textContent).toBe('Rental Property & Property Manager Roof Repairs Canberra');
+    expect(host.querySelector('main h1')?.textContent).toBe('Roof Repairs for Rental Properties');
     expect(host.querySelector('main')?.textContent).toContain('photos and a written explanation');
     expect(host.querySelector('main a[href="/contact?service=Rental%20%26%20Property%20Manager%20Roof%20Repairs"]')).not.toBeNull();
     expect(page('/contact').querySelector('option[value="Rental & Property Manager Roof Repairs"]')).not.toBeNull();
   });
   it('gives tenants a readable reporting guide without substituting for repair authorisation', () => {
     const host = page('/news/roof-leak-information-for-tenants-canberra');
-    expect(host.querySelector('main h1')?.textContent).toBe('Roof Leaks in a Canberra Rental: What to Report and Who to Contact');
-    expect(host.querySelectorAll('.articleContents a')).toHaveLength(6);
+    expect(host.querySelector('main h1')?.textContent).toBe('What should you report when a rental property has a roof leak?');
+    expect(host.querySelectorAll('.articleContents a')).toHaveLength(4);
     expect(host.querySelector('.articleBody a[href="/services/rental-property-roof-repairs"]')).not.toBeNull();
   });
 });

@@ -53,7 +53,7 @@ export const INTENT_TOPICS = [
     'What should I look for in a written roof repair quote?', 'Check the findings, included roof areas and components, materials, access, exclusions and total price. Clarify payment, completion checks and any further investigation before approving the work.', '/news/roof-repair-cost-canberra', 'Compare itemised repair quotations'),
   topic('5-16', 'home', 'Getting started', 'Choose a defined repair, not a blanket lifespan promise',
     'The performance of a roof repair depends on the existing material, connected roof condition, preparation and ongoing maintenance. Ellis explains what the proposed repair addresses and the work agreed in the written quote. Keep the findings and repair record for future maintenance.',
-    'What affects how long a roof repair lasts?', 'The materials, condition of adjoining components, preparation, exposure and maintenance all matter. Ask what the proposed work addresses rather than compare all roof repairs using one lifespan.', '/services', 'Compare Canberra roof repair services'),
+    'What affects how long a roof repair lasts?', 'The materials, condition of adjoining components, preparation, exposure and maintenance all matter. Ask what the proposed work addresses rather than compare all roof repairs using one lifespan.', '/services', 'Compare roof repair services'),
   topic('5-17', 'contact', 'Getting started', 'Useful photos and enquiry details, without roof access',
     'Include your suburb, affected room, when the issue began and whether it follows heavy rain, wind or dry weather. Ground-level photographs of visible changes and safe indoor images are useful, but optional. Add the number of storeys, access contact and previous repair details; do not climb onto the roof to gather information.',
     'Which photos and details help with a roof repair enquiry?', 'Send safe indoor or ground-level images, the suburb, affected area, timing, rain pattern and any previous repairs. Include roof material if known, storeys and access arrangements. A written description is enough to request the visit.', '/news/when-to-arrange-roof-inspection-canberra', 'Prepare for the inspection and quote'),
@@ -89,7 +89,7 @@ export const ADDITIONAL_SERVICES = [
     faqQ: 'What are your normal hours and after-hours charges?',
     faqA: 'Our normal working hours are 9:00 am–9:00 pm, seven days a week. Outside those hours, an additional urgent-service fee applies. The amount is determined in the on-site quote.',
     faqExtras: [{ q: 'Should I wait for an enquiry reply if there is immediate danger?', a: 'No. For a life-threatening emergency call 000. ACTSES handles storm and flood emergency assistance on 132 500. These are emergency-service contacts, not Ellis booking numbers.' }],
-    next: 'Call 0405878406 for an urgent enquiry and provide your Canberra suburb, current water signs and access contact. Confirm the appointment and applicable charges; do not climb onto a wet or storm-damaged roof.',
+    next: 'Call 0405878406 for an urgent enquiry and provide your suburb, current water signs and access contact. Confirm the appointment and applicable charges; do not climb onto a wet or storm-damaged roof.',
     related: [
       { label: 'Roof Leak Repairs', path: '/services/roof-leak-repairs', description: 'Investigate intermittent, recurring or active water-entry signs.' },
       { label: 'Roof Inspections', path: '/services/roof-inspections', description: 'Agree accessible inspection areas, photos and written findings.' },
@@ -106,7 +106,7 @@ export const ADDITIONAL_SERVICES = [
     faqQ: 'Can you arrange the visit if I live interstate?',
     faqA: 'Yes. Nominate your property manager or other authorised access contact. We coordinate the visit and provide inspection photos and a written explanation so you can review the findings and repair quote remotely.',
     faqExtras: [{ q: 'Can the findings be sent for an owner or owners corporation to review?', a: 'Yes. Tell us the recipient, property details and review requirements when booking. We provide photos, written findings and the repair scope; confirm the appropriate approval before instructing the work.' }],
-    next: 'Send the Canberra property address, owner or manager contact, tenant’s observations, access arrangements and who will approve the work. Ask for the inspection photos, written findings and itemised repair scope needed for your review.',
+    next: 'Send the property address, owner or manager contact, tenant’s observations, access arrangements and who will approve the work. Ask for the inspection photos, written findings and itemised repair scope needed for your review.',
     related: [
       { label: 'Roof Inspections', path: '/services/roof-inspections', description: 'Check relevant accessible details and document findings for the repair decision.' },
       { label: 'Roof Leak Repairs', path: '/services/roof-leak-repairs', description: 'Investigate the reported water signs and confirm component repairs.' },

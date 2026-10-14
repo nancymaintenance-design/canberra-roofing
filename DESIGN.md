@@ -17,10 +17,10 @@ typography:
     fontFamily: "Arial Narrow, Arial, Helvetica, Segoe UI, system-ui, sans-serif"
 rounded:
   control: "0.25rem"
-  card: "0.375rem"
-  media: "0.125rem"
+  card: "0.75rem"
+  media: "0.75rem"
 spacing:
-  section-gap: "clamp(3.5rem, 7vw, 7rem)"
+  section-gap: "clamp(2.5rem, 4vw, 4rem)"
   page-max: "1440px"
 components:
   button: {}
@@ -46,7 +46,7 @@ A well-organised roof-work site: dark workwear, clear safety-orange markings, le
 - **Register:** A service-business marketing site with safety-first operational content. Clear and useful language takes priority over sales pressure.
 - **Memorable signature:** Deep charcoal image overlays and a sharp safety-orange keyline, finished with the clipped roofline silhouette at the bottom of the hero.
 - **Restraint:** Forms, safety guidance, addresses, service comparisons and legal/insurance facts remain plain, high-contrast and familiar.
-- **Anti-references:** Avoid glossy property-development imagery, rounded SaaS dashboards, excessive glass effects, oversized empty colour fields and generic stock-photo card grids.
+- **Anti-references:** Avoid glossy property-development imagery, pill-heavy SaaS dashboards, excessive glass effects, oversized empty colour fields and generic stock-photo card grids. Rounded content cards remain part of this site's accepted design.
 - **Token ownership/runtime mapping:** This file mirrors the existing canonical CSS custom properties in `src/styles.css`; it does not generate runtime tokens. The `:root` variables in that file are the source of truth.
 
 ## Colors
@@ -59,15 +59,51 @@ Use the `display` stack for H1–H3, brand marks and short service labels; it is
 
 ## Layout
 
-Content is contained to `1440px` with a responsive section rhythm of `clamp(3.5rem, 7vw, 7rem)`. The standard desktop grid moves from three service cards to a single column at `640px`. Primary page media uses a 3:2 editorial split and collapses cleanly on mobile. Do not create spacing solely to make a section look dramatic; every large gap should be justified by a visual transition, map, image or action.
+Content is contained to `1440px` with a compact responsive section rhythm of `clamp(2.5rem, 4vw, 4rem)`. On 13 October 2026 the owner requested removal of large unused right-hand fields and excessive vertical gaps. Home guidance can pair related topics in two equal desktop columns, collapsing at `760px`. Service detail pages follow the later owner-approved five-theme structure below; that decision supersedes the earlier unrelated two-column advice grid. Keep service paragraphs within a maximum reading measure of `75ch` rather than stretching them to fill a shell. News detail pages follow the later approved desktop reading layout below; privacy retains its `800px` body and following enquiry panel. Non-hero page titles and subsection headings are deliberately smaller than the home hero; long headings must wrap without becoming oversized towers. Standalone home guidance keeps the same bounded container and side gutters as its neighbouring sections. Existing About, Solutions and Areas media retain their editorial split and collapse on mobile. Do not add empty height, invented images or repeated copy to balance a layout; use real related content and compact spacing.
+
+### Topic-led heroes and editorial reading
+
+The owner's 14 October editorial refresh pairs service, case, News index and article header copy with a meaningful existing roof image. `.pairedHero` is the shared layout owner in `src/styles.css`: a 1.08:1 desktop split with a 32–64px gap, bounded 300–400px photograph, 32–56px heading and quiet caption. At 1024px it stacks, with 320px media; at 760px media is 240px and headings are 30.4–44px. Images use existing responsive derivatives and eager loading only in the first screen. Service and case hero captions explain the visible context without turning illustrative service assets into documented project evidence. The distinctive element is the direct pairing of roof material with the relevant repair question; existing charcoal, orange and rounded framing supplies identity. Runtime CSS tokens remain canonical and unchanged.
+
+News cards use equal 240px covers and three columns above 1200px, two above 760px and one on phones (220px covers). Each card leads to one article; the index hero and twelve covers use distinct topic-relevant site images. The owner's later 14 October desktop-reading approval supersedes the centred 800px article-body rule: above 1024px, `.articleLayout` is a centred 1240px grid with a 240px chapter directory, 32–48px gap and flexible wide reading column. The directory sticks 8rem below the viewport top while scrolling, with a viewport-bounded operable overflow for zoom or short screens. It contains only native chapter links, not service promotion. Body paragraphs use 18px type, 1.8 line height and at most 80ch; section headings use the full reading-column width rather than the old narrow heading cap. Do not use newspaper-style parallel prose columns. Continuous prose, four topic sections, sources and all images stay intact. The three documentary case frames share a desktop row; related articles use three columns when exactly three items are present, otherwise two columns (four form two complete rows) at the end of the body. At 1024px and below the directory becomes a natural-flow introductory block above the body in the existing 800px maximum lane; below 760px evidence and related articles stack, with 16.8px body copy. Scoped `.articleSection` scroll margins keep native contents anchors below the header (8rem desktop, 6rem phone). No paragraph-by-paragraph raised cards or service sidebar. Runtime colour, type-family and radius tokens remain canonical and unchanged.
+
+At 1025–1200px the shared site header wraps, so the article directory and native chapter targets use a 10rem top offset; the directory's maximum height reserves 12rem. This is a scoped narrow-desktop geometry exception, not a global header or token change.
+
+The reusable `TileCasePhotos` module shows all three original documentary frames and captions in relevant tile, inspection and leak contexts. On renovation it is explicitly a related local-repair comparison with the weathered surrounding roof retained, never evidence of renovation. Originals remain available through links. Do not bind this evidence to metal, chimney or gutter work, assign a district without evidence, or infer a leak cause from the pictures.
+
+Non-home headings and metadata lead with the material, problem or reader task. City identity remains in the brand, homepage, address and coverage facts; avoid mandatory city suffixes or mechanical “near me” substitutes. District pages stay compact directories with their actual place names.
+
+### Service detail theme contract
+
+Privacy also uses the centered 800px reading lane with its enquiry panel following the policy body, preserving all policy content and contact links.
+
+About FAQ headings precede the questions in a 900px region. Contact retains concise contact details alongside the form, then places the longer preparation guidance, checklist and bounded 360px desktop / 260px mobile photo in a following centered 900px region. These rules supersede their earlier long-body sidebar arrangement; paragraphs retain their reading measure. News uses its later approved chapter-directory/wide-body layout above, not a promotional or empty sidebar.
+
+Bounded long advice and guide blocks use centred inline margins within the service reading region, retaining the `85ch` group cap and `75ch` paragraph measure.
+
+All twelve service detail pages use the same five bounded sections, in order: **What we repair → How we handle it → Real projects & photos → Costs & booking → FAQ**. These describe the chapter roles, not identical visible headings. Following the owner's keyword-map approval, `SERVICE_THEME_HEADINGS` in `src/service-theme-layout.tsx` supplies five service-specific H2 headings per page: use distilled intent terms where the map provides them, and established core service terms otherwise. Keep headings descriptive of the actual section, not strings of keyword variants. These are the only five H2 headings in the service detail content; every repair, material, inspection, booking and gallery subtopic uses H3. Shared content takes an explicit `headingLevel={3}` only on these pages and defaults to H2 elsewhere. Keep the canonical keyword-led H1, original explanations, photographs, gallery anchors, linked resources and FAQ answers.
+
+The chapter navigation retains compact, consistent role labels and stable fragment IDs. Its links use existing `--color-roof-charcoal` backgrounds and `--color-on-dark` text; hover/active use `--color-steel` with a `--color-safety-orange` border. Retain the global keyboard focus outline, 44px minimum height and control radius. Primary booking actions remain orange.
+
+Following the owner's 14 October 2026 PC refinement, the service shell, chapter navigation and five-theme stack are centred within `1440px`, using the established responsive page gutters. Each paragraph retains a `75ch` maximum reading measure; extended advice groups are bounded to `85ch`. Every theme uses one white surface, a thin cloud border, the shared 12px radius and `clamp(1.25rem, 3vw, 2rem)` padding. H2 is 30.4–36px, H3 is 19.2–22px. Signs/causes and assessment/repair pathways pair in two related desktop columns, separated by a quiet rule; longer guidance stays in logical reading groups. Related guides and services remain contextual links. The five compact in-page navigation links preserve native anchor/focus behaviour.
+
+Following the owner's later 14 October crop approval, service galleries use equal photographic cards: three images form one three-column row, two/four use paired columns, and five use two main cards above three supporting cards. Images use cover sizing at 280–360px desktop and 260px mobile, with no hover scaling. Original photographs remain available through native links. Project notes precede media rather than occupying a column beside a tall photograph. The emergency collage uses five authentic photographic extracts without gutters or decorative stickers; its untouched original remains linked. `scripts/crop-emergency-project.mjs` records the inspected crop rectangles. Preserve source image order, captions and identity; do not synthesize project evidence. Costs and booking use two balanced subregions for scope/fees and hours/appointment action; no fixed heights or empty sidebars. Below `760px`, pairs and all gallery counts stack naturally. Native FAQ disclosures remain single-column, finish the page and retain all answers used in structured data. These service-specific selectors in `src/styles.css` implement the layout; existing colour, radius, type and spacing tokens remain canonical.
 
 ## Elevation & Depth
+
+### Local service and enquiry pages
+
+Suburb pages lead with two explicit paths: choose a service or request a local assessment. Featured services form three compact desktop columns (one below 760px), each with a concise symptom/use-case explanation. List remaining services separately without repeating the featured links. Preserve every service destination, location metadata and the preselected suburb; do not fabricate local case studies.
+
+District and suburb enquiry sections use the shared `.suburbContact` single-column white panel, cloud border, orange top rule and card radius, centred at 900px maximum. The heading and short instructions sit above the form, not in an empty left column. Form fields retain their established desktop pairs and mobile stack; the form and intro share a 760px reading width. Local guide and FAQ groups use bounded readable panels rather than unrelated two-column text. CSS tokens in `src/styles.css` remain canonical.
 
 Hierarchy comes from charcoal-versus-warm-white contrast, thin cloud borders, orange edge markers and the existing `--shadow-lift` / `--shadow-hover` shadows. Use modest elevation on interactive service cards and image frames. Do not use shadows on long-form reading content, safety notices or dense form controls where a crisp border is clearer.
 
 ## Shapes
 
-Use the existing control, card and media radii exactly: `0.25rem`, `0.375rem` and `0.125rem`. The language is deliberately near-square and trade-like. Orange rules, border-left signals and roofline geometry provide the expressive shape vocabulary; avoid pill-heavy UI.
+Use the control, card and media radii exactly: `0.25rem`, `0.75rem` and `0.75rem`. On 13 October 2026 the owner requested restoration of rounded cards across the site; this supersedes the earlier near-square rule. Content cards, inset information panels, FAQ panels and image frames consume the shared 12px radius; buttons and fields retain their restrained 4px radius. Full-bleed heroes, navigation and table cells are not cards and remain square. Orange rules, border-left signals and roofline geometry retain the trade identity; avoid pill-heavy UI. Decorative card keylines follow the corner shape without clipping keyboard focus.
+
+Runtime mapping: `rounded.control` mirrors `--radius-control`; `rounded.card` mirrors `--radius-card`, consumed by service/news/area cards and inset guidance/contact/FAQ panels; `rounded.media` mirrors `--radius-media`, consumed by gallery and editorial image frames. The CSS variables remain canonical; update this mirror and regression tests in the same change when accepted values change.
 
 ## Components
 
@@ -80,6 +116,8 @@ Buttons, links, service cards and form fields must expose a visible `:focus-visi
 The orange `.button` is the primary action and should state the next real-world step, such as “Send an enquiry” or “Explore Metal & Colorbond Roof Repairs”. Underlined `.textAction` links are secondary. Keep icons to the trailing edge and retain text labels.
 
 ### Navigation and data display
+
+The `/faq` hub uses one categorised question browser. The owner-approved professional refinement replaces the earlier heavy charcoal directory and nested question cards. Use a compact 32–44px page title and a thin intro divider inside a 1240px shell. On desktop a 240px white, cloud-bordered directory stays sticky below the site header; only the current category has a quiet surface highlight and orange marker. The right column uses rounded white category panels, with plain question rows separated by thin rules rather than individual raised cards. Questions use 16px body type at weight 600, category headings use 22.4–28px display type, and answers use a restrained steel tone with 1.75 line height. Decorative plus/minus indicators sit at the trailing edge; native disclosure semantics and visible focus remain intact. Category links are native anchors and the current section receives `aria-current="location"` as the document scrolls. Mobile uses a compact, horizontally scrollable sticky category strip above the questions, automatically keeping the active category visible. Support guides and operating hours form a separate, compact two-part panel. Preserve all question answers, contextual links and existing SEO data; changes here must not alter service-page or suburb-page FAQs.
 
 The sticky charcoal navigation uses a thin orange base rule and a service popover for the full set of repair pathways. Service cards use a small sequence label, concise title, practical description and a clear route link. On small screens, the navigation must collapse without hiding telephone or contact access.
 
@@ -101,7 +139,7 @@ Use plain English, safety-first wording, specific service names and verified bus
 
 ## Do's and Don'ts
 
-- **Do:** Lead every indexable page with a precise English Canberra roof-repair term that matches the page's actual content.
+- **Do:** Lead each page with a precise English material, roof-repair or reader-task term that matches its content; retain the homepage's core Canberra positioning.
 - **Do:** Pair visual distinction with concrete, safe next-step guidance.
 - **Don't:** Use Chinese or mixed-language customer-facing copy.
 - **Don't:** Fill pages with repetitive keywords, oversized decorative areas or unverified claims.

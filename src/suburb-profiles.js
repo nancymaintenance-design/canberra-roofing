@@ -17,6 +17,11 @@ export const DISTRICT_PROFILES = Object.freeze(AREA_GROUPS.map(({ district, subu
   return Object.freeze({
     district,
     suburbs,
+    bookingLocations: suburbs.map(suburb => ({
+      suburb,
+      areaOption: `${suburb} — ${district}`,
+      enquiryPath: `/contact?area=${encodeURIComponent(`${suburb} — ${district}`)}`,
+    })),
     path,
     title: `${district} Roof Repair Services | Ellis Services Group`,
     description: `Roof repair services across ${district}, Canberra: roof leak repairs, tile and metal roof repairs, roof renovation, cleaning and gutter maintenance.`,

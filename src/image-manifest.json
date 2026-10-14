@@ -1,0 +1,1596 @@
+{
+  "/assets/about/ellis-brand-roof-planning.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2360374,
+    "sha256": "f8b9aa25e718ecea5e5c1958040485d0e82d8faf6cc0ee125798d78a6fbf9a6b",
+    "variants": [
+      {
+        "src": "/assets/responsive/ellis-brand-roof-planning-400.webp?v=f8b9aa25e7",
+        "width": 400,
+        "height": 267,
+        "bytes": 15802
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-roof-planning-800.webp?v=f8b9aa25e7",
+        "width": 800,
+        "height": 533,
+        "bytes": 45898
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-roof-planning-1200.webp?v=f8b9aa25e7",
+        "width": 1200,
+        "height": 800,
+        "bytes": 84048
+      }
+    ]
+  },
+  "/assets/about/ellis-brand-service-van.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2777502,
+    "sha256": "829e719c74e518fe43529b471604a12291950902ec63f200504a2a53f27aebed",
+    "variants": [
+      {
+        "src": "/assets/responsive/ellis-brand-service-van-400.webp?v=829e719c74",
+        "width": 400,
+        "height": 267,
+        "bytes": 21760
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-service-van-800.webp?v=829e719c74",
+        "width": 800,
+        "height": 533,
+        "bytes": 70130
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-service-van-1200.webp?v=829e719c74",
+        "width": 1200,
+        "height": 800,
+        "bytes": 131030
+      }
+    ]
+  },
+  "/assets/about/ellis-brand-site-preparation.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2508115,
+    "sha256": "b7a9dd6e42ad2ffe18a2764ec213bae6968e1c61aae8aaeeb003752e4659e243",
+    "variants": [
+      {
+        "src": "/assets/responsive/ellis-brand-site-preparation-400.webp?v=b7a9dd6e42",
+        "width": 400,
+        "height": 267,
+        "bytes": 21778
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-site-preparation-800.webp?v=b7a9dd6e42",
+        "width": 800,
+        "height": 533,
+        "bytes": 64628
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-site-preparation-1200.webp?v=b7a9dd6e42",
+        "width": 1200,
+        "height": 800,
+        "bytes": 112174
+      }
+    ]
+  },
+  "/assets/about/ellis-brand-team-briefing.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2259002,
+    "sha256": "35b3b0c9c2352ba2856cd554885e7c69614d878f4832d15b45b6d757f8d99fd5",
+    "variants": [
+      {
+        "src": "/assets/responsive/ellis-brand-team-briefing-400.webp?v=35b3b0c9c2",
+        "width": 400,
+        "height": 267,
+        "bytes": 20078
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-team-briefing-800.webp?v=35b3b0c9c2",
+        "width": 800,
+        "height": 533,
+        "bytes": 48758
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-team-briefing-1200.webp?v=35b3b0c9c2",
+        "width": 1200,
+        "height": 800,
+        "bytes": 81158
+      }
+    ]
+  },
+  "/assets/about/ellis-brand-vehicle-tools.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2713014,
+    "sha256": "16c586fb26f038b1402364d081885cb6d7642e2caa2b7d73b053967566233184",
+    "variants": [
+      {
+        "src": "/assets/responsive/ellis-brand-vehicle-tools-400.webp?v=16c586fb26",
+        "width": 400,
+        "height": 267,
+        "bytes": 25140
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-vehicle-tools-800.webp?v=16c586fb26",
+        "width": 800,
+        "height": 533,
+        "bytes": 73936
+      },
+      {
+        "src": "/assets/responsive/ellis-brand-vehicle-tools-1200.webp?v=16c586fb26",
+        "width": 1200,
+        "height": 800,
+        "bytes": 134168
+      }
+    ]
+  },
+  "/assets/areas/canberra-coverage-roofscape.png": {
+    "width": 1672,
+    "height": 941,
+    "originalBytes": 2426914,
+    "sha256": "6fe5cf7d21674bb5216c4563479682c4b4fe33228c0d130bed9e849fd348b712",
+    "variants": [
+      {
+        "src": "/assets/responsive/canberra-coverage-roofscape-400.webp?v=6fe5cf7d21",
+        "width": 400,
+        "height": 225,
+        "bytes": 18612
+      },
+      {
+        "src": "/assets/responsive/canberra-coverage-roofscape-800.webp?v=6fe5cf7d21",
+        "width": 800,
+        "height": 450,
+        "bytes": 61058
+      },
+      {
+        "src": "/assets/responsive/canberra-coverage-roofscape-1200.webp?v=6fe5cf7d21",
+        "width": 1200,
+        "height": 675,
+        "bytes": 117726
+      }
+    ]
+  },
+  "/assets/brand/canberraroofkind-logo.png": {
+    "width": 1254,
+    "height": 1254,
+    "originalBytes": 874792,
+    "sha256": "440448d7b99f8523eecea1b1e937edce5a267ef4984cd1fb58fa0785ce9d91f6",
+    "variants": [
+      {
+        "src": "/assets/responsive/canberraroofkind-logo-100.webp?v=440448d7b9",
+        "width": 100,
+        "height": 100,
+        "bytes": 4768
+      },
+      {
+        "src": "/assets/responsive/canberraroofkind-logo-200.webp?v=440448d7b9",
+        "width": 200,
+        "height": 200,
+        "bytes": 10800
+      }
+    ]
+  },
+  "/assets/brand/instagram-gradient.png": {
+    "width": 1254,
+    "height": 1254,
+    "originalBytes": 539837,
+    "sha256": "2bc9a2e0d1767cdca1faaa03f27639fe31aa58bf2420efbf9fce0aa56b19d2be",
+    "variants": [
+      {
+        "src": "/assets/responsive/instagram-gradient-24.webp?v=2bc9a2e0d1",
+        "width": 24,
+        "height": 24,
+        "bytes": 868
+      },
+      {
+        "src": "/assets/responsive/instagram-gradient-48.webp?v=2bc9a2e0d1",
+        "width": 48,
+        "height": 48,
+        "bytes": 2018
+      }
+    ]
+  },
+  "/assets/case-studies/tile-roof-repair-after.png": {
+    "width": 1586,
+    "height": 992,
+    "originalBytes": 2829112,
+    "sha256": "45e42a549160362b7f8829bd3722b9f72dace2b9d092878907974baaa6b8af5f",
+    "variants": [
+      {
+        "src": "/assets/responsive/tile-roof-repair-after-400.webp?v=45e42a5491",
+        "width": 400,
+        "height": 250,
+        "bytes": 28350
+      },
+      {
+        "src": "/assets/responsive/tile-roof-repair-after-800.webp?v=45e42a5491",
+        "width": 800,
+        "height": 500,
+        "bytes": 96534
+      },
+      {
+        "src": "/assets/responsive/tile-roof-repair-after-1200.webp?v=45e42a5491",
+        "width": 1200,
+        "height": 751,
+        "bytes": 175656
+      }
+    ]
+  },
+  "/assets/case-studies/tile-roof-repair-before.png": {
+    "width": 1586,
+    "height": 992,
+    "originalBytes": 3147551,
+    "sha256": "ed492eb1188b5a12b98657ba2fe6aa63d4503b53cda0c3adcac8375461633fa9",
+    "variants": [
+      {
+        "src": "/assets/responsive/tile-roof-repair-before-400.webp?v=ed492eb118",
+        "width": 400,
+        "height": 250,
+        "bytes": 27180
+      },
+      {
+        "src": "/assets/responsive/tile-roof-repair-before-800.webp?v=ed492eb118",
+        "width": 800,
+        "height": 500,
+        "bytes": 98888
+      },
+      {
+        "src": "/assets/responsive/tile-roof-repair-before-1200.webp?v=ed492eb118",
+        "width": 1200,
+        "height": 751,
+        "bytes": 203488
+      }
+    ]
+  },
+  "/assets/case-studies/tile-roof-repair-during.png": {
+    "width": 1586,
+    "height": 992,
+    "originalBytes": 2997917,
+    "sha256": "c2031ba762ca73347d4ee1a09286425f059878aee7922ed1dc9ba1cb94802543",
+    "variants": [
+      {
+        "src": "/assets/responsive/tile-roof-repair-during-400.webp?v=c2031ba762",
+        "width": 400,
+        "height": 250,
+        "bytes": 29596
+      },
+      {
+        "src": "/assets/responsive/tile-roof-repair-during-800.webp?v=c2031ba762",
+        "width": 800,
+        "height": 500,
+        "bytes": 101780
+      },
+      {
+        "src": "/assets/responsive/tile-roof-repair-during-1200.webp?v=c2031ba762",
+        "width": 1200,
+        "height": 751,
+        "bytes": 193522
+      }
+    ]
+  },
+  "/assets/contact/service-arrival-consultation.png": {
+    "width": 1448,
+    "height": 1086,
+    "originalBytes": 2413872,
+    "sha256": "54eb509b4ce1e1666aaf791814a5426e9984706731021dcee9c4e41ca461c9a1",
+    "variants": [
+      {
+        "src": "/assets/responsive/service-arrival-consultation-400.webp?v=54eb509b4c",
+        "width": 400,
+        "height": 300,
+        "bytes": 26530
+      },
+      {
+        "src": "/assets/responsive/service-arrival-consultation-800.webp?v=54eb509b4c",
+        "width": 800,
+        "height": 600,
+        "bytes": 75738
+      },
+      {
+        "src": "/assets/responsive/service-arrival-consultation-1200.webp?v=54eb509b4c",
+        "width": 1200,
+        "height": 900,
+        "bytes": 129646
+      }
+    ]
+  },
+  "/assets/home/au-hero-act-tile-roof.png": {
+    "width": 1693,
+    "height": 929,
+    "originalBytes": 2737335,
+    "sha256": "10bdded671c45d216170626f8cbb063376a70948b1f0851b4bda191219e8bf6a",
+    "variants": [
+      {
+        "src": "/assets/responsive/au-hero-act-tile-roof-400.webp?v=10bdded671",
+        "width": 400,
+        "height": 219,
+        "bytes": 19808
+      },
+      {
+        "src": "/assets/responsive/au-hero-act-tile-roof-800.webp?v=10bdded671",
+        "width": 800,
+        "height": 439,
+        "bytes": 73590
+      },
+      {
+        "src": "/assets/responsive/au-hero-act-tile-roof-1200.webp?v=10bdded671",
+        "width": 1200,
+        "height": 658,
+        "bytes": 150192
+      }
+    ]
+  },
+  "/assets/home/australian-residential-roof-context.png": {
+    "width": 561,
+    "height": 371,
+    "originalBytes": 425602,
+    "sha256": "1047dd0def38081744c8407aab7cdfd79abc42c84843fdbc10db1c58a03f5c10",
+    "variants": [
+      {
+        "src": "/assets/responsive/australian-residential-roof-context-400.webp?v=1047dd0def",
+        "width": 400,
+        "height": 265,
+        "bytes": 24572
+      },
+      {
+        "src": "/assets/responsive/australian-residential-roof-context-561.webp?v=1047dd0def",
+        "width": 561,
+        "height": 371,
+        "bytes": 41952
+      }
+    ]
+  },
+  "/assets/home/canberra-roof-hero.png": {
+    "width": 853,
+    "height": 636,
+    "originalBytes": 1025428,
+    "sha256": "97b2f390231ee9e6c17304ac4759ca18fcdbb7a390ffa3a63dc3d20b58832d13",
+    "variants": [
+      {
+        "src": "/assets/responsive/canberra-roof-hero-400.webp?v=97b2f39023",
+        "width": 400,
+        "height": 298,
+        "bytes": 28828
+      },
+      {
+        "src": "/assets/responsive/canberra-roof-hero-800.webp?v=97b2f39023",
+        "width": 800,
+        "height": 596,
+        "bytes": 84058
+      },
+      {
+        "src": "/assets/responsive/canberra-roof-hero-853.webp?v=97b2f39023",
+        "width": 853,
+        "height": 636,
+        "bytes": 93128
+      }
+    ]
+  },
+  "/assets/home/ellis-site-consultation.png": {
+    "width": 1672,
+    "height": 941,
+    "originalBytes": 2514883,
+    "sha256": "6835062aa46e71071c399bdf3d6ec0fd2c33f4f46f18a207a57f4cbc8e4ec1a2",
+    "variants": [
+      {
+        "src": "/assets/responsive/ellis-site-consultation-400.webp?v=6835062aa4",
+        "width": 400,
+        "height": 225,
+        "bytes": 24816
+      },
+      {
+        "src": "/assets/responsive/ellis-site-consultation-800.webp?v=6835062aa4",
+        "width": 800,
+        "height": 450,
+        "bytes": 75192
+      },
+      {
+        "src": "/assets/responsive/ellis-site-consultation-1200.webp?v=6835062aa4",
+        "width": 1200,
+        "height": 675,
+        "bytes": 130582
+      }
+    ]
+  },
+  "/assets/home/ellis-team-trust.png": {
+    "width": 1672,
+    "height": 941,
+    "originalBytes": 2694348,
+    "sha256": "085400a76865571138fa5187bb749312c82c74ae25c7c2982bf3d10f078924ad",
+    "variants": [
+      {
+        "src": "/assets/responsive/ellis-team-trust-400.webp?v=085400a768",
+        "width": 400,
+        "height": 225,
+        "bytes": 26250
+      },
+      {
+        "src": "/assets/responsive/ellis-team-trust-800.webp?v=085400a768",
+        "width": 800,
+        "height": 450,
+        "bytes": 84136
+      },
+      {
+        "src": "/assets/responsive/ellis-team-trust-1200.webp?v=085400a768",
+        "width": 1200,
+        "height": 675,
+        "bytes": 153146
+      }
+    ]
+  },
+  "/assets/news/chimney-flashing-review.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3030672,
+    "sha256": "a85d8cec302607872a905d0f592ee6428cadde98cd63e5790aadac6fba690c04",
+    "variants": [
+      {
+        "src": "/assets/responsive/chimney-flashing-review-400.webp?v=a85d8cec30",
+        "width": 400,
+        "height": 267,
+        "bytes": 31284
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-review-800.webp?v=a85d8cec30",
+        "width": 800,
+        "height": 533,
+        "bytes": 96522
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-review-1200.webp?v=a85d8cec30",
+        "width": 1200,
+        "height": 800,
+        "bytes": 172518
+      }
+    ]
+  },
+  "/assets/news/damaged-tile-record.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3055892,
+    "sha256": "c414f5366e97c0ff838d64150bbf65d4b6c52fe5d7eab314b7878d9bf4b0f8ad",
+    "variants": [
+      {
+        "src": "/assets/responsive/damaged-tile-record-400.webp?v=c414f5366e",
+        "width": 400,
+        "height": 267,
+        "bytes": 29892
+      },
+      {
+        "src": "/assets/responsive/damaged-tile-record-800.webp?v=c414f5366e",
+        "width": 800,
+        "height": 533,
+        "bytes": 95226
+      },
+      {
+        "src": "/assets/responsive/damaged-tile-record-1200.webp?v=c414f5366e",
+        "width": 1200,
+        "height": 800,
+        "bytes": 177898
+      }
+    ]
+  },
+  "/assets/news/ridge-repointing-work.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2721305,
+    "sha256": "ca51ad6fc410e5e72e357b0e84054af717e1a9a7d2eedc45567c45074c169a1c",
+    "variants": [
+      {
+        "src": "/assets/responsive/ridge-repointing-work-400.webp?v=ca51ad6fc4",
+        "width": 400,
+        "height": 267,
+        "bytes": 26606
+      },
+      {
+        "src": "/assets/responsive/ridge-repointing-work-800.webp?v=ca51ad6fc4",
+        "width": 800,
+        "height": 533,
+        "bytes": 78148
+      },
+      {
+        "src": "/assets/responsive/ridge-repointing-work-1200.webp?v=ca51ad6fc4",
+        "width": 1200,
+        "height": 800,
+        "bytes": 137716
+      }
+    ]
+  },
+  "/assets/news/roof-leak-after-rain.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2071773,
+    "sha256": "a83907a959c7b76be55ea6fac55be57d72b316a8085e5bfc201a332ba8d40e3b",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-leak-after-rain-400.webp?v=a83907a959",
+        "width": 400,
+        "height": 267,
+        "bytes": 13316
+      },
+      {
+        "src": "/assets/responsive/roof-leak-after-rain-800.webp?v=a83907a959",
+        "width": 800,
+        "height": 533,
+        "bytes": 34254
+      },
+      {
+        "src": "/assets/responsive/roof-leak-after-rain-1200.webp?v=a83907a959",
+        "width": 1200,
+        "height": 800,
+        "bytes": 57064
+      }
+    ]
+  },
+  "/assets/news/roof-space-inspection.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2392589,
+    "sha256": "98508be8d94da648697aa04ee170fa7adff3cd5ad7991ea154548297faa3ee9f",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-space-inspection-400.webp?v=98508be8d9",
+        "width": 400,
+        "height": 267,
+        "bytes": 20880
+      },
+      {
+        "src": "/assets/responsive/roof-space-inspection-800.webp?v=98508be8d9",
+        "width": 800,
+        "height": 533,
+        "bytes": 55882
+      },
+      {
+        "src": "/assets/responsive/roof-space-inspection-1200.webp?v=98508be8d9",
+        "width": 1200,
+        "height": 800,
+        "bytes": 96346
+      }
+    ]
+  },
+  "/assets/services/chimney-flashing-assessment.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3290721,
+    "sha256": "b20358fb9599b7a34beb64a3b2f64c1af48b9758a538832f38586db38cdaf47c",
+    "variants": [
+      {
+        "src": "/assets/responsive/chimney-flashing-assessment-400.webp?v=b20358fb95",
+        "width": 400,
+        "height": 267,
+        "bytes": 31262
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-assessment-800.webp?v=b20358fb95",
+        "width": 800,
+        "height": 533,
+        "bytes": 104934
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-assessment-1200.webp?v=b20358fb95",
+        "width": 1200,
+        "height": 800,
+        "bytes": 196390
+      }
+    ]
+  },
+  "/assets/services/chimney-flashing-completed-detail.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3111071,
+    "sha256": "0c23c24f76d65e6f4b0884aa4dccf0bd9200e6eec3435a16f3677b2a5130e23f",
+    "variants": [
+      {
+        "src": "/assets/responsive/chimney-flashing-completed-detail-400.webp?v=0c23c24f76",
+        "width": 400,
+        "height": 267,
+        "bytes": 27852
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-completed-detail-800.webp?v=0c23c24f76",
+        "width": 800,
+        "height": 533,
+        "bytes": 91836
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-completed-detail-1200.webp?v=0c23c24f76",
+        "width": 1200,
+        "height": 800,
+        "bytes": 173120
+      }
+    ]
+  },
+  "/assets/services/chimney-flashing-completed-roof-detail.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3012852,
+    "sha256": "d6d185e65d38a52e96b08ebfa2aed8b24edefc6ae185d905a30011bc2d0c0b5c",
+    "variants": [
+      {
+        "src": "/assets/responsive/chimney-flashing-completed-roof-detail-400.webp?v=d6d185e65d",
+        "width": 400,
+        "height": 267,
+        "bytes": 21564
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-completed-roof-detail-800.webp?v=d6d185e65d",
+        "width": 800,
+        "height": 533,
+        "bytes": 76066
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-completed-roof-detail-1200.webp?v=d6d185e65d",
+        "width": 1200,
+        "height": 800,
+        "bytes": 151798
+      }
+    ]
+  },
+  "/assets/services/chimney-flashing-condition.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2916495,
+    "sha256": "f7c575581c3f221975497bbedefc20ff5984ddcec0a72cf68fec7caeab4d3659",
+    "variants": [
+      {
+        "src": "/assets/responsive/chimney-flashing-condition-400.webp?v=f7c575581c",
+        "width": 400,
+        "height": 267,
+        "bytes": 26116
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-condition-800.webp?v=f7c575581c",
+        "width": 800,
+        "height": 533,
+        "bytes": 80570
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-condition-1200.webp?v=f7c575581c",
+        "width": 1200,
+        "height": 800,
+        "bytes": 146918
+      }
+    ]
+  },
+  "/assets/services/chimney-flashing-installation.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3183425,
+    "sha256": "ccd1dae9897e2df7564551fdce608e4efc749ce77f59a46cf0653991406076d8",
+    "variants": [
+      {
+        "src": "/assets/responsive/chimney-flashing-installation-400.webp?v=ccd1dae989",
+        "width": 400,
+        "height": 267,
+        "bytes": 28048
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-installation-800.webp?v=ccd1dae989",
+        "width": 800,
+        "height": 533,
+        "bytes": 91158
+      },
+      {
+        "src": "/assets/responsive/chimney-flashing-installation-1200.webp?v=ccd1dae989",
+        "width": 1200,
+        "height": 800,
+        "bytes": 170176
+      }
+    ]
+  },
+  "/assets/services/gutter-downpipe-edge-debris.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 346457,
+    "sha256": "254ca8eb2d92d3854e50d0273553704c6ee169e7c45803f4ad5a2d228571ee67",
+    "variants": [
+      {
+        "src": "/assets/responsive/gutter-downpipe-edge-debris-400.webp?v=254ca8eb2d",
+        "width": 400,
+        "height": 267,
+        "bytes": 20822
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-edge-debris-800.webp?v=254ca8eb2d",
+        "width": 800,
+        "height": 533,
+        "bytes": 57276
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-edge-debris-1200.webp?v=254ca8eb2d",
+        "width": 1200,
+        "height": 800,
+        "bytes": 96736
+      }
+    ]
+  },
+  "/assets/services/gutter-downpipe-roof-edge-condition.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 330274,
+    "sha256": "2c1a41c1deba2c2f32b05e093d6ac03a7a789177a91116c7329aaec00df56633",
+    "variants": [
+      {
+        "src": "/assets/responsive/gutter-downpipe-roof-edge-condition-400.webp?v=2c1a41c1de",
+        "width": 400,
+        "height": 267,
+        "bytes": 19930
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-roof-edge-condition-800.webp?v=2c1a41c1de",
+        "width": 800,
+        "height": 533,
+        "bytes": 52874
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-roof-edge-condition-1200.webp?v=2c1a41c1de",
+        "width": 1200,
+        "height": 800,
+        "bytes": 87058
+      }
+    ]
+  },
+  "/assets/services/gutter-downpipe-solar-channel-debris.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 468157,
+    "sha256": "456f5f9dfd85b55b17a64f05bb01e6f8927f51d6190af5791a6e0f80c0730afb",
+    "variants": [
+      {
+        "src": "/assets/responsive/gutter-downpipe-solar-channel-debris-400.webp?v=456f5f9dfd",
+        "width": 400,
+        "height": 267,
+        "bytes": 34660
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-solar-channel-debris-800.webp?v=456f5f9dfd",
+        "width": 800,
+        "height": 533,
+        "bytes": 101290
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-solar-channel-debris-1200.webp?v=456f5f9dfd",
+        "width": 1200,
+        "height": 800,
+        "bytes": 168216
+      }
+    ]
+  },
+  "/assets/services/gutter-downpipe-valley-condition.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 362008,
+    "sha256": "36506eff87b9c3b9a2b471ec8f650ee3b0a2a83f1597c2ddc2ff23970311134d",
+    "variants": [
+      {
+        "src": "/assets/responsive/gutter-downpipe-valley-condition-400.webp?v=36506eff87",
+        "width": 400,
+        "height": 267,
+        "bytes": 21042
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-valley-condition-800.webp?v=36506eff87",
+        "width": 800,
+        "height": 533,
+        "bytes": 62344
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-valley-condition-1200.webp?v=36506eff87",
+        "width": 1200,
+        "height": 800,
+        "bytes": 105632
+      }
+    ]
+  },
+  "/assets/services/gutter-downpipe-vegetation-build-up.jpg": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 471642,
+    "sha256": "43731220688990db018641e7f85c10baf24cc884c18989589c4279f2cf3aea08",
+    "variants": [
+      {
+        "src": "/assets/responsive/gutter-downpipe-vegetation-build-up-400.webp?v=4373122068",
+        "width": 400,
+        "height": 267,
+        "bytes": 39706
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-vegetation-build-up-800.webp?v=4373122068",
+        "width": 800,
+        "height": 533,
+        "bytes": 110972
+      },
+      {
+        "src": "/assets/responsive/gutter-downpipe-vegetation-build-up-1200.webp?v=4373122068",
+        "width": 1200,
+        "height": 800,
+        "bytes": 173992
+      }
+    ]
+  },
+  "/assets/services/metal-roof-completed-roof.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2508240,
+    "sha256": "c116a1aa0b7dfd50cf398d09e542615fddb938960dcec4593c9468580976fa63",
+    "variants": [
+      {
+        "src": "/assets/responsive/metal-roof-completed-roof-400.webp?v=c116a1aa0b",
+        "width": 400,
+        "height": 267,
+        "bytes": 19452
+      },
+      {
+        "src": "/assets/responsive/metal-roof-completed-roof-800.webp?v=c116a1aa0b",
+        "width": 800,
+        "height": 533,
+        "bytes": 60136
+      },
+      {
+        "src": "/assets/responsive/metal-roof-completed-roof-1200.webp?v=c116a1aa0b",
+        "width": 1200,
+        "height": 800,
+        "bytes": 107018
+      }
+    ]
+  },
+  "/assets/services/metal-roof-gutter-edge-repair.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2670944,
+    "sha256": "468ad00ed55f717b256ac60837ab28e80512d3052d4b90166a06df05b97a2f44",
+    "variants": [
+      {
+        "src": "/assets/responsive/metal-roof-gutter-edge-repair-400.webp?v=468ad00ed5",
+        "width": 400,
+        "height": 267,
+        "bytes": 22412
+      },
+      {
+        "src": "/assets/responsive/metal-roof-gutter-edge-repair-800.webp?v=468ad00ed5",
+        "width": 800,
+        "height": 533,
+        "bytes": 67444
+      },
+      {
+        "src": "/assets/responsive/metal-roof-gutter-edge-repair-1200.webp?v=468ad00ed5",
+        "width": 1200,
+        "height": 800,
+        "bytes": 120644
+      }
+    ]
+  },
+  "/assets/services/metal-roof-repair-team-work.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2603013,
+    "sha256": "296770e4a4c84665a6b4699f991009b752f7e211ebb7d91db23800824bdd372a",
+    "variants": [
+      {
+        "src": "/assets/responsive/metal-roof-repair-team-work-400.webp?v=296770e4a4",
+        "width": 400,
+        "height": 267,
+        "bytes": 20756
+      },
+      {
+        "src": "/assets/responsive/metal-roof-repair-team-work-800.webp?v=296770e4a4",
+        "width": 800,
+        "height": 533,
+        "bytes": 61248
+      },
+      {
+        "src": "/assets/responsive/metal-roof-repair-team-work-1200.webp?v=296770e4a4",
+        "width": 1200,
+        "height": 800,
+        "bytes": 111598
+      }
+    ]
+  },
+  "/assets/services/metal-roof-secure-fixing.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2390471,
+    "sha256": "2f191fb042ec066ebc87e257372420d2d9b9521221495a5cce6145eb77037250",
+    "variants": [
+      {
+        "src": "/assets/responsive/metal-roof-secure-fixing-400.webp?v=2f191fb042",
+        "width": 400,
+        "height": 267,
+        "bytes": 19912
+      },
+      {
+        "src": "/assets/responsive/metal-roof-secure-fixing-800.webp?v=2f191fb042",
+        "width": 800,
+        "height": 533,
+        "bytes": 56200
+      },
+      {
+        "src": "/assets/responsive/metal-roof-secure-fixing-1200.webp?v=2f191fb042",
+        "width": 1200,
+        "height": 800,
+        "bytes": 98676
+      }
+    ]
+  },
+  "/assets/services/metal-roof-wall-flashing-condition.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2778563,
+    "sha256": "ea76120af1f785f5218f3c0b7363fb91b6d24e8addef48fec99024e1988de068",
+    "variants": [
+      {
+        "src": "/assets/responsive/metal-roof-wall-flashing-condition-400.webp?v=ea76120af1",
+        "width": 400,
+        "height": 267,
+        "bytes": 17326
+      },
+      {
+        "src": "/assets/responsive/metal-roof-wall-flashing-condition-800.webp?v=ea76120af1",
+        "width": 800,
+        "height": 533,
+        "bytes": 59256
+      },
+      {
+        "src": "/assets/responsive/metal-roof-wall-flashing-condition-1200.webp?v=ea76120af1",
+        "width": 1200,
+        "height": 800,
+        "bytes": 113984
+      }
+    ]
+  },
+  "/assets/services/ridge-capping-completed-line.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3038105,
+    "sha256": "c133486a7c7add2b24a85813b93bf8402ac067289d8a905eb46df5715f012a5f",
+    "variants": [
+      {
+        "src": "/assets/responsive/ridge-capping-completed-line-400.webp?v=c133486a7c",
+        "width": 400,
+        "height": 267,
+        "bytes": 28370
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-completed-line-800.webp?v=c133486a7c",
+        "width": 800,
+        "height": 533,
+        "bytes": 90120
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-completed-line-1200.webp?v=c133486a7c",
+        "width": 1200,
+        "height": 800,
+        "bytes": 161514
+      }
+    ]
+  },
+  "/assets/services/ridge-capping-condition.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2891058,
+    "sha256": "ba93393ea86ec87790846bb2017d3d312bb0eb7062a347fbe9824782f9ae194b",
+    "variants": [
+      {
+        "src": "/assets/responsive/ridge-capping-condition-400.webp?v=ba93393ea8",
+        "width": 400,
+        "height": 267,
+        "bytes": 26534
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-condition-800.webp?v=ba93393ea8",
+        "width": 800,
+        "height": 533,
+        "bytes": 83122
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-condition-1200.webp?v=ba93393ea8",
+        "width": 1200,
+        "height": 800,
+        "bytes": 149542
+      }
+    ]
+  },
+  "/assets/services/ridge-capping-pointing.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2836118,
+    "sha256": "2249c56d40e20985b032aac63afaadc629018c778efd5f9f4fe21981f35c58dd",
+    "variants": [
+      {
+        "src": "/assets/responsive/ridge-capping-pointing-400.webp?v=2249c56d40",
+        "width": 400,
+        "height": 267,
+        "bytes": 26084
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-pointing-800.webp?v=2249c56d40",
+        "width": 800,
+        "height": 533,
+        "bytes": 77314
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-pointing-1200.webp?v=2249c56d40",
+        "width": 1200,
+        "height": 800,
+        "bytes": 137128
+      }
+    ]
+  },
+  "/assets/services/ridge-capping-rebedding.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2957180,
+    "sha256": "41d6cbe60a90ccda811dafe067e4874ec4cb62e7ec6a3245ba85b013eb127dc3",
+    "variants": [
+      {
+        "src": "/assets/responsive/ridge-capping-rebedding-400.webp?v=41d6cbe60a",
+        "width": 400,
+        "height": 267,
+        "bytes": 27216
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-rebedding-800.webp?v=41d6cbe60a",
+        "width": 800,
+        "height": 533,
+        "bytes": 81718
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-rebedding-1200.webp?v=41d6cbe60a",
+        "width": 1200,
+        "height": 800,
+        "bytes": 148184
+      }
+    ]
+  },
+  "/assets/services/ridge-capping-repair-process.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3260930,
+    "sha256": "3d32ad5eae17f397644130629cfdc1998dbb8c76b0f3295980c357711bc618c6",
+    "variants": [
+      {
+        "src": "/assets/responsive/ridge-capping-repair-process-400.webp?v=3d32ad5eae",
+        "width": 400,
+        "height": 267,
+        "bytes": 36506
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-repair-process-800.webp?v=3d32ad5eae",
+        "width": 800,
+        "height": 533,
+        "bytes": 115602
+      },
+      {
+        "src": "/assets/responsive/ridge-capping-repair-process-1200.webp?v=3d32ad5eae",
+        "width": 1200,
+        "height": 800,
+        "bytes": 206966
+      }
+    ]
+  },
+  "/assets/services/roof-cleaning-completed-roof.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2819403,
+    "sha256": "3b087a20cbf89d6719aaf4409d4e41e70d60fda9c480f147f5a95ce827c7a8e0",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-cleaning-completed-roof-400.webp?v=3b087a20cb",
+        "width": 400,
+        "height": 267,
+        "bytes": 23052
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-completed-roof-800.webp?v=3b087a20cb",
+        "width": 800,
+        "height": 533,
+        "bytes": 80974
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-completed-roof-1200.webp?v=3b087a20cb",
+        "width": 1200,
+        "height": 800,
+        "bytes": 157094
+      }
+    ]
+  },
+  "/assets/services/roof-cleaning-controlled-wash.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2740037,
+    "sha256": "90dd130b278ba0713696abb5221405b22815a71da4c8789ea5d75beb37e45858",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-cleaning-controlled-wash-400.webp?v=90dd130b27",
+        "width": 400,
+        "height": 267,
+        "bytes": 18766
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-controlled-wash-800.webp?v=90dd130b27",
+        "width": 800,
+        "height": 533,
+        "bytes": 68764
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-controlled-wash-1200.webp?v=90dd130b27",
+        "width": 1200,
+        "height": 800,
+        "bytes": 136598
+      }
+    ]
+  },
+  "/assets/services/roof-cleaning-gutter-debris.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3376681,
+    "sha256": "5eb0e00dafdf9bf8698a1afcdde517f6bf5d9b5ac43e6a3ddfd65bb8374146d3",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-cleaning-gutter-debris-400.webp?v=5eb0e00daf",
+        "width": 400,
+        "height": 267,
+        "bytes": 35126
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-gutter-debris-800.webp?v=5eb0e00daf",
+        "width": 800,
+        "height": 533,
+        "bytes": 117014
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-gutter-debris-1200.webp?v=5eb0e00daf",
+        "width": 1200,
+        "height": 800,
+        "bytes": 218242
+      }
+    ]
+  },
+  "/assets/services/roof-cleaning-site-overview.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2907963,
+    "sha256": "ea8f67416656f1f7595610e95f6cfda76e55f2f38ab30484377bbc5c991ee008",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-cleaning-site-overview-400.webp?v=ea8f674166",
+        "width": 400,
+        "height": 267,
+        "bytes": 25642
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-site-overview-800.webp?v=ea8f674166",
+        "width": 800,
+        "height": 533,
+        "bytes": 77982
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-site-overview-1200.webp?v=ea8f674166",
+        "width": 1200,
+        "height": 800,
+        "bytes": 148236
+      }
+    ]
+  },
+  "/assets/services/roof-cleaning-surface-condition.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3402248,
+    "sha256": "83606070c5b6452a8e02a3ce70d774ddb9fb7f9f190ac26a70f34675449e3d66",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-cleaning-surface-condition-400.webp?v=83606070c5",
+        "width": 400,
+        "height": 267,
+        "bytes": 30122
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-surface-condition-800.webp?v=83606070c5",
+        "width": 800,
+        "height": 533,
+        "bytes": 104856
+      },
+      {
+        "src": "/assets/responsive/roof-cleaning-surface-condition-1200.webp?v=83606070c5",
+        "width": 1200,
+        "height": 800,
+        "bytes": 202886
+      }
+    ]
+  },
+  "/assets/services/roof-inspection-checklist.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3070938,
+    "sha256": "a413196081e2cfe382f541d00bc9b679312a786e391175a13a596f08bb47fcbd",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-inspection-checklist-400.webp?v=a413196081",
+        "width": 400,
+        "height": 267,
+        "bytes": 30080
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-checklist-800.webp?v=a413196081",
+        "width": 800,
+        "height": 533,
+        "bytes": 96920
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-checklist-1200.webp?v=a413196081",
+        "width": 1200,
+        "height": 800,
+        "bytes": 175774
+      }
+    ]
+  },
+  "/assets/services/roof-inspection-photo-record.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2915671,
+    "sha256": "adb6dac3e33962222d20fd556a5f2c75c05001e43e246622abb0d983b54cbab3",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-inspection-photo-record-400.webp?v=adb6dac3e3",
+        "width": 400,
+        "height": 267,
+        "bytes": 27184
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-photo-record-800.webp?v=adb6dac3e3",
+        "width": 800,
+        "height": 533,
+        "bytes": 80812
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-photo-record-1200.webp?v=adb6dac3e3",
+        "width": 1200,
+        "height": 800,
+        "bytes": 147366
+      }
+    ]
+  },
+  "/assets/services/roof-inspection-roofline-review.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2784405,
+    "sha256": "be765ea630b8dec32f235a00860bf1351d4a07586ad416e36b2529be77d8af52",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-inspection-roofline-review-400.webp?v=be765ea630",
+        "width": 400,
+        "height": 267,
+        "bytes": 27696
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-roofline-review-800.webp?v=be765ea630",
+        "width": 800,
+        "height": 533,
+        "bytes": 80848
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-roofline-review-1200.webp?v=be765ea630",
+        "width": 1200,
+        "height": 800,
+        "bytes": 139346
+      }
+    ]
+  },
+  "/assets/services/roof-inspection-solar-roof-review.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2771047,
+    "sha256": "392766773cb7ed40f83a4c2d11d26eba6ddec5dd1cd14268653e32e6254aef74",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-inspection-solar-roof-review-400.webp?v=392766773c",
+        "width": 400,
+        "height": 267,
+        "bytes": 21656
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-solar-roof-review-800.webp?v=392766773c",
+        "width": 800,
+        "height": 533,
+        "bytes": 68802
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-solar-roof-review-1200.webp?v=392766773c",
+        "width": 1200,
+        "height": 800,
+        "bytes": 126100
+      }
+    ]
+  },
+  "/assets/services/roof-inspection-team-review.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2633475,
+    "sha256": "dd5b4b59284c969ca591045090144733f9c5dde8fa79c84ebec046dd4c091111",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-inspection-team-review-400.webp?v=dd5b4b5928",
+        "width": 400,
+        "height": 267,
+        "bytes": 25382
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-team-review-800.webp?v=dd5b4b5928",
+        "width": 800,
+        "height": 533,
+        "bytes": 72736
+      },
+      {
+        "src": "/assets/responsive/roof-inspection-team-review-1200.webp?v=dd5b4b5928",
+        "width": 1200,
+        "height": 800,
+        "bytes": 125754
+      }
+    ]
+  },
+  "/assets/services/roof-leak-completed-roof.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2972150,
+    "sha256": "f7b7384194d47b50578afa8a1e6bbb9a8dc2fde0fd70f7524cabdd8f422b882c",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-leak-completed-roof-400.webp?v=f7b7384194",
+        "width": 400,
+        "height": 267,
+        "bytes": 35024
+      },
+      {
+        "src": "/assets/responsive/roof-leak-completed-roof-800.webp?v=f7b7384194",
+        "width": 800,
+        "height": 533,
+        "bytes": 102742
+      },
+      {
+        "src": "/assets/responsive/roof-leak-completed-roof-1200.webp?v=f7b7384194",
+        "width": 1200,
+        "height": 800,
+        "bytes": 175962
+      }
+    ]
+  },
+  "/assets/services/roof-leak-flashing-before-after.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3045695,
+    "sha256": "052abb4816d9da1488eb8064d5c3bfa2bc4566018b177880d79acecb3d8fc153",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-leak-flashing-before-after-400.webp?v=052abb4816",
+        "width": 400,
+        "height": 267,
+        "bytes": 33500
+      },
+      {
+        "src": "/assets/responsive/roof-leak-flashing-before-after-800.webp?v=052abb4816",
+        "width": 800,
+        "height": 533,
+        "bytes": 98908
+      },
+      {
+        "src": "/assets/responsive/roof-leak-flashing-before-after-1200.webp?v=052abb4816",
+        "width": 1200,
+        "height": 800,
+        "bytes": 174518
+      }
+    ]
+  },
+  "/assets/services/roof-leak-flashing-repair.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3019909,
+    "sha256": "c11da5979300899370cfcd7b88966eb3fc4e4e5cb82907ab70d5fe6353e7355d",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-leak-flashing-repair-400.webp?v=c11da59793",
+        "width": 400,
+        "height": 267,
+        "bytes": 36514
+      },
+      {
+        "src": "/assets/responsive/roof-leak-flashing-repair-800.webp?v=c11da59793",
+        "width": 800,
+        "height": 533,
+        "bytes": 104706
+      },
+      {
+        "src": "/assets/responsive/roof-leak-flashing-repair-1200.webp?v=c11da59793",
+        "width": 1200,
+        "height": 800,
+        "bytes": 180112
+      }
+    ]
+  },
+  "/assets/services/roof-leak-interior-water-mark.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2152096,
+    "sha256": "736ea3ea3d6a790a2cd00eb785770c214bd0ea621ae802462a77f8ee93bce490",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-leak-interior-water-mark-400.webp?v=736ea3ea3d",
+        "width": 400,
+        "height": 267,
+        "bytes": 15418
+      },
+      {
+        "src": "/assets/responsive/roof-leak-interior-water-mark-800.webp?v=736ea3ea3d",
+        "width": 800,
+        "height": 533,
+        "bytes": 40872
+      },
+      {
+        "src": "/assets/responsive/roof-leak-interior-water-mark-1200.webp?v=736ea3ea3d",
+        "width": 1200,
+        "height": 800,
+        "bytes": 68880
+      }
+    ]
+  },
+  "/assets/services/roof-leak-on-roof-assessment.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2885162,
+    "sha256": "a36ab80b51e9088fe8a6a83e593f24867bd465d83f7ccaf8ef91d83ead91faec",
+    "variants": [
+      {
+        "src": "/assets/responsive/roof-leak-on-roof-assessment-400.webp?v=a36ab80b51",
+        "width": 400,
+        "height": 267,
+        "bytes": 30624
+      },
+      {
+        "src": "/assets/responsive/roof-leak-on-roof-assessment-800.webp?v=a36ab80b51",
+        "width": 800,
+        "height": 533,
+        "bytes": 87302
+      },
+      {
+        "src": "/assets/responsive/roof-leak-on-roof-assessment-1200.webp?v=a36ab80b51",
+        "width": 1200,
+        "height": 800,
+        "bytes": 150010
+      }
+    ]
+  },
+  "/assets/services/tile-roof-before-after.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3274977,
+    "sha256": "e869c74e51dd96cf249afc8aa6ebc8e9f585f721ef263d76c751889e3b3a3b09",
+    "variants": [
+      {
+        "src": "/assets/responsive/tile-roof-before-after-400.webp?v=e869c74e51",
+        "width": 400,
+        "height": 267,
+        "bytes": 27512
+      },
+      {
+        "src": "/assets/responsive/tile-roof-before-after-800.webp?v=e869c74e51",
+        "width": 800,
+        "height": 533,
+        "bytes": 99904
+      },
+      {
+        "src": "/assets/responsive/tile-roof-before-after-1200.webp?v=e869c74e51",
+        "width": 1200,
+        "height": 800,
+        "bytes": 193250
+      }
+    ]
+  },
+  "/assets/services/tile-roof-condition-review.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2768260,
+    "sha256": "0fe61dcf659a78a07650ca66141249bf9ace28139929a78c516485bd88c83fb1",
+    "variants": [
+      {
+        "src": "/assets/responsive/tile-roof-condition-review-400.webp?v=0fe61dcf65",
+        "width": 400,
+        "height": 267,
+        "bytes": 25958
+      },
+      {
+        "src": "/assets/responsive/tile-roof-condition-review-800.webp?v=0fe61dcf65",
+        "width": 800,
+        "height": 533,
+        "bytes": 76164
+      },
+      {
+        "src": "/assets/responsive/tile-roof-condition-review-1200.webp?v=0fe61dcf65",
+        "width": 1200,
+        "height": 800,
+        "bytes": 133792
+      }
+    ]
+  },
+  "/assets/services/tile-roof-damaged-tiles.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2901448,
+    "sha256": "c49ff9629c4321917bf56bd920738d0bb1bf3c130b69f5df765cd9d2335d3dda",
+    "variants": [
+      {
+        "src": "/assets/responsive/tile-roof-damaged-tiles-400.webp?v=c49ff9629c",
+        "width": 400,
+        "height": 267,
+        "bytes": 29112
+      },
+      {
+        "src": "/assets/responsive/tile-roof-damaged-tiles-800.webp?v=c49ff9629c",
+        "width": 800,
+        "height": 533,
+        "bytes": 81334
+      },
+      {
+        "src": "/assets/responsive/tile-roof-damaged-tiles-1200.webp?v=c49ff9629c",
+        "width": 1200,
+        "height": 800,
+        "bytes": 142914
+      }
+    ]
+  },
+  "/assets/services/tile-roof-repair-work.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 3252082,
+    "sha256": "876e08ee1ac7bab84939d87b10cdf5d4d343dce056c336e82e8c4b5111be4eda",
+    "variants": [
+      {
+        "src": "/assets/responsive/tile-roof-repair-work-400.webp?v=876e08ee1a",
+        "width": 400,
+        "height": 267,
+        "bytes": 30922
+      },
+      {
+        "src": "/assets/responsive/tile-roof-repair-work-800.webp?v=876e08ee1a",
+        "width": 800,
+        "height": 533,
+        "bytes": 100572
+      },
+      {
+        "src": "/assets/responsive/tile-roof-repair-work-1200.webp?v=876e08ee1a",
+        "width": 1200,
+        "height": 800,
+        "bytes": 187402
+      }
+    ]
+  },
+  "/assets/services/tile-roof-site-overview.png": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 2784974,
+    "sha256": "7984c2a69652cfc6a5c3c4a6350103da3d3ca7269bd6a95b2fbb0666cd6c0ddc",
+    "variants": [
+      {
+        "src": "/assets/responsive/tile-roof-site-overview-400.webp?v=7984c2a696",
+        "width": 400,
+        "height": 267,
+        "bytes": 23828
+      },
+      {
+        "src": "/assets/responsive/tile-roof-site-overview-800.webp?v=7984c2a696",
+        "width": 800,
+        "height": 533,
+        "bytes": 78468
+      },
+      {
+        "src": "/assets/responsive/tile-roof-site-overview-1200.webp?v=7984c2a696",
+        "width": 1200,
+        "height": 800,
+        "bytes": 146712
+      }
+    ]
+  }
+}

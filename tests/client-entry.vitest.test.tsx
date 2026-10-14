@@ -12,7 +12,7 @@ it("the development placeholder mounts the page without trying to hydrate a comm
   });
   expect(document.querySelectorAll("main h1")).toHaveLength(1);
   expect(document.querySelector("main h1")!.textContent).toBe(
-    "Canberra Roof Repairs by Ellis Services Group",
+    "Roof repairs by Ellis Services Group",
   );
   expect(
     errors.mock.calls.filter((call) =>

@@ -5,6 +5,19 @@ import { describe, expect, it } from "vitest";
 import { AppV3 } from "../src/main";
 import { publishedRoutes, resolvePath } from "../src/route-meta";
 import { SERVICE_CATALOG } from "../src/service-catalog.js";
+import { realpathSync, statSync } from 'node:fs';
+import { resolve, relative, isAbsolute, sep } from 'node:path';
+
+function publicAssetExists(pathname: string) {
+  try {
+    const root = realpathSync(resolve('public/assets'));
+    const decoded = decodeURIComponent(pathname);
+    if (!decoded.startsWith('/assets/') || decoded.includes('\\')) return false;
+    const file = realpathSync(resolve('public', `.${decoded}`));
+    const within = relative(root, file);
+    return within !== '' && within !== '..' && !within.startsWith(`..${sep}`) && !isAbsolute(within) && statSync(file).isFile();
+  } catch { return false; }
+}
 
 function page(path: string) {
   const host = document.createElement("div");
@@ -26,10 +39,17 @@ describe("rendered Canberra content SEO", () => {
       }
       for (const link of host.querySelectorAll<HTMLAnchorElement>('a[href^="/"]')) {
         const target = new URL(link.getAttribute("href")!, "https://www.canberraroofkind.com.au");
-        expect(paths.has(resolvePath(target.pathname)), `${path}: ${target.pathname}`).toBe(true);
+        expect(target.pathname.startsWith('/assets/') ? publicAssetExists(target.pathname) : paths.has(resolvePath(target.pathname)), `${path}: ${target.pathname}`).toBe(true);
       }
     }
   }, 15000);
+
+  it('rejects missing assets and paths that escape the public asset directory', () => {
+    expect(publicAssetExists('/assets/projects/confirmed-urgent-leak-1000.webp')).toBe(true);
+    expect(publicAssetExists('/assets/projects/nonexistent-original-photo.webp')).toBe(false);
+    expect(publicAssetExists('/assets/%2e%2e/%2e%2e/package.json')).toBe(false);
+    expect(publicAssetExists('/assets/..%5c..%5cpackage.json')).toBe(false);
+  });
 
   it("gives all twelve services distinct booking FAQs, related services and quote preparation", () => {
     const questions = new Set<string>();
@@ -40,7 +60,7 @@ describe("rendered Canberra content SEO", () => {
       questions.add(last);
       expect(host.querySelectorAll('.relatedServices a[href^="/services/"]').length).toBeGreaterThanOrEqual(2);
       expect(host.querySelector('.servicePlanning a[href="/news/when-to-arrange-roof-inspection-canberra"]')).not.toBeNull();
-      expect(host.querySelector('.serviceView > a[href^="/contact?service="]')).not.toBeNull();
+      expect(host.querySelector('.serviceView #costs-booking a[href^="/contact?service="]')).not.toBeNull();
       expect(host.querySelector(".serviceBookingPrompt")!.textContent!.length).toBeGreaterThan(40);
       expect(host.textContent).toContain("15 years in roof repairs");
       expect(host.textContent).toContain("Trusted by 1,000+ customers");
@@ -53,13 +73,13 @@ describe("rendered Canberra content SEO", () => {
     expect(guides).toHaveLength(12);
     for (const path of guides) {
       const host = page(path);
-      expect(host.querySelectorAll(".articleBody h2").length, path).toBeGreaterThanOrEqual(6);
+expect(host.querySelectorAll(".articleSection").length, path).toBe(4);
       expect(host.querySelector(".articleByline")!.textContent).toContain("Ellis Services Group");
-      const revised = path === "/news/chimney-flashing-water-entry-signs" ? "2026-10-10" : "2026-10-12";
+      const revised = "2026-10-14";
       expect(host.querySelector(`time[datetime="${revised}"]`)).not.toBeNull();
       expect(host.querySelectorAll('.articleBody a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
-      expect(host.querySelectorAll('.articleBody a[href^="/services/"]').length).toBeGreaterThanOrEqual(1);
-      expect(host.querySelector('.articleBody a[href="/contact"]')).not.toBeNull();
+expect(host.querySelectorAll('.articleServiceNote a[href^="/services/"]')).toHaveLength(1);
+      expect(host.querySelector('.articleSidebar')).toBeNull();
       expect(host.querySelector(`.guideNextSteps a[href="${path}"]`), path).toBeNull();
     }
   });
@@ -85,7 +105,7 @@ describe("rendered Canberra content SEO", () => {
       "https://share.google/y50AZRJwjOdVOlj5o",
       "https://www.instagram.com/elliservices_group/",
       "https://share.google/Z4tImXHToPi9H4LmH",
-      "https://share.google/tU1c5vEAlELqXCifu",
+      "https://www.facebook.com/p/Ellis-Services-Group-100082926022259/",
     ]);
   });
 });

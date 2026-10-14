@@ -18,7 +18,13 @@ export const PROJECT_GALLERIES={
  'emergency-roof-repairs':{
   project:true,title:'Urgent roof leak work',
   intro:'We attended an urgent roof leak and addressed the roof water-entry problem. This project collage records the site condition and work stages.',
-  images:[image('urgent-leak','Roof edge and gutter conditions before, during and after an urgent roof leak job','Site conditions and work stages from the urgent roof leak project.',1334)],
+  images:[
+   {src:'/assets/projects/urgent-before-edge.webp',width:466,height:338,alt:'Roof edge and debris in the gutter before work',caption:'Before: roof edge and gutter condition.'},
+   {src:'/assets/projects/urgent-before-channel.webp',width:477,height:330,alt:'Roof tiles and drainage channel before work',caption:'Before: roof tiles and drainage channel.'},
+   {src:'/assets/projects/urgent-before-junction.webp',width:477,height:335,alt:'Roof junction and accumulated debris before work',caption:'Before: roof junction and accumulated debris.'},
+   {src:'/assets/projects/urgent-during-work.webp',width:463,height:550,alt:'Roof edge with equipment during the urgent leak job',caption:'In process: roof edge during work.'},
+   {src:'/assets/projects/urgent-after-channel.webp',width:473,height:542,alt:'Roof drainage channel shown in the final project photograph',caption:'After: drainage channel recorded in the project collage.'},
+  ],
  },
  'rental-property-roof-repairs':{
   project:true,title:'Property roof inspection and crack repairs',

@@ -12,8 +12,8 @@ test('keeps the service-intent FAQ and related links while exposing approved key
   const document = dom.window.document;
   try {
     assert.equal(response.status, 200);
-    assert.equal(document.title, 'Leaking Roof Repair Canberra | Ellis Services Group');
-    assert.equal(document.querySelector('main h1')?.textContent, 'Leaking Roof Repair Canberra');
+    assert.equal(document.title, 'Leaking Roof Repairs | Ellis Services Group');
+    assert.equal(document.querySelector('main h1')?.textContent, 'Leaking Roof Repairs');
     assert.match(document.querySelector('meta[name="description"]')?.content ?? '', /Leaking Roof Repair Canberra/);
     assert.match(document.querySelector('main')?.textContent ?? '', /Can dry weather make a roof leak harder to assess\?/);
     assert.ok(document.querySelector('a[href="/services/roof-inspections"]'));
