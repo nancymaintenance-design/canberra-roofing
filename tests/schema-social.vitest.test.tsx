@@ -8,7 +8,59 @@ import { HeadManager, HeadMarkup, getRouteHead, pagePaths } from '../src/route-m
 import { getArticleEditorial } from '../src/article-editorial';
 import { readFileSync } from 'node:fs';
 import imageManifest from '../src/image-manifest.json';
+import { ARTICLE_IMAGES } from '../src/article-images';
 afterEach(cleanup);
+it.each(pagePaths)('publishes one topic image from the shared static and client head owner at %s', (pathname) => {
+ const view = render(<HeadManager pathname="/"/>);
+  const host = document.createElement('div'); host.innerHTML = renderToStaticMarkup(<HeadMarkup pathname={pathname}/>);
+  expect(host.querySelectorAll('meta[property="og:image"]'), pathname).toHaveLength(1);
+  const image = host.querySelector('meta[property="og:image"]')!.getAttribute('content')!;
+  expect(image, pathname).toMatch(/^https:\/\/www\.canberraroofkind\.com\.au\/assets\/responsive\/.+\.webp\?v=[a-f0-9]+$/);
+  if(pathname.startsWith('/news/')) expect(image).toBe(getRouteHead(pathname).article!.image);
+  view.rerender(<HeadManager pathname={pathname}/>);
+  for(const property of ['og:image', 'og:image:width', 'og:image:height', 'og:image:type', 'og:image:alt']) {
+   const selector = `meta[property="${property}"]`;
+   expect(document.head.querySelectorAll(selector), pathname + property).toHaveLength(1);
+   expect(document.head.querySelector(selector)?.getAttribute('content')).toBe(host.querySelector(selector)?.getAttribute('content'));
+  }
+});
+it('retains twelve distinct article cover identities', () => {
+ expect(new Set(Object.values(ARTICLE_IMAGES).map(image => image.src)).size).toBe(12);
+});
+it.each([
+ ['roof-leak-repairs', 'roof-leak-on-roof-assessment'],
+ ['tile-roof-repairs', 'tile-roof-site-overview'],
+ ['chimney-flashing-repairs', 'chimney-flashing-assessment'],
+ ['rebedding-repointing', 'ridge-capping-condition'],
+ ['roof-inspections', 'roof-inspection-roofline-review'],
+ ['metal-roof-repairs', 'metal-roof-completed-roof'],
+ ['roof-renovation', 'tile-roof-condition-review'],
+ ['roof-cleaning', 'roof-cleaning-site-overview'],
+ ['gutter-downpipe-maintenance', 'gutter-downpipe-roof-edge-condition'],
+ ['gutter-repairs', 'metal-roof-gutter-edge-repair'],
+ ['emergency-roof-repairs', 'roof-leak-after-rain'],
+ ['rental-property-roof-repairs', 'roof-leak-interior-water-mark'],
+])('uses the existing thematic cover for service %s', (slug, subject) => {
+ const host = document.createElement('div'); host.innerHTML = renderToStaticMarkup(<HeadMarkup pathname={'/services/' + slug}/>);
+ expect(host.querySelector('meta[property="og:image"]')?.getAttribute('content')).toContain(`/assets/responsive/${subject}-1200.webp`);
+});
+it('replaces duplicate and stale sharing metadata on article, service, area and 404 navigation', () => {
+ document.head.innerHTML = '<meta property="og:image" content="https://stale.invalid/a"><meta property="og:image" content="https://stale.invalid/b">';
+ const view = render(<HeadManager pathname="/news/roof-leak-vs-condensation-canberra"/>);
+ const cases = [
+  ['/news/roof-leak-vs-condensation-canberra', 'roof-space-inspection-1200.webp'],
+  ['/services/metal-roof-repairs.html/', 'metal-roof-completed-roof-1200.webp'],
+  ['/areas/belconnen', 'au-hero-act-tile-roof-1200.webp'],
+  ['/areas/belconnen/aranda-roof-repairs', 'au-hero-act-tile-roof-1200.webp'],
+ ];
+ for (const [pathname, filename] of cases) {
+  view.rerender(<HeadManager pathname={pathname}/>);
+  expect(document.head.querySelectorAll('meta[property="og:image"]')).toHaveLength(1);
+  expect(document.head.querySelector('meta[property="og:image"]')?.getAttribute('content')).toContain(filename);
+ }
+ view.rerender(<HeadManager pathname="/404"/>);
+ expect(document.head.querySelectorAll('meta[property^="og:image"]')).toHaveLength(0);
+});
 it('gives all 42 indexable nonhome pages visible matching breadcrumbs', () => {
  const eligible = pagePaths.filter(p => p !== '/' && !getRouteHead(p).robots);
  expect(eligible).toHaveLength(42);

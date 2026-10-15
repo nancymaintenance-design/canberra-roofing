@@ -35,6 +35,23 @@ export function validateDocument(html, pathname, expected) {
     assert.equal(document.title, expected.title, `${pathname}: incomplete title`);
     assert.ok(document.querySelector('head meta[name="description"]')?.content);
     assert.equal(document.querySelector('head link[rel="canonical"]')?.getAttribute('href'), expected.canonical);
+    const socialImages = document.querySelectorAll('head meta[property="og:image"]');
+    assert.equal(socialImages.length, pathname === '/404' ? 0 : 1, `${pathname}: sharing image cardinality`);
+    if (pathname !== '/404') {
+      const image = socialImages[0].content;
+      assert.match(image, /^https:\/\/www\.canberraroofkind\.com\.au\/assets\/responsive\/.+\.webp\?v=[a-f0-9]+$/, `${pathname}: absolute HTTPS sharing image`);
+      for (const property of ['width', 'height', 'type', 'alt']) {
+        const metadata = document.querySelectorAll(`head meta[property="og:image:${property}"]`);
+        assert.equal(metadata.length, 1, `${pathname}: sharing image ${property} cardinality`);
+        assert.ok(metadata[0].content, `${pathname}: missing sharing image ${property}`);
+      }
+      const article = document.querySelector('#news-article-schema');
+      if (article) {
+        const schema = JSON.parse(article.textContent);
+        assert.equal(schema.headline, expected.h1, `${pathname}: Article headline`);
+        assert.equal(schema.image, image, `${pathname}: article sharing image matches its existing cover`);
+      }
+    } else assert.equal(document.querySelectorAll('head meta[property^="og:"]').length, 0, '404: no stale Open Graph metadata');
     const entries = [...document.querySelectorAll('script[type="module"][src]')].map((node) => node.getAttribute('src'));
     assert.equal(entries.length, 1, `${pathname}: missing or duplicated main script`);
     assert.match(entries[0], /^\/assets\/[^/?#]+\.js$/, `${pathname}: invalid main script URL`);

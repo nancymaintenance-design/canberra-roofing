@@ -4,6 +4,7 @@ import { getArticleEditorial } from './article-editorial';
 import imageManifest from './image-manifest.json';
 import { SERVICE_CATALOG } from './service-catalog.js';
 import { DISTRICT_PROFILES, SUBURB_PROFILES, getSuburbProfile } from './suburb-profiles.js';
+import { getSocialImage } from './social-images';
 
 const districtRoutes = Object.fromEntries(DISTRICT_PROFILES.map((profile) => [profile.path, profile]));
 const suburbRoutes = Object.fromEntries(SUBURB_PROFILES.map((profile) => [profile.path, profile]));
@@ -56,7 +57,7 @@ export function resolvePath(pathname: string) {
 export function getRouteHead(pathname: string) {
   const path = resolvePath(pathname);
   const route = publishedRoutes[path as keyof typeof publishedRoutes] as any;
-  if (!route) return { title: 'Page not found | Canberra Roof Kind', description: 'This page could not be found. Browse roof repair services or contact Ellis Services Group.', canonical: null, robots: 'noindex,follow', article: null, breadcrumb: null, service: null, serviceAreaSchema: null };
+  if (!route) return { title: 'Page not found | Canberra Roof Kind', description: 'This page could not be found. Browse roof repair services or contact Ellis Services Group.', canonical: null, robots: 'noindex,follow', article: null, breadcrumb: null, service: null, serviceAreaSchema: null, socialImage: null };
   const editorial = path.startsWith('/news/') ? getArticleEditorial(path.slice(6)) : null;
   const image = editorial ? (imageManifest as Record<string, { variants: { src: string; width: number }[] }>)[editorial.image.src]?.variants : null;
   const service = SERVICE_CATALOG.find(item => item.path === path);
@@ -65,6 +66,7 @@ export function getRouteHead(pathname: string) {
     title: route.title,
     description: route.description,
     canonical: route.canonical,
+    socialImage: getSocialImage(path),
     robots: getSuburbProfile(path) ? 'noindex,follow' : null,
     breadcrumb: crumbs.length ? {
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', '@id': route.canonical + '#breadcrumb',
@@ -106,6 +108,11 @@ export function HeadMarkup({ pathname }: { pathname: string }) {
       <meta property="og:description" content={head.description} />
       <meta property="og:url" content={head.canonical} />
       <meta property="og:type" content={head.article ? 'article' : 'website'} />
+      <meta property="og:image" content={head.socialImage!.url} />
+      <meta property="og:image:width" content={String(head.socialImage!.width)} />
+      <meta property="og:image:height" content={String(head.socialImage!.height)} />
+      <meta property="og:image:type" content={head.socialImage!.type} />
+      <meta property="og:image:alt" content={head.socialImage!.alt} />
       <meta name="twitter:card" content="summary" />
     </>}
     {head.robots && <meta name="robots" content={head.robots} />}
@@ -136,6 +143,9 @@ export function HeadManager({ pathname }: { pathname: string }) {
       update('meta[property="og:description"]', 'meta', { property: 'og:description', content: head.description });
       update('meta[property="og:url"]', 'meta', { property: 'og:url', content: head.canonical });
       update('meta[property="og:type"]', 'meta', { property: 'og:type', content: head.article ? 'article' : 'website' });
+      for (const [property, content] of Object.entries({ 'og:image': head.socialImage!.url, 'og:image:width': String(head.socialImage!.width), 'og:image:height': String(head.socialImage!.height), 'og:image:type': head.socialImage!.type, 'og:image:alt': head.socialImage!.alt })) {
+        update(`meta[property="${property}"]`, 'meta', { property, content });
+      }
       update('meta[name="twitter:card"]', 'meta', { name: 'twitter:card', content: 'summary' });
     }
     else document.head.querySelectorAll('link[rel="canonical"], meta[property^="og:"], meta[name="twitter:card"]').forEach((element) => element.remove());

@@ -3,22 +3,17 @@ import test from 'node:test';
 import { readFile } from 'node:fs/promises';
 import { request } from 'node:http';
 import { startPreview } from '../scripts/preview.mjs';
+import { DISTRICT_PATHS, SUBURB_PATHS } from '../src/suburb-profiles.js';
 
 const routeMetadata = JSON.parse(await readFile(new URL('../src/route-meta.json', import.meta.url), 'utf8'));
-const routes = Object.keys(routeMetadata).map((pathname) => ({ pathname }));
+const routes = [...Object.keys(routeMetadata), ...DISTRICT_PATHS, ...SUBURB_PATHS].map((pathname) => ({ pathname }));
 const config = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
 const aliases = routes.flatMap(({ pathname }) => (pathname === '/' ? ['/index.html', '/index.html/'] : [`${pathname}.html`, `${pathname}/`, `${pathname}.html/`]).map(source => ({ source, destination: pathname })));
 const staticRewrites = routes
   .filter(({ pathname }) => pathname !== '/')
   .map(({ pathname }) => ({ source: pathname, destination: `${pathname}.html` }));
-const areaIndex = staticRewrites.findIndex(({ source }) => source === '/areas');
-const expectedRewrites = [
-  ...staticRewrites.slice(0, areaIndex + 1),
-  { source: '/areas/:district', destination: '/areas/:district.html' },
-  { source: '/areas/:district/:suburb', destination: '/areas/:district/:suburb.html' },
-  ...staticRewrites.slice(areaIndex + 1),
-];
-const query = '?service=Rebedding%20%26%20Repointing&area=Belconnen%20%E2%80%94%20Belconnen&utm_source=fix&tag=one&tag=two';
+const expectedRewrites = staticRewrites;
+const query = '?service=Rebedding%20%26%20Repointing&area=Belconnen%20%E2%80%94%20Belconnen&utm_source=fix&tag=one&tag=two&encoded=%2F%2520%2b&space=a+b';
 const preview = await startPreview();
 test.after(() => preview.close());
 
@@ -46,6 +41,11 @@ test('Vercel declares bounded one-hop permanent aliases without changing system 
     ...aliases.map(alias => ({ ...alias, permanent: true })),
   ]);
   assert.deepEqual(config.rewrites, expectedRewrites);
+  assert.equal(routes.length, 120);
+  assert.equal(DISTRICT_PATHS.length, 9);
+  assert.equal(SUBURB_PATHS.length, 77);
+  assert.equal(new Set(config.redirects.map(rule => rule.source)).size, config.redirects.length);
+  assert.equal(new Set(config.rewrites.map(rule => rule.source)).size, 119);
 });
 
 for (const { pathname } of routes) {
@@ -72,7 +72,8 @@ for (const { source, destination } of aliases) {
   });
 }
 
-for (const pathname of ['/missing', '/missing/', '/missing.html', '/missing.html/', '/services/missing', '/services/missing/', '/news/missing.html', '/wrong/about.html', '/about//', '/about.html//', '/index', '/insights.html']) {
+const unknownAreas = ['/areas/unknown-district', '/areas/belconnen/unknown-suburb-roof-repairs', '/areas/unknown-district/aranda-roof-repairs'].flatMap(pathname => [pathname, pathname + '/', pathname + '.html', pathname + '.html/']);
+for (const pathname of ['/missing', '/missing/', '/missing.html', '/missing.html/', '/services/missing', '/services/missing/', '/news/missing.html', '/wrong/about.html', '/about//', '/about.html//', '/index', '/insights.html', ...unknownAreas]) {
   test(`unknown stays HTTP 404 without redirect: ${pathname}`, async () => {
     const response = await fetch(preview.origin + pathname + query, { redirect: 'manual' });
     assert.equal(response.status, 404);

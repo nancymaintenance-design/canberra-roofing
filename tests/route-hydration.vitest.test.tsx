@@ -4,11 +4,10 @@ import { renderToString, renderToStaticMarkup } from "react-dom/server";
 import { hydrateRoot } from "react-dom/client";
 import { expect, it, vi } from "vitest";
 import { AppV3 } from "../src/main";
-import { HeadMarkup, getRouteHead, resolvePath } from "../src/route-meta";
+import { HeadMarkup, getRouteHead, resolvePath, publishedRoutes } from "../src/route-meta";
 import { getDocumentRoute } from "../src/document-route";
-import routeMetadata from "../src/route-meta.json";
 
-const routes = Object.entries(routeMetadata).map(([pathname, metadata]) => ({
+const routes = Object.entries(publishedRoutes).map(([pathname, metadata]) => ({
   pathname,
   ...metadata,
 }));
@@ -34,6 +33,8 @@ for (const route of routes) {
       );
       document.body.innerHTML = `<div id="root">${renderToString(<AppV3 pathname={route.pathname} />)}</div>`;
       const before = document.querySelector("main")!.textContent;
+      const initialImage = document.head.querySelector('meta[property="og:image"]')?.getAttribute('content');
+      expect(initialImage).toMatch(/^https:\/\/www\.canberraroofkind\.com\.au\/assets\//);
       const recoverable: unknown[] = [];
       const consoleError = vi
         .spyOn(console, "error")
@@ -55,6 +56,8 @@ for (const route of routes) {
           document.querySelector('link[rel="canonical"]')!.getAttribute("href"),
         ).toBe(`https://www.canberraroofkind.com.au${route.pathname}`);
         expect(document.title).toBe(route.title);
+        expect(document.head.querySelectorAll('meta[property="og:image"]')).toHaveLength(1);
+        expect(document.head.querySelector('meta[property="og:image"]')?.getAttribute('content')).toBe(initialImage);
         expect(recoverable).toEqual([]);
         expect(
           consoleError.mock.calls.filter((call) =>
@@ -79,6 +82,8 @@ it.each([
   "/wrong/about.html",
   "/index",
   "/insights.html",
+  "/areas/unknown-district/",
+  "/areas/belconnen/unknown-suburb-roof-repairs.html/",
 ])("does not normalize unknown path %s into a published page", (pathname) => {
   expect(resolvePath(pathname)).toBe(pathname);
   expect(getRouteHead(pathname).canonical).toBeNull();
