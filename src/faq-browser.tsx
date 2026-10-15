@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {INTENT_TOPICS, EXTRA_INTENT_TOPICS} from './keyword-intent-content.js';
+import {getFaqEntries} from './keyword-intent-content.js';
 
 const categories = [
   {id:'getting-started',label:'Booking & service areas',groups:['Getting started','Next steps']},
@@ -16,10 +16,7 @@ const categories = [
 ];
 
 export function FaqBrowser({faqs}:{faqs:{q:string;a:string}[]}) {
-  const entries=[
-    ...faqs.map((item,index)=>({id:`base-${index}`,group:item.q.split(' / ')[0],question:item.q.split(' / ').slice(1).join(' / ')||item.q,answer:item.a,links:[] as {path:string;label:string}[]})),
-    ...[...INTENT_TOPICS,...EXTRA_INTENT_TOPICS].map(item=>({id:item.id,group:item.group,question:item.question,answer:item.answer,links:item.links})),
-  ];
+  const entries=getFaqEntries(faqs);
   const knownGroups=new Set(categories.flatMap(category=>category.groups));
   const sections=categories.map(category=>({...category,entries:entries.filter(item=>category.groups.includes(item.group)||(category.id==='getting-started'&&!knownGroups.has(item.group)))})).filter(category=>category.entries.length);
   const [active,setActive]=useState(sections[0]?.id);
@@ -74,7 +71,7 @@ export function FaqBrowser({faqs}:{faqs:{q:string;a:string}[]}) {
     </nav>
     <div className="faqQuestions">{sections.map(category=><section className="faqQuestionGroup" id={`faq-${category.id}`} data-category={category.id} key={category.id} aria-labelledby={`faq-${category.id}-title`}>
       <h2 id={`faq-${category.id}-title`}>{category.label}</h2>
-      {category.entries.map(item=><details key={item.id} data-question={item.id}><summary><span>{item.question}</span><span className="faqToggleIcon" aria-hidden="true" /></summary><p>{item.answer}</p>{item.links.map(link=><p key={link.path}><a href={link.path}>{link.label}</a>.</p>)}</details>)}
+      {category.entries.map(item=><details key={item.id} data-question={item.id} data-intent={item.intent}><summary><span>{item.question}</span><span className="faqToggleIcon" aria-hidden="true" /></summary>{item.aliases.map(alias=><span hidden key={alias} data-question={alias} />)}<p>{item.answer}</p>{item.links.map(link=><p key={link.path}><a href={link.path}>{link.label}</a>.</p>)}</details>)}
     </section>)}</div>
   </div>;
 }

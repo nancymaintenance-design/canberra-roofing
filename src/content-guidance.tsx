@@ -1,4 +1,5 @@
 import React from "react";
+import { BOOKING_FAQ_MERGES } from "./keyword-intent-content.js";
 
 export const guideHeadings: Record<string, string[]> = {
   "after-rain-roof-leak-check-canberra": ["Start with a record of the leak", "Record indoor signs and rain timing", "Describe the roof area from the ground", "Prepare your roof leak enquiry"],
@@ -31,6 +32,7 @@ export function ServicePlanning({ slug, headingLevel = 2 }: { slug: string; head
 
 export function ServiceBookingFaq({ slug }: { slug: string }) {
   const item = planning[slug];
+  if (BOOKING_FAQ_MERGES[slug]) return null;
   return item ? <details><summary>{item.question}</summary><p>{item.answer}</p></details> : null;
 }
 

@@ -10,7 +10,7 @@ import { ContactForm } from "./contact-form.jsx";
 import { ServicePlanning, ServiceBookingFaq, EnquiryChecklist, LocalGuideLinks } from "./content-guidance";
 import { GUTTER_REPAIR_SERVICE, SERVICE_TOPIC_HEADINGS } from "./keyword-gap-content.js";
 import { ServiceDepth, GapHubLinks } from "./keyword-gap-sections";
-import { ADDITIONAL_SERVICES, BOOKING_POLICY } from "./keyword-intent-content.js";
+import { ADDITIONAL_SERVICES, BOOKING_POLICY, SERVICE_FAQ_MERGES, SEED_FAQ_INTENTS } from "./keyword-intent-content.js";
 import { IntentServiceContent, IntentFaqs, OperatingHours } from "./keyword-intent-sections";
 import { FaqBrowser } from "./faq-browser";
 import { PROJECT_GALLERIES } from "./project-evidence.js";
@@ -111,7 +111,7 @@ const serviceSeed: Service[] = [
     symptoms:
       "Note whether the concern is a fresh drip, a damp patch, a ceiling stain, bubbling paint, a musty smell or water near a light fitting. Record the room, when it first appeared and whether it follows steady rain, wind-driven rain or a storm. From ground level, also note nearby tiles, a roof flashing junction, ridge line, chimney, valley or skylight if they are safely visible.",
     causes:
-      "Water can travel beneath roofing materials, along framing or across a ceiling before it becomes visible indoors. We inspect broken or slipped tiles, flashing junctions, penetrations, ridge details and drainage overflow to identify the entry area and confirm the repair work.",
+      "We inspect broken or slipped tiles, flashing junctions, penetrations, ridge details and drainage overflow to identify the entry area and confirm the repair work. Include the indoor location and weather history as investigation clues.",
     assessment:
       "We inspect the roof covering, valleys, flashing, penetrations and drainage on site, and trace the reported water path. Share the rain conditions and timing so we can plan the investigation. Keep clear of wet electrical fittings and seek emergency assistance if there is immediate danger.",
     pathways:
@@ -210,7 +210,7 @@ const serviceSeed: Service[] = [
     slug: "rebedding-repointing",
     title: "Rebedding & Repointing",
     direct:
-      "Ridge capping work can involve bedding beneath a ridge or hip tile and pointing at its exposed edge. Roof repointing and roof rebedding are related terms, but they describe different parts of the same roof detail and should not be treated as interchangeable.",
+      "Ellis Services Group assesses ridge and hip capping locally. We check cap stability and the condition of bedding, pointing and adjoining tiles, then explain the ridge sections requiring repair and the written quote.",
     symptoms:
       "From the ground, you may notice cracking along a ridge line, loose-looking ridge caps, gaps in visible pointing, weathered material or changes around hip lines. Note whether the concern appears isolated or extends across several roof lines, and whether there is also a ceiling stain or water-entry sign inside the home.",
     causes:
@@ -828,7 +828,7 @@ const canonicalFaqs: Faq[] = [
     a: "Contact Ellis to arrange an assessment; we confirm the appointment separately, with attendance planned around weather, safe access and the work required.",
   },
   {
-    q: "Storm or hail / What should I do?",
+    q: "Storm or hail / What should I do after storm or hail roof damage?",
     a: "Keep clear of damaged areas and wet electrical fittings. Contact emergency services for immediate danger. For roof damage, contact Ellis to arrange a safe on-site assessment and repair quote; contact your insurer separately about any claim.",
   },
   {
@@ -1619,6 +1619,8 @@ function TileCasePhotos({ context, headingLevel = 2 }: { context: string; headin
 }
 
 function ServiceView({ service }: { service: Service }) {
+  const mergedQuestions = SERVICE_FAQ_MERGES[service.slug] ?? {};
+  const serviceFaqs = [{ q: service.faqQ, a: service.faqA }, ...(service.faqExtras ?? [])].filter(item => !mergedQuestions[item.q]);
   const headings = SERVICE_TOPIC_HEADINGS[service.slug];
   const galleries: { title: string; intro: string; project?: boolean; relatedPath?: string; relatedLabel?: string; images: { src: string; alt: string; srcSet?: string; width?: number; height?: number; caption?: string }[] }[] = [serviceGalleries[service.slug], PROJECT_GALLERIES[service.slug as keyof typeof PROJECT_GALLERIES]].filter(Boolean);
   const guide = newsArticles.find(
@@ -1681,9 +1683,7 @@ function ServiceView({ service }: { service: Service }) {
           <p>{service.pathways}</p>
         </article>
       </div>
-      <ServicePlanning slug={service.slug} headingLevel={3} />
       <ServiceDepth slug={service.slug} headingLevel={3} />
-      <IntentServiceContent slug={service.slug} headingLevel={3} placement="work" />
       {service.slug === "emergency-roof-repairs" && <p><a href="https://esa.act.gov.au/be-emergency-ready/storms" target="_blank" rel="noopener noreferrer">ACT Emergency Services Agency: storm emergency assistance</a>. For an immediate threat to life call 000; for storm or flood emergency assistance call ACTSES on 132 500.</p>}
       {guide ? <section className="serviceGuideLink" aria-labelledby={`${service.slug}-guide-title`}><h3 id={`${service.slug}-guide-title`}>Read the related roof care guide</h3><p>{guide.summary}</p><a href={`/news/${guide.slug}`}>{guide.title} <ArrowRight size={17} /></a></section> : null}
       </ServiceTheme>
@@ -1721,7 +1721,8 @@ function ServiceView({ service }: { service: Service }) {
         <h3>{headings[5]}</h3>
         <p>{service.scope}</p>
         <p className="serviceCostNote">Before arranging a visit, we explain any inspection or booking fee that applies. Repair pricing is confirmed after assessment and before work begins.</p>
-        <IntentServiceContent slug={service.slug} headingLevel={3} placement="booking" />
+        <ServicePlanning slug={service.slug} headingLevel={3} />
+        {service.slug === "roof-inspections" && <p>For a remote owner or managed property, provide the nominated access contact and who will review the repair quote. <a href="/services/rental-property-roof-repairs">Coordinate roof inspections and repairs for rental owners and property managers</a>.</p>}
         </div>
         <div className="serviceBookingAppointment">
         <OperatingHours headingLevel={3} />
@@ -1736,12 +1737,8 @@ function ServiceView({ service }: { service: Service }) {
       <div className="pageFaq serviceThemeFaq">
         <p className="eyebrow">YOUR QUESTIONS</p>
         <h3>{service.title}: questions before booking</h3>
-        <details open>
-          <summary>{service.faqQ}</summary>
-          <p>{service.faqA}</p>
-        </details>
-        {service.faqExtras?.map((item) => (
-          <details key={item.q}>
+        {serviceFaqs.map((item, index) => (
+          <details key={item.q} open={index === 0} data-intent={SEED_FAQ_INTENTS[item.q]}>
             <summary>{item.q}</summary>
             <p>{item.a}</p>
           </details>

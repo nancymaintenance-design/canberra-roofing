@@ -77,7 +77,7 @@ describe("owner-approved five-theme service layout", () => {
         for (const paragraph of item.paragraphs) expect(view.textContent).toContain(paragraph);
       }
       for (const item of [...INTENT_TOPICS, ...EXTRA_INTENT_TOPICS].filter(item => item.slug === service.slug)) {
-        expect(view.textContent).toContain(item.body);
+        expect(view.querySelector(`[data-topic="${item.id}"]`)).toBeNull();
         expect(view.querySelector("#service-faq")!.textContent).toContain(item.question);
         expect(view.querySelector("#service-faq")!.textContent).toContain(item.answer);
       }

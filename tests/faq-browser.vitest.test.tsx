@@ -8,7 +8,8 @@ import {INTENT_TOPICS,EXTRA_INTENT_TOPICS} from '../src/keyword-intent-content.j
 it('FAQ has one category directory linked to single-column question groups',()=>{
  const host=document.createElement('div');host.innerHTML=renderToStaticMarkup(<AppV3 pathname="/faq"/>);
  const nav=host.querySelector('.faqCategoryNav');expect(nav).not.toBeNull();
- const groups=[...host.querySelectorAll('.faqQuestionGroup')];expect(groups.length).toBeGreaterThan(8);
+ const groups=[...host.querySelectorAll('.faqQuestionGroup')];
+ expect(groups.map(group=>group.id)).toEqual(['faq-getting-started','faq-roof-leaks','faq-tiles','faq-ridges','faq-chimneys','faq-metal-roofing','faq-inspections','faq-renovation','faq-maintenance','faq-costs','faq-urgent']);
  expect(nav!.querySelectorAll('a')).toHaveLength(groups.length);
  for(const group of groups){
   expect(group.querySelector('h2')).not.toBeNull();expect(group.querySelectorAll('details').length).toBeGreaterThan(0);
