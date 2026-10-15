@@ -42,7 +42,7 @@ describe('keyword-map intent answers and confirmed operating hours', () => {
     ['tile-roof-repairs', 'tile.local-replacement', /Can (only a few|just one or two|one or two damaged)/i, ['profile', 'weathering', 'valley', 'safe access'], '/news/cracked-slipped-missing-roof-tiles-canberra'],
     ['rebedding-repointing', 'ridge.bedding-vs-pointing', /What is (rebedding versus repointing|the difference between roof rebedding and repointing)/i, ['support', 'exposed', 'stability', 'hip'], '/news/rebedding-vs-repointing-canberra-roofs'],
     ['roof-leak-repairs', 'leak.stain-vs-entry', /(Why is a stain not below|Can water enter away|Is the water mark always below)/i, ['framing', 'weather', 'previous repairs'], '/news/after-rain-roof-leak-check-canberra'],
-    ['chimney-flashing-repairs', 'chimney.flashing-function', /What does (roof )?flashing do/i, ['mortar', 'sealant', 'wind', 'flue'], '/news/chimney-flashing-water-entry-signs'],
+    ['chimney-flashing-repairs', 'chimney.flashing-function', /What does (roof )?flashing do/i, ['mortar', 'sealant', 'wind', 'flue', 'the appropriate material or scope depends on the site and applicable requirements.'], '/news/chimney-flashing-water-entry-signs'],
   ])('provides one complete primary answer for %s and the global FAQ', (slug, intent, question, distinctions, guide) => {
     for (const path of [`/services/${slug}`, '/faq']) {
       const host = page(path);
@@ -54,6 +54,12 @@ describe('keyword-map intent answers and confirmed operating hours', () => {
       const paragraphs = [...host.querySelectorAll('main p')].map(item => item.textContent);
       for (const answer of answers[0].querySelectorAll('p')) expect(paragraphs.filter(text => text === answer.textContent)).toHaveLength(1);
     }
+  });
+  it('allows an enquiry when the roof material is unknown', () => {
+    const host = page('/faq');
+    const answer = host.querySelector('details[data-intent="enquiry.safe-observations"]');
+    expect(answer?.textContent).toContain('Add roof material if known');
+    expect(answer?.textContent).toContain('A written description is enough to request the visit');
   });
   it('retains explicit legacy question markers on their canonical entry without duplicate answers', () => {
     const host = page('/faq');
