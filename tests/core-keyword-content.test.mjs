@@ -28,7 +28,7 @@ async function page(pathname) {
   return new JSDOM(await response.text());
 }
 
-test("the home page invites Canberra repair enquiries with a clear next step and verified proof points", async () => {
+test("the home page distinguishes its branded SEO title from its heading and explains booking", async () => {
   const dom = await page("/");
   try {
     const document = dom.window.document;
@@ -39,16 +39,16 @@ test("the home page invites Canberra repair enquiries with a clear next step and
     );
     assert.equal(
       document.querySelector("main h1")?.textContent,
-      "Roof Repairs Canberra | Ellis Services Group",
+      "Roof Repairs Canberra",
     );
     assert.match(copy, /roofer in Canberra/i);
     assert.match(copy, /small roof repair/i);
     assert.match(copy, /We arrange an on-site assessment, identify the affected components and confirm the repair plan and written quote before work begins/i);
     assert.doesNotMatch(copy, /does not confirm that a job can be accepted/i);
     assert.match(copy, /Request a roof assessment/i);
-    assert.match(copy, /15 years in roof repairs/i);
-    assert.match(copy, /Response from as little as 30 minutes/i);
-    assert.match(copy, /Trusted by 1,000\+ customers/i);
+    assert.match(copy, /On-site roof assessment/i);
+    assert.match(copy, /Appointment timing confirmed separately/i);
+    assert.match(copy, /Repair scope and written quote before work/i);
   } finally {
     dom.window.close();
   }
@@ -107,7 +107,7 @@ test("every priority service page gives substantial, question-led guidance", asy
   }
 });
 
-test("every Canberra service page foregrounds verified experience, response and customer proof", async () => {
+test("every Canberra service page explains assessment, appointment confirmation and scope", async () => {
   const servicePaths = [
     "/services/roof-leak-repairs",
     "/services/tile-roof-repairs",
@@ -130,9 +130,9 @@ test("every Canberra service page foregrounds verified experience, response and 
         3,
         `${pathname} shows the three verified Ellis advantages`,
       );
-      assert.match(copy, /15 years in roof repairs/i);
-      assert.match(copy, /Response from as little as 30 minutes/i);
-      assert.match(copy, /Trusted by 1,000\+ customers/i);
+      assert.match(copy, /On-site roof assessment/i);
+      assert.match(copy, /Appointment timing confirmed separately/i);
+      assert.match(copy, /Repair scope and written quote before work/i);
       assert.match(
         copy,
         /Before arranging a visit, we explain any inspection or booking fee that applies\. Repair pricing is confirmed after assessment and before work begins\./i,

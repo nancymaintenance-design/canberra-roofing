@@ -38,8 +38,8 @@ it("uses confident, clear service copy without internal SEO explanations", () =>
   expect(cleaningHtml).toContain("We confirm the recommended cleaning approach, scope and relevant costs after assessing the property.");
   expect(cleaningHtml).not.toContain("This page does not promise that cleaning");
   expect(metalHtml).not.toContain("used here to describe a common roof-material search term");
-  expect(aboutHtml).toContain("Images from Ellis Services Group project work");
-  expect(faqHtml).toContain("Enquiry response is available from as little as 30 minutes.");
+  expect(aboutHtml).toContain("They do not identify current Ellis employees or document a customer job.");
+  expect(faqHtml).not.toMatch(/30 minutes|98%|1,000/);
   expect(faqHtml).toContain("we confirm the appointment separately");
   expect(faqHtml).not.toContain("No response time is promised here.");
 });

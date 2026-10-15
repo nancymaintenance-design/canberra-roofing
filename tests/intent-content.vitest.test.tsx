@@ -47,7 +47,8 @@ describe('keyword-map intent answers and confirmed operating hours', () => {
   it('supports remote owners and managers with a real booking path and report guidance', () => {
     const host = page('/services/rental-property-roof-repairs');
     expect(host.querySelector('main h1')?.textContent).toBe('Roof Repairs for Rental Properties');
-    expect(host.querySelector('main')?.textContent).toContain('photos and a written explanation');
+    expect(host.querySelector('main')?.textContent).toContain('agree any inspection photos and written findings before booking');
+    expect(host.querySelector('main')?.textContent).toContain('coordinate access with your nominated contact');
     expect(host.querySelector('main a[href="/contact?service=Rental%20%26%20Property%20Manager%20Roof%20Repairs"]')).not.toBeNull();
     expect(page('/contact').querySelector('option[value="Rental & Property Manager Roof Repairs"]')).not.toBeNull();
   });

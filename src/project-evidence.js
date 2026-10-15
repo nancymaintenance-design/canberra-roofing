@@ -1,4 +1,6 @@
-// Project categories and work descriptions supplied by the owner on 12 October 2026.
+// Owner confirmation: reports/project-photos-local-2026-10-12/真实案例照片更新.md.
+// Conversion mapping: prepare-images.mjs in that report directory. No location,
+// customer identity, measured outcome or blanket rights clearance is inferred.
 const image=(name,alt,caption,height)=>({
  src:'/assets/projects/confirmed-'+name+'-1000.webp',
  srcSet:'/assets/projects/confirmed-'+name+'-600.webp 600w, /assets/projects/confirmed-'+name+'-1000.webp 1000w',

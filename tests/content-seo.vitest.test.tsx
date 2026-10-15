@@ -62,8 +62,8 @@ describe("rendered Canberra content SEO", () => {
       expect(host.querySelector('.servicePlanning a[href="/news/when-to-arrange-roof-inspection-canberra"]')).not.toBeNull();
       expect(host.querySelector('.serviceView #costs-booking a[href^="/contact?service="]')).not.toBeNull();
       expect(host.querySelector(".serviceBookingPrompt")!.textContent!.length).toBeGreaterThan(40);
-      expect(host.textContent).toContain("15 years in roof repairs");
-      expect(host.textContent).toContain("Trusted by 1,000+ customers");
+      expect(host.textContent).toContain("On-site roof assessment");
+      expect(host.textContent).toContain("Appointment timing confirmed separately");
     }
     expect(questions.size).toBe(12);
   });
@@ -93,13 +93,13 @@ expect(host.querySelectorAll('.articleServiceNote a[href^="/services/"]')).toHav
     expect(page("/areas/belconnen/aranda-roof-repairs").textContent).not.toContain("technicians with 15 years");
   });
 
-  it("preserves brand proof and all four footer social destinations", () => {
+  it("preserves factual booking context and all four footer social destinations", () => {
     const home = page("/");
     const study = page("/case-studies/tile-roof-repair-canberra");
-    expect(home.textContent).toContain("15 years in roof repairs");
-    expect(home.textContent).toContain("Trusted by 1,000+ customers");
-    expect(home.textContent).toContain("98% customer satisfaction");
-    expect(study.textContent).toContain("98% customer satisfaction");
+    expect(home.textContent).toContain("On-site roof assessment");
+    expect(home.textContent).toContain("Repair scope and written quote before work");
+    expect(home.textContent).not.toMatch(/98%|1,000|15 years|30 minutes/);
+    expect(study.textContent).toContain("no measured customer outcome is established by these photos");
     const social = [...home.querySelectorAll<HTMLAnchorElement>(".footerSocialLinks a")].map(a => a.getAttribute("href"));
     expect(social).toEqual([
       "https://share.google/y50AZRJwjOdVOlj5o",

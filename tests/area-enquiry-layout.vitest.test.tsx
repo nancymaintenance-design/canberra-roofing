@@ -27,8 +27,8 @@ it.each(SUBURB_PROFILES)("$suburb: explained service choices and preselected enq
     expect(contact.querySelector(".suburbContactIntro h2")!.textContent).toContain(profile.suburb);
     expect(contact.querySelector(".suburbContactIntro p")).not.toBeNull();
     expect([...contact.querySelectorAll("select option:checked")].some(option => option.textContent === profile.areaOption)).toBe(true);
-    expect(view.textContent).toContain("15 years");
-    expect(view.textContent).toContain("1,000 customers");
+    expect(view.textContent).toContain("Appointment timing confirmed separately");
+    expect(view.textContent).toContain("Repair scope and written quote before work");
 });
 
 it("every district uses the same clearly labelled enquiry panel", () => {

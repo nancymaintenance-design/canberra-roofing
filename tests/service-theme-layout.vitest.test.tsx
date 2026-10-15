@@ -13,7 +13,7 @@ import { OperatingHours } from "../src/keyword-intent-sections";
 const sections = [
   ["what-we-repair", "What we repair"],
   ["how-we-handle-it", "How we handle it"],
-  ["project-photos", "Real projects & photos"],
+  ["project-photos", "Roof details & photos"],
   ["costs-booking", "Costs & booking"],
   ["service-faq", "FAQ"],
 ];
@@ -23,7 +23,7 @@ const serviceFocus: Record<string, string> = {
   "tile-roof-repairs": "Small tile roof repairs & individual tile replacement",
   "chimney-flashing-repairs": "Chimney-area water ingress & flashing inspection",
   "rebedding-repointing": "Ridge capping, rebedding & repointing",
-  "roof-inspections": "Documented roof inspections & condition reports",
+  "roof-inspections": "Roof inspection purpose and condition assessment",
   "metal-roof-repairs": "Metal roof fixings, flashings & leak repairs",
   "roof-renovation": "Local roof repairs or wider roof renovation",
   "roof-cleaning": "Roof moss, lichen & surface debris cleaning",

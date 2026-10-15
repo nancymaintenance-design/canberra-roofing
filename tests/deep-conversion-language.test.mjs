@@ -24,7 +24,7 @@ test('rendered service and area pages describe company work and service-specific
  const bad=/Clear assessment and repair pathways for Canberra home roof enquiries|choose the closest service pathway|without being pushed into|Roof services available for enquiry|record visible roof leak signs|before (?:making|arranging) an enquiry|That depends on the visible condition|The website provides a Canberra coverage directory/i;
  assert.deepEqual(collect('dist').filter(p=>bad.test(visible(readFileSync(p,'utf8'))+' '+readFileSync(p,'utf8').match(/<meta[^>]+description[^>]+>/g)?.join(' '))),[]);
  const faq=visible(readFileSync('dist/faq.html','utf8'));
- assert.match(faq,/How quickly will someone respond\?[^?]*from as little as 30 minutes/i);
+ assert.match(faq,/How quickly will someone respond\?[^?]*confirm the appointment separately/i);
  assert.match(faq,/Can only a few tiles be replaced\?[^?]*(?:Yes|local|individual)/i);
 });
 test('contact offers an assessment without requiring a photo',()=>{

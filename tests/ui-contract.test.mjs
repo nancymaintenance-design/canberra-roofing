@@ -73,8 +73,8 @@ for (const asset of ["ellis-team-trust.png", "ellis-site-consultation.png"]) {
 }
 
 assert.match(renderedAbout, /\/assets\/home\/canberra-roof-hero\.png/);
-assert.match(renderedAbout, /REAL CASE STUDY/);
-assert.match(renderedAbout, /98% Customer Satisfaction/);
+assert.match(renderedAbout, /TILE ROOF PHOTO SEQUENCE/);
+assert.match(renderedAbout, /Tile roof repair photographs/);
 assert.match(renderedAbout, /href="\/case-studies\/tile-roof-repair-canberra"/);
 assert.match(renderedAbout, /className="caseStudyRail"/);
 assert.match(renderedAbout, /className="aboutProcess"/);

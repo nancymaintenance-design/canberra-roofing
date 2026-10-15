@@ -25,8 +25,9 @@ test('About presents verifiable business details and an on-site preparation gall
   }
 });
 
-test('the verified 98% satisfaction statement remains scoped to the published case study', () => {
+test('case study distinguishes visible tile work from unmeasured customer outcomes', () => {
   const caseStudy = source.match(/function CaseStudyView[\s\S]*?function AppV3/)?.[0] || '';
-  assert.match(caseStudy, /98% customer satisfaction/i);
+  assert.doesNotMatch(caseStudy, /98% customer satisfaction/i);
+  assert.match(caseStudy, /no measured customer outcome is established by these photos/i);
   assert.match(caseStudy, /tile roof repair/i);
 });

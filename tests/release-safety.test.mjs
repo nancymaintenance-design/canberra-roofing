@@ -101,7 +101,8 @@ test('public candidate uses owner-supplied copy and makes the browser editor dev
   const source = fs.readFileSync(new URL('src/main.tsx', root), 'utf8');
 
   assert.equal(packageJson.name, 'canberraroofkind-website');
-  assert.match(source, /Welcome to Ellis Services Group/);
+  const news = fs.readFileSync(new URL('dist/news.html', root), 'utf8');
+  assert.match(news, /<h1>Roof leaks, inspections and maintenance<\/h1>/);
   assert.match(source, /Ellis provides roof repairs, cleaning and maintenance across Canberra, with an on-site assessment and written quote\./);
   assert.match(source, /Scope and any fees are confirmed before work is arranged\./);
   assert.match(source, /import\.meta\.env\.DEV/);
