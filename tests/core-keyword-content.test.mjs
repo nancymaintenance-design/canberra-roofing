@@ -58,11 +58,28 @@ test("every priority service page gives substantial, question-led guidance", asy
   const expectations = [
     [
       "/services/roof-leak-repairs",
-      ["roof leak detection", "roof flashing", "still leaks after a repair"],
+      ["roof leak detection", "roof flashing", "recurring roof leak"],
+      "leak.recurring-after-repair",
+      [
+        /returning leak.*material, junction, connected details and water-entry path reassessed/i,
+        /Record what was done, when.*room.*rain conditions.*same or different/i,
+        /temporary measure.*different scope from a lasting component repair/i,
+        /history and current condition.*new repair plan and written quote/i,
+      ],
     ],
     [
       "/services/tile-roof-repairs",
-      ["terracotta", "concrete", "one or two damaged tiles"],
+      ["terracotta", "concrete", "one or two broken roof tiles"],
+      "tile.local-replacement",
+      [
+        /suitable replacement profiles.*surrounding roof supports a local repair/i,
+        /neighbouring tile rows, ridge, valley and flashing/i,
+        /Terracotta or concrete.*finish and availability.*colour and weathering/i,
+        /quote identifies the tiles, materials, adjoining repairs, safe access and price/i,
+        /inspection or booking fee before the visit/i,
+        /few damaged tiles do not automatically require a whole-roof renovation/i,
+        /Do not climb onto the roof or move tiles/i,
+      ],
     ],
     [
       "/services/chimney-flashing-repairs",
@@ -86,7 +103,7 @@ test("every priority service page gives substantial, question-led guidance", asy
     ],
   ];
 
-  for (const [pathname, phrases] of expectations) {
+  for (const [pathname, phrases, faqIntent, answerPatterns = []] of expectations) {
     const dom = await page(pathname);
     try {
       const document = dom.window.document;
@@ -101,6 +118,12 @@ test("every priority service page gives substantial, question-led guidance", asy
         `${pathname} has at least three page-specific FAQs`,
       );
       for (const phrase of phrases) assert.match(copy, new RegExp(phrase, "i"));
+      if (faqIntent) {
+        const answers = document.querySelectorAll(`.pageFaq details[data-intent="${faqIntent}"]`);
+        assert.equal(answers.length, 1, `${pathname} has one complete ${faqIntent} answer`);
+        const answer = answers[0].querySelector("p")?.textContent ?? "";
+        for (const pattern of answerPatterns) assert.match(answer, pattern);
+      }
     } finally {
       dom.window.close();
     }

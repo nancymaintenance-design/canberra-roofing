@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { JSDOM } from 'jsdom';
 const collect = dir => readdirSync(dir, {withFileTypes:true}).flatMap(e => e.isDirectory() ? collect(join(dir,e.name)) : e.name.endsWith('.html') ? [join(dir,e.name)] : []);
 const visible = html => html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 
@@ -12,7 +13,7 @@ test('public fallback contact page offers direct help without claiming online en
  assert.match(html,/<h1>Arrange a Canberra roof assessment<\/h1>/);
  assert.match(html,/<meta name="robots" content="noindex,follow">/);
  assert.match(html,/<link rel="canonical" href="https:\/\/www\.canberraroofkind\.com\.au\/contact-unavailable\.html">/);
- assert.match(html,/href="tel:\+61405878406"/);
+ assert.match(html,/href="tel:\+611300838722"/);
  assert.match(html,/href="mailto:elliservices\.group@gmail\.com"/);
  assert.match(html,/href="\/contact"/);
  assert.match(text,/on-site assessment.*identify the cause.*repair plan.*written quote/i);
@@ -25,7 +26,19 @@ test('rendered service and area pages describe company work and service-specific
  assert.deepEqual(collect('dist').filter(p=>bad.test(visible(readFileSync(p,'utf8'))+' '+readFileSync(p,'utf8').match(/<meta[^>]+description[^>]+>/g)?.join(' '))),[]);
  const faq=visible(readFileSync('dist/faq.html','utf8'));
  assert.match(faq,/How quickly will someone respond\?[^?]*confirm the appointment separately/i);
- assert.match(faq,/Can only a few tiles be replaced\?[^?]*(?:Yes|local|individual)/i);
+ const dom=new JSDOM(readFileSync('dist/faq.html','utf8'));
+ try {
+  const answers=dom.window.document.querySelectorAll('main details[data-intent="tile.local-replacement"]');
+  assert.equal(answers.length,1,'the global FAQ has one complete local tile replacement answer');
+  assert.equal(answers[0].querySelector('summary')?.textContent,'Can just one or two broken roof tiles be replaced?');
+  const answer=answers[0].querySelector('p')?.textContent ?? '';
+  assert.match(answer,/Yes.*suitable replacement profiles.*surrounding roof supports a local repair/i);
+  assert.match(answer,/Terracotta or concrete.*finish and availability.*colour and weathering/i);
+  assert.match(answer,/quote identifies the tiles, materials, adjoining repairs, safe access and price/i);
+  assert.match(answer,/inspection or booking fee before the visit/i);
+  assert.match(answer,/few damaged tiles do not automatically require a whole-roof renovation/i);
+  assert.match(answer,/Do not climb onto the roof or move tiles/i);
+ } finally { dom.window.close(); }
 });
 test('contact offers an assessment without requiring a photo',()=>{
  const txt=visible(readFileSync('dist/contact.html','utf8'));

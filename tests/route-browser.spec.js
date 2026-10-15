@@ -1,15 +1,11 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import routes, { normal } from './fixtures/seo-routes.mjs';
 
 test.setTimeout(60000);
 
-const routes = JSON.parse(await readFile(new URL('./fixtures/seo-routes.json', import.meta.url), 'utf8'));
 const domain = 'https://www.canberraroofkind.com.au';
 const query = '?service=Rebedding%20%26%20Repointing&area=Belconnen%20%E2%80%94%20Belconnen&utm_source=fix&tag=one&tag=two';
-const normal = text => text.replace(/\s+/g, ' ').trim();
-const expectedMainText = route => route.pathname === '/'
-  ? route.mainText.replace('Do not climb onto the roof or touch wet electrical areas.', 'Do not climb onto the roof or touch wet electrical areas.Do not use a ladder alone or in wet or windy conditions.Keep children and pets clear of any damaged or dripping area.')
-  : route.mainText;
 
 async function settled(page) {
   // Exercise a React event, then read the hydrated DOM, rather than racing SSR HTML.
@@ -25,14 +21,15 @@ async function settled(page) {
 async function checkPage(page, route) {
   await settled(page);
   await expect(page.locator('main h1')).toHaveText(route.h1);
-  expect(normal(await page.locator('main').textContent())).toBe(expectedMainText(route));
+  expect(normal(await page.locator('main').textContent())).toBe(route.mainText);
   await expect(page).toHaveTitle(route.title);
   await expect(page.locator('head title')).toHaveCount(1);
   await expect(page.locator('head meta[name="description"]')).toHaveCount(1);
   await expect(page.locator('head meta[name="description"]')).toHaveAttribute('content', route.description);
   await expect(page.locator('head link[rel="canonical"]')).toHaveCount(1);
   await expect(page.locator('head link[rel="canonical"]')).toHaveAttribute('href', domain + route.pathname);
-  await expect(page.locator('head meta[name="robots"]')).toHaveCount(0);
+  if (route.robots) await expect(page.locator('head meta[name="robots"]')).toHaveAttribute('content', route.robots);
+  else await expect(page.locator('head meta[name="robots"]')).toHaveCount(0);
   await expect(page.locator('#news-article-schema')).toHaveCount(route.pathname.startsWith('/news/') ? 1 : 0);
   if (route.pathname === '/contact') {
     await expect(page.locator('select[name="service"]')).toHaveValue('Rebedding & Repointing');

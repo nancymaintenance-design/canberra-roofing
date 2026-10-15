@@ -155,6 +155,21 @@ assert.match(css, /--color-safety-orange:\s*#E85D2A/i);
 assert.match(css, /prefers-reduced-motion/);
 assert.match(
   css,
-  /\.serviceCards\s*\{[^}]*grid-template-columns:\s*repeat\(3,/s,
+  /\.homeServiceDirectory\s*\{[^}]*display:\s*grid[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s,
+);
+assert.match(renderedHome, /<nav className="homeServiceDirectory"/);
+assert.doesNotMatch(renderedHome, /<ServiceCards\b/);
+assert.match(renderedSolutions, /<ServiceCards data=\{data\}/);
+assert.match(
+  css,
+  /\.servicesOverview \.serviceCards,\s*\.solutionsPage \.serviceCards\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s,
+);
+assert.match(
+  css,
+  /\.serviceCard\s*\{[^}]*display:\s*grid[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)\s+minmax\(0,\s*1\.5fr\)[^}]*align-items:\s*start/s,
+);
+assert.match(
+  css,
+  /@media\s*\(max-width:\s*760px\)\s*\{\s*\.homeServiceDirectory,\s*\.serviceCard\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s,
 );
 console.log("ui contract test passed");
