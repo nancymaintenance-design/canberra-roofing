@@ -7,7 +7,7 @@ import { expect, it } from 'vitest';
 import { AppV3 } from '../src/main';
 
 it('advertises equal image slots within each gallery row', async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
     const page = await browser.newPage();
     for (const [slug, expected] of [
@@ -27,7 +27,7 @@ it('advertises equal image slots within each gallery row', async () => {
 }, 30000);
 
 it('centres bounded long advice and guide blocks within the desktop reading region', async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
     const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
     await page.setContent(`<style>${readFileSync('src/styles.css', 'utf8')}</style>${renderToStaticMarkup(<AppV3 pathname="/services/tile-roof-repairs" />)}`);
@@ -48,7 +48,7 @@ it('centres bounded long advice and guide blocks within the desktop reading regi
 }, 30000);
 
 it('uses desktop space for paired service advice, legible editorial images and balanced booking, then stacks on phones', async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
     const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
     await page.setContent(`<style>${readFileSync('src/styles.css', 'utf8')}</style>${renderToStaticMarkup(<AppV3 pathname="/services/tile-roof-repairs" />)}`);
@@ -59,6 +59,8 @@ it('uses desktop space for paired service advice, legible editorial images and b
       image.removeAttribute('srcset');
       image.removeAttribute('width');
       image.removeAttribute('height');
+      // The off-screen production photo is lazy; the synthetic decode fixture must load eagerly.
+      image.loading = 'eager';
       image.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800"><rect width="600" height="800" fill="gray"/></svg>');
       await image.decode();
     });

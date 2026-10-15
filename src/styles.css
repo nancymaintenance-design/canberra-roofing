@@ -492,7 +492,7 @@ picture { display: contents; }
 }
 .serviceCards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
   border: 0;
   margin: 2rem 0;
@@ -545,8 +545,10 @@ picture { display: contents; }
   text-underline-offset: 4px;
 }
 .serviceCard {
-  display: flex;
-  gap: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
 }
 .serviceCardTopline {
   display: flex;
@@ -573,13 +575,15 @@ picture { display: contents; }
 }
 .serviceCardFacts {
   display: grid;
-  gap: 0.65rem;
-  margin: 1rem 0 0;
-  padding: 0.95rem 0 0;
-  border-top: 1px solid var(--color-border);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 1px solid var(--color-border);
 }
 .serviceCardFacts div {
   display: grid;
+  align-content: start;
   gap: 0.2rem;
 }
 .serviceCardFacts dd {
@@ -842,7 +846,8 @@ details > p {
 }
 .contact {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 996px;
   gap: clamp(1.5rem, 3vw, 3rem);
 }
 .contact form {
@@ -871,6 +876,11 @@ label {
   font-size: 0.86rem;
   font-weight: 800;
 }
+.formGrid > label { display: block; line-height: 1.6; }
+.formGrid > label > em { font-style: normal; }
+.formGrid > label > input,
+.formGrid > label > select { display: block; margin-top: 0.4rem; }
+.formGrid .fieldError { display: block; margin-top: 0.4rem; }
 input,
 textarea,
 select {
@@ -4073,6 +4083,57 @@ details:hover {
 .articleBody .relatedCasePhotos a { align-self: start; }
 .articleBody .relatedCase > a { display: inline-flex; min-height: 44px; align-items: center; color: var(--color-roof-charcoal); background: transparent; padding: 0; text-decoration: underline; }
 .servicesOverview > h1 { max-width: 30ch; font-size: clamp(2rem, 3.4vw, 3.5rem); }
+
+/* Task directories retain the full comparison on Services and Solutions. */
+.homeServiceDirectory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+.homeServiceDirectory > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-cloud);
+  text-decoration: none;
+}
+.homeServiceDirectory strong { display: block; font-size: 1.1rem; line-height: 1.35; }
+.homeServiceDirectory span span { display: block; margin-top: 0.45rem; color: var(--color-steel); font-size: 0.95rem; }
+.homeServiceDirectory svg { flex-shrink: 0; color: var(--color-action-surface); }
+.homeServiceDirectory a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.homeServiceDirectory a:active { background: var(--color-cloud); }
+.servicesOverview > h2 { max-width: 38ch; }
+.servicesOverview .serviceCards,
+.solutionsPage .serviceCards { grid-template-columns: minmax(0, 1fr); }
+.contactMethods { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.contactMethods a { overflow-wrap: anywhere; }
+.contactIntro h1 { max-width: none; }
+.areaSearch { display: flex; align-items: end; gap: 0.75rem; margin: 2rem 0; max-width: 740px; }
+.areaSearch .searchLabel { flex: 1; margin: 0; min-width: 0; }
+.areaSearchClear { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0.6rem; border: 1px solid var(--color-steel); border-radius: var(--radius-control); background: var(--color-on-dark); color: var(--color-roof-charcoal); }
+.areaSearchClear:hover { background: var(--color-cloud); }
+.areaSearchClear:active { background: var(--color-steel); color: var(--color-on-dark); }
+.areaGrid article > div { display: grid; gap: 0; }
+.areaLocation { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.25rem 1rem; padding-block: 0.4rem; border-bottom: 1px solid var(--color-cloud); }
+.areaGrid .areaLocation a { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 44px; border: 0; background: transparent; font-size: 0.9rem; }
+.areaGrid .areaLocation .areaEnquiry { font-size: 0.8rem; font-weight: 400; text-decoration: underline; text-underline-offset: 3px; }
+.areaGrid .areaLocation a:hover { background: var(--color-roof-charcoal); color: var(--color-on-dark); }
+@media (max-width: 1100px) {
+  .homeServiceDirectory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .serviceCard { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .serviceCardFacts { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+}
+@media (max-width: 760px) {
+  .homeServiceDirectory,
+  .serviceCard { grid-template-columns: minmax(0, 1fr); }
+  .serviceCard { gap: 1.25rem; }
+  .serviceCardFacts { padding: 1rem 0 0; border-left: 0; border-top: 1px solid var(--color-cloud); }
+  .areaSearch { align-items: stretch; flex-direction: column; }
+  .areaSearchClear { align-self: start; }
+}
 .caseEvidenceIntro h2 { max-width: none; font-size: clamp(1.7rem, 2.5vw, 2.25rem); }
 @media (min-width: 1025px) {
   .articleRelated ul:has(> li:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }

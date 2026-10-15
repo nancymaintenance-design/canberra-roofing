@@ -7,7 +7,7 @@ import { expect, it } from 'vitest';
 import { AppV3 } from '../src/main';
 
 it('keeps portrait project rows compact and puts notes above emergency photographs', async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
     const page = await browser.newPage();
     for (const width of [1600, 390, 320]) {

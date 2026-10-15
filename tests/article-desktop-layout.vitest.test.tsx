@@ -23,7 +23,7 @@ it.each(NEWS_ARTICLES)('keeps $slug complete with a separate chapter directory',
 });
 
 it('uses a sticky left directory, wide desktop reading area and horizontal evidence while phones stack', async () => {
-  const browser = await chromium.launch({headless:true});
+  const browser = await chromium.launch({headless:true,channel:'msedge'});
   try {
     const page = await browser.newPage({reducedMotion:'reduce'});
     await page.route('http://article-layout.test/**', route => {

@@ -78,7 +78,9 @@ Non-home headings and metadata lead with the material, problem or reader task. C
 
 Privacy also uses the centered 800px reading lane with its enquiry panel following the policy body, preserving all policy content and contact links.
 
-About FAQ headings precede the questions in a 900px region. Contact retains concise contact details alongside the form, then places the longer preparation guidance, checklist and bounded 360px desktop / 260px mobile photo in a following centered 900px region. These rules supersede their earlier long-body sidebar arrangement; paragraphs retain their reading measure. News uses its later approved chapter-directory/wide-body layout above, not a promotional or empty sidebar.
+About FAQ headings precede the questions in a 900px region. Contact uses a single centered lane: the heading, concise instructions, linked phone/email and address precede the form; working hours, fee scope and longer preparation guidance follow it. The photo remains bounded to 360px desktop / 260px mobile. This places the form before extended guidance on phones and avoids a short contact column beside a tall form; paragraphs retain their reading measure. News uses its later approved chapter-directory/wide-body layout above, not a promotional or empty sidebar.
+
+The 15 October sitewide density review replaces Home's repeated full service catalogue with twelve compact title-and-symptom links, in three desktop columns, two below 1100px and one below 760px. Services and Solutions retain every original summary, assessment focus and next step in continuous full-width comparison rows: a title/summary/action group beside two related facts, stacking naturally on phones. Text has no fixed heights. The comparison heading uses a normal 38ch measure. Area directory entries keep their information link alongside a direct enquiry link using the exact existing suburb-and-district option; local search has a clear control and a useful no-results state. No imagery, business facts or canonical tokens change.
 
 Bounded long advice and guide blocks use centred inline margins within the service reading region, retaining the `85ch` group cap and `75ch` paragraph measure.
 
@@ -129,6 +131,8 @@ The sticky charcoal navigation uses a thin orange base rule and a service popove
 ### Forms and overlays
 
 Use conventional labelled controls, inline validation and explicit consent wording. File upload remains accessible through a visible button paired with the native input. Do not introduce decorative overlays that obscure field labels or safety text.
+
+Paired enquiry fields use natural inline label text (including “optional”) above block controls. Labels and errors may wrap freely; the neighbouring control must not stretch to fill an extra label or error row. The shared `.formGrid` owns this behavior on Contact, district and suburb forms.
 
 The enquiry area and service fields intentionally use native selects: the operating system owns the opened popup, including its geometry and keyboard interaction. `premium-ui.json` records this ownership; the site owns the labelled trigger, options, validation and surrounding layout. An authored listbox is not required by this marketing-site design.
 

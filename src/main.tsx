@@ -1014,7 +1014,12 @@ function HomeV2({ data }: { data: Data }) {
             Canberra homes.
           </p>
         </div>
-        <ServiceCards data={data} />
+        <nav className="homeServiceDirectory" aria-label="Choose a roof repair service">
+          {data.services.map((service) => <a key={service.slug} href={`/services/${service.slug}`}>
+            <span><strong>{service.title}</strong><span>{homeServiceSymptoms[service.slug] ?? serviceCardDetails[service.slug]?.intro}</span></span>
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>)}
+        </nav>
         <a className="button" href="/services">
           View all services <ArrowRight size={18} />
         </a>
@@ -1464,6 +1469,13 @@ const serviceCardDetails: Record<string, { intro: string; focus: string; next: s
   },
 };
 
+const homeServiceSymptoms: Record<string, string> = {
+  "roof-inspections": "Safe visible observations, access limits and enquiry purpose.",
+  "gutter-repairs": "Leaking, sagging or damaged gutter components.",
+  "emergency-roof-repairs": "Active drips, storm damage or sudden overflow.",
+  "rental-property-roof-repairs": "Tenant concerns, property access and owner approval.",
+};
+
 function ServiceCards({ data }: { data: Data }) {
   return (
     <div className="cards serviceCards">
@@ -1474,17 +1486,19 @@ function ServiceCards({ data }: { data: Data }) {
           next: s.next,
         };
         return <article className="card serviceCard" key={s.slug}>
+          <div className="serviceCardSummary">
           <div className="serviceCardTopline"><span>{String(i + 1).padStart(2, "0")}</span><span>Roof care service</span></div>
           <h3>{s.title}</h3>
           <p className="serviceCardLead">{detail.intro}</p>
-          <dl className="serviceCardFacts">
-            <div><dt>Assessment focus</dt><dd>{detail.focus}</dd></div>
-            <div><dt>Useful next step</dt><dd>{detail.next}</dd></div>
-          </dl>
           <a className="serviceCardAction" href={`/services/${s.slug}`}>
             Explore {serviceAnchorLabels[s.title] ?? s.title}
             <ArrowRight size={15} />
           </a>
+          </div>
+          <dl className="serviceCardFacts">
+            <div><dt>Assessment focus</dt><dd>{detail.focus}</dd></div>
+            <div><dt>Useful next step</dt><dd>{detail.next}</dd></div>
+          </dl>
         </article>;
       })}
     </div>
@@ -1753,11 +1767,12 @@ function ServiceView({ service }: { service: Service }) {
 }
 function Areas() {
   const [query, setQuery] = useState("");
+  const searchInput = useRef<HTMLInputElement>(null);
   const visible = AREA_GROUPS.map(
     ({ district, suburbs }) =>
       [
         district,
-        suburbs.filter((s) => s.toLowerCase().includes(query.toLowerCase())),
+        suburbs.filter((s) => s.toLowerCase().includes(query.trim().toLowerCase())),
       ] as const,
   ).filter(([, suburbs]) => suburbs.length > 0 || !query);
   return (
@@ -1780,28 +1795,32 @@ function Areas() {
           />
         </figure>
       </div>
+      <div className="areaSearch">
       <label className="searchLabel">
         Search suburbs
         <input
+          ref={searchInput}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Type a suburb name"
         />
       </label>
+      {query && <button type="button" className="areaSearchClear" onClick={() => { setQuery(""); searchInput.current?.focus(); }}>Clear suburb search <X size={16} aria-hidden="true" /></button>}
+      </div>
       <LocalGuideLinks />
       <h2>Find your district and suburb</h2>
+      {visible.length === 0 && <p role="status">No suburbs match “{query}”. Clear the search or <a href="/contact">send your address to confirm coverage</a>.</p>}
       <div className="areaGrid">
         {visible.map(([district, suburbs]) => (
           <article key={district}>
             <h3><a href={`/areas/${district.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}`}>{district} roof repair services</a></h3>
             <div>
               {suburbs.map((s) => (
-                <a
+                <div className="areaLocation" key={s}><a
                   href={getSuburbRoute(s, district) ?? "/areas"}
-                  key={s}
                 >
                   {s}
-                </a>
+                </a><a className="areaEnquiry" href={`/contact?area=${encodeURIComponent(`${s} — ${district}`)}`}>Enquire for {s} <ArrowRight size={14} aria-hidden="true" /></a></div>
               ))}
             </div>
           </article>
@@ -1948,19 +1967,15 @@ function Contact({
         <p className="eyebrow">CONTACT</p>
         <h1>Arrange a roof assessment</h1>
         <p>Call, email or use the form to arrange an on-site roof assessment. We confirm the appointment, inspect the affected roof and drainage, then provide the repair plan and written quote. You can request an assessment without a photo.</p>
-        <p>
-          {data.phone}
-          <br />
-          {data.email}
-        </p>
+        <p className="contactMethods"><a href={`tel:${data.phone}`}>{data.phone}</a><a href={`mailto:${data.email}`}>{data.email}</a></p>
         <address className="businessAddress">{data.address}</address>
-        <OperatingHours />
       </div>
       <ContactForm
         defaultArea={prefill.area}
         defaultService={prefill.service}
       />
       <div className="contactPreparation">
+        <OperatingHours />
         <IntentServiceContent slug="contact" />
         <p>For an owner or manager arranging access, see <a href="/services/rental-property-roof-repairs">rental property roof repairs</a>. Tenants can use our <a href="/news/roof-leak-information-for-tenants-canberra">roof leak reporting guide</a>.</p>
         <EnquiryChecklist />
