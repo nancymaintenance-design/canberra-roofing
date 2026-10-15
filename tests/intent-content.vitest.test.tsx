@@ -16,7 +16,7 @@ describe('keyword-map intent answers and confirmed operating hours', () => {
     expect(host.querySelector('main h1')?.textContent).toBe('Emergency & Urgent Roof Repairs');
     expect(host.querySelector('main')?.textContent).toContain('9:00 am–9:00 pm');
     expect(host.querySelector('main')?.textContent).toContain('additional urgent-service fee');
-    expect(host.querySelector('main a[href="tel:0405878406"]')).not.toBeNull();
+    expect(host.querySelector('main a[href="tel:+611300838722"]')).not.toBeNull();
     expect(host.querySelector('main a[href="/contact?service=Emergency%20%26%20Urgent%20Roof%20Repairs"]')).not.toBeNull();
     expect(getRouteHead('/services/emergency-roof-repairs').canonical).toBe('https://www.canberraroofkind.com.au/services/emergency-roof-repairs');
   });
@@ -89,7 +89,7 @@ describe('keyword-map intent answers and confirmed operating hours', () => {
     ['roof-cleaning', ['moss', 'lichen', 'terracotta', 'concrete', 'monier', 'non-abrasive', 'rainwater tanks', 'solar', 'do not climb'], ['/news/roof-cleaning-methods-canberra', '/services/gutter-downpipe-maintenance']],
     ['gutter-downpipe-maintenance', ['gutter fall', 'roof runoff', 'outlets', 'sagging', 'indoor water', 'ladder'], ['/services/gutter-repairs', '/news/gutters-overflowing-heavy-rain-canberra']],
     ['gutter-repairs', ['joints', 'downpipe connections', 'completion checks', 'clearing', 'material', 'indoor drip'], ['/services/gutter-downpipe-maintenance', '/services/roof-leak-repairs']],
-    ['emergency-roof-repairs', ['9:00 am–9:00 pm', 'seven days a week', 'on-site quote', 'temporary measure', 'unsafe conditions', '000', '132 500'], ['tel:0405878406', 'https://esa.act.gov.au/be-emergency-ready/storms']],
+    ['emergency-roof-repairs', ['9:00 am–9:00 pm', 'seven days a week', 'on-site quote', 'temporary measure', 'unsafe conditions', '000', '132 500'], ['tel:+611300838722', 'https://esa.act.gov.au/be-emergency-ready/storms']],
     ['rental-property-roof-repairs', ['tenant', 'remote', 'interstate', 'two-storey', 'owners corporation', 'approval', 'before booking'], ['/news/roof-leak-information-for-tenants-canberra', '/services/roof-inspections']],
   ])('keeps the material, inspection and safety boundaries visible for %s', (slug, details, links) => {
     const host = page(`/services/${slug}`);

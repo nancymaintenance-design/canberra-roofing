@@ -3,7 +3,7 @@ import { BOOKING_POLICY, INTENT_TOPICS, EXTRA_INTENT_TOPICS } from './keyword-in
 const topics = [...INTENT_TOPICS, ...EXTRA_INTENT_TOPICS];
 export function OperatingHours({ headingLevel = 2 }: { headingLevel?: 2 | 3 } = {}) {
   const Heading = headingLevel === 3 ? 'h3' : 'h2';
-  return <section className="contentGuidance operatingHours"><Heading>Working hours and urgent enquiries</Heading><p>Normal working hours: <strong>{BOOKING_POLICY.hours}, {BOOKING_POLICY.days}</strong>. {BOOKING_POLICY.afterHours} We confirm appointment timing and safe access separately.</p><p><a href="tel:0405878406">Call Ellis on 0405878406</a> for an urgent enquiry, or read about <a href="/services/emergency-roof-repairs">emergency and urgent roof repairs</a>.</p></section>;
+  return <section className="contentGuidance operatingHours"><Heading>Working hours and urgent enquiries</Heading><p>Normal working hours: <strong>{BOOKING_POLICY.hours}, {BOOKING_POLICY.days}</strong>. {BOOKING_POLICY.afterHours} We confirm appointment timing and safe access separately.</p><p><a href="tel:+611300838722">Call Ellis on 0405878406</a> for an urgent enquiry, or read about <a href="/services/emergency-roof-repairs">emergency and urgent roof repairs</a>.</p></section>;
 }
 export function IntentServiceContent({ slug, headingLevel = 2, placement = 'all' }: { slug: string; headingLevel?: 2 | 3; placement?: 'all' | 'work' | 'booking' }) {
   const Heading = headingLevel === 3 ? 'h3' : 'h2';

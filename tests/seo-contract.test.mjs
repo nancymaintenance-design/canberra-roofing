@@ -40,7 +40,7 @@ test("every published page has a unique, indexable search contract", async () =>
         else if (pathname !== "/privacy") assert.doesNotMatch(robots, /noindex|nofollow/i);
         assert.equal(document.querySelectorAll("main h1").length, 1, `${pathname} has one H1`);
         assert.equal(document.querySelector("main h1")?.textContent?.replace(/\s+/g, " ").trim(), h1);
-        assert.ok(document.querySelector('a[href="tel:0405878406"]'), `${pathname} retains the phone CTA`);
+        assert.ok(document.querySelector('a[href="tel:+611300838722"]'), `${pathname} retains the phone CTA`);
         assert.ok(document.querySelector('a[href="mailto:elliservices.group@gmail.com"]'), `${pathname} retains the official email`);
         return { pathname, title: document.title, description: document.querySelector('meta[name="description"]')?.content, body: createHash("sha256").update(html).digest("hex") };
       } finally {
