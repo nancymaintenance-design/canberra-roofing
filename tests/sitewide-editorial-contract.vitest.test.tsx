@@ -80,3 +80,41 @@ it('makes inspection records subject to booking scope while preserving rental co
   expect(urgent).toContain('additional urgent-service fee');
   expect(urgent).toContain('on-site quote');
 });
+
+it.each([
+  ['roof-leak-repairs', 'roof-leak-interior-water-mark', /ceiling|water mark/i],
+  ['roof-leak-repairs', 'roof-leak-flashing-repair', /flashing|vent/i],
+  ['tile-roof-repairs', 'tile-roof-damaged-tiles', /damaged.*tiles/i],
+  ['tile-roof-repairs', 'tile-roof-repair-work', /handling tiles/i],
+  ['rebedding-repointing', 'ridge-capping-repair-process', /ridge line/i],
+  ['roof-inspections', 'roof-inspection-team-review', /tiles.*chimney/i],
+  ['roof-inspections', 'roof-inspection-solar-roof-review', /tile.*solar.panel/i],
+  ['metal-roof-repairs', 'metal-roof-repair-team-work', /metal roof/i],
+  ['metal-roof-repairs', 'metal-roof-secure-fixing', /fixings/i],
+  ['roof-cleaning', 'roof-cleaning-controlled-wash', /cleaning|spraying/i],
+])('describes pending %s image %s without certifying work conditions', (slug, asset, visibleSubject) => {
+  const host = page(`/services/${slug}`);
+  const gallery = host.querySelector('.serviceGallery')!;
+  const image = gallery.querySelector(`img[src*="${asset}"]`);
+  expect(image, asset).not.toBeNull();
+  expect(gallery.querySelector(`a[href="/assets/services/${asset}.png"]`)).not.toBeNull();
+  expect(image?.getAttribute('alt')).toMatch(visibleSubject);
+  const safetyJudgment = /\bcontrolled\b|\bsafe\b|fall protection|tethered position/i;
+  expect(gallery.textContent).not.toMatch(safetyJudgment);
+  for (const img of host.querySelectorAll(`img[src*="${asset}"]`)) {
+    expect(img.getAttribute('alt'), asset).not.toMatch(safetyJudgment);
+  }
+  // The boundary applies to claims about the image, not useful safety guidance.
+  expect(host.querySelector('main')?.textContent).toMatch(/safe|safely|Do not climb/);
+});
+
+it.each(['/news', '/news/cracked-slipped-missing-roof-tiles-canberra'])('keeps pending tile-cover descriptions observational on %s', (path) => {
+  const host = page(path);
+  const cover = host.querySelector('img[src*="damaged-tile-record"]');
+  expect(cover).not.toBeNull();
+  expect(cover?.getAttribute('alt')).toMatch(/damaged roof tiles/i);
+  expect(cover?.getAttribute('alt')).not.toMatch(/\bcontrolled\b|\bsafe\b/);
+  if (path !== '/news') {
+    expect(host.querySelector('main')?.textContent).toMatch(/Do not (?:climb|walk|access)|safe ground/i);
+  }
+});

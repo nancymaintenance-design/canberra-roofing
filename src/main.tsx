@@ -393,7 +393,7 @@ const serviceGalleries: Record<
     images: [
       {
         src: "/assets/services/roof-leak-interior-water-mark.png",
-        alt: "Interior ceiling water mark being documented from a safe indoor position",
+        alt: "Interior ceiling water mark being documented",
       },
       {
         src: "/assets/services/roof-leak-flashing-before-after.png",
@@ -405,7 +405,7 @@ const serviceGalleries: Record<
       },
       {
         src: "/assets/services/roof-leak-flashing-repair.png",
-        alt: "Roofing workers carrying out flashing repair work with fall protection equipment",
+        alt: "Roofing workers handling tiles and applying sealant around vent flashing, with harnesses and ropes visible",
       },
       {
         src: "/assets/services/roof-leak-completed-roof.png",
@@ -424,11 +424,11 @@ const serviceGalleries: Record<
       },
       {
         src: "/assets/services/tile-roof-damaged-tiles.png",
-        alt: "Damaged roof tiles being observed from a controlled roof-work position",
+        alt: "Damaged roof tiles being observed",
       },
       {
         src: "/assets/services/tile-roof-repair-work.png",
-        alt: "Roofing workers handling tiles during a controlled roof repair process",
+        alt: "Roofing workers handling tiles during roof repair work",
       },
       {
         src: "/assets/services/tile-roof-condition-review.png",
@@ -463,7 +463,7 @@ const serviceGalleries: Record<
       },
       {
         src: "/assets/services/ridge-capping-repair-process.png",
-        alt: "Roofing workers preparing a ridge line during a controlled repair process",
+        alt: "Roofing workers preparing a ridge line for repair",
       },
     ],
   },
@@ -505,7 +505,7 @@ const serviceGalleries: Record<
       },
       {
         src: "/assets/services/roof-inspection-team-review.png",
-        alt: "Roof inspection team reviewing roof tiles and chimney junction from controlled access",
+        alt: "Roof inspection team reviewing roof tiles and a chimney junction",
       },
       {
         src: "/assets/services/roof-inspection-photo-record.png",
@@ -517,18 +517,18 @@ const serviceGalleries: Record<
       },
       {
         src: "/assets/services/roof-inspection-solar-roof-review.png",
-        alt: "Roofing worker recording visible tile and solar-panel roof details from controlled access",
+        alt: "Roofing worker recording visible tile and solar-panel roof details",
       },
     ],
   },
   "metal-roof-repairs": {
     title: "What metal roof repair work can involve.",
     intro:
-      "Context images show metal-roof conditions, controlled work practices and completed roof details. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "Context images show metal-roof conditions, repair activity and completed roof details. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/metal-roof-repair-team-work.png",
-        alt: "Two roofing workers carrying out controlled repair work on a metal roof",
+        alt: "Two roofing workers carrying out repair work on a metal roof",
       },
       {
         src: "/assets/services/metal-roof-wall-flashing-condition.png",
@@ -536,7 +536,7 @@ const serviceGalleries: Record<
       },
       {
         src: "/assets/services/metal-roof-secure-fixing.png",
-        alt: "Roofing worker securing metal roof sheet fixings from a tethered position",
+        alt: "Roofing worker using a drill on metal roof sheet fixings, with a harness and rope visible",
       },
       {
         src: "/assets/services/metal-roof-gutter-edge-repair.png",
@@ -551,7 +551,7 @@ const serviceGalleries: Record<
   "roof-cleaning": {
     title: "What professional roof cleaning work can show.",
     intro:
-      "Context images show visible surface build-up, gutter debris, controlled cleaning activity and a completed roof surface. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "Context images show visible surface build-up, gutter debris, cleaning activity and a completed roof surface. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
     images: [
       {
         src: "/assets/services/roof-cleaning-surface-condition.png",
@@ -563,7 +563,7 @@ const serviceGalleries: Record<
       },
       {
         src: "/assets/services/roof-cleaning-controlled-wash.png",
-        alt: "Roofing worker using controlled cleaning equipment on a tiled residential roof with fall protection",
+        alt: "Roofing worker spraying water onto a tiled residential roof, with a hose and ladder visible",
       },
       {
         src: "/assets/services/roof-cleaning-site-overview.png",
@@ -1598,7 +1598,7 @@ const serviceHeroImages: Record<string, { src: string; alt: string; caption: str
   "roof-inspections": { src: "/assets/services/roof-inspection-roofline-review.png", alt: "Roofline review during an inspection", caption: "A roof review connects visible signs with the condition on site." },
   "metal-roof-repairs": { src: "/assets/services/metal-roof-wall-flashing-condition.png", alt: "Metal roof and wall flashing detail", caption: "Sheets, fixings and flashing form one weathering system." },
   "roof-renovation": { src: "/assets/services/tile-roof-site-overview.png", alt: "Overview of an existing tiled roof", caption: "Roof-condition context; not a documented renovation result." },
-  "roof-cleaning": { src: "/assets/services/roof-cleaning-controlled-wash.png", alt: "Controlled cleaning on a tiled roof", caption: "Cleaning methods depend on the roof material and its condition." },
+  "roof-cleaning": { src: "/assets/services/roof-cleaning-controlled-wash.png", alt: "Worker spraying water onto a tiled roof", caption: "Cleaning methods depend on the roof material and its condition." },
   "gutter-downpipe-maintenance": { src: "/assets/services/gutter-downpipe-roof-edge-condition.jpg", alt: "Gutter condition along a roof edge", caption: "Gutters, outlets and downpipes share the drainage path." },
   "gutter-repairs": { src: "/assets/services/metal-roof-gutter-edge-repair.png", alt: "Gutter edge and adjoining metal roof detail", caption: "Check component condition as well as the flow of water." },
   "emergency-roof-repairs": { src: "/assets/projects/urgent-before-junction.webp", alt: "Roof junction before the documented urgent repair work", caption: "Before work: a junction from the urgent roof leak project." },
@@ -2076,6 +2076,7 @@ function Admin({
         </button>
       </div>
       <div className="adminForm">
+        <p>Local preview only. Public identity and business copy are source-managed and cannot be edited here.</p>
         <label>
           Company name
           <input
@@ -2088,7 +2089,7 @@ function Admin({
           <textarea
             className="resize-none"
             value={data.tagline}
-            onChange={(e) => save({ tagline: e.target.value })}
+            readOnly
           />
         </label>
         <label>

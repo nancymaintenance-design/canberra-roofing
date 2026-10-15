@@ -24,6 +24,8 @@ This inventory covers all 75 image/original-link entries rendered on the 120 cur
 
 The tile case sequence retains visible before/during/after observations. Its original authorship, location and permission record remain pending; it is not evidence for a satisfaction rate or a measured repair outcome. News covers are used illustratively even where the file provenance is pending.
 
+Pending gallery descriptions name visible objects and actions only. A visible harness, rope or ladder does not establish controlled access, effective fall protection or safe working conditions; captions and alt text must not make those judgments.
+
 | Actual asset | Classification | Rendered file mapping |
 | --- | --- | --- |
 | `/assets/about/ellis-brand-roof-planning.png` | provenance pending | `/assets/about/ellis-brand-roof-planning.png`<br>`/assets/responsive/ellis-brand-roof-planning-1200.webp`<br>`/assets/responsive/ellis-brand-roof-planning-400.webp`<br>`/assets/responsive/ellis-brand-roof-planning-800.webp` |

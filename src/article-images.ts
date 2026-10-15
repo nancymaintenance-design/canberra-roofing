@@ -12,7 +12,7 @@ export const ARTICLE_IMAGES: Record<string, { src: string; alt: string }> = {
   },
   "cracked-slipped-missing-roof-tiles-canberra": {
     src: "/assets/news/damaged-tile-record.png",
-    alt: "Visible damaged roof tiles being documented from a controlled roof-work position",
+    alt: "Visible damaged roof tiles being documented",
   },
   "chimney-flashing-water-entry-signs": {
     src: "/assets/news/chimney-flashing-review.png",
