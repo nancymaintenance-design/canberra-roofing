@@ -26,8 +26,8 @@ function photoError(photo) {
   if (!photo || !String(photo.name ?? '')) return undefined;
 
   const name = String(photo.name);
-  const extension = name.slice(name.lastIndexOf('.'));
-  if (!PHOTO_ALLOWED_TYPES.includes(String(photo.type ?? '')) || extension !== extension.toLowerCase() || !PHOTO_EXTENSIONS.includes(extension)) {
+  const extension = name.slice(name.lastIndexOf('.')).toLowerCase();
+  if (!PHOTO_ALLOWED_TYPES.includes(String(photo.type ?? '')) || !PHOTO_EXTENSIONS.includes(extension)) {
     return 'Choose a JPG, PNG or WebP photo.';
   }
   if (Number(photo.size) > PHOTO_LIMIT_BYTES) return 'Photo must be 4 MB or smaller.';

@@ -11,6 +11,7 @@ import {
   SERVICE_TITLES,
 } from "../src/contact-options.js";
 import { validateEnquiry } from "../src/enquiry-validation.js";
+import { jpeg, png, webp } from './fixtures/contact-images.mjs';
 
 const validEnquiry = () => ({
   name: "Ellis",
@@ -293,13 +294,6 @@ test("photo preflight permits optional valid photos and rejects invalid declarat
   assert.equal(
     validateEnquiry({
       ...validEnquiry(),
-      photo: { name: "roof.JPG", type: "image/jpeg", size: 1 },
-    }).photo,
-    "Choose a JPG, PNG or WebP photo.",
-  );
-  assert.equal(
-    validateEnquiry({
-      ...validEnquiry(),
       photo: {
         name: "roof.jpg",
         type: "image/jpeg",
@@ -308,6 +302,14 @@ test("photo preflight permits optional valid photos and rejects invalid declarat
     }).photo,
     "Photo must be 4 MB or smaller.",
   );
+});
+
+test('photo preflight accepts equivalent lower, upper and mixed-case image suffixes', () => {
+  for (const [buffer, type, suffixes] of [[jpeg, 'image/jpeg', ['jpg', 'JPG', 'JpG', 'jpeg', 'JPEG', 'JpEg']], [png, 'image/png', ['png', 'PNG', 'PnG']], [webp, 'image/webp', ['webp', 'WEBP', 'WeBp']]]) {
+    for (const suffix of suffixes) {
+      assert.deepEqual(validateEnquiry({ ...validEnquiry(), photo: new File([buffer], `roof.${suffix}`, { type }) }), {}, suffix);
+    }
+  }
 });
 
 test("Contact and Areas consume canonical exports while serviceSeed retains its page copy", async () => {

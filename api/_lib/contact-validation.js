@@ -55,8 +55,7 @@ function normalizedFields(entries) {
 }
 
 function extensionOf(name) {
-  const extension = path.posix.extname(String(name ?? '').replace(/\\/g, '/'));
-  return extension === extension.toLowerCase() ? extension : '';
+  return path.posix.extname(String(name ?? '').replace(/\\/g, '/')).toLowerCase();
 }
 
 function expectedMime(extension) {

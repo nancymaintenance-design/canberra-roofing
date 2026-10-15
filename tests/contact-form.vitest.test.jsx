@@ -5,6 +5,7 @@ import { cleanup } from '@testing-library/react';
 
 import { ContactForm } from '../src/contact-form.jsx';
 import { ContactApiError } from '../src/contact-api.js';
+import { jpeg, png, webp } from './fixtures/contact-images.mjs';
 
 afterEach(cleanup);
 
@@ -24,6 +25,15 @@ function completeValidForm() {
 }
 
 describe('ContactForm', () => {
+  it.each([['JPG', jpeg, 'image/jpeg'], ['JPEG', jpeg, 'image/jpeg'], ['PnG', png, 'image/png'], ['WEBP', webp, 'image/webp']])('submits a valid selected image with a %s suffix', async (suffix, buffer, type) => {
+    renderForm();
+    completeValidForm();
+    fireEvent.change(screen.getByLabelText('Optional photo'), { target: { files: [new File([buffer], `roof.${suffix}`, { type })] } });
+    fireEvent.click(screen.getByRole('button', { name: 'Request a roof assessment' }));
+    await screen.findByText('Enquiry sent successfully.');
+    expect(screen.queryByText('Choose a JPG, PNG or WebP photo.')).toBeNull();
+    expect(screen.getByText('No photo selected')).toBeTruthy();
+  });
   it('renders the approved English custom photo control and hidden honeypot', () => {
     renderForm();
     expect(screen.getByText('Optional photo')).toBeTruthy();

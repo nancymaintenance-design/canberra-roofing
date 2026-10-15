@@ -7,6 +7,7 @@ colors:
   steel: "#33454D"
   warm-white: "#F5F4EF"
   safety-orange: "#E85D2A"
+  action-surface: "#B8441C"
   eucalyptus: "#5E7568"
   cloud: "#DDE3E2"
   on-dark: "#FFFFFF"
@@ -51,7 +52,7 @@ A well-organised roof-work site: dark workwear, clear safety-orange markings, le
 
 ## Colors
 
-`roof-charcoal` is the primary dark surface and text anchor. `warm-white` is the main page surface, while `cloud` and `eucalyptus` create restrained background, divider and contextual layers. `safety-orange` is reserved for primary actions, critical keylines, selected emphasis and focus visibility. `on-dark` is used on charcoal and orange surfaces. Maintain the existing visible focus outline and never rely on colour alone for safety or validation states.
+`roof-charcoal` is the primary dark surface and text anchor. `warm-white` is the main page surface, while `cloud` and `eucalyptus` create restrained background, divider and contextual layers. `safety-orange` supplies decorative keylines, selected emphasis and focus visibility. `action-surface` is the deeper orange for ordinary solid actions with white text. Maintain the existing visible focus outline and never rely on colour alone for safety or validation states.
 
 ## Typography
 
@@ -115,15 +116,21 @@ Buttons, links, service cards and form fields must expose a visible `:focus-visi
 
 The orange `.button` is the primary action and should state the next real-world step, such as “Send an enquiry” or “Explore Metal & Colorbond Roof Repairs”. Underlined `.textAction` links are secondary. Keep icons to the trailing edge and retain text labels.
 
+The canonical runtime owner is `src/styles.css`: `--color-action-surface` (#B8441C) and `--color-action-on-surface` (the white `--color-on-dark`) supply `.button` and `.contactTop`; hover uses `--color-action-hover` (charcoal) and pressed uses `--color-action-active` (steel). These enabled states maintain at least 4.5:1 text contrast without changing dimensions or control radius. Keyboard focus retains the 3px orange outline and 3px offset. Decorative `--color-action` continues to alias the original safety orange.
+
 ### Navigation and data display
 
 The `/faq` hub uses one categorised question browser. The owner-approved professional refinement replaces the earlier heavy charcoal directory and nested question cards. Use a compact 32–44px page title and a thin intro divider inside a 1240px shell. On desktop a 240px white, cloud-bordered directory stays sticky below the site header; only the current category has a quiet surface highlight and orange marker. The right column uses rounded white category panels, with plain question rows separated by thin rules rather than individual raised cards. Questions use 16px body type at weight 600, category headings use 22.4–28px display type, and answers use a restrained steel tone with 1.75 line height. Decorative plus/minus indicators sit at the trailing edge; native disclosure semantics and visible focus remain intact. Category links are native anchors and the current section receives `aria-current="location"` as the document scrolls. Mobile uses a compact, horizontally scrollable sticky category strip above the questions, automatically keeping the active category visible. Support guides and operating hours form a separate, compact two-part panel. Preserve all question answers, contextual links and existing SEO data; changes here must not alter service-page or suburb-page FAQs.
 
 The sticky charcoal navigation uses a thin orange base rule and a service popover for the full set of repair pathways. Service cards use a small sequence label, concise title, practical description and a clear route link. On small screens, the navigation must collapse without hiding telephone or contact access.
 
+`LayoutV2` owns the responsive navigation behavior at the existing 1180px breakpoint. Menu opens the drawer and focuses Close; Tab and Shift+Tab loop through its currently visible links and buttons, including an expanded Services submenu. The brand, Menu trigger, header actions, main and footer become inert while open, the backdrop stays outside tab order, and document scrolling pauses. Escape first closes Services and returns to its trigger, then closes the drawer and returns to Menu; Close and backdrop also restore Menu. Crossing the breakpoint clears both open states, releases isolation and scroll locking, and restores focus to the visible navigation trigger. The desktop Services popover retains its established entry point.
+
 ### Forms and overlays
 
 Use conventional labelled controls, inline validation and explicit consent wording. File upload remains accessible through a visible button paired with the native input. Do not introduce decorative overlays that obscure field labels or safety text.
+
+The enquiry area and service fields intentionally use native selects: the operating system owns the opened popup, including its geometry and keyboard interaction. `premium-ui.json` records this ownership; the site owns the labelled trigger, options, validation and surrounding layout. An authored listbox is not required by this marketing-site design.
 
 ### Iconography
 

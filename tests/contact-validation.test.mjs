@@ -44,7 +44,7 @@ test('enforces exact character and byte limits plus duplicate, extra, and oversi
   expectFailure(await validateContactSubmission(validInput({ fields: { ...validFields(), message: 'é'.repeat(FIELD_LIMITS.textFieldBytes) } })), 400, 'INVALID_REQUEST');
 });
 
-test('accepts synthetic JPEG, PNG, and WebP signatures with safe normalized filenames', async () => {
+test('accepts complete JPEG, PNG, and WebP files with safe normalized filenames', async () => {
   for (const [buffer, mimetype, originalname, filename] of [[jpeg, 'image/jpeg', '../../roof\r\n repair.jpg', 'roof_repair.jpg'], [png, 'image/png', 'roof.png', 'roof.png'], [webp, 'image/webp', 'roof.webp', 'roof.webp']]) {
     const result = await validateContactSubmission(validInput({ files: [{ fieldname: 'photo', buffer, mimetype, originalname, size: buffer.length }] }));
     assert.equal(result.ok, true);
@@ -53,11 +53,23 @@ test('accepts synthetic JPEG, PNG, and WebP signatures with safe normalized file
   assert.equal(sanitizeAttachmentFilename('../very unsafe\r\n name.jpeg', '.jpeg'), 'very_unsafe_name.jpeg');
 });
 
+test('accepts case-equivalent image suffixes and normalizes attachment extensions', async () => {
+  for (const [buffer, mimetype, suffixes, extension] of [[jpeg, 'image/jpeg', ['jpg', 'JPG', 'JpG'], 'jpg'], [jpeg, 'image/jpeg', ['jpeg', 'JPEG', 'JpEg'], 'jpeg'], [png, 'image/png', ['png', 'PNG', 'PnG'], 'png'], [webp, 'image/webp', ['webp', 'WEBP', 'WeBp'], 'webp']]) {
+    for (const suffix of suffixes) {
+      const result = await validateContactSubmission(validInput({ files: [{ fieldname: 'photo', buffer, mimetype, originalname: `Roof.${suffix}`, size: buffer.length }] }));
+      assert.equal(result.ok, true, suffix);
+      assert.equal(result.photo.filename, `Roof.${extension}`);
+      assert.equal(result.photo.mimetype, mimetype);
+      assert.deepEqual(result.photo.buffer, buffer);
+    }
+  }
+});
+
 test('rejects file-count, size, empty, forbidden, unknown, and mismatched attachments without echoing input', async () => {
   expectFailure(await validateContactSubmission(validInput({ files: [{ fieldname: 'photo', buffer: jpeg, mimetype: 'image/jpeg', originalname: 'one.jpg' }, { fieldname: 'photo', buffer: jpeg, mimetype: 'image/jpeg', originalname: 'two.jpg' }] })), 400, 'INVALID_REQUEST');
   const large = Buffer.alloc(PHOTO_LIMIT_BYTES); large.set(jpeg); const exact = await validateContactSubmission(validInput({ files: [{ fieldname: 'photo', buffer: large, mimetype: 'image/jpeg', originalname: 'exact.jpg', size: large.length }] })); assert.equal(exact.ok, true);
   const tooLarge = Buffer.alloc(PHOTO_LIMIT_BYTES + 1); tooLarge.set(jpeg); expectFailure(await validateContactSubmission(validInput({ files: [{ fieldname: 'photo', buffer: tooLarge, mimetype: 'image/jpeg', originalname: 'private-name.jpg', size: tooLarge.length }] })), 413, 'PHOTO_TOO_LARGE');
-  for (const [buffer, mimetype, originalname] of [[Buffer.alloc(0), 'image/jpeg', 'private-name.jpg'], [gif, 'image/gif', 'private-name.gif'], [pdf, 'application/pdf', 'private-name.pdf'], [executable, 'application/octet-stream', 'private-name.exe'], [svg, 'image/svg+xml', 'private-name.svg'], [unknown, 'image/jpeg', 'private-name.jpg'], [jpeg, 'image/png', 'private-name.png'], [jpeg, 'image/jpeg', 'private-name.JPG']]) {
+  for (const [buffer, mimetype, originalname] of [[Buffer.alloc(0), 'image/jpeg', 'private-name.jpg'], [gif, 'image/gif', 'private-name.gif'], [pdf, 'application/pdf', 'private-name.pdf'], [executable, 'application/octet-stream', 'private-name.exe'], [svg, 'image/svg+xml', 'private-name.svg'], [unknown, 'image/jpeg', 'private-name.JPG'], [jpeg, 'image/png', 'private-name.PNG'], [png, 'image/jpeg', 'private-name.JPG']]) {
     const result = await validateContactSubmission(validInput({ files: [{ fieldname: 'photo', buffer, mimetype, originalname, size: buffer.length }] }));
     expectFailure(result, 415, 'UNSUPPORTED_PHOTO_TYPE');
     assert.doesNotMatch(JSON.stringify(result), /private-name|password|smtp/i);

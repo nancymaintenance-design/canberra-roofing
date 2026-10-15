@@ -8,7 +8,7 @@ const css = fs.readFileSync(new URL('src/styles.css', root), 'utf8');
 const activeLayout = source.match(/function LayoutV2[\s\S]*?function AdminDrawer/)?.[0] || '';
 
 test('active global header uses the authorized Canberraroofkind logo without replacing brand navigation', () => {
-  assert.match(activeLayout, /<a className="brand" href="\/">/);
+  assert.match(activeLayout, /<a className="brand" href="\/"(?:\s+[^>]*)?>/);
   assert.match(activeLayout, /src="\/assets\/brand\/canberraroofkind-logo\.png"/);
   assert.match(activeLayout, /alt="Ellis Services Group logo"/);
   assert.match(activeLayout, /\{data\.company\}/);

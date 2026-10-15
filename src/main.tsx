@@ -2128,6 +2128,7 @@ function LayoutV2({
   const servicesTrigger = useRef<HTMLButtonElement>(null);
   const mobileTrigger = useRef<HTMLButtonElement>(null);
   const mobileClose = useRef<HTMLButtonElement>(null);
+  const mobileNavigation = useRef<HTMLElement>(null);
   const menuBox = useRef<HTMLDivElement>(null);
   const closeServices = (restore = false) => {
     setServicesOpen(false);
@@ -2140,6 +2141,20 @@ function LayoutV2({
   };
   useEffect(() => {
     const key = (event: KeyboardEvent) => {
+      if (event.key === "Tab" && mobileOpen) {
+        const controls = Array.from(mobileNavigation.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [])
+          .filter((control) => control.getClientRects().length > 0);
+        const first = controls[0];
+        const last = controls.at(-1);
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+        return;
+      }
       if (event.key !== "Escape") return;
       if (servicesOpen) {
         event.preventDefault();
@@ -2165,13 +2180,32 @@ function LayoutV2({
     };
   }, [servicesOpen, mobileOpen]);
   useEffect(() => {
-    if (mobileOpen) requestAnimationFrame(() => mobileClose.current?.focus());
+    if (!mobileOpen) return;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const frame = requestAnimationFrame(() => mobileClose.current?.focus());
+    return () => {
+      cancelAnimationFrame(frame);
+      document.body.style.overflow = overflow;
+    };
   }, [mobileOpen]);
+  useEffect(() => {
+    if (typeof window.matchMedia !== "function") return;
+    const breakpoint = window.matchMedia("(max-width: 1180px)");
+    const reset = () => {
+      const restore = mobileNavigation.current?.contains(document.activeElement) || document.activeElement === mobileTrigger.current;
+      setMobileOpen(false);
+      setServicesOpen(false);
+      if (restore) requestAnimationFrame(() => (breakpoint.matches ? mobileTrigger.current : servicesTrigger.current)?.focus());
+    };
+    breakpoint.addEventListener("change", reset);
+    return () => breakpoint.removeEventListener("change", reset);
+  }, []);
   return (
     <>
       <header className="siteHeader">
         <div className="headerInner">
-          <a className="brand" href="/">
+          <a className="brand" href="/" inert={mobileOpen}>
             <ResponsiveImage sizes="100px" loading="eager"
               className="brandLogo"
               src="/assets/brand/canberraroofkind-logo.png"
@@ -2190,11 +2224,13 @@ function LayoutV2({
             aria-label="Open main menu"
             aria-expanded={mobileOpen}
             aria-controls="primary-navigation"
+            inert={mobileOpen}
             onClick={() => setMobileOpen(true)}
           >
             Menu
           </button>
           <nav
+            ref={mobileNavigation}
             id="primary-navigation"
             className={mobileOpen ? "primaryNav isOpen" : "primaryNav"}
             aria-label="Primary navigation"
@@ -2248,7 +2284,7 @@ function LayoutV2({
               ),
             )}
           </nav>
-          <div className="headerActions">
+          <div className="headerActions" inert={mobileOpen}>
             <a className="phoneAction" href={`tel:${data.phone}`}>
               {data.phone}
             </a>
@@ -2266,12 +2302,13 @@ function LayoutV2({
       {mobileOpen && (
         <button
           className="navBackdrop"
+          tabIndex={-1}
           aria-label="Close main menu"
           onClick={() => closeMobile(true)}
         />
       )}
-      <main>{children}</main>
-      <footer>
+      <main inert={mobileOpen}>{children}</main>
+      <footer inert={mobileOpen}>
         <div>
           <strong>{data.company}</strong>
           <span>{data.address}</span>

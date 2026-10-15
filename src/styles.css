@@ -15,6 +15,10 @@
   --color-surface-dark: var(--color-roof-charcoal);
   --color-text: var(--color-roof-charcoal);
   --color-action: var(--color-safety-orange);
+  --color-action-surface: #b8441c;
+  --color-action-on-surface: var(--color-on-dark);
+  --color-action-hover: var(--color-roof-charcoal);
+  --color-action-active: var(--color-steel);
   --color-focus: var(--color-safety-orange);
   --color-border: var(--color-cloud);
   --font-display:
@@ -169,15 +173,15 @@ h3 {
   gap: 0.7rem;
   min-height: 48px;
   padding: 0.75rem 1.1rem;
-  border: 2px solid var(--color-action);
+  border: 2px solid var(--color-action-surface);
   border-radius: var(--radius-control);
-  background: var(--color-action);
-  color: var(--color-on-dark);
+  background: var(--color-action-surface);
+  color: var(--color-action-on-surface);
   font-weight: 800;
 }
 .button:hover {
-  background: var(--color-roof-charcoal);
-  border-color: var(--color-roof-charcoal);
+  background: var(--color-action-hover);
+  border-color: var(--color-action-hover);
 }
 .textAction {
   font-weight: 800;
@@ -319,8 +323,8 @@ h3 {
   border: 1px solid var(--color-eucalyptus);
 }
 .contactTop {
-  background: var(--color-action);
-  color: var(--color-on-dark);
+  background: var(--color-action-surface);
+  color: var(--color-action-on-surface);
 }
 .adminBtn {
   border: 1px solid var(--color-cloud);
@@ -2250,11 +2254,15 @@ details:hover {
 }
 .button:hover,
 .contactTop:hover {
+  background: var(--color-action-hover);
+  border-color: var(--color-action-hover);
   transform: translateY(-2px);
   box-shadow: 0 7px 0 #27353a;
 }
 .button:active,
 .contactTop:active {
+  background: var(--color-action-active);
+  border-color: var(--color-action-active);
   transform: translateY(2px);
   box-shadow: 0 2px 0 #27353a;
 }
