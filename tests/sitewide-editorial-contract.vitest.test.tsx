@@ -49,7 +49,7 @@ it.each([5, 8, 99])('rejects stale controlled copy from persisted schema %i on a
   const { container, unmount } = render(<AppV3 pathname="/news" />);
   expect(container.querySelector('main h1')?.textContent).toBe('Roof leaks, inspections and maintenance');
   expect(container.textContent).not.toMatch(/Unverified Company|Invented branch|wrong@example|0000000000|98%|15 years|1,000/);
-  expect(container.querySelector('a[href="tel:+611300838722"]')).not.toBeNull();
+  expect(container.querySelector('a[href="tel:0405878406"]')).not.toBeNull();
   unmount();
   const reloaded = render(<AppV3 pathname="/faq" />);
   expect(reloaded.container.textContent).not.toMatch(/Unsupported guarantee|30 minutes/);

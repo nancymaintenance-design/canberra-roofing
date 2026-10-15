@@ -48,7 +48,7 @@ test.describe('no-JS mobile pages', () => {
   await page.goto('http://127.0.0.1:4175/contact');
   await expect(page.getByRole('button', { name: 'Request a roof assessment', exact: true })).toBeDisabled();
   await expect(page.locator('.noScriptNotice')).toContainText('The online enquiry form requires JavaScript.');
-  await expect(page.locator('.noScriptNotice a[href="tel:+611300838722"]')).toBeVisible();
+  await expect(page.locator('.noScriptNotice a[href="tel:0405878406"]')).toBeVisible();
   await page.locator('input[name="name"]').fill('Synthetic QA');
   await page.locator('input[name="name"]').press('Enter');
   await expect(page).toHaveURL('http://127.0.0.1:4175/contact');
@@ -57,7 +57,7 @@ test.describe('no-JS mobile pages', () => {
   await expect(page).toHaveURL(/\/services$/);
   await page.getByRole('link', { name: 'Explore Roof Leak Repairs', exact: true }).click();
   await expect(page.locator('main h1')).toHaveText(routes.find(route => route.pathname === '/services/roof-leak-repairs').h1);
-  await expect(page.locator('a[href="tel:+611300838722"]').first()).toBeVisible();
+  await expect(page.locator('a[href="tel:0405878406"]').first()).toBeVisible();
   });
 });
 

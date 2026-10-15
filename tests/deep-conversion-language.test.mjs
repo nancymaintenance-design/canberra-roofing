@@ -13,7 +13,7 @@ test('public fallback contact page offers direct help without claiming online en
  assert.match(html,/<h1>Arrange a Canberra roof assessment<\/h1>/);
  assert.match(html,/<meta name="robots" content="noindex,follow">/);
  assert.match(html,/<link rel="canonical" href="https:\/\/www\.canberraroofkind\.com\.au\/contact-unavailable\.html">/);
- assert.match(html,/href="tel:\+611300838722"/);
+ assert.match(html,/href="tel:\+61405878406"/);
  assert.match(html,/href="mailto:elliservices\.group@gmail\.com"/);
  assert.match(html,/href="\/contact"/);
  assert.match(text,/on-site assessment.*identify the cause.*repair plan.*written quote/i);

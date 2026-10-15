@@ -19,5 +19,5 @@ test('privacy consent, roof safety and inspection fee transparency survive', () 
   assert.match(privacy.body.textContent, /This may include your contact details/);
   const html = readFileSync('dist/services/roof-inspections.html', 'utf8');
   assert.match(new JSDOM(html).window.document.body.textContent, /inspection or booking fee/);
-  assert.match(html, /tel:\+611300838722/);
+  assert.match(html, /tel:0405878406/);
 });

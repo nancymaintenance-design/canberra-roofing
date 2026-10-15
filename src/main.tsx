@@ -953,7 +953,7 @@ function HomeV2({ data }: { data: Data }) {
         </div>
         <div className="heroProof">
           <span>Canberra, ACT</span>
-          <a href="tel:+611300838722">{data.phone}</a>
+          <a href={`tel:${data.phone}`}>{data.phone}</a>
         </div>
       </section>
       <section
@@ -1274,7 +1274,7 @@ function About({ data }: { data: Data }) {
           <div>
             <dt>Phone</dt>
             <dd>
-              <a href="tel:+611300838722">0405 878 406</a>
+              <a href="tel:0405878406">0405 878 406</a>
             </dd>
           </div>
           <div>
@@ -1406,7 +1406,7 @@ function About({ data }: { data: Data }) {
             Ready to describe a visible roof concern?
           </h2>
           <p>
-            Call <a href="tel:+611300838722">0405 878 406</a>, email{" "}
+            Call <a href="tel:0405878406">0405 878 406</a>, email{" "}
             <a href="mailto:elliservices.group@gmail.com">
               elliservices.group@gmail.com
             </a>{" "}
@@ -1838,7 +1838,7 @@ function DistrictServiceAreaPage({ profile }: { profile: any; data: Data }) {
       <div className="contentTableScroll" tabIndex={0} role="region" aria-label={`${profile.district} suburb directory`}><table><caption>{profile.district}: suburb information and booking links</caption><thead><tr><th scope="col">Location</th><th scope="col">Suburb information</th><th scope="col">Start an enquiry</th></tr></thead><tbody>{profile.bookingLocations.map((location: { suburb: string; enquiryPath: string }) => <tr key={location.suburb}><th scope="row">{location.suburb}</th><td><a href={getSuburbRoute(location.suburb, profile.district) ?? "/areas"}>{location.suburb} roof services</a></td><td><a href={location.enquiryPath}>Enquire for {location.suburb}</a></td></tr>)}</tbody></table></div>
       <p>Looking for a different location? <a href="/areas">Search the district and suburb directory</a>.</p>
     </section>
-    <section className="districtServiceChoices"><h2>Match the concern to a service</h2><ul><li>A stain or drip: <a href="/services/roof-leak-repairs">roof leak investigation and repairs</a>. Include when it appears and the affected room.</li><li>A visible damaged tile or metal detail: compare <a href="/services/tile-roof-repairs">tile roof repairs</a> and <a href="/services/metal-roof-repairs">metal roof repairs</a>; describe the material if known.</li><li>Debris or overflowing drainage: compare <a href="/services/gutter-downpipe-maintenance">gutter clearing and downpipe maintenance</a> with <a href="/services/gutter-repairs">gutter component repairs</a>.</li><li>Unsure of the cause or planning wider work: start with <a href="/services/roof-inspections">a roof inspection</a>, or <a href="/services">view all roof services</a>.</li></ul><p>For two-storey properties or a remote owner, include storeys and the access contact. Confirm any photos and written findings in the inspection scope, and nominate who should receive the agreed records and quote. For urgent enquiries, call <a href="tel:+611300838722">0405878406</a>; we confirm appointment timing separately.</p></section>
+    <section className="districtServiceChoices"><h2>Match the concern to a service</h2><ul><li>A stain or drip: <a href="/services/roof-leak-repairs">roof leak investigation and repairs</a>. Include when it appears and the affected room.</li><li>A visible damaged tile or metal detail: compare <a href="/services/tile-roof-repairs">tile roof repairs</a> and <a href="/services/metal-roof-repairs">metal roof repairs</a>; describe the material if known.</li><li>Debris or overflowing drainage: compare <a href="/services/gutter-downpipe-maintenance">gutter clearing and downpipe maintenance</a> with <a href="/services/gutter-repairs">gutter component repairs</a>.</li><li>Unsure of the cause or planning wider work: start with <a href="/services/roof-inspections">a roof inspection</a>, or <a href="/services">view all roof services</a>.</li></ul><p>For two-storey properties or a remote owner, include storeys and the access contact. Confirm any photos and written findings in the inspection scope, and nominate who should receive the agreed records and quote. For urgent enquiries, call <a href="tel:0405878406">0405878406</a>; we confirm appointment timing separately.</p></section>
     <section className="suburbContact" id="local-enquiry" aria-labelledby="local-enquiry-title"><div className="suburbContactIntro"><h2 id="local-enquiry-title">Arrange a roof assessment in {profile.district}</h2><p>Choose your suburb and service below. Include the property address, what you have noticed and the access contact; a photo is optional.</p></div><ContactForm /></section>
   </section>;
 }
@@ -1967,7 +1967,7 @@ function Contact({
         <p className="eyebrow">CONTACT</p>
         <h1>Arrange a roof assessment</h1>
         <p>Call, email or use the form to arrange an on-site roof assessment. We confirm the appointment, inspect the affected roof and drainage, then provide the repair plan and written quote. You can request an assessment without a photo.</p>
-        <p className="contactMethods"><a href="tel:+611300838722">{data.phone}</a><a href={`mailto:${data.email}`}>{data.email}</a></p>
+        <p className="contactMethods"><a href={`tel:${data.phone}`}>{data.phone}</a><a href={`mailto:${data.email}`}>{data.email}</a></p>
         <address className="businessAddress">{data.address}</address>
       </div>
       <ContactForm
@@ -2043,7 +2043,7 @@ function Privacy() {
               <a href="mailto:elliservices.group@gmail.com">
                 elliservices.group@gmail.com
               </a>{" "}
-              or call <a href="tel:+611300838722">0405878406</a>.
+              or call <a href="tel:0405878406">0405878406</a>.
             </p>
           </section>
         </div>
@@ -2295,7 +2295,7 @@ function LayoutV2({
             )}
           </nav>
           <div className="headerActions" inert={mobileOpen}>
-            <a className="phoneAction" href="tel:+611300838722">
+            <a className="phoneAction" href={`tel:${data.phone}`}>
               {data.phone}
             </a>
             <a className="contactTop" href="/contact">
@@ -2328,7 +2328,7 @@ function LayoutV2({
           <strong>Contact details</strong>
           <span>{BOOKING_POLICY.hours}, {BOOKING_POLICY.days}</span>
           <span>After-hours urgent-service fees are determined in the on-site quote.</span>
-          <a href="tel:+611300838722">{data.phone}</a>
+          <a href={`tel:${data.phone}`}>{data.phone}</a>
           <a href={`mailto:${data.email}`}>{data.email}</a>
           <a href="/contact">Contact page →</a>
           <a href="/privacy">PRIVACY POLICY</a>
