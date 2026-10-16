@@ -1,5 +1,7 @@
 import imageManifest from './image-manifest.json';
 import { ARTICLE_IMAGES } from './article-images';
+import { addedImage } from './i18n/editorial';
+import { getEditorialContent } from './i18n/runtime';
 
 // Existing contextual imagery: these labels describe visible subjects, not
 // verified customers, staff, locations, completed projects or repair outcomes.
@@ -22,8 +24,10 @@ const genericImage = { src: '/assets/home/au-hero-act-tile-roof.png', alt: 'Tile
 export function getSocialImage(pathname: string) {
   const image = (pathname.startsWith('/news/') ? ARTICLE_IMAGES[pathname.slice(6)] : null)
     ?? (pathname.startsWith('/services/') ? serviceImages[pathname.slice(10)] : null)
+    ?? (pathname.startsWith('/news/') ? addedImage(pathname.slice(6)) : null)
     ?? genericImage;
-  const entry = (imageManifest as Record<string, { variants: { src: string; width: number; height: number }[] }>)[image.src];
+  const source = getEditorialContent().images?.[image.src] || image.src;
+  const entry = (imageManifest as Record<string, { variants: { src: string; width: number; height: number }[] }>)[source];
   const rendition = entry?.variants.slice().sort((a, b) => b.width - a.width)[0];
   if (!rendition) throw new Error(`Missing sharing image rendition: ${image.src}`);
   return { url: new URL(rendition.src, 'https://www.canberraroofkind.com.au').href, width: rendition.width, height: rendition.height, type: 'image/webp', alt: image.alt };

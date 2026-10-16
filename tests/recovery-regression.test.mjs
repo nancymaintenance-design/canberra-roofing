@@ -39,16 +39,14 @@ test("recovery retains the comprehensive canonical FAQ set", () => {
   assert.ok((faqBlock.match(/\{\s*q:/g) || []).length >= 20);
 });
 
-test("recovery retains service navigation and the development-only local editor", () => {
+test("recovery retains service navigation without exposing the local editor", () => {
   assert.match(source, /aria-label="Primary navigation"/);
   assert.match(source, /servicesToggle/);
   assert.match(source, /className="servicesPopup"/);
   assert.match(source, /localStorage\.getItem\(store\)/);
   assert.match(source, /localStorage\.setItem\(store/);
-  assert.match(
-    source,
-    /import\.meta\.env\.DEV\s*&&\s*\(\s*<button\s+className="adminBtn"[\s\S]*?>\s*Admin\s*<\/button>\s*\)/,
-  );
+  assert.doesNotMatch(source, /href="\/__editor\//);
+  assert.doesNotMatch(source, /className="adminBtn"/);
   for (const control of [
     "Company name",
     "Phone",

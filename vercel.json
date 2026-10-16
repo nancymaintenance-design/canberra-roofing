@@ -2320,6 +2320,490 @@
     {
       "source": "/areas/woden/torrens-roof-repairs",
       "destination": "/areas/woden/torrens-roof-repairs.html"
+    },
+    {
+      "source": "/zh",
+      "destination": "/zh/index.html"
+    },
+    {
+      "source": "/zh/",
+      "destination": "/zh/index.html"
+    },
+    {
+      "source": "/zh/about",
+      "destination": "/zh/about.html"
+    },
+    {
+      "source": "/zh/services",
+      "destination": "/zh/services.html"
+    },
+    {
+      "source": "/zh/services/roof-leak-repairs",
+      "destination": "/zh/services/roof-leak-repairs.html"
+    },
+    {
+      "source": "/zh/services/tile-roof-repairs",
+      "destination": "/zh/services/tile-roof-repairs.html"
+    },
+    {
+      "source": "/zh/services/chimney-flashing-repairs",
+      "destination": "/zh/services/chimney-flashing-repairs.html"
+    },
+    {
+      "source": "/zh/services/rebedding-repointing",
+      "destination": "/zh/services/rebedding-repointing.html"
+    },
+    {
+      "source": "/zh/services/roof-inspections",
+      "destination": "/zh/services/roof-inspections.html"
+    },
+    {
+      "source": "/zh/services/metal-roof-repairs",
+      "destination": "/zh/services/metal-roof-repairs.html"
+    },
+    {
+      "source": "/zh/services/roof-renovation",
+      "destination": "/zh/services/roof-renovation.html"
+    },
+    {
+      "source": "/zh/services/roof-cleaning",
+      "destination": "/zh/services/roof-cleaning.html"
+    },
+    {
+      "source": "/zh/services/gutter-downpipe-maintenance",
+      "destination": "/zh/services/gutter-downpipe-maintenance.html"
+    },
+    {
+      "source": "/zh/solutions",
+      "destination": "/zh/solutions.html"
+    },
+    {
+      "source": "/zh/areas",
+      "destination": "/zh/areas.html"
+    },
+    {
+      "source": "/zh/news",
+      "destination": "/zh/news.html"
+    },
+    {
+      "source": "/zh/faq",
+      "destination": "/zh/faq.html"
+    },
+    {
+      "source": "/zh/contact",
+      "destination": "/zh/contact.html"
+    },
+    {
+      "source": "/zh/case-studies/tile-roof-repair-canberra",
+      "destination": "/zh/case-studies/tile-roof-repair-canberra.html"
+    },
+    {
+      "source": "/zh/news/after-rain-roof-leak-check-canberra",
+      "destination": "/zh/news/after-rain-roof-leak-check-canberra.html"
+    },
+    {
+      "source": "/zh/news/cracked-slipped-missing-roof-tiles-canberra",
+      "destination": "/zh/news/cracked-slipped-missing-roof-tiles-canberra.html"
+    },
+    {
+      "source": "/zh/news/chimney-flashing-water-entry-signs",
+      "destination": "/zh/news/chimney-flashing-water-entry-signs.html"
+    },
+    {
+      "source": "/zh/news/rebedding-vs-repointing-canberra-roofs",
+      "destination": "/zh/news/rebedding-vs-repointing-canberra-roofs.html"
+    },
+    {
+      "source": "/zh/news/when-to-arrange-roof-inspection-canberra",
+      "destination": "/zh/news/when-to-arrange-roof-inspection-canberra.html"
+    },
+    {
+      "source": "/zh/privacy",
+      "destination": "/zh/privacy.html"
+    },
+    {
+      "source": "/zh/news/roof-repair-cost-canberra",
+      "destination": "/zh/news/roof-repair-cost-canberra.html"
+    },
+    {
+      "source": "/zh/news/roof-repointing-cost-canberra",
+      "destination": "/zh/news/roof-repointing-cost-canberra.html"
+    },
+    {
+      "source": "/zh/news/roof-cleaning-methods-canberra",
+      "destination": "/zh/news/roof-cleaning-methods-canberra.html"
+    },
+    {
+      "source": "/zh/news/gutters-overflowing-heavy-rain-canberra",
+      "destination": "/zh/news/gutters-overflowing-heavy-rain-canberra.html"
+    },
+    {
+      "source": "/zh/news/roof-leak-vs-condensation-canberra",
+      "destination": "/zh/news/roof-leak-vs-condensation-canberra.html"
+    },
+    {
+      "source": "/zh/news/roof-repair-vs-restoration-vs-replacement-canberra",
+      "destination": "/zh/news/roof-repair-vs-restoration-vs-replacement-canberra.html"
+    },
+    {
+      "source": "/zh/services/gutter-repairs",
+      "destination": "/zh/services/gutter-repairs.html"
+    },
+    {
+      "source": "/zh/services/emergency-roof-repairs",
+      "destination": "/zh/services/emergency-roof-repairs.html"
+    },
+    {
+      "source": "/zh/services/rental-property-roof-repairs",
+      "destination": "/zh/services/rental-property-roof-repairs.html"
+    },
+    {
+      "source": "/zh/news/roof-leak-information-for-tenants-canberra",
+      "destination": "/zh/news/roof-leak-information-for-tenants-canberra.html"
+    },
+    {
+      "source": "/zh/areas/belconnen",
+      "destination": "/zh/areas/belconnen.html"
+    },
+    {
+      "source": "/zh/areas/east-canberra",
+      "destination": "/zh/areas/east-canberra.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin",
+      "destination": "/zh/areas/gungahlin.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city",
+      "destination": "/zh/areas/inner-north-city.html"
+    },
+    {
+      "source": "/zh/areas/inner-south",
+      "destination": "/zh/areas/inner-south.html"
+    },
+    {
+      "source": "/zh/areas/molonglo-valley",
+      "destination": "/zh/areas/molonglo-valley.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong",
+      "destination": "/zh/areas/tuggeranong.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek",
+      "destination": "/zh/areas/weston-creek.html"
+    },
+    {
+      "source": "/zh/areas/woden",
+      "destination": "/zh/areas/woden.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/aranda-roof-repairs",
+      "destination": "/zh/areas/belconnen/aranda-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/belconnen-roof-repairs",
+      "destination": "/zh/areas/belconnen/belconnen-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/bruce-roof-repairs",
+      "destination": "/zh/areas/belconnen/bruce-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/cook-roof-repairs",
+      "destination": "/zh/areas/belconnen/cook-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/hawker-roof-repairs",
+      "destination": "/zh/areas/belconnen/hawker-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/macquarie-roof-repairs",
+      "destination": "/zh/areas/belconnen/macquarie-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/mckellar-roof-repairs",
+      "destination": "/zh/areas/belconnen/mckellar-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/scullin-roof-repairs",
+      "destination": "/zh/areas/belconnen/scullin-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/belconnen/weetangera-roof-repairs",
+      "destination": "/zh/areas/belconnen/weetangera-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/east-canberra/campbell-roof-repairs",
+      "destination": "/zh/areas/east-canberra/campbell-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/east-canberra/duntroon-roof-repairs",
+      "destination": "/zh/areas/east-canberra/duntroon-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/east-canberra/harman-roof-repairs",
+      "destination": "/zh/areas/east-canberra/harman-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/east-canberra/kowen-roof-repairs",
+      "destination": "/zh/areas/east-canberra/kowen-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/east-canberra/majura-roof-repairs",
+      "destination": "/zh/areas/east-canberra/majura-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/east-canberra/pialligo-roof-repairs",
+      "destination": "/zh/areas/east-canberra/pialligo-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/east-canberra/queanbeyan-fringe-roof-repairs",
+      "destination": "/zh/areas/east-canberra/queanbeyan-fringe-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/amaroo-roof-repairs",
+      "destination": "/zh/areas/gungahlin/amaroo-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/bonner-roof-repairs",
+      "destination": "/zh/areas/gungahlin/bonner-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/casey-roof-repairs",
+      "destination": "/zh/areas/gungahlin/casey-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/crace-roof-repairs",
+      "destination": "/zh/areas/gungahlin/crace-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/forde-roof-repairs",
+      "destination": "/zh/areas/gungahlin/forde-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/franklin-roof-repairs",
+      "destination": "/zh/areas/gungahlin/franklin-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/gungahlin-roof-repairs",
+      "destination": "/zh/areas/gungahlin/gungahlin-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/harrison-roof-repairs",
+      "destination": "/zh/areas/gungahlin/harrison-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/nicholls-roof-repairs",
+      "destination": "/zh/areas/gungahlin/nicholls-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/gungahlin/ngunnawal-roof-repairs",
+      "destination": "/zh/areas/gungahlin/ngunnawal-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/acton-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/acton-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/ainslie-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/ainslie-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/braddon-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/braddon-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/city-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/city-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/dickson-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/dickson-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/downer-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/downer-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/lyneham-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/lyneham-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/o-connor-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/o-connor-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/turner-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/turner-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-north-city/watson-roof-repairs",
+      "destination": "/zh/areas/inner-north-city/watson-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/barton-roof-repairs",
+      "destination": "/zh/areas/inner-south/barton-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/deakin-roof-repairs",
+      "destination": "/zh/areas/inner-south/deakin-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/forrest-roof-repairs",
+      "destination": "/zh/areas/inner-south/forrest-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/griffith-roof-repairs",
+      "destination": "/zh/areas/inner-south/griffith-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/kingston-roof-repairs",
+      "destination": "/zh/areas/inner-south/kingston-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/manuka-roof-repairs",
+      "destination": "/zh/areas/inner-south/manuka-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/narrabundah-roof-repairs",
+      "destination": "/zh/areas/inner-south/narrabundah-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/red-hill-roof-repairs",
+      "destination": "/zh/areas/inner-south/red-hill-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/inner-south/yarralumla-roof-repairs",
+      "destination": "/zh/areas/inner-south/yarralumla-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/molonglo-valley/coombs-roof-repairs",
+      "destination": "/zh/areas/molonglo-valley/coombs-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/molonglo-valley/denman-prospect-roof-repairs",
+      "destination": "/zh/areas/molonglo-valley/denman-prospect-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/molonglo-valley/molonglo-roof-repairs",
+      "destination": "/zh/areas/molonglo-valley/molonglo-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/molonglo-valley/wright-roof-repairs",
+      "destination": "/zh/areas/molonglo-valley/wright-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/calwell-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/calwell-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/conder-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/conder-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/erindale-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/erindale-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/fadden-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/fadden-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/gordon-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/gordon-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/kambah-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/kambah-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/lanyon-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/lanyon-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/tuggeranong-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/tuggeranong-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/tuggeranong/wanniassa-roof-repairs",
+      "destination": "/zh/areas/tuggeranong/wanniassa-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek/chapman-roof-repairs",
+      "destination": "/zh/areas/weston-creek/chapman-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek/duffy-roof-repairs",
+      "destination": "/zh/areas/weston-creek/duffy-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek/fisher-roof-repairs",
+      "destination": "/zh/areas/weston-creek/fisher-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek/holder-roof-repairs",
+      "destination": "/zh/areas/weston-creek/holder-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek/rivett-roof-repairs",
+      "destination": "/zh/areas/weston-creek/rivett-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek/stirling-roof-repairs",
+      "destination": "/zh/areas/weston-creek/stirling-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek/warambanga-roof-repairs",
+      "destination": "/zh/areas/weston-creek/warambanga-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/weston-creek/weston-roof-repairs",
+      "destination": "/zh/areas/weston-creek/weston-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/chifley-roof-repairs",
+      "destination": "/zh/areas/woden/chifley-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/curtin-roof-repairs",
+      "destination": "/zh/areas/woden/curtin-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/farrer-roof-repairs",
+      "destination": "/zh/areas/woden/farrer-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/garran-roof-repairs",
+      "destination": "/zh/areas/woden/garran-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/hughes-roof-repairs",
+      "destination": "/zh/areas/woden/hughes-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/isaacs-roof-repairs",
+      "destination": "/zh/areas/woden/isaacs-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/mawson-roof-repairs",
+      "destination": "/zh/areas/woden/mawson-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/o-malley-roof-repairs",
+      "destination": "/zh/areas/woden/o-malley-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/pearce-roof-repairs",
+      "destination": "/zh/areas/woden/pearce-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/phillip-roof-repairs",
+      "destination": "/zh/areas/woden/phillip-roof-repairs.html"
+    },
+    {
+      "source": "/zh/areas/woden/torrens-roof-repairs",
+      "destination": "/zh/areas/woden/torrens-roof-repairs.html"
     }
   ]
 }

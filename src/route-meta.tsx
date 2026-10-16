@@ -5,19 +5,33 @@ import imageManifest from './image-manifest.json';
 import { SERVICE_CATALOG } from './service-catalog.js';
 import { DISTRICT_PROFILES, SUBURB_PROFILES, getSuburbProfile } from './suburb-profiles.js';
 import { getSocialImage } from './social-images';
+import { basePath, isChinese, languagePath, translate, configureLocale, getEditorialContent } from './i18n/runtime';
+import { addedArticle, addedArticles, addedImage } from './i18n/editorial';
 
 const districtRoutes = Object.fromEntries(DISTRICT_PROFILES.map((profile) => [profile.path, profile]));
 const suburbRoutes = Object.fromEntries(SUBURB_PROFILES.map((profile) => [profile.path, profile]));
 export const publishedRoutes = { ...registry, ...districtRoutes, ...suburbRoutes };
-export const pagePaths = Object.keys(publishedRoutes);
+const englishPaths = [...Object.keys(publishedRoutes), ...addedArticles().map(article=>'/news/'+article.slug)];
+export const pagePaths = englishPaths;
+export const bilingualPagePaths = [...englishPaths, ...englishPaths.map(path => languagePath(path, 'zh'))];
 const organizationId = 'https://www.canberraroofkind.com.au/#organization';
 const origin = 'https://www.canberraroofkind.com.au';
 const absolute = (path: string) => new URL(path, origin).href;
+function localizeSchema(value: any, chinese: boolean): any {
+  if(!chinese || !value) return value;
+  if(Array.isArray(value)) return value.map(item=>localizeSchema(item,true));
+  if(typeof value !== 'object') return value;
+  return Object.fromEntries(Object.entries(value).map(([key,item])=>{
+    if(typeof item==='string' && ['name','headline','description'].includes(key)) return [key,translate(item)];
+    if(typeof item==='string' && ['@id','url','item','mainEntityOfPage'].includes(key) && item.startsWith(origin) && item!==organizationId && !item.includes('/assets/')) { const suffix=item.slice(origin.length); return [key,origin+languagePath(suffix,'zh')]; }
+    return [key,localizeSchema(item,true)];
+  }));
+}
 const breadcrumbLabels: Record<string, string> = { '/about': 'About', '/services': 'Services', '/solutions': 'Solutions', '/areas': 'Service areas', '/news': 'Roof repair guides', '/faq': 'FAQs', '/contact': 'Contact', '/privacy': 'Privacy policy' };
 
 export function getBreadcrumbs(pathname: string): { path: string; name: string }[] {
   const path = resolvePath(pathname);
-  const route = publishedRoutes[path as keyof typeof publishedRoutes] as any;
+  const route = (publishedRoutes[path as keyof typeof publishedRoutes] || (addedArticle(path) && {h1:addedArticle(path)!.title})) as any;
   if (!route || path === '/') return [];
   const parents: string[] = [];
   if (path.startsWith('/news/')) parents.push('/news');
@@ -27,7 +41,7 @@ export function getBreadcrumbs(pathname: string): { path: string; name: string }
     const districtPath = path.split('/').slice(0, 3).join('/');
     if (districtPath !== path && Object.hasOwn(publishedRoutes, districtPath)) parents.push(districtPath);
   }
-  return ['/', ...parents, path].map(p => ({ path: p, name: p === '/' ? 'Home' : breadcrumbLabels[p] ?? (publishedRoutes[p as keyof typeof publishedRoutes] as any).h1 }));
+  return ['/', ...parents, path].map(p => ({ path: p, name: p === '/' ? 'Home' : breadcrumbLabels[p] ?? (publishedRoutes[p as keyof typeof publishedRoutes] as any)?.h1 ?? route.h1 }));
 }
 
 export function Breadcrumbs({ pathname }: { pathname: string }) {
@@ -55,18 +69,21 @@ export function resolvePath(pathname: string) {
 }
 
 export function getRouteHead(pathname: string) {
-  const path = resolvePath(pathname);
-  const route = publishedRoutes[path as keyof typeof publishedRoutes] as any;
+  configureLocale(pathname, typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('edit'));
+  const path = resolvePath(basePath(pathname));
+  const custom = addedArticle(path);
+  const route = (publishedRoutes[path as keyof typeof publishedRoutes] || (custom && { title:custom.title+' | Ellis Services Group', h1:custom.title, description:custom.description, canonical:origin+path })) as any;
   if (!route) return { title: 'Page not found | Canberra Roof Kind', description: 'This page could not be found. Browse roof repair services or contact Ellis Services Group.', canonical: null, robots: 'noindex,follow', article: null, breadcrumb: null, service: null, serviceAreaSchema: null, socialImage: null };
-  const editorial = path.startsWith('/news/') ? getArticleEditorial(path.slice(6)) : null;
-  const image = editorial ? (imageManifest as Record<string, { variants: { src: string; width: number }[] }>)[editorial.image.src]?.variants : null;
+  const editorial = path.startsWith('/news/') ? getArticleEditorial(path.slice(6)) || (custom && { author:{name:'Ellis Services Group',url:'/about',type:'Organization'},dateModified:custom.updated,image:addedImage(custom.slug)! }) : null;
+  const editorialSource = editorial ? getEditorialContent().images?.[editorial.image.src] || editorial.image.src : null;
+  const image = editorial ? (imageManifest as Record<string, { variants: { src: string; width: number }[] }>)[editorialSource!]?.variants : null;
   const service = SERVICE_CATALOG.find(item => item.path === path);
   const crumbs = getBreadcrumbs(path);
-  return {
-    title: route.title,
-    description: route.description,
-    canonical: route.canonical,
-    socialImage: getSocialImage(path),
+  const head = {
+    title: translate(route.title, 'metadata'),
+    description: translate(route.description, 'metadata'),
+    canonical: isChinese(pathname) ? origin + languagePath(path, 'zh') : route.canonical,
+    socialImage: { ...getSocialImage(path), alt:translate(getSocialImage(path).alt,'alt') },
     robots: getSuburbProfile(path) ? 'noindex,follow' : null,
     breadcrumb: crumbs.length ? {
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', '@id': route.canonical + '#breadcrumb',
@@ -80,13 +97,14 @@ export function getRouteHead(pathname: string) {
     article: editorial ? {
       '@context': 'https://schema.org',
       '@type': 'Article',
+      inLanguage: isChinese(pathname) ? 'zh-CN' : 'en-AU',
       '@id': route.canonical + '#article',
       headline: route.h1,
       description: route.description,
       mainEntityOfPage: route.canonical,
       author: { '@type': editorial.author.type, '@id': organizationId, name: editorial.author.name, url: absolute(editorial.author.url) },
       dateModified: editorial.dateModified,
-      image: absolute(image?.slice().sort((a, b) => b.width - a.width)[0]?.src ?? editorial.image.src),
+      image: absolute(image?.slice().sort((a, b) => b.width - a.width)[0]?.src ?? editorialSource!),
       publisher: { '@id': organizationId, '@type': 'Organization', name: 'Ellis Services Group' },
     } : null,
     serviceAreaSchema: getSuburbProfile(path) ? {
@@ -95,6 +113,8 @@ export function getRouteHead(pathname: string) {
       mainEntity: { '@type': 'Service', name: 'Roof repair services', provider: { '@id': organizationId, '@type': 'Organization', name: 'Ellis Services Group' } },
     } : null,
   };
+  for(const key of ['breadcrumb','service','article','serviceAreaSchema'] as const) head[key] = localizeSchema(head[key],isChinese(pathname));
+  return head;
 }
 
 export function HeadMarkup({ pathname }: { pathname: string }) {
@@ -103,6 +123,7 @@ export function HeadMarkup({ pathname }: { pathname: string }) {
     <title>{head.title}</title>
     <meta name="description" content={head.description} />
     {head.canonical && <link rel="canonical" href={head.canonical} />}
+    {head.canonical && <><link rel="alternate" hrefLang="en-AU" href={origin + basePath(pathname)} /><link rel="alternate" hrefLang="zh-CN" href={origin + languagePath(pathname, 'zh')} /><link rel="alternate" hrefLang="x-default" href={origin + basePath(pathname)} /></>}
     {head.canonical && <>
       <meta property="og:title" content={head.title} />
       <meta property="og:description" content={head.description} />
@@ -127,6 +148,7 @@ export function HeadMarkup({ pathname }: { pathname: string }) {
 // Reuse the server elements and remove duplicates or stale article/noindex data.
 export function HeadManager({ pathname }: { pathname: string }) {
   useEffect(() => {
+    document.documentElement.lang = isChinese(pathname) ? 'zh-CN' : 'en-AU';
     const head = getRouteHead(pathname);
     const update = (selector: string, tag: string, attributes: Record<string, string>, text?: string) => {
       const [existing, ...duplicates] = Array.from(document.head.querySelectorAll(selector));
@@ -136,6 +158,7 @@ export function HeadManager({ pathname }: { pathname: string }) {
       if (text !== undefined) element.textContent = text;
     };
     update('title', 'title', {}, head.title);
+    if(head.canonical) for(const [lang,path] of [['en-AU',basePath(pathname)],['zh-CN',languagePath(pathname,'zh')],['x-default',basePath(pathname)]] as const) update(`link[rel="alternate"][hreflang="${lang}"]`,'link',{rel:'alternate',hreflang:lang,href:origin+path});
     update('meta[name="description"]', 'meta', { name: 'description', content: head.description });
     if (head.canonical) {
       update('link[rel="canonical"]', 'link', { rel: 'canonical', href: head.canonical });
@@ -159,6 +182,6 @@ export function HeadManager({ pathname }: { pathname: string }) {
       if (schema) update('#' + id, 'script', { id, type: 'application/ld+json' }, JSON.stringify(schema));
       else document.head.querySelectorAll('#' + id).forEach(element => element.remove());
     }
-  }, [pathname]);
+  }, [pathname, getEditorialContent()]);
   return null;
 }

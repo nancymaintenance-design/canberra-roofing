@@ -16,6 +16,8 @@ import { FaqBrowser } from "./faq-browser";
 import { PROJECT_GALLERIES } from "./project-evidence.js";
 import { ResponsiveImage } from "./responsive-image";
 import { NEWS_ARTICLES, type NewsArticle } from "./news-articles";
+import { configureLocale, basePath, currentLanguage, languagePath } from './i18n/runtime';
+import { addedArticles, addedArticle, addedImage } from './i18n/editorial';
 import { ARTICLE_IMAGES } from "./article-images";
 import { ProjectWorkNotes } from "./project-work-notes";
 import { ARTICLE_AUTHOR, articleModifiedDate, articleVisibleDate } from "./article-editorial";
@@ -52,6 +54,7 @@ type Data = {
   media: string[];
 };
 const newsArticles = NEWS_ARTICLES;
+const allNewsArticles = () => [...newsArticles, ...addedArticles()];
 const newsImages = ARTICLE_IMAGES;
 const serviceAnchorLabels: Record<string, string> = {
   "Roof Leak Repairs": "Roof Leak Repairs",
@@ -1874,9 +1877,9 @@ function News() {
         <figure className="pairedHeroMedia"><ResponsiveImage src="/assets/services/roof-inspection-team-review.png" alt="Roof details being reviewed and recorded as context for roof-care questions" priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>Roof condition, materials and the questions behind a repair.</figcaption></figure>
       </header>
       <div className="newsGrid">
-        {newsArticles.map((article) => (
+        {allNewsArticles().map((article) => (
           <article className="newsCard" key={article.slug}>
-            <div className="newsCardImage"><ResponsiveImage src={newsImages[article.slug].src} alt={newsImages[article.slug].alt} /></div>
+            <div className="newsCardImage"><ResponsiveImage src={(newsImages[article.slug] || addedImage(article.slug))!.src} alt={(newsImages[article.slug] || addedImage(article.slug))!.alt} /></div>
             <p className="eyebrow">ROOF CARE GUIDE</p>
             <h2>{article.title}</h2>
             <p>{article.summary}</p>
@@ -1889,7 +1892,7 @@ function News() {
 }
 function NewsArticleView({ article }: { article: NewsArticle }) {
   const modifiedDate = articleModifiedDate(article.slug, article.updated);
-  const image = newsImages[article.slug];
+  const image = newsImages[article.slug] || addedImage(article.slug);
   const related = article.related.map(slug => newsArticles.find(item => item.slug === slug)!);
   return (
     <article className="page newsArticle">
@@ -1907,9 +1910,9 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
         <div className="articleBody">
           {article.sections.map(section => <section className="articleSection" id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>)}
           {["cracked-slipped-missing-roof-tiles-canberra", "after-rain-roof-leak-check-canberra"].includes(article.slug) ? <TileCasePhotos context={article.slug} /> : null}
-          <section className="articleSources" aria-label="Sources and scope"><h2>Sources and further detail</h2><p>Manufacturer guidance applies to the relevant product and system. These references support the technical background; the practical questions in this article are general editorial guidance.</p><ul>{article.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a><span> — {source.note}</span></li>)}</ul></section>
-          <section className="articleRelated"><h2>Continue reading</h2><ul>{related.map(item => <li key={item.slug}><a href={`/news/${item.slug}`}>{item.title}</a><p>{item.summary}</p></li>)}</ul></section>
-          <p className="articleServiceNote">For information about arranging work, see <a href={article.servicePath}>{article.serviceTitle}</a>.</p>
+          {article.sources.length > 0 && <section className="articleSources" aria-label="Sources and scope"><h2>Sources and further detail</h2><p>Manufacturer guidance applies to the relevant product and system. These references support the technical background; the practical questions in this article are general editorial guidance.</p><ul>{article.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a><span> — {source.note}</span></li>)}</ul></section>}
+          {related.length > 0 && <section className="articleRelated"><h2>Continue reading</h2><ul>{related.map(item => <li key={item.slug}><a href={`/news/${item.slug}`}>{item.title}</a><p>{item.summary}</p></li>)}</ul></section>}
+          {article.servicePath && <p className="articleServiceNote">For information about arranging work, see <a href={article.servicePath}>{article.serviceTitle}</a>.</p>}
           <a className="articleBack" href="/news">← All roof care articles</a>
         </div>
       </div>
@@ -2295,17 +2298,13 @@ function LayoutV2({
             )}
           </nav>
           <div className="headerActions" inert={mobileOpen}>
+            <a className="languageSwitch" data-no-translate="true" href={languagePath(pathname, currentLanguage() === 'zh' ? 'en' : 'zh')} aria-label={currentLanguage() === 'zh' ? 'Switch to English' : '切换到中文'}>{currentLanguage() === 'zh' ? 'EN' : '中文'}</a>
             <a className="phoneAction" href={`tel:${data.phone}`}>
               {data.phone}
             </a>
             <a className="contactTop" href="/contact">
               Contact us
             </a>
-            {import.meta.env.DEV && (
-              <button className="adminBtn" onClick={openAdmin}>
-                Admin
-              </button>
-            )}
           </div>
         </div>
       </header>
@@ -2619,6 +2618,7 @@ function NotFound() {
 }
 
 export function AppV3({ pathname = "/" }: { pathname?: string }) {
+  configureLocale(pathname, typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('edit'));
   const [data, setData] = useState<Data>(() => ({
     ...defaults,
     faqs: canonicalFaqs,
@@ -2653,9 +2653,9 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
     setAdmin(false);
     requestAnimationFrame(() => returnFocus.current?.focus());
   };
-  const path = resolvePath(pathname);
+  const path = resolvePath(basePath(pathname));
   let content: React.ReactNode;
-  if (!Object.hasOwn(publishedRoutes, path)) content = <NotFound />;
+  if (!Object.hasOwn(publishedRoutes, path) && !addedArticle(path)) content = <NotFound />;
   else if (path === "/") content = <HomeV2 data={data} />;
   else if (path === "/about") content = <About data={data} />;
   else if (path === "/services") content = <Services data={data} />;
@@ -2676,7 +2676,7 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
     );
     content = study ? <CaseStudyView study={study} /> : <NotFound />;
   } else if (path.startsWith("/news/")) {
-    const article = newsArticles.find((item) => path === "/news/" + item.slug);
+    const article = allNewsArticles().find((item) => path === "/news/" + item.slug);
     content = article ? <NewsArticleView article={article} /> : <NotFound />;
   } else if (path.startsWith("/services/")) {
     const service = data.services.find(
@@ -2686,7 +2686,7 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
   } else content = <NotFound />;
   return (
     <>
-      <HeadManager pathname={path} />
+      <HeadManager pathname={pathname.startsWith('/zh') ? '/zh' + (path === '/' ? '/' : path) : path} />
       <LayoutV2 data={data} openAdmin={openAdmin} pathname={path}>
         <Breadcrumbs pathname={path} />
         {content}

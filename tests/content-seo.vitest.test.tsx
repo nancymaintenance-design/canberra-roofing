@@ -3,7 +3,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { AppV3 } from "../src/main";
-import { publishedRoutes, resolvePath } from "../src/route-meta";
+import { publishedRoutes, resolvePath, bilingualPagePaths } from "../src/route-meta";
 import { SERVICE_CATALOG } from "../src/service-catalog.js";
 import { realpathSync, statSync } from 'node:fs';
 import { resolve, relative, isAbsolute, sep } from 'node:path';
@@ -28,6 +28,7 @@ function page(path: string) {
 describe("rendered Canberra content SEO", () => {
   it("keeps heading levels and internal destinations valid across published pages", () => {
     const paths = new Set(Object.keys(publishedRoutes));
+    const destinations = new Set(bilingualPagePaths);
     for (const path of paths) {
       const host = page(path);
       expect(host.querySelectorAll("main h1"), path).toHaveLength(1);
@@ -39,7 +40,7 @@ describe("rendered Canberra content SEO", () => {
       }
       for (const link of host.querySelectorAll<HTMLAnchorElement>('a[href^="/"]')) {
         const target = new URL(link.getAttribute("href")!, "https://www.canberraroofkind.com.au");
-        expect(target.pathname.startsWith('/assets/') ? publicAssetExists(target.pathname) : paths.has(resolvePath(target.pathname)), `${path}: ${target.pathname}`).toBe(true);
+        expect(target.pathname.startsWith('/assets/') ? publicAssetExists(target.pathname) : destinations.has(resolvePath(target.pathname)), `${path}: ${target.pathname}`).toBe(true);
       }
     }
   }, 15000);

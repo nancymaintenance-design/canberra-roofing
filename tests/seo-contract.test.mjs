@@ -64,7 +64,8 @@ test("the discovery files expose indexable pages without adding the suburb feed 
       ...staticRoutes.filter(({ pathname }) => pathname !== "/privacy").map(({ pathname }) => `${origin}${pathname}`),
       ...DISTRICT_PROFILES.map(({ path }) => `${origin}${path}`),
     ]);
-    assert.deepEqual(new Set(urls), expected);
+    const bilingualExpected=new Set([...expected,...[...expected].map(url=>{const pathname=new URL(url).pathname;return origin+'/zh'+(pathname==='/'?'/':pathname);})]);
+    assert.deepEqual(new Set(urls), bilingualExpected);
     for (const { path } of SUBURB_PROFILES) assert.ok(!urls.includes(`${origin}${path}`), `${path} stays in the area feed rather than the sitemap`);
   } finally {
     sitemap.window.close();

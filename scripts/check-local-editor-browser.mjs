@@ -1,0 +1,32 @@
+import { chromium } from '@playwright/test';
+import { mkdir } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const origin=process.env.EDITOR_ORIGIN || 'http://127.0.0.1:4198';
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage({viewport:{width:1600,height:1000}});
+const errors=[];page.on('pageerror',error=>errors.push(error.message));
+await page.goto(origin+'/__editor/',{waitUntil:'networkidle'});
+await page.locator('#saveState').filter({hasText:'已保存本地'}).waitFor();
+await page.frameLocator('#pagePreview').locator('main h1').waitFor();
+console.log('Editor loaded',await page.locator('#pageCount').textContent(),'Preview H1:',await page.frameLocator('#pagePreview').locator('main h1').textContent());
+await mkdir('.local-editor/checks',{recursive:true});
+await page.screenshot({path:'.local-editor/checks/editor-desktop.png',fullPage:false});
+const zh=await browser.newPage({viewport:{width:1440,height:900}});
+await zh.goto(origin+'/zh/news',{waitUntil:'networkidle'});
+console.log('Chinese News H1:',await zh.locator('h1').textContent(),'lang:',await zh.locator('html').getAttribute('lang'));
+await zh.screenshot({path:'.local-editor/checks/chinese-news.png',fullPage:false});
+for(const [name,path] of [['service','/zh/services/roof-leak-repairs'],['article','/zh/news/after-rain-roof-leak-check-canberra'],['faq','/zh/faq'],['contact','/zh/contact']]) {
+  await zh.goto(origin+path,{waitUntil:'networkidle'});
+  assert.equal(await zh.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true,name+' desktop overflow');
+  await zh.screenshot({path:'.local-editor/checks/chinese-'+name+'-desktop.png'});
+  await zh.setViewportSize({width:390,height:844});
+  assert.equal(await zh.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true,name+' mobile overflow');
+  await zh.screenshot({path:'.local-editor/checks/chinese-'+name+'-mobile.png'});
+  await zh.setViewportSize({width:1440,height:900});
+}
+await page.setViewportSize({width:390,height:844});
+assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true,'editor mobile overflow');
+await page.screenshot({path:'.local-editor/checks/editor-mobile.png',fullPage:false});
+console.log('Browser errors:',errors);
+await browser.close();
+if(errors.length)process.exitCode=1;

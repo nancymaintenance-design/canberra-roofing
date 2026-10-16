@@ -89,7 +89,7 @@ it('adds twelve truthful Article and twelve Service entities', () => {
 it('preserves discovery totals, real providers and confirmed profiles without invented claims', () => {
  expect(pagePaths).toHaveLength(120);
  expect(pagePaths.filter(p => getRouteHead(p).robots === 'noindex,follow')).toHaveLength(77);
- expect((readFileSync('public/sitemap.xml','utf8').match(/<loc>/g) ?? [])).toHaveLength(42);
+ expect((readFileSync('public/sitemap.xml','utf8').match(/<loc>/g) ?? [])).toHaveLength(84);
  const html = readFileSync('index.html','utf8');
  const entity = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/)![1]);
  expect(entity.sameAs).toEqual(['https://www.instagram.com/elliservices_group/','https://www.facebook.com/p/Ellis-Services-Group-100082926022259/']);

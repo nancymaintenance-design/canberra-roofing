@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: "Ellis Services Group Canberra Roofing"
-description: "An English-only, enquiry-led website for Canberra roof repairs, using practical trade cues and calm safety-first guidance."
+description: "A bilingual enquiry-led website for Canberra roof repairs, with a local Chinese content editor and calm safety-first guidance."
 colors:
   roof-charcoal: "#182328"
   steel: "#33454D"
@@ -42,7 +42,7 @@ A well-organised roof-work site: dark workwear, clear safety-orange markings, le
 
 - **Audience and primary job:** Canberra property owners who need to describe a visible roof concern safely, identify the closest repair pathway and make an enquiry.
 - **Target market(s) and evidence:** Canberra, ACT homeowners and local repair enquiries, reflected in site headings, service pages, contact details and service-area content.
-- **Locale(s) and language policy:** English only across all customer-facing UI, editorial content, metadata, alt text, forms and calls to action. Do not display Chinese or add language switching.
+- **Locale(s) and language policy:** Owner approved English and Simplified Chinese on 16 October 2026. Existing English URLs remain; Chinese uses `/zh/`. Translate visible copy, metadata, alt text, forms and feedback while preserving form values and contact destinations. Chinese font fallback uses Microsoft YaHei/PingFang SC with 1.35 heading line height. The local editor uses Chinese labels with read-only English comparison.
 - **Usage scene:** A mobile-first search journey, often after a visible leak, damaged tile or weather event. Users need reassurance and scannable next steps before detail.
 - **Register:** A service-business marketing site with safety-first operational content. Clear and useful language takes priority over sales pressure.
 - **Memorable signature:** Deep charcoal image overlays and a sharp safety-orange keyline, finished with the clipped roofline silhouette at the bottom of the hero.
@@ -152,5 +152,13 @@ Use plain English, safety-first wording, specific service names and verified bus
 
 - **Do:** Lead each page with a precise English material, roof-repair or reader-task term that matches its content; retain the homepage's core Canberra positioning.
 - **Do:** Pair visual distinction with concrete, safe next-step guidance.
-- **Don't:** Use Chinese or mixed-language customer-facing copy.
+- **Don't:** Mix untranslated prose into a Chinese page. Brand names, suburb names, technical trademarks and unchanged contact details may retain their original spelling.
 - **Don't:** Fill pages with repetitive keywords, oversized decorative areas or unverified claims.
+
+## Local content editor, approved 16 October 2026
+
+The editor is a content workbench: a 224px searchable page directory, a flexible real-page preview and a 340px Chinese inspector. At 1190px the inspector follows the preview in document flow; at 700px all regions stack. Desktop preview retains a true 1440px page viewport scaled within its canvas, with a separate 390px phone option and a full-size preview link. This prevents a desktop editor from accidentally presenting only the website's mobile layout.
+
+Reuse the canonical runtime colors, radii, focus and scrollbar rules in `src/styles.css`; `editor/editor.css` consumes the same CSS variables. No new palette or duplicate token source. A small orange page marker indicates selection; page content supplies the visual interest. Chinese textareas grow to 480px before scrolling. Save status and inline errors remain visible; native selects own their popup geometry. Native HTML dialogs supply focus trapping and Escape semantics for unsaved work/history/new articles.
+
+Only the loopback service serves editor assets and write APIs. Open the editor directly by its local URL; neither English nor Chinese website navigation, including local previews, exposes an editor entry. Saving is explicitly a disk draft with revision history, not a publish action. Public production output contains neither editor controls nor draft APIs. See `UX-CONTRACT.md` for behavior and `docs/local-editor.md` for owner instructions.

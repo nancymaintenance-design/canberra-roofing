@@ -12,7 +12,7 @@ const aliases = routes.flatMap(({ pathname }) => (pathname === '/' ? ['/index.ht
 const staticRewrites = routes
   .filter(({ pathname }) => pathname !== '/')
   .map(({ pathname }) => ({ source: pathname, destination: `${pathname}.html` }));
-const expectedRewrites = staticRewrites;
+const expectedRewrites = [...staticRewrites,{source:'/zh',destination:'/zh/index.html'},...routes.map(({pathname})=>({source:'/zh'+(pathname==='/'?'/':pathname),destination:pathname==='/'?'/zh/index.html':'/zh'+pathname+'.html'}))];
 const query = '?service=Rebedding%20%26%20Repointing&area=Belconnen%20%E2%80%94%20Belconnen&utm_source=fix&tag=one&tag=two&encoded=%2F%2520%2b&space=a+b';
 const preview = await startPreview();
 test.after(() => preview.close());
@@ -45,7 +45,7 @@ test('Vercel declares bounded one-hop permanent aliases without changing system 
   assert.equal(DISTRICT_PATHS.length, 9);
   assert.equal(SUBURB_PATHS.length, 77);
   assert.equal(new Set(config.redirects.map(rule => rule.source)).size, config.redirects.length);
-  assert.equal(new Set(config.rewrites.map(rule => rule.source)).size, 119);
+  assert.equal(new Set(config.rewrites.map(rule => rule.source)).size, 240);
 });
 
 for (const { pathname } of routes) {
