@@ -1630,7 +1630,7 @@ function TileCasePhotos({ context, headingLevel = 2 }: { context: string; headin
     <Heading id={`${context}-case-title`}>{context === "roof-renovation" ? "A local repair comparison, not a renovation result" : "A visible tile repair, before and after"}</Heading>
     <p>{study.summary}</p>
     <p>{context === "roof-renovation" ? "This related sequence shows a local tile repair with the surrounding weathered roof retained. It does not document a whole-roof renovation." : "This photo sequence shows visible tile work. It does not establish a particular leak cause, location or outcome for another property."}</p>
-    <div className="relatedCasePhotos">{study.images.map(image => <figure key={image.src}><ResponsiveImage src={image.src} alt={image.alt} sizes="(max-width: 760px) calc(100vw - 5rem), 440px" /><figcaption>{image.caption}</figcaption><a className="serviceGalleryOriginal" href={image.src}>View original photo</a></figure>)}</div>
+    <div className="relatedCasePhotos">{study.images.map(image => <figure key={image.src}><ResponsiveImage src={image.src} alt={image.alt} sizes="(max-width: 760px) calc(100vw - 5rem), 440px" /><figcaption>{image.caption}</figcaption></figure>)}</div>
     <a href={`/case-studies/${study.slug}`}>View the tile roof repair case study <ArrowRight size={17} /></a>
   </section>;
 }
@@ -1713,7 +1713,6 @@ function ServiceView({ service }: { service: Service }) {
             {!gallery.project && <p>{gallery.intro}</p>}
             {gallery.project && <ProjectWorkNotes slug={service.slug} />}
             {gallery.relatedPath && <a href={gallery.relatedPath}>{gallery.relatedLabel}</a>}
-            {gallery.project && service.slug === "emergency-roof-repairs" && <a className="serviceGalleryOriginal" href="/assets/projects/confirmed-urgent-leak-1000.webp">View original project collage</a>}
             {gallery.project && service.slug === "emergency-roof-repairs" && <p>Site conditions and work stages from the urgent roof leak project.</p>}
           </div>
           <div className="serviceGalleryGrid">
@@ -1724,7 +1723,6 @@ function ServiceView({ service }: { service: Service }) {
               >
                 <ResponsiveImage src={image.src} srcSet={image.srcSet} sizes={`(max-width: 760px) calc(100vw - 3rem), ${gallery.images.length === 1 ? "(max-width: 1440px) 90vw, 1400px" : gallery.images.length === 2 || gallery.images.length === 4 || (gallery.images.length === 5 && index < 2) ? "(max-width: 1440px) 45vw, 680px" : "(max-width: 1440px) 30vw, 440px"}`} alt={image.alt} width={image.width} height={image.height} />
                 {image.caption && <figcaption>{image.caption}</figcaption>}
-                {service.slug !== "emergency-roof-repairs" && <a className="serviceGalleryOriginal" href={image.src}>View original photo</a>}
               </figure>
             ))}
           </div>
@@ -2528,7 +2526,6 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
                 alt={image.alt}
               />
               <figcaption>{image.caption}</figcaption>
-              <a className="serviceGalleryOriginal" href={image.src}>View original photo</a>
             </figure>
           ))}
         </div>

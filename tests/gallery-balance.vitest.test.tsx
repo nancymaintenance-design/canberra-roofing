@@ -48,7 +48,7 @@ it('keeps portrait project rows compact and puts notes above emergency photograp
           expect(boxes[0]!.width).toBeCloseTo(boxes[2]!.width, 0);
         }
         const originals = await gallery.locator('.serviceGalleryOriginal').evaluateAll(links => links.map(link => link.getAttribute('href')!));
-        expect(originals.length).toBeGreaterThan(0);
+        expect(originals.length).toBe(0);
         for (const original of originals) expect(existsSync(`public${original}`)).toBe(true);
         expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
       }

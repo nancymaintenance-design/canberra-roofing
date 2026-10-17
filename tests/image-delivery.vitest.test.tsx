@@ -5,6 +5,22 @@ import { expect, it } from 'vitest';
 import { AppV3 } from '../src/main';
 import { existsSync, readFileSync } from 'node:fs';
 import { chromium } from '@playwright/test';
+import { pagePaths } from '../src/route-meta';
+
+it('retains gallery images and captions without links to full-size image files in either language', () => {
+  const routes = pagePaths.filter(path => /^\/(services|case-studies|news)\//.test(path));
+  for (const route of routes) for (const prefix of ['', '/zh']) {
+    const root = page(prefix + route);
+    expect(root.querySelectorAll('main a[href^="/assets/"]').length, prefix + route).toBe(0);
+    for (const figure of root.querySelectorAll('.serviceGallery figure, .relatedCasePhotos figure, .caseEvidenceGrid figure')) {
+      expect(figure.querySelector('img'), prefix + route).not.toBeNull();
+    }
+    if (route === '/case-studies/tile-roof-repair-canberra') {
+      expect(root.querySelectorAll('.caseEvidenceGrid figure').length).toBe(3);
+      expect([...root.querySelectorAll('.caseEvidenceGrid figcaption')].every(caption => caption.textContent!.trim().length > 0)).toBe(true);
+    }
+  }
+});
 
 const page = (path: string) => {
   const root = document.createElement('div');

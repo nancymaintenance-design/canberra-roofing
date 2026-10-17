@@ -21,10 +21,10 @@ test("service pages use the approved five-theme readable shell instead of the re
   assert.ok(!css.includes(".serviceAdviceGrid"));
 });
 
-test("gallery cards use bounded crops and retain access to original project evidence", () => {
+test("gallery cards use bounded crops without full-size original links", () => {
   assert.ok(hasRule(".serviceTheme .serviceGalleryGrid img", /height:\s*clamp\(280px, 24vw, 360px\)/));
   assert.ok(hasRule(".serviceTheme .serviceGallery", /display:\s*block/));
-  assert.ok(main.includes('View original project collage'));
+  assert.ok(!main.includes('View original project collage'));
   assert.ok(main.includes('data-image-count={gallery.images.length}'));
 });
 

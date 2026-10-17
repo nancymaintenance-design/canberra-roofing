@@ -63,7 +63,7 @@ it('labels contextual service imagery separately from owner-confirmed project re
   expect(chimney.querySelector('.serviceGallery')?.textContent).toMatch(/context/i);
   const urgent = page('/services/emergency-roof-repairs');
   expect(urgent.querySelector('.serviceGallery[data-project]')).not.toBeNull();
-  expect(urgent.querySelector('a[href="/assets/projects/confirmed-urgent-leak-1000.webp"]')).not.toBeNull();
+  expect(urgent.querySelector('a[href="/assets/projects/confirmed-urgent-leak-1000.webp"]')).toBeNull();
 });
 
 it('makes inspection records subject to booking scope while preserving rental coordination and hours', () => {
@@ -97,7 +97,7 @@ it.each([
   const gallery = host.querySelector('.serviceGallery')!;
   const image = gallery.querySelector(`img[src*="${asset}"]`);
   expect(image, asset).not.toBeNull();
-  expect(gallery.querySelector(`a[href="/assets/services/${asset}.png"]`)).not.toBeNull();
+  expect(gallery.querySelector(`a[href="/assets/services/${asset}.png"]`)).toBeNull();
   expect(image?.getAttribute('alt')).toMatch(visibleSubject);
   const safetyJudgment = /\bcontrolled\b|\bsafe\b|fall protection|tethered position/i;
   expect(gallery.textContent).not.toMatch(safetyJudgment);
