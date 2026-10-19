@@ -1,5 +1,6 @@
 import { AREA_GROUPS } from "./contact-options.js";
 import { SERVICE_CATALOG } from "./service-catalog.js";
+import { HISTORICAL_AREA_GUIDANCE } from "./historical-area-guidance.js";
 
 export function slugify(value) {
   return value
@@ -40,7 +41,8 @@ export const SUBURB_PROFILES = Object.freeze(AREA_GROUPS.flatMap(({ district, su
     description: `Roof repairs in ${suburb}, ${district}: repair, renovation, roof cleaning and gutter or downpipe maintenance services from Ellis Services Group.`,
     canonical: `https://www.canberraroofkind.com.au${path}`,
     h1: `Roof Repairs in ${suburb}, ${district}`,
-    featuredServiceSlugs,
+    featuredServiceSlugs: HISTORICAL_AREA_GUIDANCE[slugify(suburb)]?.order ?? featuredServiceSlugs,
+    historyGuidance: HISTORICAL_AREA_GUIDANCE[slugify(suburb)]?.text,
     servicePaths: SERVICE_CATALOG.map(({ path: servicePath }) => servicePath),
   });
 })));

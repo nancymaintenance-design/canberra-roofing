@@ -9,7 +9,8 @@ import articles from './i18n/zh-articles.json';
 import areas from './i18n/zh-areas.json';
 import extra from './i18n/zh-common-extra.json';
 import feedback from './i18n/zh-CN.json';
-setChineseTranslations({...common,...articles,...areas,...extra,...feedback});
+import remediation from './i18n/zh-remediation';
+setChineseTranslations({...common,...articles,...areas,...extra,...feedback,...remediation});
 export { getCatalog };
 
 export { pagePaths };

@@ -21,7 +21,6 @@ test("primary enquiry pages use their mapped Canberra search intent in the H1", 
   const headings = {
     "/": "Roof Repairs Canberra",
     "/about": "About Ellis Services Group",
-    "/solutions": "Roof repair options by visible problem",
     "/areas": "Roof repair service areas",
     "/news": "Roof leaks, inspections and maintenance",
     "/faq": "Roof repair questions",

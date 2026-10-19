@@ -14,7 +14,7 @@ test("guide-to-case spacing does not retain the preceding larger collapsed margi
 
 test("service pages use the approved five-theme readable shell instead of the rejected advice grid", () => {
   assert.ok(main.includes('className="servicePageSections"'));
-  assert.ok(hasRule(".servicePageSections", /max-width:\s*1440px/));
+  assert.ok(hasRule(".servicePageSections", /max-width:\s*1120px/));
   assert.ok(hasRule(".serviceThemeContent", /max-width:\s*none/));
   assert.ok(depth.includes('className="contentGuidance serviceDepthItem serviceAdviceItem"'));
   assert.ok(depth.includes('index === sections.length - 1'));

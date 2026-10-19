@@ -4,13 +4,14 @@ import { readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { randomBytes } from 'node:crypto';
+import { spawn } from 'node:child_process';
 import { createEditorialStore, validateRequest } from './local-editor-store.mjs';
 import registry from '../src/route-meta.json' with { type: 'json' };
 import imageManifest from '../src/image-manifest.json' with { type: 'json' };
 import { DISTRICT_PROFILES, SUBURB_PROFILES } from '../src/suburb-profiles.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-export async function startLocalEditor({ port = 4198, directory = path.join(root, '.local-editor') } = {}) {
+export async function startLocalEditor({ port = 4198, directory = path.join(root, '.local-editor'), allowPortFallback = false } = {}) {
   const token = randomBytes(32).toString('hex');
   const server = createHttpServer();
   const vite = await createViteServer({ root, configFile: path.join(root, 'vite.config.ts'), server: { middlewareMode: true, hmr: {server}, fs:{ deny:['.env','.env.*','*.{crt,pem}','**/.git/**','**/.local-editor/**'] } }, appType: 'custom' });
@@ -66,12 +67,31 @@ export async function startLocalEditor({ port = 4198, directory = path.join(root
       vite.middlewares(req, res, () => { res.writeHead(404); res.end('Not found'); });
     } catch (error) { json(res, error.status || 500, { error: error.status ? error.message : '保存或读取失败，当前输入仍保留，请重试。' }); }
   });
-  await new Promise((resolve, reject) => { server.once('error', reject); server.listen(port, '127.0.0.1', resolve); });
+  try {
+    for (let attempt = 0; ; attempt++) {
+      try {
+        await new Promise((resolve, reject) => {
+          const onError = error => { server.off('listening', onListening); reject(error); };
+          const onListening = () => { server.off('error', onError); resolve(); };
+          server.once('error', onError); server.once('listening', onListening);
+          server.listen(port === 0 ? 0 : port + attempt, '127.0.0.1');
+        });
+        break;
+      } catch (error) {
+        if (!allowPortFallback || port === 0 || error.code !== 'EADDRINUSE' || attempt >= 10 || port + attempt >= 65535) throw error;
+      }
+    }
+  } catch (error) { await vite.close(); throw error; }
   expectedHost = `127.0.0.1:${server.address().port}`;
   return { server, origin: `http://${expectedHost}`, close: async () => { await vite.close(); await new Promise(resolve => server.close(resolve)); } };
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const result = await startLocalEditor({ port: Number(process.env.EDITOR_PORT || 4198) });
+  const result = await startLocalEditor({ port: Number(process.env.EDITOR_PORT || 4198), allowPortFallback: true });
   console.log(`本地编辑后台 ${result.origin}/__editor/`);
   console.log(`中文预览 ${result.origin}/zh/ · 英文预览 ${result.origin}/ · 不会发送咨询或部署`);
+  if (process.argv.includes('--open') && process.platform === 'win32') {
+    const browser = spawn('rundll32.exe', ['url.dll,FileProtocolHandler', `${result.origin}/__editor/`], { detached: true, stdio: 'ignore', windowsHide: true });
+    browser.on('error', () => console.log('浏览器未能自动打开，请复制上面的后台地址。'));
+    browser.unref();
+  }
 }

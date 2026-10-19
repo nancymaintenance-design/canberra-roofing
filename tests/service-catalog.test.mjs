@@ -4,8 +4,9 @@ import test from "node:test";
 import { SERVICE_CATALOG, SERVICE_TITLES } from "../src/service-catalog.js";
 
 test("the approved maintenance pathways have stable titles and routes", () => {
-  assert.deepEqual(SERVICE_TITLES.slice(-6), [
+  assert.deepEqual(SERVICE_TITLES.slice(-7), [
     "Roof Renovation",
+    "Roof Replacement",
     "Roof Cleaning",
     "Gutter & Downpipe Cleaning and Maintenance",
     "Gutter Repairs",
@@ -13,9 +14,10 @@ test("the approved maintenance pathways have stable titles and routes", () => {
     "Rental & Property Manager Roof Repairs",
   ]);
   assert.deepEqual(
-    SERVICE_CATALOG.map(({ path }) => path).slice(-6),
+    SERVICE_CATALOG.map(({ path }) => path).slice(-7),
     [
       "/services/roof-renovation",
+      "/services/reroof-replacement",
       "/services/roof-cleaning",
       "/services/gutter-downpipe-maintenance",
       "/services/gutter-repairs",

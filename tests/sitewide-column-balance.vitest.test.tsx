@@ -10,11 +10,23 @@ it('home retains every destination in a compact directory while fuller facts rem
  home.innerHTML=renderToStaticMarkup(<AppV3 pathname="/"/>);
  services.innerHTML=renderToStaticMarkup(<AppV3 pathname="/services"/>);
  const links=[...home.querySelectorAll('.homeServiceDirectory a')];
- expect(links).toHaveLength(12);
- expect(new Set(links.map(a=>a.getAttribute('href'))).size).toBe(12);
+ expect(links).toHaveLength(13);
+ expect(new Set(links.map(a=>a.getAttribute('href'))).size).toBe(13);
  expect(home.querySelector('.homeServices .serviceCardFacts')).toBeNull();
  for(const link of links) expect(services.querySelector(`.serviceCard a[href="${link.getAttribute('href')}"]`)).not.toBeNull();
- expect(services.querySelectorAll('.serviceCardFacts')).toHaveLength(12);
+ expect(services.querySelectorAll('.serviceCardFacts')).toHaveLength(13);
+});
+it('consolidates contact preparation beside the form instead of repeating it below', () => {
+ const root=document.createElement('div');
+ root.innerHTML=renderToStaticMarkup(<AppV3 pathname="/contact"/>);
+ expect(root.querySelector('.contactPreparation')).toBeNull();
+ const notes=root.querySelector('.contactSideDetails .contactEnquiryNotes');
+ expect(notes).not.toBeNull();
+ expect(notes!.querySelectorAll('li')).toHaveLength(3);
+ expect(notes!.textContent).toMatch(/do not climb onto the roof/i);
+ expect(notes!.textContent).toMatch(/fees.*scope.*exclusions/s);
+ expect(notes!.querySelector('a[href="/news/when-to-arrange-roof-inspection-canberra"]')).not.toBeNull();
+ expect(root.querySelectorAll('.contact form')).toHaveLength(1);
 });
 it('keeps long articles, contact preparation and about FAQ out of empty side columns', async () => {
  const browser = await chromium.launch({headless:true,channel:'msedge'});
@@ -42,16 +54,19 @@ it('keeps long articles, contact preparation and about FAQ out of empty side col
   const form=await box('.contact form'), photo=await box('.contactFeatureMedia');
   const intro=await box('.contactIntro');
   expect(form.y).toBeGreaterThanOrEqual(intro.y+intro.height);
-  expect(Math.abs(form.x-intro.x)).toBeLessThanOrEqual(1);
+  expect(photo.x+photo.width).toBeLessThan(form.x);
+  expect(photo.y).toBeCloseTo(form.y, 0);
+  expect(form.width).toBeGreaterThan(500);
+  expect(form.width).toBeLessThanOrEqual(720);
   const hours=await box('.contact .operatingHours');
   const phone=await box('.contact input[name="phone"]'), address=await box('.contact input[name="address"]');
   expect(phone.height).toBeCloseTo(address.height, 0);
   expect(phone.y).toBeCloseTo(address.y, 0);
-  expect(hours.y).toBeGreaterThanOrEqual(form.y+form.height);
-  expect(photo.y).toBeGreaterThanOrEqual(form.y+form.height);
+  expect(hours.x+hours.width).toBeLessThan(form.x);
+  expect(hours.y).toBeGreaterThan(photo.y+photo.height);
   await load('/services');
   const rows=await page.locator('.serviceCard').all();
-  expect(rows).toHaveLength(12);
+  expect(rows).toHaveLength(13);
   let previousBottom=0;
   for(const row of rows){
    const bounds=(await row.boundingBox())!;
@@ -65,7 +80,7 @@ it('keeps long articles, contact preparation and about FAQ out of empty side col
   for (const width of [390,320]) {
    await page.setViewportSize({width,height:844});
    for (const [path, first, next] of [
-    ['/contact','.contact form','.contactFeatureMedia'],
+    ['/contact','.contactFeatureMedia','.contact form'],
     ['/news/when-to-arrange-roof-inspection-canberra','.articleSources','.articleRelated'],
     ['/privacy','.privacyBody','.privacySidebar'],
     ['/about','.aboutFaq > div:first-child','.aboutFaqList'],

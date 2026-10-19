@@ -26,7 +26,7 @@ it('advertises equal image slots within each gallery row', async () => {
   } finally { await browser.close(); }
 }, 30000);
 
-it('centres bounded long advice and guide blocks within the desktop reading region', async () => {
+it('keeps advice and guide blocks aligned with the continuous desktop reading region', async () => {
   const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
     const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
@@ -39,7 +39,7 @@ it('centres bounded long advice and guide blocks within the desktop reading regi
         const parent = node.parentElement!.getBoundingClientRect();
         return { centreOffset: Math.abs(bounds.x + bounds.width / 2 - parent.x - parent.width / 2), width: bounds.width, parentWidth: parent.width };
       });
-      expect(geometry.width).toBeLessThan(geometry.parentWidth);
+      expect(geometry.width).toBeCloseTo(geometry.parentWidth, 0);
       expect(geometry.centreOffset).toBeLessThanOrEqual(1);
     }
   } finally {
@@ -47,7 +47,7 @@ it('centres bounded long advice and guide blocks within the desktop reading regi
   }
 }, 30000);
 
-it('uses desktop space for paired service advice, legible editorial images and balanced booking, then stacks on phones', async () => {
+it('uses a continuous desktop reading flow with legible image rows and stacks images on phones', async () => {
   const browser = await chromium.launch({ headless: true, channel: 'msedge' });
   try {
     const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
@@ -74,11 +74,11 @@ it('uses desktop space for paired service advice, legible editorial images and b
       expect(await portrait.evaluate(image => getComputedStyle(image).objectFit)).toBe('cover');
     };
     await expectCompactPortrait();
-    expect((await box('.serviceView')).width).toBeGreaterThanOrEqual(1400);
-    const signs = await box('.serviceSubtopics article:first-child');
-    const causes = await box('.serviceSubtopics article:last-child');
-    expect(causes.y).toBe(signs.y);
-    expect(causes.x).toBeGreaterThan(signs.x + signs.width);
+    expect((await box('.serviceView')).width).toBeGreaterThanOrEqual(1050);
+    const signs = await box('#what-we-repair .serviceThemeContent > p:first-child');
+    const causes = await box('#what-we-repair .serviceThemeContent > p:nth-child(2)');
+    expect(causes.y).toBeGreaterThanOrEqual(signs.y + signs.height);
+    expect(causes.x).toBe(signs.x);
     const first = await box('.serviceGallery:not(.serviceProjectGallery) figure:first-child');
     const second = await box('.serviceGallery:not(.serviceProjectGallery) figure:nth-child(2)');
     expect(first.width).toBeCloseTo(second.width, 0);
@@ -86,12 +86,12 @@ it('uses desktop space for paired service advice, legible editorial images and b
     expect(await page.locator('#project-photos img').evaluateAll(images => images.every(image => getComputedStyle(image).objectFit === 'cover'))).toBe(true);
     const scope = await box('.serviceBookingScope');
     const appointment = await box('.serviceBookingAppointment');
-    expect(appointment.y).toBe(scope.y);
-    expect(appointment.x).toBeGreaterThan(scope.x + scope.width);
+    expect(appointment.y).toBeGreaterThanOrEqual(scope.y + scope.height);
+    expect(appointment.x).toBe(scope.x);
     expect(await page.locator('#service-faq details').first().evaluate(node => getComputedStyle(node.parentElement!).display)).toBe('block');
     await page.setViewportSize({ width: 390, height: 844 });
     await expectCompactPortrait();
-    expect((await box('.serviceSubtopics article:last-child')).y).toBeGreaterThan((await box('.serviceSubtopics article:first-child')).y);
+    expect((await box('#what-we-repair .serviceThemeContent > p:nth-child(2)')).y).toBeGreaterThan((await box('#what-we-repair .serviceThemeContent > p:first-child')).y);
     expect((await box('.serviceBookingAppointment')).y).toBeGreaterThan((await box('.serviceBookingScope')).y);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   } finally {

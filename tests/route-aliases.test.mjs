@@ -33,14 +33,18 @@ function rawRequest(pathname) {
 test('Vercel declares bounded one-hop permanent aliases without changing system HTML or unknown routes', () => {
   assert.notEqual(config.cleanUrls, true);
   assert.equal(config.trailingSlash, undefined, 'no global redirect of unknown trailing-slash paths');
-  assert.deepEqual(config.redirects, [
+  const bySource = (a, b) => a.source.localeCompare(b.source);
+  assert.deepEqual([...config.redirects].sort(bySource), [
     { source: '/roof-inspections', destination: '/services/roof-inspections', permanent: true },
     { source: '/roof-inspections/', destination: '/services/roof-inspections', permanent: true },
     { source: '/insights', destination: '/faq', permanent: false },
     { source: '/insights/', destination: '/faq', permanent: false },
     ...aliases.map(alias => ({ ...alias, permanent: true })),
-  ]);
-  assert.deepEqual(config.rewrites, expectedRewrites);
+    ...['', '/zh'].flatMap(prefix => ['', '/', '.html', '.html/'].map(suffix => ({ source: `${prefix}/solutions${suffix}`, destination: `${prefix}/services`, statusCode: 301 }))),
+    ...['', '/zh'].flatMap(prefix => ['', '/', '.html', '.html/'].map(suffix => ({ source: `${prefix}/services/roof-restoration${suffix}`, destination: `${prefix}/services/roof-renovation`, statusCode: 301 }))),
+    ...['/', '.html', '.html/'].map(suffix => ({source:'/zh/services/reroof-replacement'+suffix,destination:'/zh/services/reroof-replacement',permanent:true})),
+  ].sort(bySource));
+  assert.deepEqual([...config.rewrites].sort(bySource), [...expectedRewrites].sort(bySource));
   assert.equal(routes.length, 120);
   assert.equal(DISTRICT_PATHS.length, 9);
   assert.equal(SUBURB_PATHS.length, 77);

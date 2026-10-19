@@ -12,8 +12,8 @@ const keywordRoutes = [
   },
   {
     pathname: '/services/roof-leak-repairs',
-    title: 'Leaking Roof Repairs | Ellis Services Group',
-    h1: 'Leaking Roof Repairs',
+    title: 'Roof Leak Repairs Canberra | Ellis Services Group',
+    h1: 'Roof Leak Repairs Canberra',
     keyword: 'Leaking Roof Repair Canberra',
   },
   {

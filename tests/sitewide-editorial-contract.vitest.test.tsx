@@ -30,7 +30,6 @@ it('keeps unsupported business statistics and generic headings out of every publ
 it.each([
   ['/', 'Roof Repairs Canberra'],
   ['/news', 'Roof leaks, inspections and maintenance'],
-  ['/solutions', 'Roof repair options by visible problem'],
   ['/about', 'About Ellis Services Group'],
   ['/privacy', 'How Ellis Services Group handles enquiry information'],
 ])('keeps the visible topic and route metadata aligned on %s', (path, heading) => {

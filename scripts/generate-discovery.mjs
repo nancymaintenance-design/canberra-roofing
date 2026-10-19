@@ -10,8 +10,22 @@ const zh = path => '/zh' + (path==='/'?'/':path);
 const urls = publicPaths.flatMap(path=>[path,zh(path)]);
 await writeFile('public/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.map((url) => { const english=url.startsWith('/zh')?url.slice(3)||'/':url; return `  <url><loc>${origin}${url}</loc><xhtml:link rel="alternate" hreflang="en-AU" href="${origin}${english}"/><xhtml:link rel="alternate" hreflang="zh-CN" href="${origin}${zh(english)}"/></url>`; }).join('\n')}\n</urlset>\n`);
 const config=JSON.parse(await readFile('vercel.json','utf8'));
+// Retire the duplicate hub in one hop, including historical URL aliases.
+const solutionAliases = ['', '/zh'].flatMap(prefix => ['', '/', '.html', '.html/'].map(suffix => ({
+  source: `${prefix}/solutions${suffix}`, destination: `${prefix}/services`, statusCode: 301,
+})));
+const retiredSources = new Set(solutionAliases.map(rule => rule.source));
+const restorationAliases = ['', '/zh'].flatMap(prefix => ['', '/', '.html', '.html/'].map(suffix => ({
+  source: `${prefix}/services/roof-restoration${suffix}`, destination: `${prefix}/services/roof-renovation`, statusCode: 301,
+})));
+const replacementAliases = ['', '/zh'].flatMap(prefix => ['/', '.html', '.html/'].map(suffix => ({
+  source: `${prefix}/services/reroof-replacement${suffix}`, destination: `${prefix}/services/reroof-replacement`, permanent: true,
+})));
+const recoveredSources = new Set([...restorationAliases, ...replacementAliases].map(rule => rule.source));
+config.redirects = [...config.redirects.filter(rule => !retiredSources.has(rule.source) && !recoveredSources.has(rule.source)), ...solutionAliases, ...restorationAliases, ...replacementAliases];
+config.rewrites = config.rewrites.filter(rule => !retiredSources.has(rule.source));
 const allPaths=[...Object.keys(registry),...DISTRICT_PROFILES.map(item=>item.path),...SUBURB_PROFILES.map(item=>item.path),...editorial.articles.map(article=>'/news/'+article.slug)];
-config.rewrites=[...config.rewrites.filter(rule=>!rule.source.startsWith('/zh')),...editorial.articles.filter(article=>!config.rewrites.some(rule=>rule.source==='/news/'+article.slug)).map(article=>({source:'/news/'+article.slug,destination:'/news/'+article.slug+'.html'})),{source:'/zh',destination:'/zh/index.html'},...allPaths.map(path=>({source:zh(path),destination:path==='/'?'/zh/index.html':zh(path)+'.html'}))];
+config.rewrites=[...config.rewrites.filter(rule=>!rule.source.startsWith('/zh') && rule.source!=='/services/reroof-replacement'),{source:'/services/reroof-replacement',destination:'/services/reroof-replacement.html'},...editorial.articles.filter(article=>!config.rewrites.some(rule=>rule.source==='/news/'+article.slug)).map(article=>({source:'/news/'+article.slug,destination:'/news/'+article.slug+'.html'})),{source:'/zh',destination:'/zh/index.html'},...allPaths.map(path=>({source:zh(path),destination:path==='/'?'/zh/index.html':zh(path)+'.html'}))];
 await writeFile('vercel.json',JSON.stringify(config,null,2)+'\n');
 await writeFile('public/service-areas.json', JSON.stringify({ serviceAreas: SUBURB_PROFILES.map(({ suburb, district, path, servicePaths }) => ({ suburb, district, url: `${origin}${path}`, servicePaths })) }, null, 2) + '\n');
 await writeFile('public/llms.txt', `# Ellis Services — Canberraroofkind\n\nCanberra roof repairs, inspections, cleaning and maintenance from Ellis Services Group. Contact the team to arrange an on-site assessment and written quote.\n\n## Contact\n- Address: 121 Marcus Clarke St, Canberra, ACT 2600, Australia\n- Phone: +61 405 878 406\n- Email: elliservices.group@gmail.com\n\n## Services\n${SERVICE_CATALOG.map(({ title, path }) => `- [${title}](${origin}${path})`).join('\n')}\n\n## Service areas\n- [Areas directory](${origin}/areas)\n- [Public service-area feed](${origin}/service-areas.json)\n- [Sitemap](${origin}/sitemap.xml)\n`);

@@ -10,6 +10,13 @@ export const SERVICE_THEMES = [
 
 // Service-specific headings follow the keyword map; chapter anchors stay stable.
 export const SERVICE_THEME_HEADINGS: Record<string, readonly [string, string, string, string, string]> = {
+  "reroof-replacement": [
+    "Roof replacement or local roof repairs",
+    "Assessing the roof and defining the replacement scope",
+    "Roof covering and junction details",
+    "Roof replacement quotes and booking",
+    "Roof replacement questions",
+  ],
   "roof-leak-repairs": [
     "Recurring roof leaks & rainwater ingress investigation",
     "Tracing intermittent leaks and roof-entry paths",

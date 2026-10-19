@@ -11,7 +11,7 @@ test('rendered repair pages explain inspection and keep customers with Ellis', (
   assert.deepEqual(failures, [], 'Uncertainty-first template copy returned');
   const doc = new JSDOM(readFileSync('dist/services/roof-leak-repairs.html', 'utf8')).window.document;
   assert.match(doc.body.textContent, /on-site|on site/i);
-  assert.match(doc.body.textContent, /repair scope and quote/i);
+  assert.match(doc.body.textContent, /repair scope and (?:written )?quote/i);
   assert.ok(doc.querySelector('a[href^="/contact"]'));
 });
 test('privacy consent, roof safety and inspection fee transparency survive', () => {

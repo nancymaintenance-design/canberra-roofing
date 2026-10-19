@@ -11,15 +11,15 @@ const sitemap = await readFile(
 const preview = await startPreview();
 test.after(async () => preview.close());
 
-test("the sitemap excludes the four retired service URLs that return 404", () => {
+test("the sitemap excludes retired URLs but restores the owner-confirmed replacement service", () => {
   for (const pathname of [
     "/services/metal-colorbond-roof-repairs",
     "/services/roof-restoration",
-    "/services/reroof-replacement",
     "/services/gutter-fascia-repairs",
   ]) {
     assert.doesNotMatch(sitemap, new RegExp(pathname));
   }
+  assert.match(sitemap, /<loc>https:\/\/www.canberraroofkind.com.au\/services\/reroof-replacement<\/loc>/);
 });
 
 async function page(pathname) {
@@ -199,8 +199,8 @@ test("chimney and inspection pages use their approved Canberra P1 wording", asyn
     ],
     [
       "/services/roof-inspections",
-      "Roof Inspections | Ellis Services Group",
-      "Roof Inspections",
+      "Roof Inspections Canberra | Ellis Services Group",
+      "Roof Inspections Canberra",
     ],
     [
       "/services/metal-roof-repairs",

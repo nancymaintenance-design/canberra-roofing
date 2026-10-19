@@ -19,6 +19,7 @@ const sections = [
 ];
 
 const serviceFocus: Record<string, string> = {
+  "reroof-replacement": "Roof replacement or local roof repairs",
   "roof-leak-repairs": "Recurring roof leaks & rainwater ingress investigation",
   "tile-roof-repairs": "Small tile roof repairs & individual tile replacement",
   "chimney-flashing-repairs": "Chimney-area water ingress & flashing inspection",

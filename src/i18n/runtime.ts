@@ -10,7 +10,7 @@ const catalog = new Map<string, { id: string; source: string; kind: string; page
 let translations: Record<string,string> = {};
 export function setChineseTranslations(value: Record<string,string>) { translations=value; }
 export async function loadChineseTranslations() {
-  const modules=await Promise.all([import('./zh-CN.json'),import('./zh-common.json'),import('./zh-articles.json'),import('./zh-areas.json'),import('./zh-common-extra.json')]);
+  const modules=await Promise.all([import('./zh-CN.json'),import('./zh-common.json'),import('./zh-articles.json'),import('./zh-areas.json'),import('./zh-common-extra.json'),import('./zh-remediation')]);
   setChineseTranslations(Object.assign({},...modules.map(module=>module.default)));
 }
 export const basePath = (path: string) => path === '/zh' || path === '/zh/' ? '/' : path.startsWith('/zh/') ? path.slice(3) : path;

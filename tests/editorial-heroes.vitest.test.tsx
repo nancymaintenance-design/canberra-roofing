@@ -66,7 +66,8 @@ it('gives all twelve services relevant hero media and keeps documentary cases in
   expect(host.querySelectorAll('.serviceTheme')).toHaveLength(5);
   const photos=host.querySelectorAll('.relatedCase img');
   expect(photos.length).toBe(['tile-roof-repairs','roof-inspections','roof-leak-repairs','roof-renovation'].includes(service.slug)?3:0);
-  expect(host.querySelector('main h1')!.textContent).not.toContain('Canberra');
-  expect(getRouteHead(service.path).title).not.toMatch(/Canberra/);
+  const localSearchTarget = ['roof-leak-repairs','roof-inspections','roof-cleaning','reroof-replacement'].includes(service.slug);
+  expect(host.querySelector('main h1')!.textContent!.includes('Canberra')).toBe(localSearchTarget);
+  expect(getRouteHead(service.path).title.includes('Canberra')).toBe(localSearchTarget);
  }
 });

@@ -93,10 +93,6 @@ assert.doesNotMatch(
   renderedAbout,
   /\/assets\/about\/ellis-brand-safety-equipment\.png/,
 );
-assert.match(
-  renderedSolutions,
-  /\/assets\/home\/australian-residential-roof-context\.png/,
-);
 assert.match(renderedHome, /className="homeMap"/);
 assert.match(
   renderedHome,

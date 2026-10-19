@@ -67,8 +67,9 @@ test('Vercel candidate pins Node 22, preserves API routes, and applies the appro
     .filter((pathname) => pathname !== '/')
     .map((pathname) => ({ source: pathname, destination: pathname + '.html' }));
   const bilingualRewrites=[{source:'/zh',destination:'/zh/index.html'},...[...Object.keys(published),...DISTRICT_PATHS,...SUBURB_PATHS].map(pathname=>({source:'/zh'+(pathname==='/'?'/':pathname),destination:pathname==='/'?'/zh/index.html':'/zh'+pathname+'.html'}))];
-  assert.deepEqual(config.rewrites, [...publishedRewrites,...bilingualRewrites]);
-  assert.deepEqual(config.redirects.filter(rule => !rule.permanent), [{source:'/insights',destination:'/faq',permanent:false}, {source:'/insights/',destination:'/faq',permanent:false}]);
+  const bySource = (a, b) => a.source.localeCompare(b.source);
+  assert.deepEqual([...config.rewrites].sort(bySource), [...publishedRewrites,...bilingualRewrites].sort(bySource));
+  assert.deepEqual(config.redirects.filter(rule => rule.permanent === false), [{source:'/insights',destination:'/faq',permanent:false}, {source:'/insights/',destination:'/faq',permanent:false}]);
   const headers = Object.fromEntries(config.headers[0].headers.map(({ key, value }) => [key, value]));
   assert.equal(headers['X-Content-Type-Options'], 'nosniff');
   assert.equal(headers['Referrer-Policy'], 'strict-origin-when-cross-origin');

@@ -847,7 +847,7 @@ details > p {
 .contact {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  max-width: 996px;
+  max-width: 1280px;
   gap: clamp(1.5rem, 3vw, 3rem);
 }
 .contact form {
@@ -3487,22 +3487,46 @@ details:hover {
 }
 .aboutFaq > div { padding-right: 0; }
 .aboutFaqList { margin-top: 1.25rem; }
-.contactPreparation {
-  grid-column: 1 / -1;
-  min-width: 0;
-  max-width: 900px;
-  width: 100%;
-  margin-inline: auto;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-cloud);
+.contactEnquiryNotes { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--color-cloud); }
+.contactEnquiryNotes h2 { font-size: 1.25rem; margin: 0 0 0.75rem; }
+.contactEnquiryNotes ul { margin: 0; padding-left: 1.2rem; }
+.contactEnquiryNotes li { margin-bottom: 0.6rem; font-size: 0.95rem; line-height: 1.7; }
+.contactGuideLinks { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin-top: 0.75rem; font-size: 0.9rem; }
+.contactIntro { max-width: 940px; }
+.contactIntro h1 { font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 1rem; }
+.contactIntro > p:last-child { margin-bottom: 0; }
+.contactWorkspace {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-areas: "photo form" "details form";
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
-.contactPreparation p { max-width: 75ch; }
-.contactPreparation .contactFeatureMedia {
+.contactWorkspace .contactFeatureMedia {
+  grid-area: photo;
+  margin: 0;
+  height: clamp(300px, 26vw, 380px);
   aspect-ratio: auto;
-  height: 360px;
+}
+.contactSideDetails { grid-area: details; min-width: 0; }
+.contactSideDetails .contactMethods { margin: 0 0 0.75rem; }
+.contactSideDetails .businessAddress { margin: 0; }
+.contactSideDetails .operatingHours { margin-top: 1.5rem; }
+.contactSideDetails .operatingHours h2 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+.contactWorkspace form { grid-area: form; padding: clamp(1.25rem, 2.5vw, 2rem); gap: 1rem; }
+.contactWorkspace .formGrid { gap: 1rem; align-items: start; }
+.contactWorkspace input:not([type="checkbox"]):not([type="file"]),
+.contactWorkspace select { min-height: 48px; font-size: 1rem; }
+.contactWorkspace textarea { min-height: 144px; font-size: 1rem; }
+@media (max-width: 900px) {
+  .contactWorkspace { grid-template-columns: minmax(0, 1fr); grid-template-areas: "photo" "form" "details"; grid-template-rows: auto; gap: 1.5rem; }
+  .contactWorkspace .contactFeatureMedia { height: 280px; }
 }
 @media (max-width: 760px) {
-  .contactPreparation .contactFeatureMedia { height: 260px; }
+  .contactWorkspace .contactFeatureMedia { height: 220px; }
+  .contactWorkspace .formGrid { grid-template-columns: minmax(0, 1fr); }
+  .contactWorkspace textarea { min-height: 160px; }
 }
 .newsIndex > .contentGuidance {
   display: grid;
@@ -3651,7 +3675,7 @@ details:hover {
 
 /* Service detail pages follow five calm themes, not an unrelated card feed. */
 .serviceView {
-  max-width: 1440px;
+  max-width: 1120px;
 }
 .serviceHero {
   max-width: 1440px;
@@ -3700,7 +3724,7 @@ details:hover {
 .servicePageSections {
   display: grid;
   gap: 1.5rem;
-  max-width: 1440px;
+  max-width: 1120px;
   margin-inline: auto;
 }
 .serviceTheme {
@@ -3733,33 +3757,24 @@ details:hover {
   overflow-wrap: anywhere;
 }
 .serviceTheme p {
-  max-width: 75ch;
+  max-width: none;
   margin: 0 0 1rem;
   line-height: 1.7;
 }
 .serviceThemeContent > :first-child,
-.serviceSubtopics > article:first-child > h3,
 .serviceTheme .contentGuidance > h3:first-child {
   margin-top: 0;
 }
 .serviceThemeContent > :last-child {
   margin-bottom: 0;
 }
-.serviceThemeLead {
-  color: var(--color-steel);
-  font-weight: 700;
-}
-.serviceSubtopics,
 .serviceBookingGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.5rem, 3vw, 3rem);
-  align-items: start;
+  display: block;
 }
-.serviceSubtopics > article + article,
 .serviceBookingAppointment {
-  padding-left: clamp(1.5rem, 3vw, 3rem);
-  border-left: 1px solid var(--color-cloud);
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-cloud);
 }
 .serviceBookingScope > h3:first-child,
 .serviceBookingAppointment .operatingHours > h3:first-child {
@@ -3772,23 +3787,8 @@ details:hover {
 }
 .serviceThemeContent > .contentGuidance,
 .serviceThemeContent > .serviceGuideLink {
-  max-width: 85ch;
-  margin-inline: auto;
-}
-.serviceSubtopics article {
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-.serviceSubtopics article > span {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--color-eucalyptus);
-  font-size: 0.76rem;
-  font-weight: 700;
-}
-.serviceSubtopics article > span + h3 {
-  margin-top: 0;
+  max-width: none;
+  margin-inline: 0;
 }
 .serviceTheme .contentGuidance,
 .serviceGuideLink,
@@ -3801,8 +3801,11 @@ details:hover {
 .serviceRelatedLinks ul {
   display: block;
   margin: 0;
-  padding-left: 1.25rem;
+  padding: 0;
+  list-style: none;
 }
+.serviceRelatedLinks li > h3 { margin-top: 0; }
+.serviceRelatedLinks li > h3 > a { display: inline-block; padding-block: 0.35rem; }
 .serviceRelatedLinks li + li {
   margin-top: 0.85rem;
 }
@@ -3936,13 +3939,10 @@ details:hover {
   margin-block: 1.5rem 1rem;
 }
 @media (max-width: 760px) {
-  .serviceSubtopics,
-  .serviceBookingGrid,
   .serviceTheme .serviceGallery .serviceGalleryGrid,
   .serviceTheme .serviceGallery[data-image-count] .serviceGalleryGrid {
     grid-template-columns: minmax(0, 1fr);
   }
-  .serviceSubtopics > article + article,
   .serviceBookingAppointment {
     padding-left: 0;
     padding-top: 1.25rem;

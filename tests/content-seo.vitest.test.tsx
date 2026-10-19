@@ -66,7 +66,7 @@ describe("rendered Canberra content SEO", () => {
       expect(host.textContent).toContain("On-site roof assessment");
       expect(host.textContent).toContain("Appointment timing confirmed separately");
     }
-    expect(questions.size).toBe(12);
+    expect(questions.size).toBe(13);
   });
 
   it("sections all twelve guides with attribution, revision date and contextual links", () => {
@@ -87,8 +87,8 @@ expect(host.querySelectorAll('.articleServiceNote a[href^="/services/"]')).toHav
 
   it("provides a contact checklist without requiring a photo or promising a price", () => {
     const host = page("/contact");
-    expect(host.querySelectorAll(".enquiryChecklist li")).toHaveLength(4);
-    expect(host.querySelector(".enquiryChecklist")!.textContent).toMatch(/fee.*excluded.*further investigation/);
+    expect(host.querySelectorAll(".contactEnquiryNotes li")).toHaveLength(3);
+    expect(host.querySelector(".contactEnquiryNotes")!.textContent).toMatch(/fees.*scope.*exclusions/);
     expect(host.textContent).toContain("You can request an assessment without a photo.");
     expect(page("/services/roof-renovation").querySelector(".servicePlanning")!.textContent).toMatch(/local repair.*renovation.*replacement/);
     expect(page("/areas/belconnen/aranda-roof-repairs").textContent).not.toContain("technicians with 15 years");

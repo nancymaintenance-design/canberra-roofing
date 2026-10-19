@@ -27,7 +27,7 @@ function localizeSchema(value: any, chinese: boolean): any {
     return [key,localizeSchema(item,true)];
   }));
 }
-const breadcrumbLabels: Record<string, string> = { '/about': 'About', '/services': 'Services', '/solutions': 'Solutions', '/areas': 'Service areas', '/news': 'Roof repair guides', '/faq': 'FAQs', '/contact': 'Contact', '/privacy': 'Privacy policy' };
+const breadcrumbLabels: Record<string, string> = { '/about': 'About', '/services': 'Services', '/areas': 'Service areas', '/news': 'Roof repair guides', '/faq': 'FAQs', '/contact': 'Contact', '/privacy': 'Privacy policy' };
 
 export function getBreadcrumbs(pathname: string): { path: string; name: string }[] {
   const path = resolvePath(pathname);

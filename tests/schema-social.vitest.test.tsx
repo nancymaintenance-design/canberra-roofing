@@ -61,9 +61,9 @@ it('replaces duplicate and stale sharing metadata on article, service, area and 
  view.rerender(<HeadManager pathname="/404"/>);
  expect(document.head.querySelectorAll('meta[property^="og:image"]')).toHaveLength(0);
 });
-it('gives all 42 indexable nonhome pages visible matching breadcrumbs', () => {
+it('gives all 41 indexable nonhome pages visible matching breadcrumbs after hub consolidation', () => {
  const eligible = pagePaths.filter(p => p !== '/' && !getRouteHead(p).robots);
- expect(eligible).toHaveLength(42);
+  expect(eligible).toHaveLength(42);
  for (const p of eligible) {
   const host = document.createElement('div'); host.innerHTML = renderToStaticMarkup(<AppV3 pathname={p}/>);
   const nav = host.querySelector('nav[aria-label="Breadcrumb"]')!;
@@ -75,7 +75,7 @@ it('gives all 42 indexable nonhome pages visible matching breadcrumbs', () => {
  }
 });
 it('adds twelve truthful Article and twelve Service entities', () => {
- expect(pagePaths.filter(p => getRouteHead(p).service)).toHaveLength(12);
+ expect(pagePaths.filter(p => getRouteHead(p).service)).toHaveLength(13);
  const articles = pagePaths.filter(p => getRouteHead(p).article); expect(articles).toHaveLength(12);
  for(const p of articles) {
   const a = getRouteHead(p).article!; const editorial = getArticleEditorial(p.split('/').pop()!)!;

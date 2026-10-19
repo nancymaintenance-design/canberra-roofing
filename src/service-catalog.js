@@ -6,6 +6,7 @@ export const SERVICE_CATALOG = Object.freeze([
   { slug: "roof-inspections", title: "Roof Inspections", path: "/services/roof-inspections", shortLabel: "Roof Inspections" },
   { slug: "metal-roof-repairs", title: "Metal & Colorbond Roof Repairs", path: "/services/metal-roof-repairs", shortLabel: "Metal & Colorbond Roof Repairs" },
   { slug: "roof-renovation", title: "Roof Renovation", path: "/services/roof-renovation", shortLabel: "Roof Renovation" },
+  { slug: "reroof-replacement", title: "Roof Replacement", path: "/services/reroof-replacement", shortLabel: "Roof Replacement" },
   { slug: "roof-cleaning", title: "Roof Cleaning", path: "/services/roof-cleaning", shortLabel: "Roof Cleaning" },
   { slug: "gutter-downpipe-maintenance", title: "Gutter & Downpipe Cleaning and Maintenance", path: "/services/gutter-downpipe-maintenance", shortLabel: "Gutter & Downpipe Maintenance" },
   { slug: "gutter-repairs", title: "Gutter Repairs", path: "/services/gutter-repairs", shortLabel: "Gutter Repairs" },

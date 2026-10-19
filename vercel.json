@@ -224,21 +224,6 @@
       "permanent": true
     },
     {
-      "source": "/solutions.html",
-      "destination": "/solutions",
-      "permanent": true
-    },
-    {
-      "source": "/solutions/",
-      "destination": "/solutions",
-      "permanent": true
-    },
-    {
-      "source": "/solutions.html/",
-      "destination": "/solutions",
-      "permanent": true
-    },
-    {
       "source": "/areas.html",
       "destination": "/areas",
       "permanent": true
@@ -1842,6 +1827,116 @@
       "source": "/areas/woden/torrens-roof-repairs.html/",
       "destination": "/areas/woden/torrens-roof-repairs",
       "permanent": true
+    },
+    {
+      "source": "/solutions",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/solutions/",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/solutions.html",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/solutions.html/",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/zh/solutions",
+      "destination": "/zh/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/zh/solutions/",
+      "destination": "/zh/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/zh/solutions.html",
+      "destination": "/zh/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/zh/solutions.html/",
+      "destination": "/zh/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/roof-restoration",
+      "destination": "/services/roof-renovation",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/roof-restoration/",
+      "destination": "/services/roof-renovation",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/roof-restoration.html",
+      "destination": "/services/roof-renovation",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/roof-restoration.html/",
+      "destination": "/services/roof-renovation",
+      "statusCode": 301
+    },
+    {
+      "source": "/zh/services/roof-restoration",
+      "destination": "/zh/services/roof-renovation",
+      "statusCode": 301
+    },
+    {
+      "source": "/zh/services/roof-restoration/",
+      "destination": "/zh/services/roof-renovation",
+      "statusCode": 301
+    },
+    {
+      "source": "/zh/services/roof-restoration.html",
+      "destination": "/zh/services/roof-renovation",
+      "statusCode": 301
+    },
+    {
+      "source": "/zh/services/roof-restoration.html/",
+      "destination": "/zh/services/roof-renovation",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/reroof-replacement/",
+      "destination": "/services/reroof-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/services/reroof-replacement.html",
+      "destination": "/services/reroof-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/services/reroof-replacement.html/",
+      "destination": "/services/reroof-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/zh/services/reroof-replacement/",
+      "destination": "/zh/services/reroof-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/zh/services/reroof-replacement.html",
+      "destination": "/zh/services/reroof-replacement",
+      "permanent": true
+    },
+    {
+      "source": "/zh/services/reroof-replacement.html/",
+      "destination": "/zh/services/reroof-replacement",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -1888,10 +1983,6 @@
     {
       "source": "/services/gutter-downpipe-maintenance",
       "destination": "/services/gutter-downpipe-maintenance.html"
-    },
-    {
-      "source": "/solutions",
-      "destination": "/solutions.html"
     },
     {
       "source": "/areas",
@@ -2322,8 +2413,16 @@
       "destination": "/areas/woden/torrens-roof-repairs.html"
     },
     {
+      "source": "/services/reroof-replacement",
+      "destination": "/services/reroof-replacement.html"
+    },
+    {
       "source": "/zh",
       "destination": "/zh/index.html"
+    },
+    {
+      "source": "/zh/services/reroof-replacement",
+      "destination": "/zh/services/reroof-replacement.html"
     },
     {
       "source": "/zh/",
@@ -2372,10 +2471,6 @@
     {
       "source": "/zh/services/gutter-downpipe-maintenance",
       "destination": "/zh/services/gutter-downpipe-maintenance.html"
-    },
-    {
-      "source": "/zh/solutions",
-      "destination": "/zh/solutions.html"
     },
     {
       "source": "/zh/areas",
