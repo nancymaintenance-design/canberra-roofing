@@ -15,5 +15,5 @@ for(const prefix of ['', '/zh'])for(const path of [...articles.map(s=>'/news/'+s
   expect(d.querySelectorAll('.articleRelated a').length).toBeGreaterThanOrEqual(2);
   expect(d.querySelector('.contentNextStep a[href*="/contact"]')).not.toBeNull();
  }
- if(path.endsWith('emergency-roof-repairs')){expect(d.textContent).toContain('000');expect(d.textContent).toContain('132 500');}
+ if(path.endsWith('emergency-roof-repairs')){expect(d.textContent).toContain('000');expect(d.textContent).toContain('132 500');if(prefix)expect(d.querySelector('main')!.textContent).not.toContain('For an immediate threat to life');}
 });
