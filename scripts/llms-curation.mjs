@@ -1,0 +1,29 @@
+// A reviewed shortlist, not the sitemap. Paths retain the existing content owners.
+// Names, language pairs and summaries are read from the built public HTML.
+export const LLMS_CURATION = Object.freeze([
+  {path:'/',role:'home',group:'company',intent:'Roof repair overview'},
+  {path:'/services',role:'directory',group:'company',intent:'Compare services'},
+  {path:'/areas',role:'areas',group:'company',intent:'Find a district and enquiry area'},
+  {path:'/about',role:'company',group:'company',intent:'Business and assessment process',paragraph:1},
+  {path:'/contact',role:'contact',group:'company',intent:'Arrange an assessment and quote'},
+  ...[
+    ['roof-leak-repairs','Investigate water entry and repair the affected components'],
+    ['roof-inspections','Agree an inspection and findings'],
+    ['roof-cleaning','Assess material and cleaning method'],
+    ['tile-roof-repairs','Local tile repairs and matching materials'],
+    ['metal-roof-repairs','Metal sheets, fixings and junctions'],
+    ['chimney-flashing-repairs','Chimney-to-roof water entry'],
+    ['rebedding-repointing','Ridge bedding and pointing'],
+    ['roof-renovation','Retain the roof covering with repair and finish work'],
+    ['reroof-replacement','Assess removal and replacement of the covering'],
+    ['gutter-downpipe-maintenance','Clear debris and assess drainage'],
+    ['gutter-repairs','Repair gutter components'],
+    ['emergency-roof-repairs','Urgent assessment and after-hours fee boundaries'],
+    ['rental-property-roof-repairs','Coordinate access, findings and approval'],
+  ].map(([slug,intent])=>({path:'/services/'+slug,role:'service',group:'services',intent,selector:'.directAnswer',summarySentences:slug==='emergency-roof-repairs'?3:2})),
+  {path:'/case-studies/tile-roof-repair-canberra',role:'case-study',group:'cases',intent:'Documented visible tile repair sequence',selector:'.articleLead'},
+  {path:'/news',role:'guide-directory',group:'guides',intent:'Browse roof-care articles'},
+  {path:'/news/after-rain-roof-leak-check-canberra',role:'guide',group:'guides',intent:'Heavy-rain leak observations',selector:'.articleLead'},
+  {path:'/news/when-to-arrange-roof-inspection-canberra',role:'guide',group:'guides',intent:'Inspection scope and limitations',selector:'.articleLead'},
+  {path:'/news/roof-cleaning-methods-canberra',role:'guide',group:'guides',intent:'Material-specific cleaning questions',selector:'.articleLead'},
+]);

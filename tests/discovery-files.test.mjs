@@ -18,5 +18,7 @@ test('discovery files list indexable district pages and retain suburb navigation
   for (const profile of DISTRICT_PROFILES) assert.match(sitemap, new RegExp(profile.path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   for (const profile of SUBURB_PROFILES) assert.doesNotMatch(sitemap, new RegExp(profile.path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   for (const service of SERVICE_CATALOG) assert.match(llms, new RegExp(service.path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
-  assert.match(llms, /121 Marcus Clarke St, Canberra, ACT 2600/);
+  // Contact facts remain on the existing bilingual contact owners, not a second database.
+  assert.match(llms, /\]\(https:\/\/www\.canberraroofkind\.com\.au\/contact\): /);
+  assert.match(llms, /\]\(https:\/\/www\.canberraroofkind\.com\.au\/zh\/contact\): /);
 });
