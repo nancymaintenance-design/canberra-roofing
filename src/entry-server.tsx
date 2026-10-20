@@ -14,6 +14,7 @@ setChineseTranslations({...common,...articles,...areas,...extra,...feedback,...r
 export { getCatalog };
 
 export { pagePaths };
+export { getNavigationMap } from './navigation-map';
 export function renderPage(pathname: string, template: string) {
   configureLocale(pathname);
   if (!isDocumentRoute(pathname)) throw new Error(`Cannot prerender an unregistered document route: ${pathname}`);

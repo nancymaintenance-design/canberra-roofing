@@ -2914,8 +2914,23 @@ details:hover {
 .breadcrumbs { max-width: var(--page-max, 1440px); margin: 0 auto; padding: 1rem clamp(1rem, 4vw, 3rem); color: var(--color-roof-charcoal); }
 .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 0; padding: 0; }
 .breadcrumbs li { min-width: 0; overflow-wrap: anywhere; }
-.breadcrumbs li + li::before { content: "/"; margin-right: .5rem; color: var(--color-steel); }
+.breadcrumbs .breadcrumbSeparator { margin-right: .5rem; color: var(--color-steel); }
 .breadcrumbs a { text-decoration: underline; }
+.breadcrumbs li { display: flex; align-items: baseline; max-width: 100%; }
+.breadcrumbs a, .breadcrumbs [aria-current] { overflow-wrap: anywhere; }
+.breadcrumbs a { min-height: 2.25rem; display: inline-flex; align-items: center; }
+.serviceHeroActions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.25rem; }
+.contentNextStep { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding: 1.25rem; margin: 0 0 2rem; background: var(--color-cloud); border-left: 3px solid var(--color-safety-orange); border-radius: var(--radius-card); }
+.contentNextStep > div { min-width: 0; }
+.contentNextStep p { margin: 0 0 .5rem; max-width: 72ch; }
+.contentNextStep ul { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin: 0; padding: 0; list-style: none; }
+.contentNextStep li { min-width: 0; }
+.contentNextStep a { overflow-wrap: anywhere; }
+.contentNextStep .button { flex-shrink: 0; }
+.serviceResources > ul { padding: 0; list-style: none; }
+.serviceResources li + li { margin-top: 1rem; }
+.serviceResources h3 { margin-bottom: .4rem; }
+@media (max-width: 760px) { .contentNextStep { align-items: flex-start; flex-direction: column; } .contentNextStep .button { max-width: 100%; white-space: normal; } }
 
 /* Shared inset surfaces: rounded cards, not full-bleed page chrome. */
 .card,

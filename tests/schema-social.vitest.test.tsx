@@ -69,9 +69,9 @@ it('gives all 41 indexable nonhome pages visible matching breadcrumbs after hub 
   const nav = host.querySelector('nav[aria-label="Breadcrumb"]')!;
   expect(nav, p).not.toBeNull();
   const schema = getRouteHead(p).breadcrumb!;
-  expect(Array.from(nav.querySelectorAll('li')).map(n => n.textContent)).toEqual(schema.itemListElement.map(n => n.name));
+  expect(Array.from(nav.querySelectorAll('li')).map(n => n.querySelector('a,[aria-current]')?.textContent)).toEqual(schema.itemListElement.map(n => n.name));
   expect(nav.querySelector('[aria-current="page"]')?.tagName).toBe('SPAN');
-  for (const a of nav.querySelectorAll('a')) expect(pagePaths).toContain(a.getAttribute('href'));
+  for (const a of nav.querySelectorAll('a')) { const target=new URL(a.getAttribute('href')!); expect(target.origin).toBe('https://www.canberraroofkind.com.au'); expect(pagePaths).toContain(target.pathname); }
  }
 });
 it('adds twelve truthful Article and twelve Service entities', () => {

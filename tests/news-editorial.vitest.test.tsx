@@ -58,7 +58,9 @@ it.each(Object.keys(publishedRoutes).filter(p => p.startsWith('/news/')))('makes
   expect(host.querySelectorAll('.articleRelated a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
   expect(host.querySelector(`.articleRelated a[href="${path}"]`)).toBeNull();
   expect(host.querySelectorAll('.articleSources a[href^="https://"]').length).toBeGreaterThanOrEqual(1);
-  expect(host.querySelectorAll('.newsArticle a[href^="/services/"]')).toHaveLength(1);
+  const expectedServices=path==='/news/roof-repair-cost-canberra'?['/services/roof-leak-repairs','/services/roof-inspections']:path==='/news/roof-repair-vs-restoration-vs-replacement-canberra'?['/services/roof-inspections','/services/roof-renovation','/services/reroof-replacement']:[NEWS_ARTICLES.find(a=>'/news/'+a.slug===path)!.servicePath];
+  expect([...host.querySelectorAll('.contentNextStep a[href^="/services/"]')].map(a=>a.getAttribute('href'))).toEqual(expectedServices);
+  expect(host.querySelectorAll('.contentNextStep a[href^="/contact"]')).toHaveLength(1);
   expect(host.querySelector('time')!.getAttribute('datetime')).toBe('2026-10-14');
   const head = getRouteHead(path);
   expect(head.article!.headline).toBe(host.querySelector('main h1')!.textContent);

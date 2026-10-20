@@ -7,6 +7,7 @@ import { DISTRICT_PROFILES, SUBURB_PROFILES, getSuburbProfile } from './suburb-p
 import { getSocialImage } from './social-images';
 import { basePath, isChinese, languagePath, translate, configureLocale, getEditorialContent } from './i18n/runtime';
 import { addedArticle, addedArticles, addedImage } from './i18n/editorial';
+import { navigationTrail, SITE_ORIGIN } from './navigation-map';
 
 const districtRoutes = Object.fromEntries(DISTRICT_PROFILES.map((profile) => [profile.path, profile]));
 const suburbRoutes = Object.fromEntries(SUBURB_PROFILES.map((profile) => [profile.path, profile]));
@@ -27,27 +28,16 @@ function localizeSchema(value: any, chinese: boolean): any {
     return [key,localizeSchema(item,true)];
   }));
 }
-const breadcrumbLabels: Record<string, string> = { '/about': 'About', '/services': 'Services', '/areas': 'Service areas', '/news': 'Roof repair guides', '/faq': 'FAQs', '/contact': 'Contact', '/privacy': 'Privacy policy' };
-
 export function getBreadcrumbs(pathname: string): { path: string; name: string }[] {
-  const path = resolvePath(pathname);
-  const route = (publishedRoutes[path as keyof typeof publishedRoutes] || (addedArticle(path) && {h1:addedArticle(path)!.title})) as any;
-  if (!route || path === '/') return [];
-  const parents: string[] = [];
-  if (path.startsWith('/news/')) parents.push('/news');
-  else if (path.startsWith('/services/')) parents.push('/services');
-  else if (path.startsWith('/areas/')) {
-    parents.push('/areas');
-    const districtPath = path.split('/').slice(0, 3).join('/');
-    if (districtPath !== path && Object.hasOwn(publishedRoutes, districtPath)) parents.push(districtPath);
-  }
-  return ['/', ...parents, path].map(p => ({ path: p, name: p === '/' ? 'Home' : breadcrumbLabels[p] ?? (publishedRoutes[p as keyof typeof publishedRoutes] as any)?.h1 ?? route.h1 }));
+  const path=resolvePath(basePath(pathname));
+  return navigationTrail(languagePath(path,isChinese(pathname)?'zh':'en')).map(p=>({path:p.path,name:p.breadcrumb_label}));
 }
 
 export function Breadcrumbs({ pathname }: { pathname: string }) {
   const crumbs = getBreadcrumbs(pathname);
   if (!crumbs.length) return null;
-  return <nav className="breadcrumbs" aria-label="Breadcrumb"><ol>{crumbs.map((crumb, index) => <li key={crumb.path}>{index === crumbs.length - 1 ? <span aria-current="page">{crumb.name}</span> : <a href={crumb.path}>{crumb.name}</a>}</li>)}</ol></nav>;
+  const owner=navigationTrail(pathname).at(-1)?.commercial_owner_url;
+  return <nav className="breadcrumbs" aria-label={isChinese(pathname)?'面包屑导航':'Breadcrumb'} data-source-path={languagePath(basePath(pathname),isChinese(pathname)?'zh':'en')} data-owner-id={owner?new URL(owner).pathname:undefined}><ol>{crumbs.map((crumb, index) => <li key={crumb.path}>{index>0&&<span className="breadcrumbSeparator" aria-hidden="true">/</span>}{index === crumbs.length - 1 ? <span aria-current="page">{crumb.name}</span> : <a href={SITE_ORIGIN+crumb.path} data-breadcrumb-position={index+1}>{crumb.name}</a>}</li>)}</ol></nav>;
 }
 
 // Match the acceptance server: never turn encoded separators, percent signs or
@@ -78,7 +68,7 @@ export function getRouteHead(pathname: string) {
   const editorialSource = editorial ? getEditorialContent().images?.[editorial.image.src] || editorial.image.src : null;
   const image = editorial ? (imageManifest as Record<string, { variants: { src: string; width: number }[] }>)[editorialSource!]?.variants : null;
   const service = SERVICE_CATALOG.find(item => item.path === path);
-  const crumbs = getBreadcrumbs(path);
+  const crumbs = getBreadcrumbs(pathname);
   const head = {
     title: translate(route.title, 'metadata'),
     description: translate(route.description, 'metadata'),
@@ -86,7 +76,7 @@ export function getRouteHead(pathname: string) {
     socialImage: { ...getSocialImage(path), alt:translate(getSocialImage(path).alt,'alt') },
     robots: getSuburbProfile(path) ? 'noindex,follow' : null,
     breadcrumb: crumbs.length ? {
-      '@context': 'https://schema.org', '@type': 'BreadcrumbList', '@id': route.canonical + '#breadcrumb',
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList', '@id': origin + languagePath(path,isChinese(pathname)?'zh':'en') + '#breadcrumb',
       itemListElement: crumbs.map((crumb, index) => ({ '@type': 'ListItem', position: index + 1, name: crumb.name, item: absolute(crumb.path) })),
     } : null,
     service: service ? {
@@ -110,10 +100,11 @@ export function getRouteHead(pathname: string) {
     serviceAreaSchema: getSuburbProfile(path) ? {
       '@context': 'https://schema.org', '@type': 'WebPage', name: route.h1,
       description: route.description, url: route.canonical,
+      breadcrumb: { '@id': route.canonical + '#breadcrumb' },
       mainEntity: { '@type': 'Service', name: 'Roof repair services', provider: { '@id': organizationId, '@type': 'Organization', name: 'Ellis Services Group' } },
     } : null,
   };
-  for(const key of ['breadcrumb','service','article','serviceAreaSchema'] as const) head[key] = localizeSchema(head[key],isChinese(pathname));
+  for(const key of ['service','article','serviceAreaSchema'] as const) head[key] = localizeSchema(head[key],isChinese(pathname));
   return head;
 }
 

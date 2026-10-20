@@ -23,6 +23,7 @@ import { ARTICLE_IMAGES } from "./article-images";
 import { ProjectWorkNotes } from "./project-work-notes";
 import { ARTICLE_AUTHOR, articleModifiedDate, articleVisibleDate } from "./article-editorial";
 import { ServiceSectionNav, ServiceTheme } from "./service-theme-layout";
+import { ServiceResources, ServiceNextStep } from './service-journey';
 
 type RelatedService = { label: string; path: string; description: string };
 type Service = {
@@ -1621,9 +1622,6 @@ function ServiceView({ service }: { service: Service }) {
   const serviceFaqs = [{ q: service.faqQ, a: service.faqA }, ...(service.faqExtras ?? [])].filter(item => !mergedQuestions[item.q]);
   const headings = SERVICE_TOPIC_HEADINGS[service.slug] ?? ['', '', '', '', '', 'Replacement materials, access and quoted scope'];
   const galleries: { title: string; intro: string; project?: boolean; relatedPath?: string; relatedLabel?: string; images: { src: string; alt: string; srcSet?: string; width?: number; height?: number; caption?: string }[] }[] = [serviceGalleries[service.slug], PROJECT_GALLERIES[service.slug as keyof typeof PROJECT_GALLERIES]].filter(Boolean);
-  const guide = newsArticles.find(
-    (article) => article.servicePath === `/services/${service.slug}`,
-  );
   const caseStudy = ["tile-roof-repairs", "roof-inspections", "roof-leak-repairs", "roof-renovation"].includes(service.slug) ? caseStudies[0] : undefined;
   const galleryTitleId = `${service.slug}-gallery-title`;
   return (
@@ -1639,6 +1637,7 @@ function ServiceView({ service }: { service: Service }) {
         <li>Appointment timing confirmed separately</li>
         <li>Repair scope and written quote before work</li>
       </ul>
+      <div className="serviceHeroActions"><a className="button" href={`/contact?service=${encodeURIComponent(service.title)}`}>Request a roof assessment <ArrowRight size={17}/></a><a className="textAction" href="tel:0405878406">0405878406</a></div>
       </div>
       <figure className="pairedHeroMedia"><ResponsiveImage src={serviceHeroImages[service.slug].src} alt={serviceHeroImages[service.slug].alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>{serviceHeroImages[service.slug].caption}</figcaption></figure>
       </header>
@@ -1660,7 +1659,7 @@ function ServiceView({ service }: { service: Service }) {
       <p>{service.pathways}</p>
       <ServiceDepth slug={service.slug} headingLevel={3} />
       {service.slug === "emergency-roof-repairs" && <p><a href="https://esa.act.gov.au/be-emergency-ready/storms" target="_blank" rel="noopener noreferrer">ACT Emergency Services Agency: storm emergency assistance</a>. For an immediate threat to life call 000; for storm or flood emergency assistance call ACTSES on 132 500.</p>}
-      {guide ? <section className="serviceGuideLink" aria-labelledby={`${service.slug}-guide-title`}><h3 id={`${service.slug}-guide-title`}><a href={`/news/${guide.slug}`}>{guide.title}</a></h3><p>{guide.summary}</p></section> : null}
+      <ServiceResources servicePath={`/services/${service.slug}`} />
       </ServiceTheme>
       <ServiceTheme index={2} serviceSlug={service.slug}>
       {galleries.map((gallery) => (
@@ -1791,6 +1790,7 @@ function DistrictServiceAreaPage({ profile }: { profile: any; data: Data }) {
     <p className="eyebrow">CANBERRA DISTRICT ROOF SERVICES</p>
     <h1>{profile.h1}</h1>
     <p className="directAnswer">Ellis provides roof repairs, renovation, cleaning and gutter or downpipe maintenance across {profile.district}. Send your suburb and concern to arrange an on-site assessment, the work plan and a written quote.</p>
+    <nav className="suburbPageActions districtEntryLinks" aria-label="Roof services and booking"><a className="textAction" href="/services/roof-leak-repairs">Roof Leak Repairs</a><a className="textAction" href="/services/roof-inspections">Roof Inspections</a><a className="textAction" href="/services/roof-cleaning">Roof Cleaning</a><a className="button" href="#local-enquiry">Request a roof assessment <ArrowRight size={17}/></a></nav>
     <section className="districtDirectory"><h2>Choose your {profile.district} enquiry location</h2><p>This directory lists {profile.suburbs.length} location options for {profile.district}. The enquiry link selects that suburb in the contact form; add your full property address and concern so we can arrange access and confirm the visit. We cover the major ACT districts, including Belconnen, Gungahlin and Tuggeranong. For fringe locations, send the full address to confirm arrangements.</p>
       <div className="contentTableScroll" tabIndex={0} role="region" aria-label={`${profile.district} suburb directory`}><table><caption>{profile.district}: suburb information and booking links</caption><thead><tr><th scope="col">Location</th><th scope="col">Suburb information</th><th scope="col">Start an enquiry</th></tr></thead><tbody>{profile.bookingLocations.map((location: { suburb: string; enquiryPath: string }) => <tr key={location.suburb}><th scope="row">{location.suburb}</th><td><a href={getSuburbRoute(location.suburb, profile.district) ?? "/areas"}>{location.suburb} roof services</a></td><td><a href={location.enquiryPath}>Enquire for {location.suburb}</a></td></tr>)}</tbody></table></div>
       <p>Looking for a different location? <a href="/areas">Search the district and suburb directory</a>.</p>
@@ -1862,11 +1862,11 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
       <div className="articleLayout">
         <nav className="articleContents" aria-label="On this page"><p>In this article</p><ol>{article.sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.heading}</a></li>)}</ol></nav>
         <div className="articleBody">
+          <ServiceNextStep pagePath={`/news/${article.slug}`} />
           {article.sections.map(section => <section className="articleSection" id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>)}
           {["cracked-slipped-missing-roof-tiles-canberra", "after-rain-roof-leak-check-canberra"].includes(article.slug) ? <TileCasePhotos context={article.slug} /> : null}
           {article.sources.length > 0 && <section className="articleSources" aria-label="Sources and scope"><h2>Sources and further detail</h2><p>Manufacturer guidance applies to the relevant product and system. These references support the technical background; the practical questions in this article are general editorial guidance.</p><ul>{article.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a><span> — {source.note}</span></li>)}</ul></section>}
           {related.length > 0 && <section className="articleRelated"><h2>Continue reading</h2><ul>{related.map(item => <li key={item.slug}><a href={`/news/${item.slug}`}>{item.title}</a><p>{item.summary}</p></li>)}</ul></section>}
-          {article.servicePath && <p className="articleServiceNote">For information about arranging work, see <a href={article.servicePath}>{article.serviceTitle}</a>.</p>}
           <a className="articleBack" href="/news">← All roof care articles</a>
         </div>
       </div>
@@ -2476,6 +2476,7 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
         </div>
         <figure className="pairedHeroMedia"><ResponsiveImage src={study.images[2].src} alt={study.images[2].alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>{study.images[2].caption}</figcaption></figure>
       </header>
+      <ServiceNextStep pagePath={`/case-studies/${study.slug}`} />
       <section className="caseEvidence" aria-labelledby="case-evidence-title">
         <div className="caseEvidenceIntro">
           <p className="eyebrow">TILE WORK SEQUENCE</p>
@@ -2653,7 +2654,7 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
     <>
       <HeadManager pathname={pathname.startsWith('/zh') ? '/zh' + (path === '/' ? '/' : path) : path} />
       <LayoutV2 data={data} openAdmin={openAdmin} pathname={path}>
-        <Breadcrumbs pathname={path} />
+        <Breadcrumbs pathname={languagePath(path,currentLanguage())} />
         {content}
       </LayoutV2>
       {import.meta.env.DEV && admin && (

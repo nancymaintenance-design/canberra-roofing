@@ -3,6 +3,8 @@ import { HISTORICAL_AREA_GUIDANCE as h } from '../historical-area-guidance.js';
 
 // Reviewed Chinese copy for the 19 October search-intent corrections.
 export default {
+  'Tile roof repair case study':'瓦屋顶维修案例',
+  'Related guides and repair examples':'相关指南与维修案例',
   'Prepare the existing roof records':'准备现有屋顶记录',
   'Include previous repair scopes and any existing inspection findings. Identify your replacement objective so the proposed removal, new covering and connected work can be discussed together.':'请提供既往维修范围及已有检查结果，说明换顶目标，以便一并讨论拟定拆除、新屋面和相连施工。',
   'What records help prepare a replacement assessment?':'换顶评估前可准备哪些记录？',

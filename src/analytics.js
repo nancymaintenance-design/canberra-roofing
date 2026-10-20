@@ -33,6 +33,19 @@ export function initialiseAnalytics(runtime = window, documentRef = document) {
       const link = event.target instanceof Element ? event.target.closest('a') : null;
       if (!link) return;
       const href = link.getAttribute('href') || '';
+      const breadcrumb = link.closest('nav.breadcrumbs[data-source-path]');
+      if (breadcrumb) {
+        try {
+          const origin = 'https://' + LIVE_HOSTNAME;
+          const target = new URL(href, origin);
+          const source = new URL(breadcrumb.dataset.sourcePath, origin);
+          const owner = breadcrumb.dataset.ownerId ? new URL(breadcrumb.dataset.ownerId, origin) : null;
+          const position = Number(link.dataset.breadcrumbPosition);
+          if (target.origin === origin && source.origin === origin && Number.isInteger(position) && position > 0) {
+            gtag('event', 'breadcrumb_click', { source_path: source.pathname, target_path: target.pathname, locale: source.pathname.startsWith('/zh/') ? 'zh' : 'en', position, owner_id: owner?.origin === origin ? owner.pathname : '' });
+          }
+        } catch { /* Invalid navigation metadata must not interrupt a real link. */ }
+      }
       if (href.startsWith('tel:')) gtag('event', 'phone_click', { contact_method: 'phone' });
       if (href.startsWith('mailto:')) gtag('event', 'email_click', { contact_method: 'email' });
       if (link.classList.contains('contactTop')) gtag('event', 'contact_cta_click', { contact_method: 'contact_cta' });

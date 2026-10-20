@@ -25,15 +25,17 @@ export const getEditorialContent = () => content;
 export function copyId(text: string) { let hash = 2166136261; for (const c of text) hash = Math.imul(hash ^ c.charCodeAt(0), 16777619); return 'c' + (hash >>> 0).toString(36); }
 export const normalizeCopy = (text: string) => text.replace(/\s+/g, ' ').trim();
 export const isProtectedCopy = (text: string) => /(?:0405878406|\+61405878406|elliservices\.group@gmail\.com|\b000\b|132\s*500)/i.test(text) || /^\+?[\d\s():.-]+$/.test(text.trim());
-export function translate(text: string, kind = 'text') {
+export function translate(text: string, kind = 'text', targetLanguage = language, register = true) {
   const source = normalizeCopy(text);
   if (!source || !/[A-Za-z\u3400-\u9fff]/.test(source)) return text;
   const id = copyId(source);
-  const existing = catalog.get(id);
-  if (existing && !existing.pages.includes(route)) existing.pages.push(route);
-  if (!existing) catalog.set(id, { id, source, kind, pages: [route] });
+  if (register) {
+    const existing = catalog.get(id);
+    if (existing && !existing.pages.includes(route)) existing.pages.push(route);
+    if (!existing) catalog.set(id, { id, source, kind, pages: [route] });
+  }
   const entry = content.entries[id];
-  const value = language === 'zh' ? entry?.zh || translations[source] || source : entry?.en || source;
+  const value = targetLanguage === 'zh' ? entry?.zh || translations[source] || source : entry?.en || source;
   return text.replace(/\S[\s\S]*\S|\S/, value);
 }
 export function getCatalog() { return [...catalog.values()]; }

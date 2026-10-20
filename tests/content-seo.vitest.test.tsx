@@ -79,7 +79,9 @@ expect(host.querySelectorAll(".articleSection").length, path).toBe(4);
       const revised = "2026-10-14";
       expect(host.querySelector(`time[datetime="${revised}"]`)).not.toBeNull();
       expect(host.querySelectorAll('.articleBody a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
-expect(host.querySelectorAll('.articleServiceNote a[href^="/services/"]')).toHaveLength(1);
+      const serviceLinks=host.querySelectorAll('.articleBody .contentNextStep a[href^="/services/"]');
+      expect(serviceLinks.length,path).toBeGreaterThanOrEqual(1);
+      expect(host.querySelectorAll('.articleBody .contentNextStep a[href^="/contact"]')).toHaveLength(1);
       expect(host.querySelector('.articleSidebar')).toBeNull();
       expect(host.querySelector(`.guideNextSteps a[href="${path}"]`), path).toBeNull();
     }
