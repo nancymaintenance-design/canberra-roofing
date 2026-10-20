@@ -67,8 +67,11 @@ describe('approved keyword-gap routes and content navigation', () => {
     for (const [path, sources] of incoming) expect(sources.size, path).toBeGreaterThanOrEqual(3);
   }, 20000);
 
-  it('connects material and moisture guidance to primary sources without tracking links', () => {
-    expect(renderPage('/news/roof-cleaning-methods-canberra').querySelector('.articleBody a[href^="https://colorbond.com/"]')).not.toBeNull();
-    expect(renderPage('/news/roof-leak-vs-condensation-canberra').querySelector('.articleBody a[href="https://www.yourhome.gov.au/passive-design/condensation"]')).not.toBeNull();
+  it('keeps material and moisture guidance connected to related reading after external references are removed', () => {
+    for (const path of ['/news/roof-cleaning-methods-canberra','/news/roof-leak-vs-condensation-canberra']) {
+      const host=renderPage(path);
+      expect(host.querySelector('.articleSources')).toBeNull();
+      expect(host.querySelectorAll('.articleRelated a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
+    }
   });
 });

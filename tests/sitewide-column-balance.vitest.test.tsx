@@ -81,7 +81,7 @@ it('keeps long articles, contact preparation and about FAQ out of empty side col
    await page.setViewportSize({width,height:844});
    for (const [path, first, next] of [
     ['/contact','.contactFeatureMedia','.contact form'],
-    ['/news/when-to-arrange-roof-inspection-canberra','.articleSources','.articleRelated'],
+    ['/news/when-to-arrange-roof-inspection-canberra','#findings','.articleRelated'],
     ['/privacy','.privacyBody','.privacySidebar'],
     ['/about','.aboutFaq > div:first-child','.aboutFaqList'],
    ]) {

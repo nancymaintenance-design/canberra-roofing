@@ -89,7 +89,7 @@ describe('keyword-map intent answers and confirmed operating hours', () => {
     ['roof-cleaning', ['moss', 'lichen', 'terracotta', 'concrete', 'monier', 'non-abrasive', 'rainwater tanks', 'solar', 'do not climb'], ['/news/roof-cleaning-methods-canberra', '/services/gutter-downpipe-maintenance']],
     ['gutter-downpipe-maintenance', ['gutter fall', 'roof runoff', 'outlets', 'sagging', 'indoor water', 'ladder'], ['/services/gutter-repairs', '/news/gutters-overflowing-heavy-rain-canberra']],
     ['gutter-repairs', ['joints', 'downpipe connections', 'completion checks', 'clearing', 'material', 'indoor drip'], ['/services/gutter-downpipe-maintenance', '/services/roof-leak-repairs']],
-    ['emergency-roof-repairs', ['9:00 am–9:00 pm', 'seven days a week', 'on-site quote', 'temporary measure', 'unsafe conditions', '000', '132 500'], ['tel:0405878406', 'https://esa.act.gov.au/be-emergency-ready/storms']],
+    ['emergency-roof-repairs', ['9:00 am–9:00 pm', 'seven days a week', 'on-site quote', 'temporary measure', 'unsafe conditions', '000', '132 500'], ['tel:0405878406', '/contact?service=Emergency%20%26%20Urgent%20Roof%20Repairs']],
     ['rental-property-roof-repairs', ['tenant', 'remote', 'interstate', 'two-storey', 'owners corporation', 'approval', 'before booking'], ['/news/roof-leak-information-for-tenants-canberra', '/services/roof-inspections']],
   ])('keeps the material, inspection and safety boundaries visible for %s', (slug, details, links) => {
     const host = page(`/services/${slug}`);

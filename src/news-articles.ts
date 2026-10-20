@@ -4,13 +4,6 @@ export type NewsArticle = {
   sections: { id: string; heading: string; paragraphs: string[] }[];
   related: string[]; sources: { title: string; url: string; note: string }[];
 };
-const storm = { title: 'ACT Emergency Services Agency: storms', url: 'https://www.esa.act.gov.au/be-emergency-ready/storms', note: 'Public storm preparation and emergency assistance guidance.' };
-const tiles = { title: 'Monier: roof maintenance and restoration FAQs', url: 'https://www.monier.com.au/faqs/', note: 'Manufacturer background on tiled roof maintenance; product advice applies to the relevant tile system.' };
-const pointing = { title: 'Monier: ridge and hip capping details', url: 'https://www.csrassetlibrary.com/celum/87064_yConnect_Document_250813-Ridge%20and%20Hip%20Capping%20Details.pdf', note: 'Manufacturer drawings identify mortar bedding and flexible pointing as separate parts of the ridge detail; these are not a repair specification for your roof.' };
-const pointingConditions = { title: 'Selleys: Point Works product guidance', url: 'https://www.selleys.com.au/products/glues-adhesives/construction-adhesives/point-works/', note: 'Product-specific contact, application and weather requirements; consult the current instructions for the material actually selected.' };
-const steel = { title: 'LYSAGHT: roofing and rainwater maintenance manual', url: 'https://cdn.dcs.bluescope.com.au/download/lysaght-maintenance-manual-roofing-and-walling', note: 'Manufacturer guidance on inspecting and maintaining metal roofing and drainage.' };
-const cleaning = { title: 'COLORBOND steel: care and maintenance', url: 'https://colorbond.com/faq/what-best-way-maintain-my-roof-wall-fence-made-colorbond-steel', note: 'Manufacturer guidance for gentle cleaning of coated steel, not a universal method for every roof.' };
-const condensation = { title: 'Your Home: condensation', url: 'https://www.yourhome.gov.au/passive-design/condensation', note: 'Australian Government guidance on moisture, cold surfaces and ventilation.' };
 const section = (id: string, heading: string, ...paragraphs: string[]) => ({ id, heading, paragraphs });
 const article = (value: Omit<NewsArticle, 'updated'>): NewsArticle => ({ ...value, updated: '2026-10-14' });
 
@@ -38,7 +31,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'The assessment should explain which details were checked and why they relate to the reported symptom. Depending on the roof, that may involve coverings, junctions, valleys, gutters and accessible internal evidence. Ask how the proposed repair addresses the suspected water route, and which parts of that route remain concealed or unconfirmed.',
         'A dry-weather visit can still reveal defects, but the absence of a drip during the appointment is not proof that the intermittent problem has disappeared. Share earlier observations and any previous repair records. If further investigation is proposed, clarify its purpose and scope before treating it as an additional repair.',
         'After work, keep the repair description with your original notes. If the symptom returns, record the weather and whether it is in the same location. This makes the follow-up specific: what changed, what was repaired and what is still happening. Repeated patches without that connection can leave the underlying question unanswered.'),
-    ], related: ['gutters-overflowing-heavy-rain-canberra', 'roof-leak-vs-condensation-canberra', 'when-to-arrange-roof-inspection-canberra', 'chimney-flashing-water-entry-signs'], sources: [storm, steel],
+    ], related: ['gutters-overflowing-heavy-rain-canberra', 'roof-leak-vs-condensation-canberra', 'when-to-arrange-roof-inspection-canberra', 'chimney-flashing-water-entry-signs'], sources: [],
   }),
   article({
     slug: 'cracked-slipped-missing-roof-tiles-canberra', title: 'Can one or two damaged roof tiles be replaced?',
@@ -63,7 +56,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'Do not walk on the roof to count damaged tiles or test whether one is loose. An apparently small job can still require planned access and work at height. The cost of those arrangements is separate from the price of the tile itself, which helps explain why a two-tile job cannot be priced from material cost alone.',
         'Before approving work, clarify how additional defects discovered during access will be communicated. A sensible record separates the agreed repair from anything awaiting a further decision. If the concern followed a storm, include the date and what changed; the timing is useful context but is not proof of the cause of every defect.',
         'Keep the location, replacement information and completion photographs where available. If a leak prompted the repair, continue to note any new moisture after rain and share it with the person responsible for the assessment. That follow-up helps distinguish the repaired tile issue from a separate water-entry path that may need investigation.'),
-    ], related: ['rebedding-vs-repointing-canberra-roofs', 'roof-repair-vs-restoration-vs-replacement-canberra', 'after-rain-roof-leak-check-canberra'], sources: [tiles, storm],
+    ], related: ['rebedding-vs-repointing-canberra-roofs', 'roof-repair-vs-restoration-vs-replacement-canberra', 'after-rain-roof-leak-check-canberra'], sources: [],
   }),
   article({
     slug: 'chimney-flashing-water-entry-signs', title: 'What can cause water stains near a chimney?',
@@ -88,7 +81,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'A roof junction repair does not automatically include chimney masonry, internal flue work or other chimney components. If the assessment points beyond the roofing detail, ask which further specialist assessment is needed. Clear boundaries help prevent a roof repair being approved on the assumption that it resolves every possible source of moisture around the chimney.',
         'Before work, identify the roof area, the component to be repaired and any exclusions in the written scope. Ask what photographs or written findings will be provided, especially if you cannot attend. These records help explain both the completed work and any separate issue that still needs a decision.',
         'Afterwards, use the original indoor photographs as a reference if the mark changes again. An old stain remaining visible is different from fresh dampness spreading after rain. Report the timing and change rather than trying to judge the repair from the stain colour alone, and keep away from any unsafe ceiling or electrical area.'),
-    ], related: ['after-rain-roof-leak-check-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-repair-cost-canberra'], sources: [steel],
+    ], related: ['after-rain-roof-leak-check-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-repair-cost-canberra'], sources: [],
   }),
   article({
     slug: 'rebedding-vs-repointing-canberra-roofs', title: 'Does cracked ridge mortar need rebedding or repointing?',
@@ -113,7 +106,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'Before approving the work, ask for three things in ordinary language: what was found, which ridge areas need attention and what treatment is proposed for each. If some areas need rebedding and others only repointing, the description should preserve that distinction. A single broad label can otherwise hide a useful difference in scope.',
         'Ask how broken adjacent tiles or other defects found during access will be handled. They may be connected to the work area, but they are not automatically included because the quote mentions ridges. Clarifying the approval process for additional work helps keep a targeted repair from becoming an undefined programme of roof maintenance.',
         'Completion photographs and a written record can show the locations worked on and any follow-up recommended. Keep them with the original observations. The purpose is to understand what has changed and what remains, rather than to judge concealed bedding solely from the appearance of the new pointing.'),
-    ], related: ['roof-repointing-cost-canberra', 'cracked-slipped-missing-roof-tiles-canberra', 'roof-repair-vs-restoration-vs-replacement-canberra'], sources: [pointing, pointingConditions, tiles],
+    ], related: ['roof-repointing-cost-canberra', 'cracked-slipped-missing-roof-tiles-canberra', 'roof-repair-vs-restoration-vs-replacement-canberra'], sources: [],
   }),
   article({
     slug: 'when-to-arrange-roof-inspection-canberra', title: 'What should a roof inspection check after a leak or storm?',
@@ -138,7 +131,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'Bring together the room location, weather history, safe photographs and records of earlier work. You do not need to diagnose the problem before arranging the visit. A concise account of what changed gives the inspector a starting point and makes it easier to check whether the eventual recommendation answers your original concern.',
         'Inspection and repair are not automatically the same appointment. Materials, weather, the agreed scope and authorisation can affect whether work is possible during the visit. Clarify this before booking, particularly if someone else is providing access. An inspection appointment should not be mistaken for approval of an undefined repair.',
         'When the quotation arrives, compare it with the findings. Confirm the named areas, proposed materials, access arrangements, exclusions and any further investigation. Keep the inspection record even if repairs happen later; it provides a dated baseline for understanding new symptoms or discussing a change in the scope.'),
-    ], related: ['after-rain-roof-leak-check-canberra', 'roof-repair-cost-canberra', 'roof-repair-vs-restoration-vs-replacement-canberra'], sources: [steel, storm],
+    ], related: ['after-rain-roof-leak-check-canberra', 'roof-repair-cost-canberra', 'roof-repair-vs-restoration-vs-replacement-canberra'], sources: [],
   }),
   article({
     slug: 'roof-repair-cost-canberra', title: 'Why do roof repair quotes differ?',
@@ -163,7 +156,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'A simple comparison can use four columns on a page: roof area, proposed work, exclusions and unresolved questions. Copy the wording from each quotation before asking for clarification. That makes it easier to see whether the difference is a material choice, a larger work area or a different understanding of the problem.',
         'Ask what completion information will be supplied and what follow-up is appropriate if the original symptom returns. This is particularly useful for an intermittent leak that may not occur on the day of repair. Photographs and a clear record of work help make a later conversation about evidence rather than recollection.',
         'The aim is not to turn every small repair into a complex tender. It is to remove the few uncertainties that could change your decision. Once the scope is clear, you can weigh the total against the work proposed, the explanation given and the practical arrangements for your property.'),
-    ], related: ['roof-repointing-cost-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-repair-vs-restoration-vs-replacement-canberra'], sources: [pointing, pointingConditions],
+    ], related: ['roof-repointing-cost-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-repair-vs-restoration-vs-replacement-canberra'], sources: [],
   }),
   article({
     slug: 'roof-repointing-cost-canberra', title: 'What should a roof repointing quote include?',
@@ -188,7 +181,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'Broken field tiles, valley defects and flashing work are not automatically included in a repointing quote. If the inspection identifies them, ask whether they are separate items or part of the proposed scope. If a leak prompted the enquiry, the findings should explain why ridge work is relevant to that leak.',
         'Clarify how additional defects discovered during preparation will be documented and approved. Ask for exclusions and any provisional work to be stated plainly, along with tax treatment and the completion information to be provided. These details let you compare the actual agreement rather than a verbal summary.',
         'Keep the quote and any completion photographs with your roof records. They should help you identify which lines were treated and where bedding was renewed. If a later concern arises elsewhere, that record prevents a local repair being remembered as whole-roof work and makes the next assessment more precise.'),
-    ], related: ['rebedding-vs-repointing-canberra-roofs', 'roof-repair-cost-canberra', 'when-to-arrange-roof-inspection-canberra'], sources: [pointing, pointingConditions],
+    ], related: ['rebedding-vs-repointing-canberra-roofs', 'roof-repair-cost-canberra', 'when-to-arrange-roof-inspection-canberra'], sources: [],
   }),
   article({
     slug: 'roof-cleaning-methods-canberra', title: 'How should moss and dirt be cleaned from a roof?',
@@ -213,7 +206,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'A cleaning result should be judged against an agreed purpose. Removing loose build-up, improving appearance and preparing a surface for further work are different goals. Ask what changes are reasonably expected and whether some staining or weathered colour may remain. Avoid treating a uniform colour as proof that every roof component is sound.',
         'Future maintenance should respond to the roof and its surroundings. Note where build-up returns and whether overhanging vegetation or sheltered areas are involved. That record can guide a later review without assuming that every roof needs the same fixed cleaning interval or repeated treatment.',
         'Keep observations to safe ground-level positions. Roof surfaces and access arrangements require professional planning, especially when water or growth is present. If the roof also leaks or a gutter overflows, retain those as separate concerns until the findings explain whether the cleaning work addresses them.'),
-    ], related: ['gutters-overflowing-heavy-rain-canberra', 'roof-repair-vs-restoration-vs-replacement-canberra', 'cracked-slipped-missing-roof-tiles-canberra'], sources: [cleaning, tiles, steel],
+    ], related: ['gutters-overflowing-heavy-rain-canberra', 'roof-repair-vs-restoration-vs-replacement-canberra', 'cracked-slipped-missing-roof-tiles-canberra'], sources: [],
   }),
   article({
     slug: 'gutters-overflowing-heavy-rain-canberra', title: 'Why do gutters overflow in heavy rain?',
@@ -238,7 +231,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'After maintenance or repair, retain the description of what was completed and observe the area safely when rain returns. Note whether the overflow has stopped, moved or reduced. This gives the person assessing the system a specific comparison with the earlier pattern.',
         'Do not climb up to run water through the gutter yourself or attempt to clear a downpipe from an unsafe position. If water is entering the building or the roof edge appears damaged, describe the immediate concern when seeking assistance. Safety takes priority over collecting a perfect video of the overflow.',
         'Longer-term maintenance should account for the way debris accumulates at your property. Keep a record of recurring trouble spots rather than relying only on a calendar reminder. A clean gutter is useful, but the broader aim is a functioning drainage route with known defects addressed and unresolved questions clearly identified.'),
-    ], related: ['after-rain-roof-leak-check-canberra', 'roof-cleaning-methods-canberra', 'roof-repair-cost-canberra'], sources: [steel, storm],
+    ], related: ['after-rain-roof-leak-check-canberra', 'roof-cleaning-methods-canberra', 'roof-repair-cost-canberra'], sources: [],
   }),
   article({
     slug: 'roof-leak-vs-condensation-canberra', title: 'Why is the ceiling damp when it has not rained?',
@@ -263,7 +256,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'Repainting a stain changes its appearance, but it does not establish that the moisture source has been addressed. Discuss the cause and any affected materials before arranging a cosmetic finish. Keep the earlier record so that new dampness can be distinguished from an old mark that remains visible.',
         'Do not touch water near electrical fittings or remain beneath a ceiling that appears unsafe. Move away and seek appropriate assistance. The absence of rain does not make a wet ceiling harmless, and you do not need to establish whether the roof is responsible before describing an immediate safety concern.',
         'After any agreed work, continue the same short record of weather, room use and moisture location. A change in the pattern can help assess the result or focus further investigation. The goal is to explain and control the source, rather than repeatedly treating the visible stain as the whole problem.'),
-    ], related: ['after-rain-roof-leak-check-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-leak-information-for-tenants-canberra'], sources: [condensation],
+    ], related: ['after-rain-roof-leak-check-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-leak-information-for-tenants-canberra'], sources: [],
   }),
   article({
     slug: 'roof-repair-vs-restoration-vs-replacement-canberra', title: 'Can the roof be repaired, or does it need wider work?',
@@ -288,7 +281,7 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'Request a plain-language account of what each option fixes and what remains. Keep immediate concerns, planned maintenance and appearance preferences distinct in your notes. That helps you see whether a broader proposal is addressing additional defects or adding optional work that serves a different goal.',
         'If work might be staged, ask how the stages interact and whether an early repair would be disturbed by later work. The answer is property-specific. A sequence can be useful when it is planned around the actual roof, but it should not be presented as suitable without considering access and the retained components.',
         'The final decision should be supported by named locations, photographs where available, an understandable scope and stated exclusions. If the evidence for a major change remains unclear, resolve those questions before approval. You are comparing ways of addressing a known condition, not choosing a label from a price list.'),
-    ], related: ['cracked-slipped-missing-roof-tiles-canberra', 'roof-repair-cost-canberra', 'roof-cleaning-methods-canberra'], sources: [tiles],
+    ], related: ['cracked-slipped-missing-roof-tiles-canberra', 'roof-repair-cost-canberra', 'roof-cleaning-methods-canberra'], sources: [],
   }),
   article({
     slug: 'roof-leak-information-for-tenants-canberra', title: 'What should you report when a rental property has a roof leak?',
@@ -313,6 +306,6 @@ export const NEWS_ARTICLES: NewsArticle[] = [
         'The tenant’s observation, the inspector’s finding and the owner’s repair decision are different pieces of information. Keeping them together prevents a suspected cause in the first message from becoming an assumed diagnosis. Label the affected area and retain the dates so that later updates can be compared with the original report.',
         'The repair proposal should state what is included, any exclusions and what remains uncertain. If further work is identified, clarify who will review and approve the revised scope. A completion record can then show what was actually carried out, rather than leaving everyone to infer it from the fact that a visit occurred.',
         'If moisture appears again, report the location, timing and weather using the same approach as before. An old mark remaining visible is different from new water entering. Consistent observations give the people coordinating the follow-up a practical basis for deciding what needs reassessment, even when they cannot attend the property together.'),
-    ], related: ['after-rain-roof-leak-check-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-leak-vs-condensation-canberra'], sources: [storm],
+    ], related: ['after-rain-roof-leak-check-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-leak-vs-condensation-canberra'], sources: [],
   }),
 ];

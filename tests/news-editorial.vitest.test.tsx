@@ -22,19 +22,13 @@ it('gives the News hero and all twelve article covers distinct image content', (
   const hashes = sources.map(src => createHash('sha256').update(readFileSync(new URL('../public' + src, import.meta.url))).digest('hex'));
   expect(new Set(hashes).size).toBe(13);
 });
-it('uses the verified current manufacturer pointing references instead of retired media links', () => {
-  const product = 'https://www.selleys.com.au/products/glues-adhesives/construction-adhesives/point-works/';
-  const detail = 'https://www.csrassetlibrary.com/celum/87064_yConnect_Document_250813-Ridge%20and%20Hip%20Capping%20Details.pdf';
+it('retains pointing articles and related reading without retired external reference panels', () => {
   for (const slug of ['rebedding-vs-repointing-canberra-roofs', 'roof-repair-cost-canberra', 'roof-repointing-cost-canberra']) {
     const host = page('/news/' + slug);
-    expect(host.querySelector(`.articleSources a[href="${product}"]`)).not.toBeNull();
-    expect(host.querySelector(`.articleSources a[href="${detail}"]`)).not.toBeNull();
+    expect(host.querySelector('.articleSources')).toBeNull();
+    expect(host.querySelectorAll('.articleRelated a').length).toBeGreaterThanOrEqual(2);
   }
-  // Deliberately offline: live GET status and source excerpts are recorded in the editorial report.
-  for (const article of NEWS_ARTICLES) for (const source of article.sources) {
-    expect(source.url).not.toMatch(/monier\.com\.au\/(?:-|~)\/media\//i);
-    expect(source.url).not.toContain('flexible-pointing-technical-data-sheet-v05fp');
-  }
+  for (const article of NEWS_ARTICLES) expect(article.sources).toHaveLength(0);
 });
 it('presents twelve illustrated reading choices without service CTAs', () => {
   const host = page('/news');
@@ -57,7 +51,7 @@ it.each(Object.keys(publishedRoutes).filter(p => p.startsWith('/news/')))('makes
   expect(host.querySelector('.articleSidebar')).toBeNull();
   expect(host.querySelectorAll('.articleRelated a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
   expect(host.querySelector(`.articleRelated a[href="${path}"]`)).toBeNull();
-  expect(host.querySelectorAll('.articleSources a[href^="https://"]').length).toBeGreaterThanOrEqual(1);
+  expect(host.querySelector('.articleSources')).toBeNull();
   const expectedServices=path==='/news/roof-repair-cost-canberra'?['/services/roof-leak-repairs','/services/roof-inspections']:path==='/news/roof-repair-vs-restoration-vs-replacement-canberra'?['/services/roof-inspections','/services/roof-renovation','/services/reroof-replacement']:[NEWS_ARTICLES.find(a=>'/news/'+a.slug===path)!.servicePath];
   expect([...host.querySelectorAll('.contentNextStep a[href^="/services/"]')].map(a=>a.getAttribute('href'))).toEqual(expectedServices);
   expect(host.querySelectorAll('.contentNextStep a[href^="/contact"]')).toHaveLength(1);

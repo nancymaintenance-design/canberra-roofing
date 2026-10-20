@@ -1658,7 +1658,7 @@ function ServiceView({ service }: { service: Service }) {
       <p>{service.assessment}</p>
       <p>{service.pathways}</p>
       <ServiceDepth slug={service.slug} headingLevel={3} />
-      {service.slug === "emergency-roof-repairs" && <p><a href="https://esa.act.gov.au/be-emergency-ready/storms" target="_blank" rel="noopener noreferrer">ACT Emergency Services Agency: storm emergency assistance</a>. For an immediate threat to life call 000; for storm or flood emergency assistance call ACTSES on 132 500.</p>}
+      {service.slug === "emergency-roof-repairs" && <p>For an immediate threat to life call 000; for storm or flood emergency assistance call ACTSES on 132 500.</p>}
       <ServiceResources servicePath={`/services/${service.slug}`} />
       </ServiceTheme>
       <ServiceTheme index={2} serviceSlug={service.slug}>
@@ -1865,7 +1865,6 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
           <ServiceNextStep pagePath={`/news/${article.slug}`} />
           {article.sections.map(section => <section className="articleSection" id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>)}
           {["cracked-slipped-missing-roof-tiles-canberra", "after-rain-roof-leak-check-canberra"].includes(article.slug) ? <TileCasePhotos context={article.slug} /> : null}
-          {article.sources.length > 0 && <section className="articleSources" aria-label="Sources and scope"><h2>Sources and further detail</h2><p>Manufacturer guidance applies to the relevant product and system. These references support the technical background; the practical questions in this article are general editorial guidance.</p><ul>{article.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a><span> — {source.note}</span></li>)}</ul></section>}
           {related.length > 0 && <section className="articleRelated"><h2>Continue reading</h2><ul>{related.map(item => <li key={item.slug}><a href={`/news/${item.slug}`}>{item.title}</a><p>{item.summary}</p></li>)}</ul></section>}
           <a className="articleBack" href="/news">← All roof care articles</a>
         </div>
