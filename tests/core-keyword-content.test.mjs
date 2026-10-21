@@ -62,9 +62,9 @@ test("every priority service page gives substantial, question-led guidance", asy
       "leak.recurring-after-repair",
       [
         /returning leak.*material, junction, connected details and water-entry path reassessed/i,
-        /Record what was done, when.*room.*rain conditions.*same or different/i,
-        /temporary measure.*different scope from a lasting component repair/i,
-        /history and current condition.*new repair plan and written quote/i,
+        /Tell us what was done, when.*room.*rain conditions.*same or different/i,
+        /distinguish temporary measures from component repairs/i,
+        /review the earlier work and current roof condition.*new repair plan and written quote/i,
       ],
     ],
     [
@@ -171,11 +171,11 @@ test("metal and drainage pages lead with their service value instead of a limita
   for (const [pathname, phrase] of [
     [
       "/services/metal-roof-repairs",
-      "metal and Colorbond roof repairs locally",
+      "We repair metal and Colorbond roofs",
     ],
     [
       "/services/gutter-downpipe-maintenance",
-      "provides gutter and downpipe cleaning and maintenance locally",
+      "We clean and maintain gutters and downpipes",
     ],
   ]) {
     const dom = await page(pathname);

@@ -85,7 +85,7 @@ describe('keyword-map intent answers and confirmed operating hours', () => {
     ['rebedding-repointing', ['support', 'exposed', 'stability', 'hip', 'per-metre', 'do not touch'], ['/news/roof-repointing-cost-canberra', '/news/rebedding-vs-repointing-canberra-roofs']],
     ['roof-inspections', ['visual', 'non-invasive', 'roof-space', 'two-storey', 'engineering', 'valuation', 'certification'], ['/news/roof-repair-cost-canberra', '/services/rental-property-roof-repairs']],
     ['metal-roof-repairs', ['sheets', 'laps', 'fasteners', 'penetrations', 'corrosion', 'garage', 'do not climb'], ['/news/roof-cleaning-methods-canberra', '/services/roof-inspections']],
-    ['roof-renovation', ['preparation', 'finishes', 'replacement', 'unresolved leak', 'not a renovation result'], ['/news/roof-repair-vs-restoration-vs-replacement-canberra', '/case-studies/tile-roof-repair-canberra']],
+    ['roof-renovation', ['preparation', 'finishes', 'replacement', 'unresolved leak', 'local tile repair with the surrounding roof retained'], ['/news/roof-repair-vs-restoration-vs-replacement-canberra', '/case-studies/tile-roof-repair-canberra']],
     ['roof-cleaning', ['moss', 'lichen', 'terracotta', 'concrete', 'monier', 'non-abrasive', 'rainwater tanks', 'solar', 'do not climb'], ['/news/roof-cleaning-methods-canberra', '/services/gutter-downpipe-maintenance']],
     ['gutter-downpipe-maintenance', ['gutter fall', 'roof runoff', 'outlets', 'sagging', 'indoor water', 'ladder'], ['/services/gutter-repairs', '/news/gutters-overflowing-heavy-rain-canberra']],
     ['gutter-repairs', ['joints', 'downpipe connections', 'completion checks', 'clearing', 'material', 'indoor drip'], ['/services/gutter-downpipe-maintenance', '/services/roof-leak-repairs']],

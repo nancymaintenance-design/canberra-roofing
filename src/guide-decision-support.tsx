@@ -7,7 +7,7 @@ const comparisons: Record<string, { caption: string; headers: string[]; rows: st
     rows: [
       ['Repair', 'Address an identified defect in a particular roof area or component.', 'A damaged tile, flashing junction or other local concern.', 'The cause, affected components and any connected work.'],
       ['Restoration / renovation', 'A broader agreed programme of repairs, preparation and suitable finish work.', 'Several areas need attention or you want to discuss overall roof condition.', 'Which repairs are needed before cleaning or finish work; material suitability and exclusions.'],
-      ['Replacement', 'Remove and replace the roof covering within a separately defined scope.', 'Ask about this option when an assessment raises concerns about the suitability of repair.', 'Whether replacement is required, who can provide it and the full scope. An Ellis repair enquiry does not confirm a replacement service.'],
+      ['Replacement', 'Remove and replace the roof covering within a separately defined scope.', 'Ask about this option when an assessment raises concerns about the suitability of repair.', 'We provide roof replacement in Canberra. The assessment and written quote identify the roof areas, materials, connected work and exclusions for your property.'],
     ],
   },
   'rebedding-vs-repointing-canberra-roofs': {

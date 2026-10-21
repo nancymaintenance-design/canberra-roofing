@@ -58,7 +58,7 @@ export function ContactForm({ defaultArea = '', defaultService = '', submitEnqui
       form.reset();
       setPhoto(undefined);
       setErrors({});
-      setStatus('Enquiry sent successfully.');
+      setStatus('Enquiry sent successfully. We will confirm your appointment separately.');
       try {
         onSuccessfulEnquiry(analyticsFormName);
       } catch {

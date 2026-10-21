@@ -73,6 +73,6 @@ describe('successful enquiry analytics', () => {
       fireEvent.click(screen.getByRole('button', { name: 'Request a roof assessment' }));
     });
 
-    expect(await screen.findByText('Enquiry sent successfully.')).toBeTruthy();
+    expect(await screen.findByText('Enquiry sent successfully. We will confirm your appointment separately.')).toBeTruthy();
   });
 });

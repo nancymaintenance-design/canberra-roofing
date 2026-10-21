@@ -39,9 +39,10 @@ it("uses confident, clear service copy without internal SEO explanations", () =>
   expect(cleaningHtml).toContain("Any repairs or additional drainage work are identified separately for approval before work begins.");
   expect(cleaningHtml).not.toContain("This page does not promise that cleaning");
   expect(metalHtml).not.toContain("used here to describe a common roof-material search term");
-  expect(aboutHtml).toContain("They do not identify current Ellis employees or document a customer job.");
+  expect(aboutHtml).toContain("These illustrative photographs show roof-visit preparation and equipment.");
+  expect(aboutHtml).not.toMatch(/our (?:employees|team members) (?:pictured|shown)/i);
   expect(faqHtml).not.toMatch(/30 minutes|98%|1,000/);
-  expect(faqHtml).toContain("we confirm the appointment separately");
+  expect(faqHtml).toMatch(/we confirm the appointment separately/i);
   expect(faqHtml).not.toContain("No response time is promised here.");
 });
 

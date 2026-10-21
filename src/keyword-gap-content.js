@@ -209,14 +209,14 @@ export const GAP_GUIDES = [
 
 export const GUTTER_REPAIR_SERVICE = {
   slug: 'gutter-repairs', title: 'Gutter Repairs',
-  direct: 'Ellis Services Group provides local gutter repairs. We assess leaking joints, damaged sections and downpipe connections, then explain the component repairs, access and written quote.',
+  direct: 'We repair leaking gutter joints, damaged gutter sections and downpipe connections. We assess the affected components, then explain the repairs, access arrangements and written quote.',
   symptoms: 'Water appearing at a joint, visible sagging, a separated connection or damage along a gutter run are reasons to arrange an assessment. Note the roof edge, side of the property and rain conditions. If there is also a ceiling stain or indoor drip, include that separately so the connected roof area can be considered.',
   causes: 'We check the affected gutter run, joints, outlets and connected downpipes rather than assume every overflow needs a replacement. Debris and component condition are assessed together. Previous clearing or patching is useful background, but the current condition determines the proposed repair.',
-  assessment: 'Ellis checks the relevant accessible sections and connections, identifies damaged components and discusses suitable materials and access. We explain any clearing needed alongside the repair, and identify other roof or drainage concerns that require a separate scope.',
+  assessment: 'We check the accessible gutter sections and connections, identify damaged components and discuss suitable materials and access. We explain any clearing needed alongside the repair and identify other roof or drainage work that needs a separate scope.',
   pathways: 'The repair quote names the affected section, joints or connected components and the work required. Ask which areas are included, how access will be arranged and what completion checks belong to the job. Any additional work is discussed and agreed before proceeding.',
   scope: 'Roof height, the affected length, connection details, material condition, safe access and any clearing required shape the scope. A component repair is different from cleaning a debris-filled gutter or discussing a wider drainage replacement. We explain the recommended work and price after assessment.',
   faqQ: 'Do overflowing gutters always need repairs?',
-  faqA: 'No. Debris, outlets, downpipes and the gutter condition all need consideration. Ellis distinguishes the clearing required from any damaged component that needs repair.',
+  faqA: 'No. We check debris, outlets, downpipes and gutter condition together, then distinguish the clearing required from damaged components that need repair.',
   faqExtras: [{ q: 'Can a leaking gutter joint be assessed without replacing the whole run?', a: 'We assess the joint and surrounding condition, then explain whether a local component repair suits the affected area. The quote identifies the work recommended rather than assuming every gutter needs replacement.' }],
   next: 'Send your suburb, the affected gutter edge or downpipe, rain timing and any known previous work. Include safe ground-level photographs if available; a written description is enough to arrange the assessment.',
   related: [
@@ -228,7 +228,7 @@ export const GUTTER_REPAIR_SERVICE = {
 export const SERVICE_DEPTH = {
   'roof-leak-repairs': [
     section('Heavy-rain and recurring leaks: connect the pattern to the investigation', ['Keep your rain observations and earlier repair records together for the visit. The questions below explain heavy-rain patterns, wind direction, ceiling-stain location and recurring leaks separately, so you can describe the evidence relevant to your property.'], [], [link('/news/roof-leak-vs-condensation-canberra', 'Roof leak or condensation?'), link('/news/gutters-overflowing-heavy-rain-canberra', 'Gutter overflow and connected water signs')]),
-    section('What affects the cost of a roof leak repair?', ['We identify the components, adjoining defects and materials included in the quote so you can compare the same work. Ask which further checks are included when the water path is not yet established.'], [], [link('/news/roof-repair-cost-canberra', 'Roof repair cost factors and quote comparisons'), link('/services/gutter-repairs', 'Gutter joint and component repairs')]),
+    section('What affects the cost of a roof leak repair?', ['We identify the components, adjoining defects and materials included in the quote so you can compare the same work. If the water path is not yet established, we explain the further checks proposed and agree their scope before proceeding.'], [], [link('/news/roof-repair-cost-canberra', 'Roof repair cost factors and quote comparisons'), link('/services/gutter-repairs', 'Gutter joint and component repairs')]),
   ],
   'tile-roof-repairs': [
     section('Individual tiles, neighbouring details and material matching', ['Use the local-replacement answer below to compare a few damaged tiles with wider work. Keep the affected area and any adjoining repair items in the same quote so the available material match can be reviewed with the scope.'], [], [link('/news/roof-repair-vs-restoration-vs-replacement-canberra', 'Local repair versus wider roof work')]),

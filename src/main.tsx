@@ -151,7 +151,7 @@ const serviceSeed: Service[] = [
     slug: "tile-roof-repairs",
     title: "Tile Roof Repairs",
     direct:
-      "Ellis Services Group inspects and repairs cracked, broken, slipped and missing roof tiles locally. We check the surrounding ridge, valley and flashing details, then confirm suitable replacement materials, the repair scope and quote.",
+      "We repair tiled roofs with cracked, broken, slipped or missing tiles. We check the surrounding ridge, valley and flashing details, then explain suitable replacement materials, the repair scope and quote.",
     symptoms:
       "From a safe ground-level viewpoint, note tiles that look broken, cracked, slipped, missing, displaced or different in colour from nearby tiles. Describe the approximate position: near a ridge line, valley, chimney, roof edge or visible penetration. If the change followed a storm or wind, record when it was first noticed rather than walking on the roof to inspect it closely.",
     causes:
@@ -184,7 +184,7 @@ const serviceSeed: Service[] = [
     slug: "chimney-flashing-repairs",
     title: "Chimney Flashing Repairs",
     direct:
-      "Contact Ellis Services Group for chimney flashing repairs locally. We inspect the roof-to-chimney junction, adjoining roof materials and the reported water path, then explain the repair plan and quote.",
+      "We repair chimney flashing and connected roof junctions. We inspect the chimney-to-roof junction, adjoining materials and reported water path, then explain the repair plan and quote.",
     symptoms:
       "Useful observations include water marks on a ceiling or wall near the chimney breast, dampness after wind-driven rain, cracked sealant, old temporary patches, loose adjacent tiles, weathered mortar or visible gaps around the junction. Record whether the concern changes after particular weather and whether the stain is new, recurring or growing.",
     causes:
@@ -217,7 +217,7 @@ const serviceSeed: Service[] = [
     slug: "rebedding-repointing",
     title: "Rebedding & Repointing",
     direct:
-      "Ellis Services Group assesses ridge and hip capping locally. We check cap stability and the condition of bedding, pointing and adjoining tiles, then explain the ridge sections requiring repair and the written quote.",
+      "We repair ridge and hip capping, including rebedding and repointing where needed. We check cap stability, bedding, pointing and adjoining tiles, then explain the roof lines requiring work and the written quote.",
     symptoms:
       "From the ground, you may notice cracking along a ridge line, loose-looking ridge caps, gaps in visible pointing, weathered material or changes around hip lines. Note whether the concern appears isolated or extends across several roof lines, and whether there is also a ceiling stain or water-entry sign inside the home.",
     causes:
@@ -237,7 +237,7 @@ const serviceSeed: Service[] = [
       },
       {
         q: "Can a loose ridge cap be assessed from the ground?",
-        a: "Keep observations at ground level. Ellis checks cap stability and bedding on site, then confirms the ridge repair plan and quote. Do not touch or walk on ridge caps.",
+        a: "Keep observations at ground level. We check cap stability and bedding on site, then explain the ridge repair plan and quote. Do not touch or walk on ridge caps.",
       },
       {
         q: "Should I use roof leak repairs as well?",
@@ -283,7 +283,7 @@ const serviceSeed: Service[] = [
     slug: "metal-roof-repairs",
     title: "Metal & Colorbond Roof Repairs",
     direct:
-      "Contact Ellis Services Group for metal and Colorbond roof repairs locally. We inspect sheets, fixings, flashing and junctions on site, trace the water-entry cause and explain the repair scope and quote.",
+      "We repair metal and Colorbond roofs. We inspect sheets, fixings, flashing and junctions on site, investigate the water-entry path and explain the repair scope and quote.",
     symptoms:
       "From a safe ground-level position, note any lifted or displaced sheet, loose-looking screw, visible rust, sealant change, roof penetration, ridge or wall flashing junction, valley or gutter area. Record whether you have seen a drip, ceiling mark or damp patch inside, and whether it followed steady rain, wind-driven rain or a storm. Do not climb onto a metal roof to take close-up photos.",
     causes:
@@ -319,7 +319,7 @@ const serviceSeed: Service[] = [
   {
     slug: "roof-renovation",
     title: "Roof Renovation",
-    direct: "Ellis Services Group assesses roofs for renovation, repairs and maintenance. We inspect the roof covering, ridge, flashing and drainage, then explain the work that suits the roof condition and your goals.",
+    direct: "We provide roof renovation, repairs and maintenance. We inspect the roof covering, ridge, flashing and drainage, then explain the repairs and finish work suited to the roof condition and your goals.",
     symptoms: "Useful context can include widespread visible weathering, repeated maintenance concerns, an older roof finish, ongoing water-entry signs or a desire to refresh a roof surface. Record the material you can identify from ground level, the roof areas that concern you and any known previous work.",
     causes: "A renovation decision can involve the roof covering, ridge and flashing details, drainage, access, material age and the condition that can be safely seen. We inspect the existing materials and connected roof details on site, identify any further access needed and explain suitable repairs and finishes.",
     assessment: "We inspect the roof materials, layout, ridge, flashing and drainage on site, with safe access arranged for the property. We discuss the renovation goal and recommend the repair, maintenance and finish work supported by the condition found.",
@@ -355,7 +355,7 @@ const serviceSeed: Service[] = [
   {
     slug: "gutter-downpipe-maintenance",
     title: "Gutter & Downpipe Cleaning and Maintenance",
-    direct: "Ellis Services Group provides gutter and downpipe cleaning and maintenance locally. We inspect the run, outlets and downpipes on site, locate blockages or damage and quote the clearing, repair or replacement work needed.",
+    direct: "We clean and maintain gutters and downpipes. We inspect the gutter runs, outlets and downpipes on site, locate blockages or damage and quote the clearing, repair or component replacement work needed.",
     symptoms: "Note leaf build-up, overflow during rain, visible sagging, water running near a wall, a blocked-looking outlet or a downpipe concern. Record the weather context and the general roof edge or side of the property without using an unsafe ladder or roof access.",
     causes: "Drainage performance can be affected by debris, roof runoff, gutter fall, joints, outlets, downpipes and conditions that are not visible from the ground. We check the gutter run, outlets and downpipes on site to locate the blockage or damaged component and plan the work.",
     assessment: "We inspect the gutter run, joints, outlets and connected downpipes on site, check the reported overflow route and plan safe access. We identify the blockage or damaged component and explain the cleaning or maintenance work required.",
@@ -398,7 +398,7 @@ const serviceGalleries: Record<
 > = {
   "reroof-replacement": {
     title: "Roof materials and connections to assess before replacement",
-    intro: "These existing site images illustrate roof materials and connected details. They are not a documented whole-roof replacement project or evidence of a replacement outcome.",
+    intro: "Illustrative roof photographs show the materials and junctions we assess when planning replacement. They are service examples, rather than a completed whole-roof replacement case study.",
     images: [
       {src:"/assets/services/tile-roof-site-overview.png",alt:"Tiled roof and adjoining chimney"},
       {src:"/assets/services/metal-roof-completed-roof.png",alt:"Metal roof panels and roof junctions"},
@@ -407,7 +407,7 @@ const serviceGalleries: Record<
   "roof-leak-repairs": {
     title: "Roof-leak investigation and repair details.",
     intro:
-      "Context images show visible signs, work stages and completed roof details. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "These illustrative photographs show roof details relevant to a leak investigation. We inspect your roof to identify the affected components and repair scope.",
     images: [
       {
         src: "/assets/services/roof-leak-interior-water-mark.png",
@@ -434,7 +434,7 @@ const serviceGalleries: Record<
   "tile-roof-repairs": {
     title: "What tile roof repair concerns can look like.",
     intro:
-      "Context images show tile condition, access and repair activity. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "These illustrative photographs show tiled-roof details and repair activity. We check the tile profile and adjoining roof before recommending replacement materials.",
     images: [
       {
         src: "/assets/services/tile-roof-site-overview.png",
@@ -461,7 +461,7 @@ const serviceGalleries: Record<
   "rebedding-repointing": {
     title: "What ridge capping work can involve.",
     intro:
-      "Context images show ridge-cap condition and repair stages. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "These illustrative photographs show ridge-cap details and repair activity. We check the bedding, pointing and cap stability to plan your ridge repairs.",
     images: [
       {
         src: "/assets/services/ridge-capping-condition.png",
@@ -488,7 +488,7 @@ const serviceGalleries: Record<
   "chimney-flashing-repairs": {
     title: "What chimney flashing work can involve.",
     intro:
-      "Context images show chimney-to-roof junction details and repair stages. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "These illustrative photographs show chimney-to-roof junctions. We inspect the flashing and adjoining roof materials to plan the repair.",
     images: [
       {
         src: "/assets/services/chimney-flashing-condition.png",
@@ -515,7 +515,7 @@ const serviceGalleries: Record<
   "roof-inspections": {
     title: "What a visual roof inspection can involve.",
     intro:
-      "Context images show inspection activity, visible observations and recording roof details. We agree the inspection purpose and scope before booking.",
+      "These illustrative photographs show roof inspection activity and visible roof details. We agree the areas, records and fee for your inspection before booking.",
     images: [
       {
         src: "/assets/services/roof-inspection-roofline-review.png",
@@ -542,7 +542,7 @@ const serviceGalleries: Record<
   "metal-roof-repairs": {
     title: "What metal roof repair work can involve.",
     intro:
-      "Context images show metal-roof conditions, repair activity and completed roof details. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "These illustrative photographs show metal-roof sheets and repair details. We check the sheet profile, fixings and junctions before recommending repairs.",
     images: [
       {
         src: "/assets/services/metal-roof-repair-team-work.png",
@@ -569,7 +569,7 @@ const serviceGalleries: Record<
   "roof-cleaning": {
     title: "What professional roof cleaning work can show.",
     intro:
-      "Context images show visible surface build-up, gutter debris, cleaning activity and a completed roof surface. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "These illustrative photographs show surface build-up and roof cleaning. We assess the existing material and finish to choose the cleaning method for your roof.",
     images: [
       {
         src: "/assets/services/roof-cleaning-surface-condition.png",
@@ -596,7 +596,7 @@ const serviceGalleries: Record<
   "gutter-downpipe-maintenance": {
     title: "What gutter and downpipe maintenance can show.",
     intro:
-      "Context images show roof-edge channels, gutter debris and drainage areas around metal roofing and solar panels. Individual roof conditions vary, so we confirm the recommended scope after assessing the property.",
+      "These illustrative photographs show roof-edge drainage and gutter debris. We inspect the gutter runs, outlets and downpipes to plan the clearing and maintenance.",
     images: [
       {
         src: "/assets/services/gutter-downpipe-valley-condition.jpg",
@@ -725,7 +725,7 @@ serviceBySlug["metal-roof-repairs"].related = [
 const defaults: Data = {
   company: "Ellis Services Group",
   tagline:
-    "Roof repairs and inspections for Canberra homes. Ellis arranges an on-site assessment, identifies the cause and explains the repair plan and written quote.",
+    "We repair and inspect roofs for Canberra homes. We assess the affected roof on site, investigate the cause and explain the repair plan and written quote.",
   phone: "0405878406",
   email: "elliservices.group@gmail.com",
   address: "121 Marcus Clarke St, Canberra, ACT 2600",
@@ -743,7 +743,7 @@ const defaults: Data = {
 const canonicalFaqs: Faq[] = [
   {
     q: "Getting started / Do you cover Canberra?",
-    a: "Yes. Ellis Services Group provides roof repairs and inspections across Canberra. Send your suburb and roof concern to arrange an on-site assessment; we confirm the appointment and provide the repair plan and written quote.",
+    a: "Yes. We provide roof repairs and inspections across Canberra. Send your suburb and roof concern to request an on-site assessment. We confirm the appointment separately and explain the repair plan and written quote after assessing the roof.",
   },
   {
     q: "Getting started / Which suburbs can I select?",
@@ -775,11 +775,11 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Roof leaks / Is a temporary patch a complete repair?",
-    a: "A temporary measure can limit symptoms. Ellis investigates the underlying cause on site and confirms the lasting repair work and quote.",
+    a: "A temporary measure can limit water entry while a repair is arranged. We investigate the cause on site and explain the component repair and quote separately from temporary work.",
   },
   {
     q: "Roof leaks / Can a small leak be ignored?",
-    a: "No. Even a small leak can spread moisture beyond the visible mark. Arrange an on-site assessment so Ellis can trace the cause and quote the repair work.",
+    a: "No. Even a small leak can spread moisture beyond the visible mark. Contact us for an on-site assessment so we can investigate the cause and quote the repair work.",
   },
   {
     q: "Roof leaks / Can dry weather limit an inspection?",
@@ -803,7 +803,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Ridges / Does every crack need full repointing?",
-    a: "No. Ellis checks cap stability, bedding, pointing and adjoining tiles on site. We identify the sections requiring local or broader ridge work and explain the repair scope and written quote.",
+    a: "No. We check cap stability, bedding, pointing and adjoining tiles on site. We identify the sections requiring local or broader ridge work and explain the repair scope and written quote.",
   },
   {
     q: "Chimneys / What does flashing do?",
@@ -843,7 +843,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Timing / How quickly will someone respond?",
-    a: "Contact Ellis to arrange an assessment; we confirm the appointment separately, with attendance planned around weather, safe access and the work required.",
+    a: "Call or send us your suburb and roof concern to request an assessment. We confirm the appointment separately, taking weather, safe access and the work required into account.",
   },
   {
     q: "Storm or hail / What should I do after storm or hail roof damage?",
@@ -851,7 +851,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Maintenance / Can roof cleaning help prevent blocked gutters?",
-    a: "Roof cleaning and gutter maintenance can remove visible debris from roof and drainage areas. The appropriate cleaning or maintenance approach is confirmed after assessing the property.",
+    a: "We remove debris from the agreed roof and gutter areas and check the connected drainage during assessment. Roof surface cleaning and gutter clearing are different tasks; we identify the areas and method in your quote.",
   },
   {
     q: "Inspections / When should I arrange a roof inspection?",
@@ -859,7 +859,7 @@ const canonicalFaqs: Faq[] = [
   },
   {
     q: "Metal roofing / Can metal and Colorbond roof sheets be repaired?",
-    a: "Metal and Colorbond roof repairs can address suitable sheet, fixing, flashing and junction concerns. We assess the visible condition and explain the recommended repair option for the property.",
+    a: "Yes. We repair metal and Colorbond roof sheets, fixings, flashing and junctions where the existing condition supports a repair. We assess the affected area and explain the suitable repair scope and materials.",
   },
   {
     q: "Next steps / Which service should I choose?",
@@ -983,7 +983,7 @@ function HomeV2({ data }: { data: Data }) {
             Roof leak: safe observations before an inspection
           </h2>
           <p>
-            Tell us where water appears and when it started, using only safe indoor or ground-level observations. Ellis traces the roof-entry path on site and quotes the repairs needed.
+            Tell us where water appears and when it started, using only safe indoor or ground-level observations. We investigate the roof-entry path on site and quote the repairs needed.
           </p>
         </div>
         <ul>
@@ -1079,6 +1079,7 @@ function HomeV2({ data }: { data: Data }) {
           <p className="eyebrow">CANBERRA OFFICE</p>
           <h2 id="home-map-title">Canberra roof assessment enquiries</h2>
           <p>121 Marcus Clarke Street, Canberra ACT 2600</p>
+          <p>You are welcome to visit our office.</p>
           <a
             className="textAction"
             href="https://www.google.com/maps/search/?api=1&amp;query=121%20Marcus%20Clarke%20St%2C%20Canberra%20ACT%202600"
@@ -1139,7 +1140,7 @@ function About({ data }: { data: Data }) {
           <p className="eyebrow">ABOUT {data.company.toUpperCase()}</p>
           <h1>About Ellis Services Group</h1>
           <p>
-            Ellis Services Group provides roof repairs and inspections for Canberra homeowners. We listen to the concern, inspect the roof on site and explain the findings, recommended repairs and written quote in plain language.
+            We provide roof repairs and inspections for Canberra homeowners. We listen to what you have noticed, inspect the roof on site and explain the findings, recommended repairs and written quote in plain language.
           </p>
 
         </div>
@@ -1155,7 +1156,7 @@ function About({ data }: { data: Data }) {
         <article>
           <h3>Roof repairs for homeowners and property managers</h3>
           <p>
-            Ellis Services Group provides roof repairs and inspections for homeowners,
+            We provide roof repairs and inspections for homeowners,
             rental owners and property managers. Nominate the access contact and
             the person authorised to approve the proposed work.
           </p>
@@ -1188,10 +1189,10 @@ function About({ data }: { data: Data }) {
         </div>
         <div>
           <p>
-            A ceiling mark, broken tile, loose ridge cap or chimney junction concern tells us where to start. Ellis checks beneath and around the affected area where safe access permits, traces the water path and explains the repairs needed.
+            A ceiling mark, broken tile, loose ridge cap or chimney junction concern tells us where to start. We check beneath and around the affected area where safe access permits, investigate the water path and explain the repairs needed.
           </p>
           <p>
-            When you contact Ellis, your suburb, the affected room or roof area and the timing help us prepare for a site visit. We inspect the connected roof details and trace the cause. A ground-level photo is optional; we confirm the repair scope after the on-site assessment.
+            When you contact us, your suburb, the affected room or roof area and the timing help us prepare for a site visit. We inspect the connected roof details and investigate the cause. A ground-level photo is optional; we confirm the repair scope after the on-site assessment.
           </p>
           <p>Compare our <a href="/services">roof repair and maintenance services</a>, or use the <a href="/news/when-to-arrange-roof-inspection-canberra">inspection preparation guide</a> to organise your enquiry.</p>
         </div>
@@ -1246,9 +1247,8 @@ function About({ data }: { data: Data }) {
             Roof visit preparation and equipment
           </h2>
           <p>
-            Context images show equipment and preparation for a roof visit.
-            They do not identify current Ellis employees or document a customer job.
-            We confirm the scope, timing and relevant costs after discussing the property.
+            These illustrative photographs show roof-visit preparation and equipment.
+            We discuss your roof concern, access and any visit fee before confirming the appointment.
           </p>
         </div>
         <div className="aboutBrandGalleryGrid">
@@ -1280,7 +1280,7 @@ function About({ data }: { data: Data }) {
         <dl>
           <div>
             <dt>Office</dt>
-            <dd>121 Marcus Clarke St, Canberra, ACT 2600</dd>
+            <dd>121 Marcus Clarke St, Canberra, ACT 2600<p>You are welcome to visit our office.</p></dd>
           </div>
           <div>
             <dt>Phone</dt>
@@ -1521,7 +1521,7 @@ function Services({ data }: { data: Data }) {
       <p className="eyebrow">SERVICES OVERVIEW</p>
       <h1>Roof repair & maintenance services</h1>
       <p>
-        Ellis provides roof repairs, inspections, cleaning and maintenance for Canberra homes. We inspect the property on site and confirm the required work and written quote. Choose a service below, or describe the issue if you are unsure.
+        We provide roof repairs, inspections, cleaning and maintenance for Canberra homes. We assess the roof on site and explain the recommended work and written quote. Choose a service below, or tell us what you have noticed if you are unsure.
       </p>
       <h2>Compare roof repair and maintenance services</h2>
       <ServiceCards data={data} />
@@ -1594,7 +1594,7 @@ const serviceHeroImages: Record<string, { src: string; alt: string; caption: str
   "rebedding-repointing": { src: "/assets/services/ridge-capping-pointing.png", alt: "Pointing along a tiled roof ridge", caption: "Ridge bedding and exposed pointing have different roles." },
   "roof-inspections": { src: "/assets/services/roof-inspection-roofline-review.png", alt: "Roofline review during an inspection", caption: "A roof review connects visible signs with the condition on site." },
   "metal-roof-repairs": { src: "/assets/services/metal-roof-wall-flashing-condition.png", alt: "Metal roof and wall flashing detail", caption: "Sheets, fixings and flashing form one weathering system." },
-  "roof-renovation": { src: "/assets/services/tile-roof-site-overview.png", alt: "Overview of an existing tiled roof", caption: "Roof-condition context; not a documented renovation result." },
+  "roof-renovation": { src: "/assets/services/tile-roof-site-overview.png", alt: "Overview of an existing tiled roof", caption: "Illustrative photograph of an existing tiled roof." },
   "roof-cleaning": { src: "/assets/services/roof-cleaning-controlled-wash.png", alt: "Worker spraying water onto a tiled roof", caption: "Cleaning methods depend on the roof material and its condition." },
   "gutter-downpipe-maintenance": { src: "/assets/services/gutter-downpipe-roof-edge-condition.jpg", alt: "Gutter condition along a roof edge", caption: "Gutters, outlets and downpipes share the drainage path." },
   "gutter-repairs": { src: "/assets/services/metal-roof-gutter-edge-repair.png", alt: "Gutter edge and adjoining metal roof detail", caption: "Check component condition as well as the flow of water." },
@@ -1607,8 +1607,8 @@ function TileCasePhotos({ context, headingLevel = 2 }: { context: string; headin
   const Heading = headingLevel === 3 ? "h3" : "h2";
   return <section className="relatedCase relatedCaseSummary" aria-labelledby={`${context}-case-title`}>
     <p className="eyebrow">TILE REPAIR PHOTOS</p>
-    <Heading id={`${context}-case-title`}>{context === "roof-renovation" ? "A local repair comparison, not a renovation result" : "A visible tile repair, before and after"}</Heading>
-    <p>{context === "roof-renovation" ? "See the local tile repair sequence, with the surrounding roof retained. This is not a whole-roof renovation." : "See the displaced tiles, repair work and reinstated covering in the full photo sequence."}</p>
+    <Heading id={`${context}-case-title`}>{context === "roof-renovation" ? "Compare a local tile repair with wider renovation" : "A visible tile repair, before and after"}</Heading>
+    <p>{context === "roof-renovation" ? "This case shows a local tile repair with the surrounding roof retained. Use it to compare the scope of a targeted repair with wider renovation." : "See the displaced tiles, repair work and reinstated covering in the full photo sequence."}</p>
     <a href={`/case-studies/${study.slug}`}>View the tile roof repair case study <ArrowRight size={17} /></a>
   </section>;
 }
@@ -1661,7 +1661,7 @@ function ServiceView({ service }: { service: Service }) {
       {galleries.map((gallery) => (
         <section key={gallery.title} className={`serviceGallery${gallery.project ? " serviceProjectGallery" : ""}`} data-project={gallery.project || undefined} data-image-count={gallery.images.length} aria-labelledby={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>
           <div className="serviceGalleryIntro">
-            <p className="eyebrow">{gallery.project ? "PROJECT PHOTOS" : "SERVICE IMAGE GUIDE"}</p>
+            <p className="eyebrow">{gallery.project ? "PROJECT PHOTOS" : "ROOF DETAILS"}</p>
             <h3 id={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>{gallery.title}</h3>
             {!gallery.project && <p>{gallery.intro}</p>}
             {gallery.project && <ProjectWorkNotes slug={service.slug} />}
@@ -1800,12 +1800,12 @@ function SuburbServiceAreaPage({ profile }: { profile: any }) {
   const otherServices = SERVICE_CATALOG.filter(({ slug }) => !profile.featuredServiceSlugs.includes(slug));
   const serviceSummaries: Record<string, string> = {
     "roof-leak-repairs": "For ceiling stains, drips after rain or a recurring leak. We inspect the roof-entry path before planning the repair.",
-    "roof-inspections": "For an uncertain roof concern or several affected areas. Confirm the inspection scope, including any photos and written findings, before booking.",
+    "roof-inspections": "For an uncertain roof concern or several affected areas. We agree the inspection scope, any photos, written findings and fee with you before booking.",
     "roof-cleaning": "For moss, lichen and surface debris. We assess the roof material, condition and suitable cleaning approach.",
   };
   return <section className="page suburbPage">
     <p className="eyebrow">LOCAL ROOF SERVICES</p><h1>{profile.h1}</h1>
-    <p className="directAnswer">Ellis Services Group provides roof repairs and maintenance in {profile.suburb}, {profile.district}. Contact us to arrange an on-site assessment; we confirm the appointment, inspect the roof and provide the repair plan and written quote.</p>
+    <p className="directAnswer">We provide roof repairs and maintenance in {profile.suburb}, {profile.district}. Contact us to arrange an on-site assessment; we confirm the appointment, inspect the roof and provide the repair plan and written quote.</p>
     <nav className="suburbPageActions" aria-label="Roof services and booking"><a className="button" href="#local-enquiry">Request a {profile.suburb} roof assessment <ArrowRight size={17}/></a><a className="textAction" href="#local-roof-services">Choose a roof service <ArrowRight size={17}/></a></nav>
     <section className="suburbFeatured" id="local-roof-services"><h2>Choose a roof service in {profile.suburb}</h2><p>Start with the concern you have noticed. You do not need to identify the cause before contacting us.</p><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><p>{serviceSummaries[service.slug]}</p><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
     <section className="suburbAllServices"><h2>More roof repair and maintenance services in {profile.suburb}</h2><p>For a specific roof material, damaged component, urgent leak or rental property, choose the relevant service below.</p><div>{otherServices.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
@@ -1853,7 +1853,7 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
         <p className="articleLead">{article.lead}</p>
         <p className="articleByline">By <a href={ARTICLE_AUTHOR.url}>{ARTICLE_AUTHOR.name}</a> · Updated <time dateTime={modifiedDate}>{articleVisibleDate(modifiedDate)}</time></p>
         </div>
-        {image ? <figure className="articleLeadImage pairedHeroMedia"><ResponsiveImage src={image.src} alt={image.alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>Illustrative image for this roof-care topic; not a diagnosis of your property.</figcaption></figure> : null}
+        {image ? <figure className="articleLeadImage pairedHeroMedia"><ResponsiveImage src={image.src} alt={image.alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>Illustrative image for this roof-care guide.</figcaption></figure> : null}
       </header>
       <div className="articleLayout">
         <nav className="articleContents" aria-label="On this page"><p>In this article</p><ol>{article.sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.heading}</a></li>)}</ol></nav>
@@ -1935,6 +1935,7 @@ function Contact({
           <aside className="contactSideDetails">
             <p className="contactMethods"><a href={`tel:${data.phone}`}>{data.phone}</a><a href={`mailto:${data.email}`}>{data.email}</a></p>
             <address className="businessAddress">{data.address}</address>
+            <p>You are welcome to visit our office.</p>
             <OperatingHours />
             <section className="contactEnquiryNotes">
               <h2>Enquiry preparation</h2>

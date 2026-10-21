@@ -52,14 +52,14 @@ it.each([5, 8, 99])('rejects stale controlled copy from persisted schema %i on a
   unmount();
   const reloaded = render(<AppV3 pathname="/faq" />);
   expect(reloaded.container.textContent).not.toMatch(/Unsupported guarantee|30 minutes/);
-  expect(reloaded.container.textContent).toMatch(/agree[^.]*photo(?:graph)?s[^.]*written notes[^.]*before booking/i);
+  expect(reloaded.container.textContent).toMatch(/before booking[^.]*agree[^.]*photo(?:graph)?s[^.]*written notes[^.]*fee/i);
 });
 
 it('labels contextual service imagery separately from owner-confirmed project records', () => {
   const chimney = page('/services/chimney-flashing-repairs');
   expect(chimney.querySelector('#project-photos h2')?.textContent).not.toMatch(/project photos/i);
   expect(chimney.querySelector('.serviceGallery')?.textContent).not.toMatch(/Images from Ellis Services Group project work/);
-  expect(chimney.querySelector('.serviceGallery')?.textContent).toMatch(/context/i);
+  expect(chimney.querySelector('.serviceGallery')?.textContent).toMatch(/illustrative photographs/i);
   const urgent = page('/services/emergency-roof-repairs');
   expect(urgent.querySelector('.serviceGallery[data-project]')).not.toBeNull();
   expect(urgent.querySelector('a[href="/assets/projects/confirmed-urgent-leak-1000.webp"]')).toBeNull();

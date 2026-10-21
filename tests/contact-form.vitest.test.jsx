@@ -30,7 +30,7 @@ describe('ContactForm', () => {
     completeValidForm();
     fireEvent.change(screen.getByLabelText('Optional photo'), { target: { files: [new File([buffer], `roof.${suffix}`, { type })] } });
     fireEvent.click(screen.getByRole('button', { name: 'Request a roof assessment' }));
-    await screen.findByText('Enquiry sent successfully.');
+    await screen.findByText('Enquiry sent successfully. We will confirm your appointment separately.');
     expect(screen.queryByText('Choose a JPG, PNG or WebP photo.')).toBeNull();
     expect(screen.getByText('No photo selected')).toBeTruthy();
   });
@@ -80,7 +80,7 @@ describe('ContactForm', () => {
     });
     expect(submitEnquiry).toHaveBeenCalledTimes(1);
     resolveSubmission({ ok: true });
-    await screen.findByText('Enquiry sent successfully.');
+    await screen.findByText('Enquiry sent successfully. We will confirm your appointment separately.');
   });
 
   it('prevents duplicate submission and retains fields and photo after a safe server error', async () => {
@@ -105,7 +105,7 @@ describe('ContactForm', () => {
     const { submitEnquiry } = renderForm();
     completeValidForm();
     fireEvent.click(screen.getByRole('button', { name: 'Request a roof assessment' }));
-    await screen.findByText('Enquiry sent successfully.');
+    await screen.findByText('Enquiry sent successfully. We will confirm your appointment separately.');
     expect(submitEnquiry).toHaveBeenCalledTimes(1);
     expect(screen.getByLabelText('Name').value).toBe('');
     expect(screen.getByLabelText('Email').value).toBe('');

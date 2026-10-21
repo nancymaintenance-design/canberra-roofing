@@ -62,7 +62,7 @@ export const POST_RAIN_FAQS = [
   '/news/gutters-overflowing-heavy-rain-canberra',copy('Gutter overflow after debris removal','清除杂物后的檐沟溢水')),
  faq('rain-downstream-boundary','gutter-repairs','Maintenance',
   copy('Does gutter maintenance include a blocked underground stormwater pipe?','檐沟维护是否包括堵塞的地下雨水管？'),
-  copy('Do not assume it does. Ask which gutter runs, outlets and downpipes are included and where that scope ends. If water backs up from a ground-level drain or below-ground connection, describe it separately. Underground pipe investigation or redesign needs the appropriate specialist and its own agreed scope; it is not automatically part of our roof or gutter quotation.','不能默认包括。请确认报价包含哪些沟段、出水口与落水管，以及范围到何处结束。若地面排水口或地下连接处回堵，请单独说明。地下管道排查或重新设计需由适当的专业人员按独立约定范围处理，不自动包含在我们的屋顶或檐沟报价中。'),
+  copy('We identify the gutter runs, outlets and downpipes included in your maintenance quote and where that work ends. A blocked underground stormwater pipe needs a separate investigation by the appropriate specialist. Tell us if water backs up from a ground-level drain or below-ground connection; that work is not automatically included in our roof or gutter quote.','我们会列明维护报价包含的檐沟段、出水口和落水管，以及施工范围的终点。地下雨水管堵塞需由适当的专业人员另行排查。如地面排水口或地下连接处回堵，请单独说明；这类施工不自动包含在我们的屋顶或檐沟报价中。'),
   '/news/gutters-overflowing-heavy-rain-canberra',copy('Gutters, downpipes and the downstream route','檐沟、落水管与下游排水路径')),
  faq('rain-ceiling-sequence','roof-leak-repairs','Roof leaks',
   copy('The roof leak is repaired. Can I paint over the ceiling stain now?','屋顶漏水修好后，可以马上粉刷天花板水渍吗？'),

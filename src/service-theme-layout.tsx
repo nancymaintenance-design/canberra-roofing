@@ -35,14 +35,14 @@ export const SERVICE_THEME_HEADINGS: Record<string, readonly [string, string, st
   "chimney-flashing-repairs": [
     "Chimney-area water ingress & flashing inspection",
     "Inspecting chimney junctions and planning flashing repairs",
-    "Chimney flashing: context images & roof details",
+    "Chimney flashing and roof junction details",
     "Chimney flashing repair quotes & booking",
     "Chimney leaks & flashing repair questions",
   ],
   "rebedding-repointing": [
     "Ridge capping, rebedding & repointing",
     "Assessing ridge bedding and pointing before repairs",
-    "Ridge capping repairs: context images",
+    "Ridge capping details",
     "Rebedding & repointing quotes and booking",
     "Ridge capping, bedding & pointing questions",
   ],
@@ -56,7 +56,7 @@ export const SERVICE_THEME_HEADINGS: Record<string, readonly [string, string, st
   "metal-roof-repairs": [
     "Metal roof fixings, flashings & leak repairs",
     "Inspecting Colorbond sheets, fasteners & roof junctions",
-    "Metal roof repairs: context images & roof details",
+    "Metal roof sheets, fixings and junctions",
     "Metal & Colorbond roof repair quotes and booking",
     "Metal roof fixings & leak repair questions",
   ],
@@ -70,7 +70,7 @@ export const SERVICE_THEME_HEADINGS: Record<string, readonly [string, string, st
   "roof-cleaning": [
     "Roof moss, lichen & surface debris cleaning",
     "Choosing a cleaning approach for your roof material",
-    "Roof cleaning: context images",
+    "Roof surfaces and cleaning examples",
     "Roof cleaning quotes & assessment booking",
     "Roof moss, lichen & cleaning method questions",
   ],
