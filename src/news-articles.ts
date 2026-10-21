@@ -1,3 +1,4 @@
+import { POST_RAIN_ARTICLE_UPDATES } from './post-rain-content.js';
 export type NewsArticle = {
   slug: string; title: string; description: string; summary: string; lead: string;
   serviceTitle: string; servicePath: string; updated: string;
@@ -309,3 +310,15 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     ], related: ['after-rain-roof-leak-check-canberra', 'when-to-arrange-roof-inspection-canberra', 'roof-leak-vs-condensation-canberra'], sources: [],
   }),
 ];
+
+// Preserve established routes, headings, section IDs and language relationships.
+// Replace a generic closing section with the specific rain-related decision.
+for (const article of NEWS_ARTICLES) {
+  const update = POST_RAIN_ARTICLE_UPDATES[article.slug as keyof typeof POST_RAIN_ARTICLE_UPDATES];
+  if (!update) continue;
+  const target = article.sections.find(section => section.id === update.section);
+  if (!target) throw new Error(`Missing rain-content section: ${article.slug}/${update.section}`);
+  target.heading = update.heading;
+  target.paragraphs = [...update.paragraphs];
+  article.updated = '2026-10-21';
+}

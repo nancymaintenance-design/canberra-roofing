@@ -2900,6 +2900,20 @@ details:hover {
 
 /* Decision tables retain native row/column relationships on narrow screens. */
 .contentTableScroll { max-width: 100%; overflow-x: auto; margin-block: 1.25rem; }
+.districtDirectory .tableCellLabel { display: none; }
+@media (max-width: 760px) {
+  .districtDirectory .contentTableScroll { overflow: visible; }
+  .districtDirectory .contentTableScroll table { min-width: 0; table-layout: fixed; }
+  .districtDirectory .contentTableScroll caption { white-space: normal; overflow-wrap: anywhere; }
+  .districtDirectory thead { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .districtDirectory tbody { display: grid; gap: 1rem; }
+  .districtDirectory tbody tr { display: grid; min-width: 0; border: 1px solid var(--color-cloud); border-radius: var(--radius-card); background: var(--color-on-dark); }
+  .districtDirectory tbody th[scope="row"] { border: 0; background: var(--color-cloud); color: var(--color-roof-charcoal); border-radius: var(--radius-card) var(--radius-card) 0 0; }
+  .districtDirectory tbody td { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; border: 0; padding: .65rem 1rem; }
+  .districtDirectory tbody td:last-child { padding-bottom: 1rem; }
+  .districtDirectory .tableCellLabel { display: block; font-size: .8rem; color: var(--color-steel); }
+  .districtDirectory tbody a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; }
+}
 .contentTableScroll table { border-collapse: collapse; width: 100%; min-width: 38rem; color: var(--color-roof-charcoal); }
 .contentTableScroll caption { text-align: left; font-weight: 700; padding-bottom: .75rem; }
 .contentTableScroll th, .contentTableScroll td { text-align: left; vertical-align: top; padding: .85rem; border: 1px solid var(--color-cloud); overflow-wrap: anywhere; }
@@ -3991,6 +4005,10 @@ details:hover {
   padding-bottom: 1.5rem;
 }
 .pairedHeroCopy { min-width: 0; }
+.caseStudyPhotoIntro { display: block; padding-block: 1.5rem; }
+.page .caseStudyPhotoIntro h1 { max-width: none; font-size: clamp(2rem, 3.5vw, 3.5rem); }
+.caseStudyPhotoIntro .articleLead { max-width: 80ch; margin-bottom: 0; }
+.relatedCaseSummary > p { max-width: 75ch; }
 .page .pairedHero h1 {
   max-width: 22ch;
   margin-block: 0.65rem 1.25rem;

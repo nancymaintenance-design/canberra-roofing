@@ -1,4 +1,5 @@
 import React from "react";
+import { POST_RAIN_SERVICE_HEADINGS } from './post-rain-content.js';
 
 export const SERVICE_THEMES = [
   { id: "what-we-repair", title: "What we repair" },
@@ -102,6 +103,11 @@ export const SERVICE_THEME_HEADINGS: Record<string, readonly [string, string, st
     "Remote landlord & property manager repair questions",
   ],
 };
+
+for (const [slug, headings] of Object.entries(POST_RAIN_SERVICE_HEADINGS)) {
+  const existing = SERVICE_THEME_HEADINGS[slug];
+  SERVICE_THEME_HEADINGS[slug] = [headings[0], headings[1], existing[2], existing[3], existing[4]];
+}
 
 export function ServiceSectionNav() {
   return <nav className="serviceSectionNav" aria-label="On this service page">

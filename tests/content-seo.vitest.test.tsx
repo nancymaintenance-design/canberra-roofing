@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import React from "react";
+import { expectedRevision } from './article-revisions';
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { AppV3 } from "../src/main";
@@ -76,7 +77,7 @@ describe("rendered Canberra content SEO", () => {
       const host = page(path);
 expect(host.querySelectorAll(".articleSection").length, path).toBe(4);
       expect(host.querySelector(".articleByline")!.textContent).toContain("Ellis Services Group");
-      const revised = "2026-10-14";
+      const revised = expectedRevision(path);
       expect(host.querySelector(`time[datetime="${revised}"]`)).not.toBeNull();
       expect(host.querySelectorAll('.articleBody a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
       const serviceLinks=host.querySelectorAll('.articleBody .contentNextStep a[href^="/services/"]');
@@ -102,7 +103,9 @@ expect(host.querySelectorAll(".articleSection").length, path).toBe(4);
     expect(home.textContent).toContain("On-site roof assessment");
     expect(home.textContent).toContain("Repair scope and written quote before work");
     expect(home.textContent).not.toMatch(/98%|1,000|15 years|30 minutes/);
-    expect(study.textContent).toContain("no measured customer outcome is established by these photos");
+    expect(study.textContent).not.toMatch(/98%|measured customer outcome/);
+    expect(study.textContent).toContain("Your roof's condition and available replacement tiles determine whether a similar local repair is suitable.");
+    expect(study.querySelectorAll('.caseEvidenceGrid img')).toHaveLength(3);
     const social = [...home.querySelectorAll<HTMLAnchorElement>(".footerSocialLinks a")].map(a => a.getAttribute("href"));
     expect(social).toEqual([
       "https://share.google/y50AZRJwjOdVOlj5o",

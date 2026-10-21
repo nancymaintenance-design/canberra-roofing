@@ -1,0 +1,18 @@
+export default {
+  'Urgent Roof Repairs': '紧急屋顶维修',
+  'Rental Property Roof Repairs': '出租房屋顶维修',
+  'See the local tile repair sequence, with the surrounding roof retained. This is not a whole-roof renovation.': '查看局部屋瓦维修过程，周围原屋顶予以保留。这不是整屋翻新项目。',
+  'See the displaced tiles, repair work and reinstated covering in the full photo sequence.': '查看完整照片，了解屋瓦移位、施工及恢复屋面的过程。',
+  'We arrange roof repairs, inspections, cleaning and gutter maintenance in': '我们提供屋顶维修、检查、清洁与排水沟维护，服务区域为',
+  '. Choose a suburb below or describe the concern in the enquiry form.': '。请选择下方城区，或在咨询表单中描述问题。',
+  'Choose a suburb below to view its service information or open an enquiry with that location already selected.': '选择下方城区查看服务信息，或打开已选好该地区的咨询表单。',
+  'Suburb information': '城区详情',
+  'Start an enquiry': '开始咨询',
+  'See how we opened the affected tile area and reinstated the roof covering.': '查看我们如何打开受影响的屋瓦区域，并恢复屋面。',
+  'Before, during and after tile repair': '屋瓦维修前、施工中与完工后',
+  'TILE REPAIR SCOPE': '屋瓦维修范围',
+  'Repair the affected area, retain the surrounding roof': '维修受影响区域，保留周围屋顶',
+  "We lifted tiles in the work area and reinstated the covering, leaving the surrounding weathered roof in place. Your roof's condition and available replacement tiles determine whether a similar local repair is suitable.": '我们掀开施工区域的瓦片并恢复屋面，周围原有屋顶予以保留。您的屋顶状况及可用替换瓦片，决定是否适合采用类似的局部维修。',
+  'Work shown': '施工内容',
+  'Local tile work with the adjoining roof covering retained.': '局部屋瓦施工，保留相邻原屋面。',
+} as Record<string, string>;

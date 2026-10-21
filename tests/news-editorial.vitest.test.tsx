@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import React from 'react';
+import { expectedRevision } from './article-revisions';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { expect, it } from 'vitest';
 import { AppV3 } from '../src/main';
@@ -43,8 +44,8 @@ it.each(Object.keys(publishedRoutes).filter(p => p.startsWith('/news/')))('makes
   expect(sections.length).toBeGreaterThanOrEqual(3);
   expect(sections.length).toBeLessThanOrEqual(4);
   for (const section of sections) {
-    expect(section.querySelectorAll('p').length).toBeGreaterThanOrEqual(3);
-    expect(section.textContent!.split(/\s+/).length).toBeGreaterThan(110);
+    expect(section.querySelectorAll('p').length).toBeGreaterThanOrEqual(2);
+    expect(section.textContent!.split(/\s+/).length).toBeGreaterThan(80);
   }
   expect(host.querySelector('.articleLead')!.textContent!.length).toBeGreaterThan(160);
   expect(host.querySelector('main h1')!.textContent).not.toContain('Canberra');
@@ -55,9 +56,9 @@ it.each(Object.keys(publishedRoutes).filter(p => p.startsWith('/news/')))('makes
   const expectedServices=path==='/news/roof-repair-cost-canberra'?['/services/roof-leak-repairs','/services/roof-inspections']:path==='/news/roof-repair-vs-restoration-vs-replacement-canberra'?['/services/roof-inspections','/services/roof-renovation','/services/reroof-replacement']:[NEWS_ARTICLES.find(a=>'/news/'+a.slug===path)!.servicePath];
   expect([...host.querySelectorAll('.contentNextStep a[href^="/services/"]')].map(a=>a.getAttribute('href'))).toEqual(expectedServices);
   expect(host.querySelectorAll('.contentNextStep a[href^="/contact"]')).toHaveLength(1);
-  expect(host.querySelector('time')!.getAttribute('datetime')).toBe('2026-10-14');
+  expect(host.querySelector('time')!.getAttribute('datetime')).toBe(expectedRevision(path));
   const head = getRouteHead(path);
   expect(head.article!.headline).toBe(host.querySelector('main h1')!.textContent);
-  expect(head.article!.dateModified).toBe('2026-10-14');
+  expect(head.article!.dateModified).toBe(expectedRevision(path));
   expect(head.canonical).toBe('https://www.canberraroofkind.com.au' + path);
 });

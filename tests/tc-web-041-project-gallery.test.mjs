@@ -28,6 +28,8 @@ test('About presents verifiable business details and an on-site preparation gall
 test('case study distinguishes visible tile work from unmeasured customer outcomes', () => {
   const caseStudy = source.match(/function CaseStudyView[\s\S]*?function AppV3/)?.[0] || '';
   assert.doesNotMatch(caseStudy, /98% customer satisfaction/i);
-  assert.match(caseStudy, /no measured customer outcome is established by these photos/i);
+  assert.doesNotMatch(caseStudy, /no measured customer outcome is established by these photos/i);
+  assert.match(caseStudy, /Your roof's condition and available replacement tiles determine whether a similar local repair is suitable/);
+  assert.match(caseStudy, /caseEvidenceGrid/);
   assert.match(caseStudy, /tile roof repair/i);
 });

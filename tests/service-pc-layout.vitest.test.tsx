@@ -11,8 +11,8 @@ it('advertises equal image slots within each gallery row', async () => {
   try {
     const page = await browser.newPage();
     for (const [slug, expected] of [
-      ['rental-property-roof-repairs', [440, 440, 440]],
-      ['emergency-roof-repairs', [680, 680, 440, 440, 440]],
+      ['rental-property-roof-repairs', [680, 680]],
+      ['emergency-roof-repairs', [680, 680, 680, 680]],
     ] as const) {
       await page.setContent(renderToStaticMarkup(<AppV3 pathname={`/services/${slug}`} />));
       const hints = await page.locator('.serviceProjectGallery figure').evaluateAll(figures => figures.map(figure => figure.querySelector('source[sizes], img[srcset]')?.getAttribute('sizes') ?? null));

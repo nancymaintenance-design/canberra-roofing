@@ -1,5 +1,8 @@
 import { REPLACEMENT_SERVICE as r } from '../replacement-service.js';
 import { HISTORICAL_AREA_GUIDANCE as h } from '../historical-area-guidance.js';
+import readability from './zh-readability';
+import { POST_RAIN_ZH } from '../post-rain-content.js';
+import refinements from './zh-refinements';
 
 // Reviewed Chinese copy for the 19 October search-intent corrections.
 export default {
@@ -59,4 +62,7 @@ export default {
   [h.harman.text]: 'Harman 清洁咨询，请先说明堆积物位于屋面，还是集中在天沟及出水口，以区分屋顶清洁与排水清理。上门前请补充进入限制及现场联系人。',
   [h['denman-prospect'].text]: '此咨询入口面向 ACT Molonglo Valley 的 Denman Prospect。请提供完整城区名称与地址，不要仅写 Prospect。漏水咨询请说明进水时间，以及从安全地面位置可见的相关屋顶细部。',
   [h.braddon.text]: 'Braddon 清洁咨询，请提供屋面材料、受影响表面及进入联系人。如需共享通道或业主批准，请注明谁可以安排进入并批准施工。清洁方法在评估现有表面后约定。',
+  ...readability,
+  ...refinements,
+  ...POST_RAIN_ZH,
 } as Record<string, string>;

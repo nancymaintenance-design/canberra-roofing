@@ -157,6 +157,14 @@ Use plain English, safety-first wording, specific service names and verified bus
 - **Don't:** Mix untranslated prose into a Chinese page. Brand names, suburb names, technical trademarks and unchanged contact details may retain their original spelling.
 - **Don't:** Fill pages with repetitive keywords, oversized decorative areas or unverified claims.
 
+## Public-page readability, approved 21 October 2026
+
+District directories retain their semantic table and both suburb/enquiry destinations on desktop. At 760px and below, each row becomes a labelled card, with both actions visible without horizontal scrolling. Do not hide the enquiry column.
+
+Keep each service photograph once per page, including its hero. Preserve the original assets and useful captions. The tile case owns the complete three-photo sequence; related services and guides use a concise contextual link rather than repeating that gallery. The case introduction is compact and does not repeat its after photograph as a hero.
+
+Inspection, cleaning, rental, urgent and leak pages retain their distinct technical explanation. Agreeing access, records, fees and approval is explained once in the relevant booking section rather than echoed across every section. District pages remain useful directories; never invent local conditions or projects to make their text appear unique. Existing contact details and indexing policies stay unchanged.
+
 ## Local content editor, approved 16 October 2026
 
 The editor is a content workbench: a 224px searchable page directory, a flexible real-page preview and a 340px Chinese inspector. At 1190px the inspector follows the preview in document flow; at 700px all regions stack. Desktop preview retains a true 1440px page viewport scaled within its canvas, with a separate 390px phone option and a full-size preview link. This prevents a desktop editor from accidentally presenting only the website's mobile layout.

@@ -24,6 +24,8 @@ import { ProjectWorkNotes } from "./project-work-notes";
 import { ARTICLE_AUTHOR, articleModifiedDate, articleVisibleDate } from "./article-editorial";
 import { ServiceSectionNav, ServiceTheme } from "./service-theme-layout";
 import { ServiceResources, ServiceNextStep } from './service-journey';
+import { SERVICE_COPY_REFINEMENTS } from './service-copy-refinements';
+import { POST_RAIN_SERVICE_COPY } from './post-rain-content.js';
 
 type RelatedService = { label: string; path: string; description: string };
 type Service = {
@@ -370,6 +372,8 @@ const serviceSeed: Service[] = [
   },
 ];
 serviceSeed.push(GUTTER_REPAIR_SERVICE, ...ADDITIONAL_SERVICES, REPLACEMENT_SERVICE);
+for (const service of serviceSeed) Object.assign(service, SERVICE_COPY_REFINEMENTS[service.slug] ?? {});
+for (const service of serviceSeed) Object.assign(service, POST_RAIN_SERVICE_COPY[service.slug as keyof typeof POST_RAIN_SERVICE_COPY] ?? {});
 const serviceBySlug = Object.fromEntries(
   serviceSeed.map((service) => [service.slug, service]),
 );
@@ -1135,12 +1139,6 @@ function About({ data }: { data: Data }) {
           <p className="eyebrow">ABOUT {data.company.toUpperCase()}</p>
           <h1>About Ellis Services Group</h1>
           <p>
-            For most of us, home is where we raise our families, spend time
-            together and plan for the years ahead. It is often one of life’s
-            most significant investments, yet daily life can make maintenance
-            difficult to keep on top of.
-          </p>
-          <p>
             Ellis Services Group provides roof repairs and inspections for Canberra homeowners. We listen to the concern, inspect the roof on site and explain the findings, recommended repairs and written quote in plain language.
           </p>
 
@@ -1531,9 +1529,9 @@ function Services({ data }: { data: Data }) {
       <section className="guidance">
         <div>
           <p className="eyebrow">ROOF TYPE / CONCERN GUIDANCE</p>
-          <h2>Not sure which service is closest?</h2>
+          <h2>Rain entering the house or gutters overflowing?</h2>
           <p>
-            Tell us where the problem appears, whether near tiles, ridges, a chimney or an interior ceiling. You do not need to diagnose the cause. Ellis checks the connected roof details on site and provides the repair plan and written quote.
+            Start with <a href="/services/roof-leak-repairs">roof leak investigation</a> for indoor water after rain, or <a href="/services/gutter-downpipe-maintenance">gutter and downpipe maintenance</a> for debris and overflow. If the source is unclear, choose a <a href="/services/roof-inspections">roof inspection</a>. Report when water appears; you do not need to choose a repair before we assess it.
           </p>
           <a className="button" href="/contact">
             Describe your concern <ArrowRight size={17} />
@@ -1607,12 +1605,10 @@ const serviceHeroImages: Record<string, { src: string; alt: string; caption: str
 function TileCasePhotos({ context, headingLevel = 2 }: { context: string; headingLevel?: 2 | 3 }) {
   const study = caseStudies[0];
   const Heading = headingLevel === 3 ? "h3" : "h2";
-  return <section className="relatedCase" aria-labelledby={`${context}-case-title`}>
+  return <section className="relatedCase relatedCaseSummary" aria-labelledby={`${context}-case-title`}>
     <p className="eyebrow">TILE REPAIR PHOTOS</p>
     <Heading id={`${context}-case-title`}>{context === "roof-renovation" ? "A local repair comparison, not a renovation result" : "A visible tile repair, before and after"}</Heading>
-    <p>{study.summary}</p>
-    <p>{context === "roof-renovation" ? "This related sequence shows a local tile repair with the surrounding weathered roof retained. It does not document a whole-roof renovation." : "This photo sequence shows visible tile work. It does not establish a particular leak cause, location or outcome for another property."}</p>
-    <div className="relatedCasePhotos">{study.images.map(image => <figure key={image.src}><ResponsiveImage src={image.src} alt={image.alt} sizes="(max-width: 760px) calc(100vw - 5rem), 440px" /><figcaption>{image.caption}</figcaption></figure>)}</div>
+    <p>{context === "roof-renovation" ? "See the local tile repair sequence, with the surrounding roof retained. This is not a whole-roof renovation." : "See the displaced tiles, repair work and reinstated covering in the full photo sequence."}</p>
     <a href={`/case-studies/${study.slug}`}>View the tile roof repair case study <ArrowRight size={17} /></a>
   </section>;
 }
@@ -1621,7 +1617,7 @@ function ServiceView({ service }: { service: Service }) {
   const mergedQuestions = SERVICE_FAQ_MERGES[service.slug] ?? {};
   const serviceFaqs = [{ q: service.faqQ, a: service.faqA }, ...(service.faqExtras ?? [])].filter(item => !mergedQuestions[item.q]);
   const headings = SERVICE_TOPIC_HEADINGS[service.slug] ?? ['', '', '', '', '', 'Replacement materials, access and quoted scope'];
-  const galleries: { title: string; intro: string; project?: boolean; relatedPath?: string; relatedLabel?: string; images: { src: string; alt: string; srcSet?: string; width?: number; height?: number; caption?: string }[] }[] = [serviceGalleries[service.slug], PROJECT_GALLERIES[service.slug as keyof typeof PROJECT_GALLERIES]].filter(Boolean);
+  const galleries: { title: string; intro: string; project?: boolean; relatedPath?: string; relatedLabel?: string; images: { src: string; alt: string; srcSet?: string; width?: number; height?: number; caption?: string }[] }[] = [serviceGalleries[service.slug], PROJECT_GALLERIES[service.slug as keyof typeof PROJECT_GALLERIES]].filter(Boolean).map(gallery => ({...gallery, images: gallery.images.filter(image => image.src !== serviceHeroImages[service.slug].src)})).filter(gallery => gallery.images.length > 0);
   const caseStudy = ["tile-roof-repairs", "roof-inspections", "roof-leak-repairs", "roof-renovation"].includes(service.slug) ? caseStudies[0] : undefined;
   const galleryTitleId = `${service.slug}-gallery-title`;
   return (
@@ -1789,13 +1785,13 @@ function DistrictServiceAreaPage({ profile }: { profile: any; data: Data }) {
   return <section className="page suburbPage districtPage">
     <p className="eyebrow">CANBERRA DISTRICT ROOF SERVICES</p>
     <h1>{profile.h1}</h1>
-    <p className="directAnswer">Ellis provides roof repairs, renovation, cleaning and gutter or downpipe maintenance across {profile.district}. Send your suburb and concern to arrange an on-site assessment, the work plan and a written quote.</p>
+    <p className="directAnswer">We arrange roof repairs, inspections, cleaning and gutter maintenance in {profile.district}. Choose a suburb below or describe the concern in the enquiry form.</p>
     <nav className="suburbPageActions districtEntryLinks" aria-label="Roof services and booking"><a className="textAction" href="/services/roof-leak-repairs">Roof Leak Repairs</a><a className="textAction" href="/services/roof-inspections">Roof Inspections</a><a className="textAction" href="/services/roof-cleaning">Roof Cleaning</a><a className="button" href="#local-enquiry">Request a roof assessment <ArrowRight size={17}/></a></nav>
-    <section className="districtDirectory"><h2>Choose your {profile.district} enquiry location</h2><p>This directory lists {profile.suburbs.length} location options for {profile.district}. The enquiry link selects that suburb in the contact form; add your full property address and concern so we can arrange access and confirm the visit. We cover the major ACT districts, including Belconnen, Gungahlin and Tuggeranong. For fringe locations, send the full address to confirm arrangements.</p>
-      <div className="contentTableScroll" tabIndex={0} role="region" aria-label={`${profile.district} suburb directory`}><table><caption>{profile.district}: suburb information and booking links</caption><thead><tr><th scope="col">Location</th><th scope="col">Suburb information</th><th scope="col">Start an enquiry</th></tr></thead><tbody>{profile.bookingLocations.map((location: { suburb: string; enquiryPath: string }) => <tr key={location.suburb}><th scope="row">{location.suburb}</th><td><a href={getSuburbRoute(location.suburb, profile.district) ?? "/areas"}>{location.suburb} roof services</a></td><td><a href={location.enquiryPath}>Enquire for {location.suburb}</a></td></tr>)}</tbody></table></div>
+    <section className="districtDirectory"><h2>Choose your {profile.district} enquiry location</h2><p>Choose a suburb below to view its service information or open an enquiry with that location already selected.</p>
+      <div className="contentTableScroll" tabIndex={0} role="region" aria-label={`${profile.district} suburb directory`}><table><caption>{profile.district}: suburb information and booking links</caption><thead><tr><th scope="col">Location</th><th scope="col">Suburb information</th><th scope="col">Start an enquiry</th></tr></thead><tbody>{profile.bookingLocations.map((location: { suburb: string; enquiryPath: string }) => <tr key={location.suburb}><th scope="row">{location.suburb}</th><td><span className="tableCellLabel">Suburb information</span><a href={getSuburbRoute(location.suburb, profile.district) ?? "/areas"}>{location.suburb} roof services</a></td><td><span className="tableCellLabel">Start an enquiry</span><a href={location.enquiryPath}>Enquire for {location.suburb}</a></td></tr>)}</tbody></table></div>
       <p>Looking for a different location? <a href="/areas">Search the district and suburb directory</a>.</p>
     </section>
-    <section className="districtServiceChoices"><h2>Match the concern to a service</h2><ul><li>A stain or drip: <a href="/services/roof-leak-repairs">roof leak investigation and repairs</a>. Include when it appears and the affected room.</li><li>A visible damaged tile or metal detail: compare <a href="/services/tile-roof-repairs">tile roof repairs</a> and <a href="/services/metal-roof-repairs">metal roof repairs</a>; describe the material if known.</li><li>Debris or overflowing drainage: compare <a href="/services/gutter-downpipe-maintenance">gutter clearing and downpipe maintenance</a> with <a href="/services/gutter-repairs">gutter component repairs</a>.</li><li>Unsure of the cause or planning wider work: start with <a href="/services/roof-inspections">a roof inspection</a>, or <a href="/services">view all roof services</a>.</li></ul><p>For two-storey properties or a remote owner, include storeys and the access contact. Confirm any photos and written findings in the inspection scope, and nominate who should receive the agreed records and quote. For urgent enquiries, call <a href="tel:0405878406">0405878406</a>; we confirm appointment timing separately.</p></section>
+    <section className="districtServiceChoices"><h2>Match the concern to a service</h2><ul><li>A stain or drip: <a href="/services/roof-leak-repairs">roof leak investigation and repairs</a>. Include when it appears and the affected room.</li><li>A visible damaged tile or metal detail: compare <a href="/services/tile-roof-repairs">tile roof repairs</a> and <a href="/services/metal-roof-repairs">metal roof repairs</a>; describe the material if known.</li><li>Debris or overflowing drainage: compare <a href="/services/gutter-downpipe-maintenance">gutter clearing and downpipe maintenance</a> with <a href="/services/gutter-repairs">gutter component repairs</a>.</li><li>Unsure of the cause or planning wider work: start with <a href="/services/roof-inspections">a roof inspection</a>, or <a href="/services">view all roof services</a>.</li></ul></section>
     <section className="suburbContact" id="local-enquiry" aria-labelledby="local-enquiry-title"><div className="suburbContactIntro"><h2 id="local-enquiry-title">Arrange a roof assessment in {profile.district}</h2><p>Choose your suburb and service below. Include the property address, what you have noticed and the access contact; a photo is optional.</p></div><ContactForm /></section>
   </section>;
 }
@@ -2462,29 +2458,21 @@ function AdminDrawer({
 function CaseStudyView({ study }: { study: CaseStudy }) {
   return (
     <article className="page caseStudy">
-      <header className="caseStudyHeader pairedHero">
+      <header className="caseStudyHeader caseStudyPhotoIntro">
         <div className="pairedHeroCopy">
         <p className="eyebrow">TILE ROOF REPAIR PHOTOS</p>
 
         <h1>{study.title}</h1>
         <p className="articleLead">
-          Follow the visible tile roof repair from start to finish: displaced
-          tiles before repair, preparation of the affected area and the roof
-          covering reinstated after the work.
+          See how we opened the affected tile area and reinstated the roof covering.
         </p>
         </div>
-        <figure className="pairedHeroMedia"><ResponsiveImage src={study.images[2].src} alt={study.images[2].alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>{study.images[2].caption}</figcaption></figure>
       </header>
       <ServiceNextStep pagePath={`/case-studies/${study.slug}`} />
       <section className="caseEvidence" aria-labelledby="case-evidence-title">
         <div className="caseEvidenceIntro">
           <p className="eyebrow">TILE WORK SEQUENCE</p>
-          <h2 id="case-evidence-title">Tile condition and the repair sequence</h2>
-          <p>
-            The photos show visible displaced and missing tiles,
-            tiles lifted in the local work area, and the visible roof covering
-            reinstated once work was complete.
-          </p>
+          <h2 id="case-evidence-title">Before, during and after tile repair</h2>
         </div>
         <div className="caseEvidenceGrid">
           {study.images.map((image, index) => (
@@ -2493,6 +2481,8 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
               <ResponsiveImage
                 src={image.src}
                 alt={image.alt}
+                priority={index === 0}
+                sizes="(max-width: 760px) calc(100vw - 3rem), 440px"
               />
               <figcaption>{image.caption}</figcaption>
             </figure>
@@ -2501,14 +2491,9 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
       </section>
       <section className="caseStudyDetail">
         <div>
-          <p className="eyebrow">WHAT THE PHOTOS SHOW</p>
-          <h2>What the tile repair photos show</h2>
-          <p>
-            Before repair, tiles were displaced or missing in the affected roof
-            area. During the work, tiles were lifted to provide access to that
-            area. The final photo shows the roof covering reinstated. These
-            photos follow the repair through its three stages.
-          </p>
+          <p className="eyebrow">TILE REPAIR SCOPE</p>
+          <h2>Repair the affected area, retain the surrounding roof</h2>
+          <p>We lifted tiles in the work area and reinstated the covering, leaving the surrounding weathered roof in place. Your roof's condition and available replacement tiles determine whether a similar local repair is suitable.</p>
           <p>For your own roof, the extent of tile damage, condition of adjoining materials and availability of suitable replacement tiles determine the proposed scope. Use the <a href="/news/when-to-arrange-roof-inspection-canberra">inspection and quote checklist</a> to prepare your questions about materials, access and the roof areas included.</p>
         </div>
         <aside>
@@ -2519,16 +2504,12 @@ function CaseStudyView({ study }: { study: CaseStudy }) {
               <dd>Tile Roof Repairs</dd>
             </div>
             <div>
-              <dt>Property details</dt>
-              <dd>Location and customer details are not published with this photo sequence.</dd>
-            </div>
-            <div>
               <dt>Project photos</dt>
               <dd>Before, during and after repair</dd>
             </div>
             <div>
-              <dt>Evidence scope</dt>
-              <dd>Visible tile condition and work stages; no measured customer outcome is established by these photos.</dd>
+              <dt>Work shown</dt>
+              <dd>Local tile work with the adjoining roof covering retained.</dd>
             </div>
           </dl>
         </aside>

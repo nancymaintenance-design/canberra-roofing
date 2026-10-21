@@ -21,7 +21,12 @@ for (const { path } of SERVICE_CATALOG) {
       expect(item.querySelector('h3 > a[href^="/"]')).not.toBeNull();
       expect(item.querySelector('p')!.textContent!.length).toBeGreaterThan(30);
     }
-    expect(main.querySelectorAll('#project-photos img').length).toBeGreaterThan(0);
+    expect(main.querySelectorAll('.serviceHero img')).toHaveLength(1);
+    const images=[...main.querySelectorAll('img')].map(image=>image.getAttribute('src'));
+    expect(new Set(images).size).toBe(images.length);
+    const photos=main.querySelector('#project-photos')!;
+    expect(photos.textContent!.trim().length).toBeGreaterThan(40);
+    if(photos.querySelectorAll('img').length===0) expect(photos.querySelector('a[href="/case-studies/tile-roof-repair-canberra"]')).not.toBeNull();
     expect(host.querySelector('nav a[href="/solutions"]')).toBeNull();
     expect(host.querySelector('a[href="tel:0405878406"]')).not.toBeNull();
   });

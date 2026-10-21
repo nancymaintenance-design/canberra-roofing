@@ -35,7 +35,8 @@ it("uses confident, clear service copy without internal SEO explanations", () =>
   const aboutHtml = renderToString(<AppV3 pathname="/about" />);
   const faqHtml = renderToString(<AppV3 pathname="/faq" />);
 
-  expect(cleaningHtml).toContain("We confirm the recommended cleaning approach, scope and relevant costs after assessing the property.");
+  expect(cleaningHtml).toContain("We agree the included roof areas, cleaning method, drainage and access arrangements in the quote.");
+  expect(cleaningHtml).toContain("Any repairs or additional drainage work are identified separately for approval before work begins.");
   expect(cleaningHtml).not.toContain("This page does not promise that cleaning");
   expect(metalHtml).not.toContain("used here to describe a common roof-material search term");
   expect(aboutHtml).toContain("They do not identify current Ellis employees or document a customer job.");

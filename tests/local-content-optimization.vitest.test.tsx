@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import React from 'react';
+import { expectedRevision } from './article-revisions';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { expect, it } from 'vitest';
 import { AppV3 } from '../src/main';
@@ -34,8 +35,8 @@ it.each(DISTRICT_PROFILES)('makes $district a directory with exact suburb bookin
 it('dates every materially rewritten article accurately', () => {
   for (const path of Object.keys(publishedRoutes).filter(path => path.startsWith('/news/'))) {
     const host = page(path);
-    expect(host.querySelector('time')?.getAttribute('datetime')).toBe('2026-10-14');
-    expect(host.querySelector('time')?.textContent).toBe('14 October 2026');
+    expect(host.querySelector('time')?.getAttribute('datetime')).toBe(expectedRevision(path));
+    expect(host.querySelector('time')?.textContent).toBe(expectedRevision(path)==='2026-10-21'?'21 October 2026':'14 October 2026');
     expect(host.querySelectorAll('.articleRelated a').length).toBeGreaterThanOrEqual(2);
   }
 });

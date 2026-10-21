@@ -8,7 +8,7 @@ import { AppV3 } from '../src/main';
 import { SERVICE_CATALOG } from '../src/service-catalog.js';
 import { getRouteHead } from '../src/route-meta';
 
-it('pairs meaningful first-screen media and keeps article anchors visible at every breakpoint', async () => {
+it('pairs service and editorial media, keeps case introductions full width, and preserves article anchors', async () => {
  const browser = await chromium.launch({headless:true});
  try {
   const page = await browser.newPage();
@@ -27,6 +27,21 @@ it('pairs meaningful first-screen media and keeps article anchors visible at eve
     ['/news/when-to-arrange-roof-inspection-canberra','.articleHeader'],
    ]) {
     await load(path);
+    if (path.startsWith('/case-studies/')) {
+     expect(await page.locator(selector+' img, '+selector+' .pairedHeroMedia').count()).toBe(0);
+     expect(await page.locator(selector).evaluate(node => getComputedStyle(node).display)).toBe('block');
+     const header=(await page.locator(selector).boundingBox())!;
+     const copy=(await page.locator(selector+' .pairedHeroCopy').boundingBox())!;
+     expect(copy.width).toBeCloseTo(header.width, 0);
+     expect(await page.locator('.caseEvidenceGrid img').count()).toBe(3);
+     expect(await page.locator('main img').count()).toBe(3);
+     for (const photo of await page.locator('.caseEvidenceGrid figure').all()) {
+      expect(await photo.locator('img').getAttribute('alt')).toBeTruthy();
+      expect(await photo.locator('figcaption').textContent()).toBeTruthy();
+     }
+     expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+     continue;
+    }
     expect(await page.locator(selector+' img').count()).toBe(1);
     const media=(await page.locator(selector+' img').boundingBox())!;
     const title=(await page.locator(selector+' h1').boundingBox())!;
@@ -64,8 +79,15 @@ it('gives all twelve services relevant hero media and keeps documentary cases in
   host.innerHTML=renderToStaticMarkup(<AppV3 pathname={service.path}/>);
   expect(host.querySelector('.serviceHero img')).not.toBeNull();
   expect(host.querySelectorAll('.serviceTheme')).toHaveLength(5);
-  const photos=host.querySelectorAll('.relatedCase img');
-  expect(photos.length).toBe(['tile-roof-repairs','roof-inspections','roof-leak-repairs','roof-renovation'].includes(service.slug)?3:0);
+  const related=host.querySelector('.relatedCase');
+  const hasCase=['tile-roof-repairs','roof-inspections','roof-leak-repairs','roof-renovation'].includes(service.slug);
+  expect(Boolean(related)).toBe(hasCase);
+  if(related) {
+   expect(related.tagName).toBe('SECTION');
+   expect(related.querySelectorAll('img')).toHaveLength(0);
+   expect(related.querySelector('a[href="/case-studies/tile-roof-repair-canberra"]')).not.toBeNull();
+   expect(related.querySelector('p:not(.eyebrow)')?.textContent?.length).toBeGreaterThan(40);
+  }
   const localSearchTarget = ['roof-leak-repairs','roof-inspections','roof-cleaning','reroof-replacement'].includes(service.slug);
   expect(host.querySelector('main h1')!.textContent!.includes('Canberra')).toBe(localSearchTarget);
   expect(getRouteHead(service.path).title.includes('Canberra')).toBe(localSearchTarget);

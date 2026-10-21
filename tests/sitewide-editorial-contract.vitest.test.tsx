@@ -52,7 +52,7 @@ it.each([5, 8, 99])('rejects stale controlled copy from persisted schema %i on a
   unmount();
   const reloaded = render(<AppV3 pathname="/faq" />);
   expect(reloaded.container.textContent).not.toMatch(/Unsupported guarantee|30 minutes/);
-  expect(reloaded.container.textContent).toMatch(/agree.*photographs or written notes before booking/i);
+  expect(reloaded.container.textContent).toMatch(/agree[^.]*photo(?:graph)?s[^.]*written notes[^.]*before booking/i);
 });
 
 it('labels contextual service imagery separately from owner-confirmed project records', () => {
@@ -84,7 +84,7 @@ it.each([
   ['roof-leak-repairs', 'roof-leak-interior-water-mark', /ceiling|water mark/i],
   ['roof-leak-repairs', 'roof-leak-flashing-repair', /flashing|vent/i],
   ['tile-roof-repairs', 'tile-roof-damaged-tiles', /damaged.*tiles/i],
-  ['tile-roof-repairs', 'tile-roof-repair-work', /handling tiles/i],
+  ['tile-roof-repairs', 'tile-roof-repair-work', /handling tiles|tile roof repair work/i],
   ['rebedding-repointing', 'ridge-capping-repair-process', /ridge line/i],
   ['roof-inspections', 'roof-inspection-team-review', /tiles.*chimney/i],
   ['roof-inspections', 'roof-inspection-solar-roof-review', /tile.*solar.panel/i],
@@ -94,12 +94,15 @@ it.each([
 ])('describes pending %s image %s without certifying work conditions', (slug, asset, visibleSubject) => {
   const host = page(`/services/${slug}`);
   const gallery = host.querySelector('.serviceGallery')!;
-  const image = gallery.querySelector(`img[src*="${asset}"]`);
+  const images = host.querySelectorAll(`main img[src*="${asset}"]`);
+  expect(images).toHaveLength(1);
+  const image = images[0];
   expect(image, asset).not.toBeNull();
-  expect(gallery.querySelector(`a[href="/assets/services/${asset}.png"]`)).toBeNull();
+  expect(host.querySelector(`a[href="/assets/services/${asset}.png"]`)).toBeNull();
   expect(image?.getAttribute('alt')).toMatch(visibleSubject);
   const safetyJudgment = /\bcontrolled\b|\bsafe\b|fall protection|tethered position/i;
   expect(gallery.textContent).not.toMatch(safetyJudgment);
+  expect(image.closest('figure')?.textContent).not.toMatch(safetyJudgment);
   for (const img of host.querySelectorAll(`img[src*="${asset}"]`)) {
     expect(img.getAttribute('alt'), asset).not.toMatch(safetyJudgment);
   }

@@ -7,7 +7,7 @@ const html=readFileSync(`dist${path}.html`,'utf8');
 const doc=new JSDOM(html).window.document;
 // Losing the inspection process during prerendering must fail this contract.
 test('inspection guide renders purpose, checklist, repair scope and quote preparation',()=>{
-  for(const heading of ['Agree the purpose and access before the visit','Follow the covering, junctions and drainage together','Turn findings into a repair scope','Prepare for a useful decision after the inspection']) assert.ok([...doc.querySelectorAll('h2')].some(x=>x.textContent===heading),heading);
+  for(const heading of ['Agree the purpose and access before the visit','Follow the covering, junctions and drainage together','Turn findings into a repair scope','Plan the inspection, repair decision and follow-up']) assert.ok([...doc.querySelectorAll('h2')].some(x=>x.textContent===heading),heading);
   assert.match(doc.querySelector('.articleBody').textContent,/Roof-space access.*agreed/s);
 });
 test('inspection guide prioritises educational reading and is linked from its service',()=>{

@@ -19,7 +19,10 @@ it('keeps portrait project rows compact and puts notes above emergency photograp
         const grid = (await gallery.locator('.serviceGalleryGrid').boundingBox())!;
         expect(grid.y).toBeGreaterThanOrEqual(intro.y + intro.height);
         const photos = await gallery.locator('img').all();
-        expect(photos.length).toBe(slug.startsWith('emergency') ? 5 : 3);
+        expect(photos.length).toBe(slug.startsWith('emergency') ? 4 : 2);
+        expect(await page.locator('.serviceHero img').count()).toBe(1);
+        const heroSource = await page.locator('.serviceHero img').getAttribute('src');
+        expect(await gallery.locator(`img[src="${heroSource}"]`).count()).toBe(0);
         for (const photo of photos) {
           const bounds = (await photo.boundingBox())!;
           expect(bounds.height).toBeGreaterThanOrEqual(220);
@@ -44,8 +47,8 @@ it('keeps portrait project rows compact and puts notes above emergency photograp
         }
         if (width > 760 && slug.startsWith('rental')) {
           const boxes = await Promise.all(photos.map(photo => photo.boundingBox()));
-          expect(boxes[0]!.y).toBe(boxes[2]!.y);
-          expect(boxes[0]!.width).toBeCloseTo(boxes[2]!.width, 0);
+          expect(boxes[0]!.y).toBe(boxes[1]!.y);
+          expect(boxes[0]!.width).toBeCloseTo(boxes[1]!.width, 0);
         }
         const originals = await gallery.locator('.serviceGalleryOriginal').evaluateAll(links => links.map(link => link.getAttribute('href')!));
         expect(originals.length).toBe(0);

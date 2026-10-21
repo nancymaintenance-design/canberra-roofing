@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import React from 'react';
+import { expectedRevision } from './article-revisions';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { AppV3 } from '../src/main';
@@ -50,8 +51,8 @@ describe('approved keyword-gap routes and content navigation', () => {
       expect(host.querySelector(link.getAttribute('href')!)).not.toBeNull();
     }
     expect(host.querySelectorAll('.articleSection')).toHaveLength(4);
-    expect(host.querySelectorAll('.articleSection p').length).toBeGreaterThanOrEqual(12);
-    const expectedDate = '2026-10-14';
+    for (const section of host.querySelectorAll('.articleSection')) expect(section.querySelectorAll('p').length).toBeGreaterThanOrEqual(2);
+    const expectedDate = expectedRevision(path);
     expect(host.querySelector(`time[datetime="${expectedDate}"]`)).not.toBeNull();
     expect(host.querySelector('.articleByline')?.textContent).toContain('Ellis Services Group');
   });

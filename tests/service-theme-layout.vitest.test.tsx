@@ -19,19 +19,19 @@ const sections = [
 ];
 
 const serviceFocus: Record<string, string> = {
-  "reroof-replacement": "Roof replacement or local roof repairs",
-  "roof-leak-repairs": "Recurring roof leaks & rainwater ingress investigation",
-  "tile-roof-repairs": "Small tile roof repairs & individual tile replacement",
-  "chimney-flashing-repairs": "Chimney-area water ingress & flashing inspection",
-  "rebedding-repointing": "Ridge capping, rebedding & repointing",
-  "roof-inspections": "Roof inspection purpose and condition assessment",
-  "metal-roof-repairs": "Metal roof fixings, flashings & leak repairs",
-  "roof-renovation": "Local roof repairs or wider roof renovation",
-  "roof-cleaning": "Roof moss, lichen & surface debris cleaning",
-  "gutter-downpipe-maintenance": "Blocked gutters, downpipes & roof drainage maintenance",
-  "gutter-repairs": "Leaking gutter joints & damaged gutter repairs",
-  "emergency-roof-repairs": "Active roof leaks & urgent roof repair enquiries",
-  "rental-property-roof-repairs": "Roof repairs for property managers & remote landlords",
+  "reroof-replacement": "When local repairs may not resolve the roof condition",
+  "roof-leak-repairs": "Roof leaks in heavy or wind-driven rain",
+  "tile-roof-repairs": "Cracked, slipped or missing roof tiles",
+  "chimney-flashing-repairs": "Water stains beside a chimney",
+  "rebedding-repointing": "Loose ridge caps and cracked pointing",
+  "roof-inspections": "Roof checks after leaks, storms or recurring dampness",
+  "metal-roof-repairs": "Metal roof leaks around screws, laps and flashing",
+  "roof-renovation": "Roof defects that need more than a surface finish",
+  "roof-cleaning": "Moss, lichen and debris on tile or metal roofs",
+  "gutter-downpipe-maintenance": "Gutters overflowing before or after cleaning",
+  "gutter-repairs": "Leaking joints, sagging gutters and damaged connections",
+  "emergency-roof-repairs": "Active roof leaks and visible storm damage",
+  "rental-property-roof-repairs": "Tenant leak reports and recurring water stains",
 };
 
 function page(path: string) {
@@ -86,8 +86,12 @@ describe("owner-approved five-theme service layout", () => {
       if (project) {
         const gallery = view.querySelector(`#${service.slug}-gallery-title-project`)!.closest(".serviceGallery")!;
         expect(gallery.closest("#project-photos")).not.toBeNull();
-        expect(gallery.querySelectorAll("figure")).toHaveLength(project.images.length);
-        for (const image of project.images) expect(gallery.querySelector(`img[alt="${image.alt}"]`)).not.toBeNull();
+        const heroSource = view.querySelector('.serviceHero img')!.getAttribute('src');
+        const galleryImages = project.images.filter(image => image.src !== heroSource);
+        expect(gallery.querySelectorAll("figure")).toHaveLength(galleryImages.length);
+        for (const image of project.images) expect(view.querySelectorAll(`img[src="${image.src}"]`)).toHaveLength(1);
+        for (const image of galleryImages) expect(gallery.querySelector(`img[alt="${image.alt}"]`)).not.toBeNull();
+        expect(gallery.querySelector(`img[src="${heroSource}"]`)).toBeNull();
       }
     });
   }

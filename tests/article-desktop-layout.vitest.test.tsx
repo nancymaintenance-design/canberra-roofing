@@ -22,7 +22,7 @@ it.each(NEWS_ARTICLES)('keeps $slug complete with a separate chapter directory',
   expect(host.querySelectorAll('.articleRelated a[href^="/news/"]').length).toBeGreaterThanOrEqual(2);
 });
 
-it('uses a sticky left directory, wide desktop reading area and horizontal evidence while phones stack', async () => {
+it('uses a sticky desktop directory and compact linked case summary while phones stack', async () => {
   const browser = await chromium.launch({headless:true,channel:'msedge'});
   try {
     const page = await browser.newPage({reducedMotion:'reduce'});
@@ -37,7 +37,12 @@ it('uses a sticky left directory, wide desktop reading area and horizontal evide
       const layout = (await page.locator('.articleLayout').boundingBox())!;
       const directory = (await page.locator('.articleContents').boundingBox())!;
       const body = (await page.locator('.articleBody').boundingBox())!;
-      const figures = await page.locator('.articleBody .relatedCasePhotos figure').evaluateAll(nodes => nodes.map(node => {const r=node.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
+      const caseSummary = page.locator('.articleBody .relatedCase');
+      expect(await caseSummary.count()).toBe(1);
+      expect(await caseSummary.locator('img, .relatedCasePhotos').count()).toBe(0);
+      expect(await caseSummary.locator('a[href="/case-studies/tile-roof-repair-canberra"]').count()).toBe(1);
+      const summaryBox = (await caseSummary.boundingBox())!;
+      expect(summaryBox.width).toBeGreaterThan(body.width - 2);
       const related = await page.locator('.articleRelated li').evaluateAll(nodes => nodes.map(node=>{const r=node.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
       if (width>1024) {
         expect(layout.width).toBeGreaterThan(Math.min(width-100,1100));
@@ -45,9 +50,6 @@ it('uses a sticky left directory, wide desktop reading area and horizontal evide
         expect((await page.locator('.articleSection h2').first().boundingBox())!.width).toBeGreaterThanOrEqual(body.width-1);
         expect(directory.x+directory.width).toBeLessThan(body.x);
         expect(await page.locator('.articleContents').evaluate(n=>getComputedStyle(n).position)).toBe('sticky');
-        expect(figures).toHaveLength(3);
-        expect(Math.abs(figures[0].y-figures[2].y)).toBeLessThan(2);
-        expect(figures[2].x).toBeGreaterThan(figures[1].x);
         expect(Math.abs(related[0].y-related[1].y)).toBeLessThan(2);
         if(related.length===4) expect(Math.abs(related[2].y-related[3].y)).toBeLessThan(2);
         await page.evaluate(()=>scrollTo(0,1400));
@@ -59,7 +61,6 @@ it('uses a sticky left directory, wide desktop reading area and horizontal evide
         expect(body.y).toBeGreaterThanOrEqual(directory.y+directory.height);
         expect(await page.locator('.articleContents').evaluate(n=>getComputedStyle(n).position)).toBe('static');
         if(width<=760) {
-          expect(figures[1].y).toBeGreaterThanOrEqual(figures[0].y+figures[0].height);
           expect(related[1].y).toBeGreaterThanOrEqual(related[0].y+related[0].height);
         }
       }

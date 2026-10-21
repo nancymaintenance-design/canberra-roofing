@@ -42,7 +42,11 @@ test('Vercel declares bounded one-hop permanent aliases without changing system 
     ...aliases.map(alias => ({ ...alias, permanent: true })),
     ...['', '/zh'].flatMap(prefix => ['', '/', '.html', '.html/'].map(suffix => ({ source: `${prefix}/solutions${suffix}`, destination: `${prefix}/services`, statusCode: 301 }))),
     ...['', '/zh'].flatMap(prefix => ['', '/', '.html', '.html/'].map(suffix => ({ source: `${prefix}/services/roof-restoration${suffix}`, destination: `${prefix}/services/roof-renovation`, statusCode: 301 }))),
-    ...['/', '.html', '.html/'].map(suffix => ({source:'/zh/services/reroof-replacement'+suffix,destination:'/zh/services/reroof-replacement',permanent:true})),
+    ...routes.flatMap(({ pathname }) => {
+      const destination = '/zh' + (pathname === '/' ? '/' : pathname);
+      const sources = pathname === '/' ? ['/zh', '/zh/index.html', '/zh/index.html/'] : ['/', '.html', '.html/'].map(suffix => destination + suffix);
+      return sources.map(source => ({ source, destination, permanent: true }));
+    }),
   ].sort(bySource));
   assert.deepEqual([...config.rewrites].sort(bySource), [...expectedRewrites].sort(bySource));
   assert.equal(routes.length, 120);

@@ -20,7 +20,7 @@ export const LLMS_CURATION = Object.freeze([
     ['gutter-repairs','Repair gutter components'],
     ['emergency-roof-repairs','Urgent assessment and after-hours fee boundaries'],
     ['rental-property-roof-repairs','Coordinate access, findings and approval'],
-  ].map(([slug,intent])=>({path:'/services/'+slug,role:'service',group:'services',intent,selector:'.directAnswer',summarySentences:slug==='emergency-roof-repairs'?3:2})),
+  ].map(([slug,intent])=>({path:'/services/'+slug,role:'service',group:'services',intent,selector:slug==='emergency-roof-repairs'?'.operatingHours > p':'.directAnswer',summarySentences:slug==='emergency-roof-repairs'?3:2})),
   {path:'/case-studies/tile-roof-repair-canberra',role:'case-study',group:'cases',intent:'Documented visible tile repair sequence',selector:'.articleLead'},
   {path:'/news',role:'guide-directory',group:'guides',intent:'Browse roof-care articles'},
   {path:'/news/after-rain-roof-leak-check-canberra',role:'guide',group:'guides',intent:'Heavy-rain leak observations',selector:'.articleLead'},

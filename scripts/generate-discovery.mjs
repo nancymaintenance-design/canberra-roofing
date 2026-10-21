@@ -21,9 +21,17 @@ const replacementAliases = ['', '/zh'].flatMap(prefix => ['/', '.html', '.html/'
   source: `${prefix}/services/reroof-replacement${suffix}`, destination: `${prefix}/services/reroof-replacement`, permanent: true,
 })));
 const recoveredSources = new Set([...restorationAliases, ...replacementAliases].map(rule => rule.source));
-config.redirects = [...config.redirects.filter(rule => !retiredSources.has(rule.source) && !recoveredSources.has(rule.source)), ...solutionAliases, ...restorationAliases, ...replacementAliases];
+const allPaths=[...new Set([...Object.keys(registry),...DISTRICT_PROFILES.map(item=>item.path),...SUBURB_PROFILES.map(item=>item.path),...editorial.articles.map(article=>'/news/'+article.slug)])];
+// Only published documents get aliases, including intentionally noindex suburbs.
+// Explicit destinations contain no query so Vercel preserves the incoming query.
+const chineseAliases = allPaths.flatMap(path => {
+  const destination = zh(path);
+  const sources = path === '/' ? ['/zh', '/zh/index.html', '/zh/index.html/'] : ['/', '.html', '.html/'].map(suffix => destination + suffix);
+  return sources.map(source => ({ source, destination, permanent: true }));
+}).filter(rule => !retiredSources.has(rule.source) && !recoveredSources.has(rule.source));
+const chineseSources = new Set(chineseAliases.map(rule => rule.source));
+config.redirects = [...config.redirects.filter(rule => !retiredSources.has(rule.source) && !recoveredSources.has(rule.source) && !chineseSources.has(rule.source)), ...solutionAliases, ...restorationAliases, ...replacementAliases, ...chineseAliases];
 config.rewrites = config.rewrites.filter(rule => !retiredSources.has(rule.source));
-const allPaths=[...Object.keys(registry),...DISTRICT_PROFILES.map(item=>item.path),...SUBURB_PROFILES.map(item=>item.path),...editorial.articles.map(article=>'/news/'+article.slug)];
 config.rewrites=[...config.rewrites.filter(rule=>!rule.source.startsWith('/zh') && rule.source!=='/services/reroof-replacement'),{source:'/services/reroof-replacement',destination:'/services/reroof-replacement.html'},...editorial.articles.filter(article=>!config.rewrites.some(rule=>rule.source==='/news/'+article.slug)).map(article=>({source:'/news/'+article.slug,destination:'/news/'+article.slug+'.html'})),{source:'/zh',destination:'/zh/index.html'},...allPaths.map(path=>({source:zh(path),destination:path==='/'?'/zh/index.html':zh(path)+'.html'}))];
 await writeFile('vercel.json',JSON.stringify(config,null,2)+'\n');
 await writeFile('public/service-areas.json', JSON.stringify({ serviceAreas: SUBURB_PROFILES.map(({ suburb, district, path, servicePaths }) => ({ suburb, district, url: `${origin}${path}`, servicePaths })) }, null, 2) + '\n');
