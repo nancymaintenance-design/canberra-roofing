@@ -30,7 +30,8 @@ export async function startPreview({ port = 0, directory = path.join(root, 'dist
       const unsafePath = rawPathname.includes('//') || unsafeEncodedPath.test(rawPathname);
       const pathname = decodeURIComponent(rawPathname);
       for (const rule of config.headers ?? []) {
-        if (new RegExp(`^${rule.source}$`).test(pathname)) {
+        const exactFeedHeader = ['/rss.xml', '/zh/rss.xml', '/feed.json', '/zh/feed.json'].includes(rule.source);
+        if (exactFeedHeader ? rule.source === pathname : new RegExp(`^${rule.source}$`).test(pathname)) {
           for (const { key, value } of rule.headers) res.setHeader(key, value);
         }
       }
@@ -75,7 +76,7 @@ export async function startPreview({ port = 0, directory = path.join(root, 'dist
         filename = await fileAt('/404.html');
       }
       if (!filename) { res.writeHead(404, { 'Content-Type': 'text/plain' }); return res.end('Not found'); }
-      res.setHeader('Content-Type', (types[path.extname(filename)] ?? 'application/octet-stream') + (['.html', '.js', '.css', '.txt', '.xml', '.json'].includes(path.extname(filename)) ? '; charset=utf-8' : ''));
+      if (!res.hasHeader('Content-Type') || res.statusCode === 404) res.setHeader('Content-Type', (types[path.extname(filename)] ?? 'application/octet-stream') + (['.html', '.js', '.css', '.txt', '.xml', '.json'].includes(path.extname(filename)) ? '; charset=utf-8' : ''));
       res.end(req.method === 'HEAD' ? undefined : await readFile(filename));
     } catch (error) {
       res.writeHead(error instanceof URIError ? 400 : 500, { 'Content-Type': 'text/plain' });

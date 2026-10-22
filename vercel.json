@@ -25,6 +25,42 @@
           "value": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; font-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
         }
       ]
+    },
+    {
+      "source": "/rss.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/rss+xml; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/zh/rss.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/rss+xml; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/feed.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/feed+json; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/zh/feed.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/feed+json; charset=utf-8"
+        }
+      ]
     }
   ],
   "redirects": [
