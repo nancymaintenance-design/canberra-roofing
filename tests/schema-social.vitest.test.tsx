@@ -35,12 +35,12 @@ it.each([
  ['roof-inspections', 'roof-inspection-roofline-review'],
  ['metal-roof-repairs', 'metal-roof-completed-roof'],
  ['roof-renovation', 'tile-roof-condition-review'],
- ['roof-cleaning', 'roof-cleaning-site-overview'],
- ['gutter-downpipe-maintenance', 'gutter-downpipe-roof-edge-condition'],
- ['gutter-repairs', 'metal-roof-gutter-edge-repair'],
+ ['roof-cleaning', 'site-roof-edge-cleared-overview'],
+ ['gutter-downpipe-maintenance', 'site-box-gutter-cleared'],
+ ['gutter-repairs', 'site-gutter-junction-detail'],
  ['emergency-roof-repairs', 'roof-leak-after-rain'],
  ['rental-property-roof-repairs', 'roof-leak-interior-water-mark'],
-])('uses the existing thematic cover for service %s', (slug, subject) => {
+])('uses the approved thematic cover for service %s', (slug, subject) => {
  const host = document.createElement('div'); host.innerHTML = renderToStaticMarkup(<HeadMarkup pathname={'/services/' + slug}/>);
  expect(host.querySelector('meta[property="og:image"]')?.getAttribute('content')).toContain(`/assets/responsive/${subject}-1200.webp`);
 });
@@ -61,9 +61,9 @@ it('replaces duplicate and stale sharing metadata on article, service, area and 
  view.rerender(<HeadManager pathname="/404"/>);
  expect(document.head.querySelectorAll('meta[property^="og:image"]')).toHaveLength(0);
 });
-it('gives all 41 indexable nonhome pages visible matching breadcrumbs after hub consolidation', () => {
+it('gives all indexable nonhome pages visible matching breadcrumbs after hub consolidation', () => {
  const eligible = pagePaths.filter(p => p !== '/' && !getRouteHead(p).robots);
-  expect(eligible).toHaveLength(42);
+  expect(eligible).toHaveLength(43);
  for (const p of eligible) {
   const host = document.createElement('div'); host.innerHTML = renderToStaticMarkup(<AppV3 pathname={p}/>);
   const nav = host.querySelector('nav[aria-label="Breadcrumb"]')!;
@@ -87,9 +87,9 @@ it('adds twelve truthful Article and twelve Service entities', () => {
  }
 });
 it('preserves discovery totals, real providers and confirmed profiles without invented claims', () => {
- expect(pagePaths).toHaveLength(120);
+ expect(pagePaths).toHaveLength(121);
  expect(pagePaths.filter(p => getRouteHead(p).robots === 'noindex,follow')).toHaveLength(77);
- expect((readFileSync('public/sitemap.xml','utf8').match(/<loc>/g) ?? [])).toHaveLength(84);
+ expect((readFileSync('public/sitemap.xml','utf8').match(/<loc>/g) ?? [])).toHaveLength(86);
  const html = readFileSync('index.html','utf8');
  const entity = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/)![1]);
  expect(entity.sameAs).toEqual(['https://www.instagram.com/elliservices_group/','https://www.facebook.com/p/Ellis-Services-Group-100082926022259/']);

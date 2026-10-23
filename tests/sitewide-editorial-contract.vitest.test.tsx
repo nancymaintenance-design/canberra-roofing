@@ -16,7 +16,7 @@ function page(path: string) {
 afterEach(() => { cleanup(); localStorage.clear(); });
 
 it('keeps unsupported business statistics and generic headings out of every public route', () => {
-  expect(Object.keys(publishedRoutes)).toHaveLength(120);
+  expect(Object.keys(publishedRoutes)).toHaveLength(121);
   for (const path of Object.keys(publishedRoutes)) {
     const host = page(path);
     expect(host.querySelector('main')?.textContent, path).not.toMatch(unsupported);
@@ -88,10 +88,10 @@ it.each([
   ['rebedding-repointing', 'ridge-capping-repair-process', /ridge line/i],
   ['roof-inspections', 'roof-inspection-team-review', /tiles.*chimney/i],
   ['roof-inspections', 'roof-inspection-solar-roof-review', /tile.*solar.panel/i],
-  ['metal-roof-repairs', 'metal-roof-repair-team-work', /metal roof/i],
-  ['metal-roof-repairs', 'metal-roof-secure-fixing', /fixings/i],
-  ['roof-cleaning', 'roof-cleaning-controlled-wash', /cleaning|spraying/i],
-])('describes pending %s image %s without certifying work conditions', (slug, asset, visibleSubject) => {
+  ['metal-roof-repairs', 'site-metal-roof-overview', /metal roof/i],
+  ['metal-roof-repairs', 'site-metal-roof-fixing-points', /fixing/i],
+  ['roof-cleaning', 'site-eaves-gutter-before', /moss|debris/i],
+])('describes %s image %s without certifying work conditions', (slug, asset, visibleSubject) => {
   const host = page(`/services/${slug}`);
   const gallery = host.querySelector('.serviceGallery')!;
   const images = host.querySelectorAll(`main img[src*="${asset}"]`);

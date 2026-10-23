@@ -30,35 +30,39 @@ describe("service image galleries", () => {
     );
   });
 
-  it("retains all five Metal and Colorbond photographs once across hero and gallery", () => {
+  it("uses the four supplied metal roof photos once and retains the existing hero", () => {
     const images = serviceImages("/services/metal-roof-repairs");
 
     expect(images).toEqual([
-      "/assets/services/metal-roof-repair-team-work.png",
       "/assets/services/metal-roof-wall-flashing-condition.png",
-      "/assets/services/metal-roof-secure-fixing.png",
-      "/assets/services/metal-roof-gutter-edge-repair.png",
-      "/assets/services/metal-roof-completed-roof.png",
+      "/assets/projects/site-metal-roof-overview.webp",
+      "/assets/projects/site-metal-roof-fixing-points.webp",
+      "/assets/projects/site-metal-roof-junction.webp",
+      "/assets/projects/site-metal-roof-sheet-detail.webp",
     ].sort());
   });
 
-  it("retains all five Roof Cleaning photographs once across hero and gallery", () => {
+  it("uses seven supplied Roof Cleaning site photos once across hero and gallery", () => {
     expect(serviceImages("/services/roof-cleaning")).toEqual([
-      "/assets/services/roof-cleaning-surface-condition.png",
-      "/assets/services/roof-cleaning-gutter-debris.png",
-      "/assets/services/roof-cleaning-controlled-wash.png",
-      "/assets/services/roof-cleaning-site-overview.png",
-      "/assets/services/roof-cleaning-completed-roof.png",
+      "/assets/projects/site-eaves-gutter-before.webp",
+      "/assets/projects/site-eaves-gutter-cleared.webp",
+      "/assets/projects/site-box-gutter-sediment.webp",
+      "/assets/projects/site-box-gutter-cleared.webp",
+      "/assets/projects/site-roof-edge-cleared-overview.webp",
+      "/assets/projects/site-roof-junction-sediment.webp",
+      "/assets/projects/site-garden-gutter-cleared.webp",
     ].sort());
   });
 
-  it("retains all five Gutter and Downpipe photographs once across hero and gallery", () => {
+  it("uses seven supplied gutter site photos once across hero and gallery", () => {
     expect(serviceImages("/services/gutter-downpipe-maintenance")).toEqual([
-      "/assets/services/gutter-downpipe-valley-condition.jpg",
-      "/assets/services/gutter-downpipe-roof-edge-condition.jpg",
-      "/assets/services/gutter-downpipe-vegetation-build-up.jpg",
-      "/assets/services/gutter-downpipe-solar-channel-debris.jpg",
-      "/assets/services/gutter-downpipe-edge-debris.jpg",
+      "/assets/projects/site-box-gutter-cleared.webp",
+      "/assets/projects/site-gutter-outlet-before.webp",
+      "/assets/projects/site-gutter-outlet-cleared.webp",
+      "/assets/projects/site-side-gutter-before.webp",
+      "/assets/projects/site-side-gutter-cleared.webp",
+      "/assets/projects/site-eaves-moss-detail.webp",
+      "/assets/projects/site-gutter-sediment-closeup.webp",
     ].sort());
   });
 });

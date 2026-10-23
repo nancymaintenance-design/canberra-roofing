@@ -23,7 +23,7 @@ test('discovery creates only published Chinese aliases, preserves exceptions, an
     const rules = new Map(config.redirects.map(rule => [rule.source, rule]));
     const english = [...Object.keys(registry), ...DISTRICT_PATHS, ...SUBURB_PATHS, ...editorial.articles.map(article => '/news/' + article.slug)];
     const canonical = [...new Set(english)].map(path => path === '/' ? '/zh/' : '/zh' + path);
-    assert.equal(canonical.length, 120);
+    assert.equal(canonical.length, 121);
     for (const destination of canonical) {
       const aliases = destination === '/zh/' ? ['/zh', '/zh/index.html', '/zh/index.html/'] : ['/', '.html', '.html/'].map(suffix => destination + suffix);
       assert.equal(rules.has(destination), false, `canonical must not redirect: ${destination}`);

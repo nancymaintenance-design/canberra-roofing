@@ -26,6 +26,9 @@ import { ServiceSectionNav, ServiceTheme } from "./service-theme-layout";
 import { ServiceResources, ServiceNextStep } from './service-journey';
 import { SERVICE_COPY_REFINEMENTS } from './service-copy-refinements';
 import { POST_RAIN_SERVICE_COPY } from './post-rain-content.js';
+import { CLEANING_CASE_PATH, SITE_CLEANING_GALLERIES, SITE_CLEANING_PHOTOS } from './site-cleaning-photos';
+import { ArticleSitePhotos, CleaningCaseView, HomeCleaningCase } from './cleaning-case';
+import { ServiceQuotePreparation } from './service-quote-preparation';
 
 type RelatedService = { label: string; path: string; description: string };
 type Service = {
@@ -394,7 +397,7 @@ const seoHeadings: Record<string, string> = {
 };
 const serviceGalleries: Record<
   string,
-  { title: string; intro: string; images: { src: string; alt: string }[] }
+  { title: string; intro: string; documentary?: boolean; images: { src: string; alt: string; caption?: string }[] }
 > = {
   "reroof-replacement": {
     title: "Roof materials and connections to assess before replacement",
@@ -540,86 +543,34 @@ const serviceGalleries: Record<
     ],
   },
   "metal-roof-repairs": {
-    title: "What metal roof repair work can involve.",
+    documentary: true,
+    title: "Metal roof site photos",
     intro:
-      "These illustrative photographs show metal-roof sheets and repair details. We check the sheet profile, fixings and junctions before recommending repairs.",
+      "These site photographs show the metal roof sheets, visible fixing points and adjoining roof details.",
     images: [
       {
-        src: "/assets/services/metal-roof-repair-team-work.png",
-        alt: "Two roofing workers carrying out repair work on a metal roof",
+        src: "/assets/projects/site-metal-roof-overview.webp",
+        alt: "Grey metal roof with a ridge and visible roof penetrations",
+        caption: "Metal roof overview with ridge and roof penetrations.",
       },
       {
-        src: "/assets/services/metal-roof-wall-flashing-condition.png",
-        alt: "Visible metal roof wall-flashing condition and aged fasteners",
+        src: "/assets/projects/site-metal-roof-fixing-points.webp",
+        alt: "Metal roof sheets with rows of fixing points and a ridge junction",
+        caption: "Visible fixing points and ridge details on the metal roof.",
       },
       {
-        src: "/assets/services/metal-roof-secure-fixing.png",
-        alt: "Roofing worker using a drill on metal roof sheet fixings, with a harness and rope visible",
+        src: "/assets/projects/site-metal-roof-junction.webp",
+        alt: "Adjoining metal roof sheets and a roof penetration",
+        caption: "Adjoining roof sheets and a roof penetration.",
       },
       {
-        src: "/assets/services/metal-roof-gutter-edge-repair.png",
-        alt: "Roofing worker repairing a metal roof edge and gutter junction",
-      },
-      {
-        src: "/assets/services/metal-roof-completed-roof.png",
-        alt: "Completed dark metal roof with ridge and roof ventilation details",
+        src: "/assets/projects/site-metal-roof-sheet-detail.webp",
+        alt: "Closer view of metal roof sheets and a junction",
+        caption: "Closer view of the metal roof sheets and junction.",
       },
     ],
   },
-  "roof-cleaning": {
-    title: "What professional roof cleaning work can show.",
-    intro:
-      "These illustrative photographs show surface build-up and roof cleaning. We assess the existing material and finish to choose the cleaning method for your roof.",
-    images: [
-      {
-        src: "/assets/services/roof-cleaning-surface-condition.png",
-        alt: "Tile roof surface with visible moss, lichen and leaf build-up near the gutter line",
-      },
-      {
-        src: "/assets/services/roof-cleaning-gutter-debris.png",
-        alt: "Worker removing leaf debris from a residential roof gutter beside weathered tiles",
-      },
-      {
-        src: "/assets/services/roof-cleaning-controlled-wash.png",
-        alt: "Roofing worker spraying water onto a tiled residential roof, with a hose and ladder visible",
-      },
-      {
-        src: "/assets/services/roof-cleaning-site-overview.png",
-        alt: "Roof cleaning activity on a tiled home viewed from ground level",
-      },
-      {
-        src: "/assets/services/roof-cleaning-completed-roof.png",
-        alt: "Clean tiled roof on a residential home",
-      },
-    ],
-  },
-  "gutter-downpipe-maintenance": {
-    title: "What gutter and downpipe maintenance can show.",
-    intro:
-      "These illustrative photographs show roof-edge drainage and gutter debris. We inspect the gutter runs, outlets and downpipes to plan the clearing and maintenance.",
-    images: [
-      {
-        src: "/assets/services/gutter-downpipe-valley-condition.jpg",
-        alt: "Visible debris in a metal roof valley channel above a residential street",
-      },
-      {
-        src: "/assets/services/gutter-downpipe-roof-edge-condition.jpg",
-        alt: "Residential roof edge and gutter line with visible debris build-up",
-      },
-      {
-        src: "/assets/services/gutter-downpipe-vegetation-build-up.jpg",
-        alt: "Overgrown vegetation beside a metal roof drainage channel requiring maintenance context",
-      },
-      {
-        src: "/assets/services/gutter-downpipe-solar-channel-debris.jpg",
-        alt: "Debris visible in a metal roof drainage channel beside solar panels",
-      },
-      {
-        src: "/assets/services/gutter-downpipe-edge-debris.jpg",
-        alt: "Leaf and plant debris visible along a metal roof edge and gutter channel",
-      },
-    ],
-  },
+  ...SITE_CLEANING_GALLERIES,
 };
 serviceBySlug["roof-leak-repairs"].related = [
   {
@@ -1048,6 +999,7 @@ function HomeV2({ data }: { data: Data }) {
           Tell us your suburb and what you have noticed. We arrange an on-site assessment, identify the affected components and confirm the repair plan and written quote before work begins.
         </p>
         <p>For a few damaged tiles, start with <a href="/services/tile-roof-repairs">tile roof repairs</a>. For a stain after rain, explore <a href="/services/roof-leak-repairs">roof leak investigation</a>. Read our <a href="/news/when-to-arrange-roof-inspection-canberra">inspection and quote guide</a> to prepare for the visit.</p>
+        <p><a className="textAction" href="/services#roof-work-options">Compare repair, renovation and replacement <ArrowRight size={16} /></a></p>
         <a className="button" href="/contact">
           Request a roof assessment <ArrowRight size={18} />
         </a>
@@ -1056,24 +1008,7 @@ function HomeV2({ data }: { data: Data }) {
         <IntentServiceContent slug="home" />
         <OperatingHours />
       </div>
-      <section className="homeContextGrid trustImageGrid">
-        <figure>
-          <ResponsiveImage
-            src="/assets/home/ellis-team-trust.png"
-            alt="People beside a branded vehicle in a residential roof-service context image"
-            width={1672}
-            height={941}
-          />
-        </figure>
-        <figure>
-          <ResponsiveImage
-            src="/assets/home/ellis-site-consultation.png"
-            alt="People discussing roof work beside a branded vehicle"
-            width={1672}
-            height={941}
-          />
-        </figure>
-      </section>
+      <HomeCleaningCase />
       <section className="homeMap" aria-labelledby="home-map-title">
         <div className="homeMapIntro">
           <p className="eyebrow">CANBERRA OFFICE</p>
@@ -1523,7 +1458,8 @@ function Services({ data }: { data: Data }) {
       <p>
         We provide roof repairs, inspections, cleaning and maintenance for Canberra homes. We assess the roof on site and explain the recommended work and written quote. Choose a service below, or tell us what you have noticed if you are unsure.
       </p>
-      <h2>Compare roof repair and maintenance services</h2>
+      <p className="roofScopeJump"><a className="textAction" href="#roof-work-options">Repair, renovation or replacement? Compare the options <ArrowRight size={16} /></a></p>
+      <h2 id="repair-services">Compare roof repair and maintenance services</h2>
       <ServiceCards data={data} />
       <GapHubLinks />
       <section className="guidance">
@@ -1580,7 +1516,7 @@ function Services({ data }: { data: Data }) {
           </p>
         </details>
         <a className="button" href="/contact">
-          Go to contact <ArrowRight size={17} />
+          Request a roof quote <ArrowRight size={17} />
         </a>
       </section>
     </section>
@@ -1595,9 +1531,9 @@ const serviceHeroImages: Record<string, { src: string; alt: string; caption: str
   "roof-inspections": { src: "/assets/services/roof-inspection-roofline-review.png", alt: "Roofline review during an inspection", caption: "A roof review connects visible signs with the condition on site." },
   "metal-roof-repairs": { src: "/assets/services/metal-roof-wall-flashing-condition.png", alt: "Metal roof and wall flashing detail", caption: "Sheets, fixings and flashing form one weathering system." },
   "roof-renovation": { src: "/assets/services/tile-roof-site-overview.png", alt: "Overview of an existing tiled roof", caption: "Illustrative photograph of an existing tiled roof." },
-  "roof-cleaning": { src: "/assets/services/roof-cleaning-controlled-wash.png", alt: "Worker spraying water onto a tiled roof", caption: "Cleaning methods depend on the roof material and its condition." },
-  "gutter-downpipe-maintenance": { src: "/assets/services/gutter-downpipe-roof-edge-condition.jpg", alt: "Gutter condition along a roof edge", caption: "Gutters, outlets and downpipes share the drainage path." },
-  "gutter-repairs": { src: "/assets/services/metal-roof-gutter-edge-repair.png", alt: "Gutter edge and adjoining metal roof detail", caption: "Check component condition as well as the flow of water." },
+  "roof-cleaning": SITE_CLEANING_PHOTOS.overview,
+  "gutter-downpipe-maintenance": SITE_CLEANING_PHOTOS.channelCleared,
+  "gutter-repairs": SITE_CLEANING_PHOTOS.junction,
   "emergency-roof-repairs": { src: "/assets/projects/urgent-before-junction.webp", alt: "Roof junction before the documented urgent repair work", caption: "Before work: a junction from the urgent roof leak project." },
   "rental-property-roof-repairs": { src: "/assets/projects/confirmed-property-roof-work-1000.webp", alt: "Documented property roof maintenance work", caption: "Property roof work, recorded to support clear communication." },
 };
@@ -1617,7 +1553,7 @@ function ServiceView({ service }: { service: Service }) {
   const mergedQuestions = SERVICE_FAQ_MERGES[service.slug] ?? {};
   const serviceFaqs = [{ q: service.faqQ, a: service.faqA }, ...(service.faqExtras ?? [])].filter(item => !mergedQuestions[item.q]);
   const headings = SERVICE_TOPIC_HEADINGS[service.slug] ?? ['', '', '', '', '', 'Replacement materials, access and quoted scope'];
-  const galleries: { title: string; intro: string; project?: boolean; relatedPath?: string; relatedLabel?: string; images: { src: string; alt: string; srcSet?: string; width?: number; height?: number; caption?: string }[] }[] = [serviceGalleries[service.slug], PROJECT_GALLERIES[service.slug as keyof typeof PROJECT_GALLERIES]].filter(Boolean).map(gallery => ({...gallery, images: gallery.images.filter(image => image.src !== serviceHeroImages[service.slug].src)})).filter(gallery => gallery.images.length > 0);
+  const galleries: { title: string; intro: string; documentary?: boolean; project?: boolean; relatedPath?: string; relatedLabel?: string; images: { src: string; alt: string; srcSet?: string; width?: number; height?: number; caption?: string }[] }[] = [serviceGalleries[service.slug], PROJECT_GALLERIES[service.slug as keyof typeof PROJECT_GALLERIES]].filter(Boolean).map(gallery => ({...gallery, images: gallery.images.filter(image => image.src !== serviceHeroImages[service.slug].src)})).filter(gallery => gallery.images.length > 0);
   const caseStudy = ["tile-roof-repairs", "roof-inspections", "roof-leak-repairs", "roof-renovation"].includes(service.slug) ? caseStudies[0] : undefined;
   const galleryTitleId = `${service.slug}-gallery-title`;
   return (
@@ -1659,9 +1595,9 @@ function ServiceView({ service }: { service: Service }) {
       </ServiceTheme>
       <ServiceTheme index={2} serviceSlug={service.slug}>
       {galleries.map((gallery) => (
-        <section key={gallery.title} className={`serviceGallery${gallery.project ? " serviceProjectGallery" : ""}`} data-project={gallery.project || undefined} data-image-count={gallery.images.length} aria-labelledby={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>
+        <section key={gallery.title} className={`serviceGallery${gallery.project ? " serviceProjectGallery" : ""}${gallery.documentary ? " serviceSitePhotos" : ""}`} data-project={gallery.project || undefined} data-image-count={gallery.images.length} aria-labelledby={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>
           <div className="serviceGalleryIntro">
-            <p className="eyebrow">{gallery.project ? "PROJECT PHOTOS" : "ROOF DETAILS"}</p>
+            <p className="eyebrow">{gallery.project ? "PROJECT PHOTOS" : gallery.documentary ? "SITE PHOTOS" : "ROOF DETAILS"}</p>
             <h3 id={`${galleryTitleId}${gallery.project ? "-project" : ""}`}>{gallery.title}</h3>
             {!gallery.project && <p>{gallery.intro}</p>}
             {gallery.project && <ProjectWorkNotes slug={service.slug} />}
@@ -1674,7 +1610,7 @@ function ServiceView({ service }: { service: Service }) {
                 key={image.src}
                 className={index === 0 ? "galleryInterior" : ""}
               >
-                <ResponsiveImage src={image.src} srcSet={image.srcSet} sizes={`(max-width: 760px) calc(100vw - 3rem), ${gallery.images.length === 1 ? "(max-width: 1440px) 90vw, 1400px" : gallery.images.length === 2 || gallery.images.length === 4 || (gallery.images.length === 5 && index < 2) ? "(max-width: 1440px) 45vw, 680px" : "(max-width: 1440px) 30vw, 440px"}`} alt={image.alt} width={image.width} height={image.height} />
+                <ResponsiveImage src={image.src} srcSet={image.srcSet} sizes={`(max-width: 760px) calc(100vw - 3rem), ${gallery.images.length === 1 ? "(max-width: 1440px) 90vw, 1400px" : gallery.documentary || gallery.images.length === 2 || gallery.images.length === 4 || (gallery.images.length === 5 && index < 2) ? "(max-width: 1440px) 45vw, 680px" : "(max-width: 1440px) 30vw, 440px"}`} alt={image.alt} width={image.width} height={image.height} />
                 {image.caption && <figcaption>{image.caption}</figcaption>}
               </figure>
             ))}
@@ -1696,7 +1632,7 @@ function ServiceView({ service }: { service: Service }) {
         <OperatingHours headingLevel={3} />
         {service.slug === "rental-property-roof-repairs" && <p><a href="/news/roof-leak-information-for-tenants-canberra">What tenants can include in a roof leak report</a>.</p>}
         {service.slug === "roof-leak-repairs" && <p><a href="/services/emergency-roof-repairs">Urgent leak enquiries and after-hours fees</a>, or <a href="/services/rental-property-roof-repairs">coordinate a rental property roof assessment</a>.</p>}
-        <p className="serviceBookingPrompt">{service.next}</p>
+        <ServiceQuotePreparation slug={service.slug} fallback={service.next} />
         <a className="button" href={`/contact?service=${encodeURIComponent(service.title)}`}>Request a roof assessment <ArrowRight size={17} /></a>
         </div>
         </div>
@@ -1842,7 +1778,7 @@ function News() {
 }
 function NewsArticleView({ article }: { article: NewsArticle }) {
   const modifiedDate = articleModifiedDate(article.slug, article.updated);
-  const image = newsImages[article.slug] || addedImage(article.slug);
+  const image: { src: string; alt: string; caption?: string } | undefined = newsImages[article.slug] || addedImage(article.slug);
   const related = article.related.map(slug => newsArticles.find(item => item.slug === slug)!);
   return (
     <article className="page newsArticle">
@@ -1853,13 +1789,13 @@ function NewsArticleView({ article }: { article: NewsArticle }) {
         <p className="articleLead">{article.lead}</p>
         <p className="articleByline">By <a href={ARTICLE_AUTHOR.url}>{ARTICLE_AUTHOR.name}</a> · Updated <time dateTime={modifiedDate}>{articleVisibleDate(modifiedDate)}</time></p>
         </div>
-        {image ? <figure className="articleLeadImage pairedHeroMedia"><ResponsiveImage src={image.src} alt={image.alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>Illustrative image for this roof-care guide.</figcaption></figure> : null}
+        {image ? <figure className="articleLeadImage pairedHeroMedia"><ResponsiveImage src={image.src} alt={image.alt} priority sizes="(max-width: 1024px) calc(100vw - 3rem), 600px" /><figcaption>{image.caption || "Illustrative image for this roof-care guide."}</figcaption></figure> : null}
       </header>
       <div className="articleLayout">
         <nav className="articleContents" aria-label="On this page"><p>In this article</p><ol>{article.sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.heading}</a></li>)}</ol></nav>
         <div className="articleBody">
           <ServiceNextStep pagePath={`/news/${article.slug}`} />
-          {article.sections.map(section => <section className="articleSection" id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>)}
+          {article.sections.map(section => <section className="articleSection" id={section.id} key={section.id}><h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}<ArticleSitePhotos slug={article.slug} section={section.id} /></section>)}
           {["cracked-slipped-missing-roof-tiles-canberra", "after-rain-roof-leak-check-canberra"].includes(article.slug) ? <TileCasePhotos context={article.slug} /> : null}
           {related.length > 0 && <section className="articleRelated"><h2>Continue reading</h2><ul>{related.map(item => <li key={item.slug}><a href={`/news/${item.slug}`}>{item.title}</a><p>{item.summary}</p></li>)}</ul></section>}
           <a className="articleBack" href="/news">← All roof care articles</a>
@@ -2617,6 +2553,7 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
   else if (path === "/faq") content = <FAQ data={data} />;
   else if (path === "/contact") content = <Contact data={data} />;
   else if (path === "/privacy") content = <Privacy />;
+  else if (path === CLEANING_CASE_PATH) content = <CleaningCaseView />;
   else if (path.startsWith("/case-studies/")) {
     const study = caseStudies.find(
       (item) => path === "/case-studies/" + item.slug,

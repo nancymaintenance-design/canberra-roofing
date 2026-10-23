@@ -93,10 +93,12 @@ it('serves responsive modern sources without deleting the original photos', () =
     expect(source?.getAttribute('type')).toBe('image/webp');
     const candidates = source!.getAttribute('srcset')!.split(', ');
     expect(candidates.length).toBe(3);
+    const expectedWidths = [400, 800, Math.min(1200, Number(image.getAttribute('width')))];
+    expect(candidates.map(candidate => Number(candidate.split(' ')[1].replace('w', '')))).toEqual(expectedWidths);
     for (const candidate of candidates) {
       const [url, width] = candidate.split(' ');
       expect(existsSync(`public${url.split('?')[0]}`)).toBe(true);
-      expect(['400w', '800w', '1200w']).toContain(width);
+      expect(Number(width.replace('w', ''))).toBeLessThanOrEqual(Number(image.getAttribute('width')));
     }
     expect(image.getAttribute('loading')).toBe('lazy');
   }

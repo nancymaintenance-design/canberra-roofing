@@ -4204,6 +4204,132 @@ details:hover {
 }
 :root:lang(zh-CN) { --font-body: Arial, "Microsoft YaHei", "PingFang SC", sans-serif; }
 .languageSwitch { color: inherit; font-weight: 600; border: 1px solid currentColor; border-radius: var(--radius-control); padding: .55rem .65rem; white-space: nowrap; }
+
+/* Site clearing photos use their prepared 4:3 crops and existing media radius. */
+.serviceTheme .serviceSitePhotos .serviceGalleryGrid img {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-media) var(--radius-media) 0 0;
+}
+.serviceSitePhotos figcaption {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  color: var(--color-steel);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.serviceSitePhotos .serviceGalleryIntro > a,
+.serviceResources a[href$="/case-studies/roof-gutter-clearing"],
+.homeCleaningCase .textAction,
+.articleSitePhotos > .textAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  max-width: 100%;
+  padding-block: 0.25rem;
+}
+/* Documentary additions reuse the established media framing and reading rhythm. */
+.serviceTheme .serviceSitePhotos[data-image-count] .serviceGalleryGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+/* The service hub compares scope without changing the established service catalogue. */
+.roofScopeComparison,
+#repair-services { scroll-margin-top: 7rem; }
+.topicHub.roofScopeComparison { display: block; }
+.roofScopeComparison > p { max-width: 95ch; }
+.roofScopeRows { margin: 1.5rem 0; }
+.roofScopeRows > div {
+  display: grid;
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 1.25rem;
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--color-cloud);
+}
+.roofScopeRows dt { font-size: 1.08rem; font-weight: 700; }
+.roofScopeRows dd { margin: 0; line-height: 1.7; }
+.roofScopeRows dd strong { display: block; margin-bottom: .35rem; }
+.roofScopeEvidence { margin-block: 1.5rem; }
+.roofScopeJump > a,
+.roofScopeComparison > p > a,
+.homeCta a[href$="#roof-work-options"] {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 44px;
+  max-width: 100%;
+}
+.roofScopeJump svg,
+.homeCta a[href$="#roof-work-options"] svg { flex: 0 0 auto; }
+.serviceQuotePreparation { margin-block: 1.5rem; }
+.serviceQuotePreparation ul { padding-inline-start: 1.25rem; margin-block: .75rem; }
+.serviceQuotePreparation li + li { margin-top: .55rem; }
+@media (max-width: 760px) {
+  .roofScopeRows > div { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+}
+.clearingPhotoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+.clearingPhotoGrid figure,
+.homeCleaningCase figure {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-media);
+  background: var(--color-on-dark);
+}
+.clearingPhotoGrid picture,
+.homeCleaningCase picture { display: block; }
+.clearingPhotoGrid img,
+.homeCleaningCase img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.clearingPhotoGrid figcaption,
+.homeCleaningCase figcaption {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  color: var(--color-steel);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.cleaningCase .caseStudyHeader { max-width: none; }
+.cleaningCase .cleaningCaseSection { padding-block: 2rem; }
+.cleaningCaseSection + .cleaningCaseSection { border-top: 1px solid var(--color-border); }
+.cleaningCase .caseStudyDetail h2,
+.cleaningCase .caseStudyNext h2 { max-width: none; }
+.cleaningCase .caseStudyActions .button { width: fit-content; max-width: 100%; }
+.homeCleaningCase {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  width: min(100% - 3rem, var(--container));
+  margin: 0 auto;
+  padding-bottom: var(--space-section);
+}
+.homeCleaningCase h2 { max-width: 22ch; font-size: clamp(1.9rem, 3vw, 2.75rem); }
+.homeCleaningCase p:not(.eyebrow) { color: var(--color-steel); max-width: 60ch; }
+.articleSitePhotos { margin-block: 1.75rem; }
+.articleSitePhotos h3 { max-width: none; font-size: 1.25rem; }
+.articleSitePhotos .clearingPhotoGrid { margin-block: 1rem; }
+.cleaningCaseSection h2 { scroll-margin-top: 8rem; }
+@media (max-width: 760px) {
+  .serviceTheme .serviceSitePhotos[data-image-count] .serviceGalleryGrid,
+  .clearingPhotoGrid,
+  .homeCleaningCase { grid-template-columns: minmax(0, 1fr); }
+  .homeCleaningCase { gap: 1.25rem; }
+  .cleaningCase .cleaningCaseSection { padding-block: 1.5rem; }
+  .cleaningCaseSection h2 { scroll-margin-top: 6rem; }
+}
 .languageSwitch:hover { background: var(--color-steel); }
 html:lang(zh-CN) body { font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif; }
 html:lang(zh-CN) h1, html:lang(zh-CN) h2, html:lang(zh-CN) h3 { font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif; letter-spacing: 0; line-height: 1.35; }

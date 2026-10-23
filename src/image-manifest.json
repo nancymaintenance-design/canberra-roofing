@@ -553,6 +553,604 @@
       }
     ]
   },
+  "/assets/projects/site-box-gutter-cleared.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 136288,
+    "sha256": "2630d3a2241061c8da9ca1f999893df3b6704956a0d775bf80495d2da122a62b",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-box-gutter-cleared-400.webp?v=2630d3a224",
+        "width": 400,
+        "height": 300,
+        "bytes": 14220
+      },
+      {
+        "src": "/assets/responsive/site-box-gutter-cleared-800.webp?v=2630d3a224",
+        "width": 800,
+        "height": 600,
+        "bytes": 39028
+      },
+      {
+        "src": "/assets/responsive/site-box-gutter-cleared-1200.webp?v=2630d3a224",
+        "width": 1200,
+        "height": 900,
+        "bytes": 74968
+      }
+    ]
+  },
+  "/assets/projects/site-box-gutter-sediment.webp": {
+    "width": 960,
+    "height": 720,
+    "originalBytes": 49654,
+    "sha256": "c1bbf66126d952fd25f307aba929baa64c1ec6848d6859f03043f8a8e87c83a6",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-box-gutter-sediment-400.webp?v=c1bbf66126",
+        "width": 400,
+        "height": 300,
+        "bytes": 7884
+      },
+      {
+        "src": "/assets/responsive/site-box-gutter-sediment-800.webp?v=c1bbf66126",
+        "width": 800,
+        "height": 600,
+        "bytes": 19798
+      },
+      {
+        "src": "/assets/responsive/site-box-gutter-sediment-960.webp?v=c1bbf66126",
+        "width": 960,
+        "height": 720,
+        "bytes": 28448
+      }
+    ]
+  },
+  "/assets/projects/site-collector-before.webp": {
+    "width": 1120,
+    "height": 840,
+    "originalBytes": 142548,
+    "sha256": "7a1bbfe4f8e6d2d066acdf86e5c065f3ca77bcafe479fd73e1fb96a3b9691ea2",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-collector-before-400.webp?v=7a1bbfe4f8",
+        "width": 400,
+        "height": 300,
+        "bytes": 18446
+      },
+      {
+        "src": "/assets/responsive/site-collector-before-800.webp?v=7a1bbfe4f8",
+        "width": 800,
+        "height": 600,
+        "bytes": 56064
+      },
+      {
+        "src": "/assets/responsive/site-collector-before-1120.webp?v=7a1bbfe4f8",
+        "width": 1120,
+        "height": 840,
+        "bytes": 112360
+      }
+    ]
+  },
+  "/assets/projects/site-collector-cleared.webp": {
+    "width": 1120,
+    "height": 840,
+    "originalBytes": 117044,
+    "sha256": "519a0cd6f1fff90fdf85ca806036b5f1e01ee4119b8ac3a6d2d8c2fd1bbe73ca",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-collector-cleared-400.webp?v=519a0cd6f1",
+        "width": 400,
+        "height": 300,
+        "bytes": 15094
+      },
+      {
+        "src": "/assets/responsive/site-collector-cleared-800.webp?v=519a0cd6f1",
+        "width": 800,
+        "height": 600,
+        "bytes": 44994
+      },
+      {
+        "src": "/assets/responsive/site-collector-cleared-1120.webp?v=519a0cd6f1",
+        "width": 1120,
+        "height": 840,
+        "bytes": 92376
+      }
+    ]
+  },
+  "/assets/projects/site-eaves-gutter-before.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 254154,
+    "sha256": "6c090bfc20ec75604567a19d1b22321486acc32b0649b761bc67c8bd8bd045f0",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-eaves-gutter-before-400.webp?v=6c090bfc20",
+        "width": 400,
+        "height": 300,
+        "bytes": 22040
+      },
+      {
+        "src": "/assets/responsive/site-eaves-gutter-before-800.webp?v=6c090bfc20",
+        "width": 800,
+        "height": 600,
+        "bytes": 74090
+      },
+      {
+        "src": "/assets/responsive/site-eaves-gutter-before-1200.webp?v=6c090bfc20",
+        "width": 1200,
+        "height": 900,
+        "bytes": 163248
+      }
+    ]
+  },
+  "/assets/projects/site-eaves-gutter-cleared.webp": {
+    "width": 1180,
+    "height": 885,
+    "originalBytes": 168992,
+    "sha256": "7b680568d82d53ea89ad3c5d7fa266ab603da8d2381dc39f5d7509d6e6a69060",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-eaves-gutter-cleared-400.webp?v=7b680568d8",
+        "width": 400,
+        "height": 300,
+        "bytes": 14488
+      },
+      {
+        "src": "/assets/responsive/site-eaves-gutter-cleared-800.webp?v=7b680568d8",
+        "width": 800,
+        "height": 600,
+        "bytes": 49130
+      },
+      {
+        "src": "/assets/responsive/site-eaves-gutter-cleared-1180.webp?v=7b680568d8",
+        "width": 1180,
+        "height": 885,
+        "bytes": 104110
+      }
+    ]
+  },
+  "/assets/projects/site-eaves-moss-detail.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 102858,
+    "sha256": "fc973390a100d65917aff8806c924ced1dcde930bd4fda4ab5263db867e66934",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-eaves-moss-detail-400.webp?v=fc973390a1",
+        "width": 400,
+        "height": 300,
+        "bytes": 11026
+      },
+      {
+        "src": "/assets/responsive/site-eaves-moss-detail-800.webp?v=fc973390a1",
+        "width": 800,
+        "height": 600,
+        "bytes": 33972
+      },
+      {
+        "src": "/assets/responsive/site-eaves-moss-detail-1200.webp?v=fc973390a1",
+        "width": 1200,
+        "height": 900,
+        "bytes": 75222
+      }
+    ]
+  },
+  "/assets/projects/site-garden-gutter-cleared.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 103366,
+    "sha256": "9ceb87c5182936bb707a5a9aca6c9d24a1d93c29801ddfb0a7fc488d0a674e74",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-garden-gutter-cleared-400.webp?v=9ceb87c518",
+        "width": 400,
+        "height": 300,
+        "bytes": 14164
+      },
+      {
+        "src": "/assets/responsive/site-garden-gutter-cleared-800.webp?v=9ceb87c518",
+        "width": 800,
+        "height": 600,
+        "bytes": 38574
+      },
+      {
+        "src": "/assets/responsive/site-garden-gutter-cleared-1200.webp?v=9ceb87c518",
+        "width": 1200,
+        "height": 900,
+        "bytes": 75774
+      }
+    ]
+  },
+  "/assets/projects/site-gutter-junction-detail.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 103942,
+    "sha256": "5483e58d4eaeb84be4fa791f370a23b6eaaa399a20a713e1303265934f613317",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-gutter-junction-detail-400.webp?v=5483e58d4e",
+        "width": 400,
+        "height": 300,
+        "bytes": 9054
+      },
+      {
+        "src": "/assets/responsive/site-gutter-junction-detail-800.webp?v=5483e58d4e",
+        "width": 800,
+        "height": 600,
+        "bytes": 24604
+      },
+      {
+        "src": "/assets/responsive/site-gutter-junction-detail-1200.webp?v=5483e58d4e",
+        "width": 1200,
+        "height": 900,
+        "bytes": 47594
+      }
+    ]
+  },
+  "/assets/projects/site-gutter-outlet-before.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 233360,
+    "sha256": "82e1bd6de47002847296e3e534d107101195099ff42d782443e4c0d0f8b03bf8",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-gutter-outlet-before-400.webp?v=82e1bd6de4",
+        "width": 400,
+        "height": 300,
+        "bytes": 20466
+      },
+      {
+        "src": "/assets/responsive/site-gutter-outlet-before-800.webp?v=82e1bd6de4",
+        "width": 800,
+        "height": 600,
+        "bytes": 61392
+      },
+      {
+        "src": "/assets/responsive/site-gutter-outlet-before-1200.webp?v=82e1bd6de4",
+        "width": 1200,
+        "height": 900,
+        "bytes": 131852
+      }
+    ]
+  },
+  "/assets/projects/site-gutter-outlet-cleared.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 270158,
+    "sha256": "aa83f0412a72275d063138e97f45c5b4af29458705883f42feb77180e39f1a8a",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-gutter-outlet-cleared-400.webp?v=aa83f0412a",
+        "width": 400,
+        "height": 300,
+        "bytes": 24130
+      },
+      {
+        "src": "/assets/responsive/site-gutter-outlet-cleared-800.webp?v=aa83f0412a",
+        "width": 800,
+        "height": 600,
+        "bytes": 77912
+      },
+      {
+        "src": "/assets/responsive/site-gutter-outlet-cleared-1200.webp?v=aa83f0412a",
+        "width": 1200,
+        "height": 900,
+        "bytes": 164760
+      }
+    ]
+  },
+  "/assets/projects/site-gutter-sediment-closeup.webp": {
+    "width": 960,
+    "height": 720,
+    "originalBytes": 85334,
+    "sha256": "7d2d7ff56f3c432e65566d297a297c67da74044de9f271351a1977be95eebe6b",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-gutter-sediment-closeup-400.webp?v=7d2d7ff56f",
+        "width": 400,
+        "height": 300,
+        "bytes": 15978
+      },
+      {
+        "src": "/assets/responsive/site-gutter-sediment-closeup-800.webp?v=7d2d7ff56f",
+        "width": 800,
+        "height": 600,
+        "bytes": 43794
+      },
+      {
+        "src": "/assets/responsive/site-gutter-sediment-closeup-960.webp?v=7d2d7ff56f",
+        "width": 960,
+        "height": 720,
+        "bytes": 68676
+      }
+    ]
+  },
+  "/assets/projects/site-long-gutter-cleared.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 113162,
+    "sha256": "a6870804762109ff235941c61a0eb924e8de843b6097de0a861d7472e6630422",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-long-gutter-cleared-400.webp?v=a687080476",
+        "width": 400,
+        "height": 300,
+        "bytes": 15974
+      },
+      {
+        "src": "/assets/responsive/site-long-gutter-cleared-800.webp?v=a687080476",
+        "width": 800,
+        "height": 600,
+        "bytes": 41146
+      },
+      {
+        "src": "/assets/responsive/site-long-gutter-cleared-1200.webp?v=a687080476",
+        "width": 1200,
+        "height": 900,
+        "bytes": 83352
+      }
+    ]
+  },
+  "/assets/projects/site-metal-roof-fixing-points.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 90140,
+    "sha256": "36a5fd5dfc7f03aaabe4a36a332374b02e77cd9c7d83904c72c62b72e6336bf0",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-metal-roof-fixing-points-400.webp?v=36a5fd5dfc",
+        "width": 400,
+        "height": 300,
+        "bytes": 13106
+      },
+      {
+        "src": "/assets/responsive/site-metal-roof-fixing-points-800.webp?v=36a5fd5dfc",
+        "width": 800,
+        "height": 600,
+        "bytes": 36324
+      },
+      {
+        "src": "/assets/responsive/site-metal-roof-fixing-points-1200.webp?v=36a5fd5dfc",
+        "width": 1200,
+        "height": 900,
+        "bytes": 79338
+      }
+    ]
+  },
+  "/assets/projects/site-metal-roof-junction.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 225134,
+    "sha256": "e37d388738a1f502017d8400f0282d51c57b37ecbd2767de30e1c0d0ea5e3340",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-metal-roof-junction-400.webp?v=e37d388738",
+        "width": 400,
+        "height": 300,
+        "bytes": 34290
+      },
+      {
+        "src": "/assets/responsive/site-metal-roof-junction-800.webp?v=e37d388738",
+        "width": 800,
+        "height": 600,
+        "bytes": 97724
+      },
+      {
+        "src": "/assets/responsive/site-metal-roof-junction-1200.webp?v=e37d388738",
+        "width": 1200,
+        "height": 900,
+        "bytes": 205250
+      }
+    ]
+  },
+  "/assets/projects/site-metal-roof-overview.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 143578,
+    "sha256": "2b4c6c10eed3bed820a262cc36fee3f8b9603e01a05b1bb18c0415d39ff5624a",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-metal-roof-overview-400.webp?v=2b4c6c10ee",
+        "width": 400,
+        "height": 300,
+        "bytes": 18114
+      },
+      {
+        "src": "/assets/responsive/site-metal-roof-overview-800.webp?v=2b4c6c10ee",
+        "width": 800,
+        "height": 600,
+        "bytes": 58448
+      },
+      {
+        "src": "/assets/responsive/site-metal-roof-overview-1200.webp?v=2b4c6c10ee",
+        "width": 1200,
+        "height": 900,
+        "bytes": 127062
+      }
+    ]
+  },
+  "/assets/projects/site-metal-roof-sheet-detail.webp": {
+    "width": 1080,
+    "height": 810,
+    "originalBytes": 102668,
+    "sha256": "3edd01790e3dbf22fc109055bb7840c422800309eca3f0dfb4d20e2328f47490",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-metal-roof-sheet-detail-400.webp?v=3edd01790e",
+        "width": 400,
+        "height": 300,
+        "bytes": 19422
+      },
+      {
+        "src": "/assets/responsive/site-metal-roof-sheet-detail-800.webp?v=3edd01790e",
+        "width": 800,
+        "height": 600,
+        "bytes": 49354
+      },
+      {
+        "src": "/assets/responsive/site-metal-roof-sheet-detail-1080.webp?v=3edd01790e",
+        "width": 1080,
+        "height": 810,
+        "bytes": 86932
+      }
+    ]
+  },
+  "/assets/projects/site-outlet-moss-detail.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 115284,
+    "sha256": "e7809c4838eef669a4cb351f1fcfbfa548393e7ed8f899bcfaaa9bb9c9e98bd0",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-outlet-moss-detail-400.webp?v=e7809c4838",
+        "width": 400,
+        "height": 300,
+        "bytes": 11880
+      },
+      {
+        "src": "/assets/responsive/site-outlet-moss-detail-800.webp?v=e7809c4838",
+        "width": 800,
+        "height": 600,
+        "bytes": 37450
+      },
+      {
+        "src": "/assets/responsive/site-outlet-moss-detail-1200.webp?v=e7809c4838",
+        "width": 1200,
+        "height": 900,
+        "bytes": 86446
+      }
+    ]
+  },
+  "/assets/projects/site-roof-edge-cleared-overview.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 134972,
+    "sha256": "956a3f8adee5377fd23805910ff4a446c9a0b26247edaad9b626acd214dc2361",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-roof-edge-cleared-overview-400.webp?v=956a3f8ade",
+        "width": 400,
+        "height": 300,
+        "bytes": 15930
+      },
+      {
+        "src": "/assets/responsive/site-roof-edge-cleared-overview-800.webp?v=956a3f8ade",
+        "width": 800,
+        "height": 600,
+        "bytes": 40098
+      },
+      {
+        "src": "/assets/responsive/site-roof-edge-cleared-overview-1200.webp?v=956a3f8ade",
+        "width": 1200,
+        "height": 900,
+        "bytes": 74504
+      }
+    ]
+  },
+  "/assets/projects/site-roof-junction-sediment.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 124920,
+    "sha256": "fe6be7662ff820f25d030cfc9a6c4e8182d7c8e093b9820a11449a3fdfd2d3b4",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-roof-junction-sediment-400.webp?v=fe6be7662f",
+        "width": 400,
+        "height": 300,
+        "bytes": 13706
+      },
+      {
+        "src": "/assets/responsive/site-roof-junction-sediment-800.webp?v=fe6be7662f",
+        "width": 800,
+        "height": 600,
+        "bytes": 41282
+      },
+      {
+        "src": "/assets/responsive/site-roof-junction-sediment-1200.webp?v=fe6be7662f",
+        "width": 1200,
+        "height": 900,
+        "bytes": 90984
+      }
+    ]
+  },
+  "/assets/projects/site-side-gutter-before.webp": {
+    "width": 1080,
+    "height": 810,
+    "originalBytes": 84332,
+    "sha256": "a28559dcfae4fbf24ca63ae47de7cfb4f611543d036597a65a6c52f3d55c5660",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-side-gutter-before-400.webp?v=a28559dcfa",
+        "width": 400,
+        "height": 300,
+        "bytes": 9944
+      },
+      {
+        "src": "/assets/responsive/site-side-gutter-before-800.webp?v=a28559dcfa",
+        "width": 800,
+        "height": 600,
+        "bytes": 27858
+      },
+      {
+        "src": "/assets/responsive/site-side-gutter-before-1080.webp?v=a28559dcfa",
+        "width": 1080,
+        "height": 810,
+        "bytes": 47482
+      }
+    ]
+  },
+  "/assets/projects/site-side-gutter-cleared.webp": {
+    "width": 1120,
+    "height": 840,
+    "originalBytes": 137310,
+    "sha256": "8d9d0556614a476a800bf6b4d2693f9b206de965f3c9e6fb54e59ea45d303759",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-side-gutter-cleared-400.webp?v=8d9d055661",
+        "width": 400,
+        "height": 300,
+        "bytes": 10354
+      },
+      {
+        "src": "/assets/responsive/site-side-gutter-cleared-800.webp?v=8d9d055661",
+        "width": 800,
+        "height": 600,
+        "bytes": 33814
+      },
+      {
+        "src": "/assets/responsive/site-side-gutter-cleared-1120.webp?v=8d9d055661",
+        "width": 1120,
+        "height": 840,
+        "bytes": 71190
+      }
+    ]
+  },
+  "/assets/projects/site-wall-channel-cleared.webp": {
+    "width": 1200,
+    "height": 900,
+    "originalBytes": 91286,
+    "sha256": "697297e30c8698424a85375128be4f0256fd8822ad27caa030e7f46fc249f742",
+    "variants": [
+      {
+        "src": "/assets/responsive/site-wall-channel-cleared-400.webp?v=697297e30c",
+        "width": 400,
+        "height": 300,
+        "bytes": 10084
+      },
+      {
+        "src": "/assets/responsive/site-wall-channel-cleared-800.webp?v=697297e30c",
+        "width": 800,
+        "height": 600,
+        "bytes": 29316
+      },
+      {
+        "src": "/assets/responsive/site-wall-channel-cleared-1200.webp?v=697297e30c",
+        "width": 1200,
+        "height": 900,
+        "bytes": 66142
+      }
+    ]
+  },
   "/assets/services/chimney-flashing-assessment.png": {
     "width": 1536,
     "height": 1024,

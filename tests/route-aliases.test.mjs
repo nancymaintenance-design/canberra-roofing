@@ -49,11 +49,11 @@ test('Vercel declares bounded one-hop permanent aliases without changing system 
     }),
   ].sort(bySource));
   assert.deepEqual([...config.rewrites].sort(bySource), [...expectedRewrites].sort(bySource));
-  assert.equal(routes.length, 120);
+  assert.equal(routes.length, 121);
   assert.equal(DISTRICT_PATHS.length, 9);
   assert.equal(SUBURB_PATHS.length, 77);
   assert.equal(new Set(config.redirects.map(rule => rule.source)).size, config.redirects.length);
-  assert.equal(new Set(config.rewrites.map(rule => rule.source)).size, 240);
+  assert.equal(new Set(config.rewrites.map(rule => rule.source)).size, 242);
 });
 
 for (const { pathname } of routes) {

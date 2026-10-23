@@ -474,6 +474,15 @@
       "/privacy"
     ]
   },
+  "/case-studies/roof-gutter-clearing": {
+    "title": "Roof-edge & Gutter Clearing Photos | Ellis Services Group",
+    "description": "Site photographs of leaf build-up, outlet and collection box clearing, and exposed gutters after visible debris removal.",
+    "canonical": "https://www.canberraroofkind.com.au/case-studies/roof-gutter-clearing",
+    "h1": "Roof-edge and gutter clearing, in photos",
+    "indexability": "index,follow",
+    "contentSource": "src/cleaning-case.tsx",
+    "links": ["/", "/services/gutter-downpipe-maintenance", "/services/roof-cleaning", "/news/gutters-overflowing-heavy-rain-canberra", "/contact?service=Gutter%20%26%20Downpipe%20Cleaning%20and%20Maintenance"]
+  },
   "/case-studies/tile-roof-repair-canberra": {
     "title": "A tile roof repair, step by step | Ellis Services Group",
     "description": "View a tile roof photo sequence showing displaced tiles, the opened work area and the visible roof covering retiled.",

@@ -1865,6 +1865,21 @@
       "permanent": true
     },
     {
+      "source": "/case-studies/roof-gutter-clearing/",
+      "destination": "/case-studies/roof-gutter-clearing",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/roof-gutter-clearing.html",
+      "destination": "/case-studies/roof-gutter-clearing",
+      "permanent": true
+    },
+    {
+      "source": "/case-studies/roof-gutter-clearing.html/",
+      "destination": "/case-studies/roof-gutter-clearing",
+      "permanent": true
+    },
+    {
       "source": "/solutions",
       "destination": "/services",
       "statusCode": 301
@@ -2212,6 +2227,21 @@
     {
       "source": "/zh/contact.html/",
       "destination": "/zh/contact",
+      "permanent": true
+    },
+    {
+      "source": "/zh/case-studies/roof-gutter-clearing/",
+      "destination": "/zh/case-studies/roof-gutter-clearing",
+      "permanent": true
+    },
+    {
+      "source": "/zh/case-studies/roof-gutter-clearing.html",
+      "destination": "/zh/case-studies/roof-gutter-clearing",
+      "permanent": true
+    },
+    {
+      "source": "/zh/case-studies/roof-gutter-clearing.html/",
+      "destination": "/zh/case-studies/roof-gutter-clearing",
       "permanent": true
     },
     {
@@ -4234,6 +4264,10 @@
       "destination": "/areas/woden/torrens-roof-repairs.html"
     },
     {
+      "source": "/case-studies/roof-gutter-clearing",
+      "destination": "/case-studies/roof-gutter-clearing.html"
+    },
+    {
       "source": "/services/reroof-replacement",
       "destination": "/services/reroof-replacement.html"
     },
@@ -4308,6 +4342,10 @@
     {
       "source": "/zh/contact",
       "destination": "/zh/contact.html"
+    },
+    {
+      "source": "/zh/case-studies/roof-gutter-clearing",
+      "destination": "/zh/case-studies/roof-gutter-clearing.html"
     },
     {
       "source": "/zh/case-studies/tile-roof-repair-canberra",

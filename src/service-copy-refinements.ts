@@ -4,6 +4,28 @@ export type ServiceCopyRefinement = Partial<Record<'direct' | 'assessment' | 'pa
 // Each section has a distinct job: service, investigation, repair decision, booking.
 // Apply after all service records have been assembled; preserve titles and routes.
 export const SERVICE_COPY_REFINEMENTS: Record<string, ServiceCopyRefinement> = {
+  'tile-roof-repairs': {
+    direct: 'We repair damaged or displaced tiles on Canberra roofs. The assessment checks neighbouring tiles, ridges and flashing and identifies suitable replacement tiles.',
+  },
+  'chimney-flashing-repairs': {
+    direct: 'We assess and repair chimney flashing on Canberra roofs, checking the roof-to-chimney junction and adjoining materials before explaining the repair scope and quote.',
+  },
+  'rebedding-repointing': {
+    direct: 'We assess and repair ridge capping on Canberra tiled roofs, distinguishing bedding support from exposed pointing before quoting the work.',
+  },
+  'metal-roof-repairs': {
+    direct: 'We repair metal and Colorbond roofs in Canberra. We check the sheets, fixings, flashing and junctions related to the problem, then explain the repairs and quote.',
+  },
+  'roof-renovation': {
+    direct: 'We provide roof renovation for Canberra homes, retaining suitable existing covering. The quote identifies the required repairs and finish work suited to the material and condition.',
+    pathways: 'We identify the repairs needed before renovation finishes and explain the included roof areas, preparation and proposed materials. If retaining the covering is unsuitable, we discuss a separate replacement scope so you can compare what the options address.',
+  },
+  'gutter-repairs': {
+    direct: 'We repair leaking gutter joints, damaged gutter runs and downpipe connections on Canberra properties. We assess the affected components and connected drainage before quoting the repair or component replacement.',
+  },
+  'gutter-downpipe-maintenance': {
+    direct: 'We clean and maintain gutters and downpipes for Canberra homes. An on-site assessment identifies the debris, drainage concerns and any component repairs to quote separately.',
+  },
   'roof-inspections': {
     direct: 'We inspect Canberra roofs for leaks, visible damage and maintenance decisions, then explain the findings and suitable repair options.',
     assessment: 'We assess the reported concern alongside the accessible roof covering, ridge, flashing junctions and drainage. This visual, non-invasive assessment distinguishes observed defects from concealed or inaccessible areas. It does not provide a structural or compliance certificate; further access or specialist investigation is discussed separately.',

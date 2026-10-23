@@ -4,6 +4,7 @@ import { DISTRICT_PROFILES, SUBURB_PROFILES } from './suburb-profiles.js';
 import { NEWS_ARTICLES } from './news-articles';
 import { addedArticles } from './i18n/editorial';
 import { basePath, languagePath, translate } from './i18n/runtime';
+import { CLEANING_CASE_LABEL, CLEANING_CASE_PATH } from './site-cleaning-photos';
 
 export const SITE_ORIGIN = registry['/'].canonical.replace(/\/$/, '');
 export type NavigationPage = {
@@ -24,6 +25,7 @@ export function getNavigationMap(locale:'en'|'zh'='en'): NavigationPage[] {
  }
  const casePath='/case-studies/tile-roof-repair-canberra';
  rows.set(casePath,{label:fixedLabels[casePath],type:'Case Study',parent:'/services/tile-roof-repairs',owner:'/services/tile-roof-repairs',group:'tile-roof-repairs',reason:'Existing case documents visible tile work and already names tile repairs as its service'});
+ rows.set(CLEANING_CASE_PATH,{label:CLEANING_CASE_LABEL,type:'Case Study',parent:'/services/gutter-downpipe-maintenance',owner:'/services/gutter-downpipe-maintenance',group:'gutter-downpipe-maintenance',reason:'Owner-supplied photographs document visible gutter and outlet clearing; location and component repair outcomes are not inferred'});
  for(const district of DISTRICT_PROFILES) rows.set(district.path,{label:district.district,type:'Location',parent:'/areas',owner:'/',group:'roof-repairs',reason:'Actual district directory and published coverage'});
  for(const suburb of SUBURB_PROFILES){
   const district=DISTRICT_PROFILES.find(d=>d.district===suburb.district);

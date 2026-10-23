@@ -65,12 +65,11 @@ assert.doesNotMatch(
 assert.match(css, /\.nativePhotoInput\s*\{[^}]*opacity:\s*0/s);
 assert.match(css, /\.nativePhotoInput:focus-visible\s*\+\s*\.photoButton/);
 
-for (const asset of ["ellis-team-trust.png", "ellis-site-consultation.png"]) {
-  assert.match(
-    renderedHomeMedia,
-    new RegExp(`/assets/home/${asset.replace(".", "\\.")}`),
-  );
-}
+assert.match(renderedHomeMedia, /<HomeCleaningCase\s*\/>/);
+const clearingCase = fs.readFileSync(new URL('../src/cleaning-case.tsx', import.meta.url), 'utf8');
+assert.match(clearingCase, /className="homeCleaningCase"/);
+assert.match(clearingCase, /View the clearing case/);
+assert.doesNotMatch(renderedHomeMedia, /ellis-team-trust\.png|ellis-site-consultation\.png/);
 
 assert.match(renderedAbout, /\/assets\/home\/canberra-roof-hero\.png/);
 assert.match(renderedAbout, /TILE ROOF PHOTO SEQUENCE/);

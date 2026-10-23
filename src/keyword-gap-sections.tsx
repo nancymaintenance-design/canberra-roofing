@@ -31,7 +31,36 @@ export function GapArticleSections({ article }: { article: GapArticle }) {
   </>;
 }
 export function GapHubLinks() {
-  return <section className="contentGuidance topicHub"><h2>Compare roof work, costs and maintenance</h2><p>Use these guides to compare a repair scope, understand cleaning choices and prepare for an assessment. The service pages explain the work Ellis provides; the guides answer the questions behind your decision.</p><RelatedLinks links={GAP_GUIDES.map(g => ({ path: `/news/${g.slug}`, label: g.title }))} /></section>;
+  return <section className="contentGuidance topicHub roofScopeComparison" id="roof-work-options">
+    <h2>Repair, renovation or replacement?</h2>
+    <p>Start with the roof condition and the problem you want to solve. Age, appearance or a ceiling stain alone does not determine the work needed.</p>
+    <dl className="roofScopeRows">
+      <div>
+        <dt><a href="#repair-services">Targeted roof repairs</a></dt>
+        <dd><strong>When to discuss it</strong>A particular tile, sheet, flashing or gutter component needs attention and the adjoining roof can be retained.</dd>
+        <dd><strong>What to compare in the quote</strong>The affected components, suitable replacement materials and any connected defects that the repair will address.</dd>
+      </div>
+      <div>
+        <dt><a href="/services/roof-renovation">Renovation and restoration</a></dt>
+        <dd><strong>When to discuss it</strong>The existing covering may be suitable to retain, with wider repairs and finish work matched to its material and condition.</dd>
+        <dd><strong>What to compare in the quote</strong>Repairs needed before finish work, included roof areas, preparation and the proposed materials or treatment.</dd>
+      </div>
+      <div>
+        <dt><a href="/services/reroof-replacement">Roof replacement</a></dt>
+        <dd><strong>When to discuss it</strong>The covering has deteriorated across wider areas, or you want to assess a change of roof material.</dd>
+        <dd><strong>What to compare in the quote</strong>The covering and removal work, adjoining flashing and drainage, access, weather protection and any excluded work.</dd>
+      </div>
+    </dl>
+    <p>If the suitable option is unclear, <a href="/contact?service=Roof%20Inspections">request a roof inspection and discuss the quote</a>. The assessment should explain what each proposed option addresses before you approve work.</p>
+    <div className="roofScopeEvidence">
+      <h3>See the scope in our project photographs</h3>
+      <p><a href="/case-studies/tile-roof-repair-canberra">Our tile repair photo sequence</a> shows work in the affected area with the surrounding roof retained.</p>
+      <p><a href="/case-studies/roof-gutter-clearing">Our roof-edge and gutter clearing record</a> shows debris removal and the exposed channels. Clearing and repairs to damaged components are assessed separately.</p>
+    </div>
+    <h3>Compare roof work, costs and maintenance</h3>
+    <p>Use these guides to compare a repair scope, understand cleaning choices and prepare for an assessment. The service pages explain the work Ellis provides; the guides answer the questions behind your decision.</p>
+    <RelatedLinks links={GAP_GUIDES.map(g => ({ path: `/news/${g.slug}`, label: g.title }))} />
+  </section>;
 }
 const contextLinks: Record<string, ContentLink[]> = {
   'after-rain-roof-leak-check-canberra': [

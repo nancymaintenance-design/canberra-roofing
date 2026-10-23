@@ -14,18 +14,19 @@ describe('owner-supplied project photos on relevant services',()=>{
   expect(gallery?.textContent).toContain('Site conditions and work stages from the urgent roof leak project.');
  });
  it.each([
- ['/services/emergency-roof-repairs',4,'roof leak'],
- ['/services/rental-property-roof-repairs',2,'equipment'],
- ['/services/gutter-repairs',2,'cleared'],
- ['/services/gutter-downpipe-maintenance',2,'cleared'],
- ])('shows the matching project on %s without dropping captions or responsive media', (path,count,work)=>{
+ ['/services/emergency-roof-repairs',4,'roof leak',0],
+ ['/services/rental-property-roof-repairs',2,'equipment',0],
+ ['/services/gutter-repairs',2,'cleared',3],
+ ['/services/gutter-downpipe-maintenance',2,'cleared',7],
+ ])('shows the matching project on %s without dropping captions or responsive media', (path,count,work,siteCount)=>{
   const host=page(path);
   const gallery=host.querySelector('.serviceGallery[data-project]');
   expect(gallery).not.toBeNull();
   expect(gallery?.textContent?.toLowerCase()).toContain(work);
   expect(gallery?.querySelectorAll('figure')).toHaveLength(count as number);
   const allProjectImages=[...host.querySelectorAll('main img[src^="/assets/projects/"]')];
-  expect(allProjectImages).toHaveLength((count as number)+(path.includes('emergency')||path.includes('rental')?1:0));
+  expect(host.querySelectorAll('main img[src^="/assets/projects/site-"]')).toHaveLength(siteCount as number);
+  expect(allProjectImages).toHaveLength((count as number)+(siteCount as number)+(path.includes('emergency')||path.includes('rental')?1:0));
   expect(new Set(allProjectImages.map(image=>image.getAttribute('src'))).size).toBe(allProjectImages.length);
   const hero=host.querySelector('.serviceHero img')!;
   expect(gallery?.querySelector(`img[src="${hero.getAttribute('src')}"]`)).toBeNull();

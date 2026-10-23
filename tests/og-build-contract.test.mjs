@@ -12,7 +12,7 @@ const pages = fs.readdirSync(dist, { recursive: true })
   .filter((file) => file.endsWith('.html') && !['404.html', 'contact-unavailable.html', 'google28003a8fb6bb282a.html'].includes(file));
 
 test('prerendered indexable pages publish Open Graph metadata matching their canonical URL', () => {
-  assert.equal(pages.length, 240, 'English and Chinese pages, including recovered replacement service and noindex suburbs');
+  assert.equal(pages.length, 242, 'English and Chinese pages, including the clearing case and unchanged noindex suburbs');
   for (const relative of pages) {
     const html = fs.readFileSync(path.join(dist, relative), 'utf8');
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"\s*\/?>(?:<\/link>)?/)?.[1];
@@ -76,8 +76,8 @@ test('build gate rejects missing, duplicated and non-HTTPS sharing images', () =
   ]) assert.throws(() => validateDocument(damaged, '/', expected), /sharing image/, name);
 });
 
-test('built bilingual discovery exposes 84 sitemap URLs and preserves 154 noindex suburb documents', () => {
-  assert.equal((fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8').match(/<loc>/g) ?? []).length, 84);
+test('built bilingual discovery exposes 86 sitemap URLs and preserves 154 noindex suburb documents', () => {
+  assert.equal((fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8').match(/<loc>/g) ?? []).length, 86);
   const noindex = pages.filter(file => /<meta name="robots" content="noindex,follow"/.test(fs.readFileSync(path.join(dist, file), 'utf8')));
   assert.equal(noindex.length, 154);
   assert.ok(noindex.every(file => /^(?:zh[/\\])?areas[/\\][^/\\]+[/\\][^/\\]+-roof-repairs\.html$/.test(file)));
