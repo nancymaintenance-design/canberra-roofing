@@ -1,0 +1,311 @@
+/* Site-wide extension of the selected service-area desk.
+   Content stays in normal flow; dark introduction panels, compact rows and
+   bounded media replace oversized, vertically centred text/image pairings. */
+:root { --container: 1280px; --space-section: clamp(2rem, 3vw, 3rem); }
+body { background: var(--color-warm-white); }
+main > .breadcrumbs { max-width: 1328px; padding-block: .7rem; }
+.page:not(.areasDesk) { padding-top: 1.25rem; min-height: 0; }
+.page:not(.areasDesk) h2 { max-width: none; line-height: 1.25; }
+.page:not(.areasDesk) > h2 { font-size: clamp(1.65rem, 2.5vw, 2.4rem); }
+.card, .newsCard, .three article, .homeServices, .homeCta, .safeObservation,
+.homeMap, .aboutProcess, .aboutContactBand, .pageFeatureMedia,
+.aboutBrandGalleryGrid figure, .serviceGalleryGrid figure { box-shadow: none; }
+.card:hover { transform: none; box-shadow: none; }
+.card::before, .homeServices::before, .homeCta::before, .homeCta::after,
+.tradeHero::after, .sectionIntro::after { display: none; }
+.card, .newsCard, .three article { border-radius: var(--radius-control); background: var(--color-on-dark); }
+.card:nth-child(2n) { background: var(--color-on-dark); }
+
+/* Introductions share the same quiet, dark identity surface. */
+.sitePageIntro, .faqIntro, .contactIntro, .privacyHeader,
+.caseStudyHeader.caseStudyPhotoIntro {
+  max-width: none; padding: clamp(1.5rem, 3vw, 2.5rem);
+  margin: 0 0 2rem; background: var(--color-roof-charcoal);
+  color: var(--color-on-dark); border: 0; border-left: 4px solid var(--color-safety-orange);
+}
+.sitePageIntro .eyebrow, .faqIntro .eyebrow, .contactIntro .eyebrow,
+.privacyHeader .eyebrow, .caseStudyHeader.caseStudyPhotoIntro .eyebrow { color: var(--color-cloud); }
+.sitePageIntro h1, .faqIntro h1, .contactIntro h1, .privacyHeader h1 {
+  max-width: 28ch; margin: .5rem 0 1rem; font-size: clamp(2rem, 3.5vw, 3.4rem); line-height: 1.15;
+}
+.sitePageIntro > p:not(.eyebrow), .faqIntro > p:last-child,
+.contactIntro > p:last-child, .privacyHeader > p:last-child {
+  max-width: 85ch; color: var(--color-cloud); font-size: 1.05rem; margin-bottom: 0;
+}
+.sitePageIntro .directAnswer { padding: 0; border: 0; background: transparent; }
+.sitePageIntro .suburbPageActions { margin-bottom: 0; }
+.sitePageIntro .roofScopeJump { margin-top: 1rem; }
+.sitePageIntro .textAction { color: var(--color-on-dark); }
+
+/* Bounded hero photos leave enough room for useful copy without empty columns. */
+.page .pairedHero, .aboutPage .pageMediaIntro {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 0; align-items: stretch; padding: 0; margin: 0 0 1.5rem;
+  background: var(--color-roof-charcoal); color: var(--color-on-dark); border: 0;
+}
+.pairedHeroCopy, .aboutPage .pageMediaCopy {
+  padding: clamp(1.5rem, 3vw, 2.5rem); border-left: 4px solid var(--color-safety-orange);
+}
+.pairedHeroCopy .eyebrow, .aboutPage .pageMediaCopy .eyebrow { color: var(--color-cloud); }
+.pairedHeroCopy > p, .pairedHeroCopy .serviceAdvantages,
+.aboutPage .pageMediaCopy > p:not(.eyebrow) { color: var(--color-cloud); }
+.page .pairedHero h1, .aboutPage .pageMediaIntro h1 { max-width: none; font-size: clamp(2rem, 3vw, 3rem); }
+.pairedHeroCopy .textAction { color: var(--color-on-dark); }
+.page .pairedHeroMedia { display: flex; flex-direction: column; background: var(--color-surface-alt); }
+.pairedHeroMedia picture { flex: 1; min-height: 0; }
+.page .pairedHeroMedia img { height: 100%; min-height: 280px; max-height: 420px; border-radius: 0; }
+.pairedHeroMedia figcaption { margin: 0; padding: .65rem 1rem; color: var(--color-steel); }
+.aboutPage .pageFeatureMedia { border-radius: 0; aspect-ratio: auto; box-shadow: none; }
+.aboutPage .pageFeatureMedia picture { display: block; height: 100%; }
+.aboutPage .pageFeatureMedia img { height: 100%; max-height: 420px; }
+
+/* Home: three balanced information rows, one bounded documentary feature. */
+.tradeHero { min-height: 540px; padding-block: 3rem; }
+.tradeHero h1 { font-size: clamp(2.8rem, 5vw, 5.5rem); }
+.heroProof { bottom: 2rem; }
+.safeObservation { background: var(--color-surface-alt); border-radius: var(--radius-control); gap: 1.25rem 2rem; }
+.safeObservation h2 { max-width: none; font-size: clamp(1.75rem, 2.6vw, 2.5rem); }
+.safeObservation > div:first-child { grid-column: 1; grid-row: 1; }
+.safeObservation > ul { grid-column: 2; grid-row: 1; }
+.safeObservation .safetyNotes { grid-column: 2; grid-row: 2; }
+.safeObservation .safeObservationActions { grid-column: 1; grid-row: 2; justify-content: flex-start; }
+.safeObservationActions::before { display: none; }
+.homeServices { background: transparent; border-radius: 0; padding: 2rem 0; margin-top: 0; }
+.homeServicesIntro { display: block; margin-bottom: 1.25rem; }
+.homeServicesIntro h2 { max-width: none; font-size: clamp(1.8rem, 2.8vw, 2.75rem); }
+.homeServicesIntro > p:last-child { max-width: none; font-size: 1rem; }
+.homeServiceDirectory { border-top: 1px solid var(--color-cloud); }
+.homeCta { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 2rem; align-items: start; background: var(--color-roof-charcoal); padding: 2rem; border-radius: var(--radius-control); border-left: 4px solid var(--color-safety-orange); margin-bottom: 1.5rem; }
+.homeCtaTitle h2 { max-width: none; font-size: clamp(1.8rem, 2.8vw, 2.75rem); margin-bottom: 0; }
+.homeCta .eyebrow { color: var(--color-cloud); }
+.homeCtaBody > p:first-child { margin-top: 0; }
+.homeCtaBody p { max-width: none; }
+.homeGuidance { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; padding-bottom: 1.5rem; }
+.homeGuidance > .contentGuidance, .homeGuidance > .operatingHours {
+  display: block; grid-column: auto; margin: 0; padding: 1.5rem;
+  background: var(--color-on-dark); border: 1px solid var(--color-cloud); border-top: 3px solid var(--color-eucalyptus);
+}
+.homeGuidance > .operatingHours > h2, .homeGuidance > .operatingHours > p { grid-column: auto; grid-row: auto; }
+.homeGuidance h2 { font-size: 1.45rem; line-height: 1.35; max-width: none; margin: 0 0 1rem; }
+.homeGuidance p { font-size: .95rem; }
+.homeGuidance p:last-child { margin-bottom: 0; }
+.homeCleaningCase {
+  grid-template-columns: minmax(0,1fr) minmax(0,460px); gap: 0;
+  align-items: stretch; padding: 0; margin-bottom: 1.5rem;
+  background: var(--color-roof-charcoal); color: var(--color-on-dark);
+}
+.homeCleaningCase > div { padding: 2rem; border-left: 4px solid var(--color-safety-orange); }
+.homeCleaningCase h2 { max-width: none; margin-top: 1rem; }
+.homeCleaningCase .eyebrow, .homeCleaningCase p:not(.eyebrow) { color: var(--color-cloud); }
+.homeCleaningCase .textAction { color: var(--color-on-dark); margin-top: .75rem; }
+.homeCleaningCase figure { border: 0; border-radius: 0; }
+.homeCleaningCase img { transform: none; }
+.homeMap { grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 2rem; border-radius: var(--radius-control); border: 0; background: var(--color-surface-alt); padding: 1.5rem 2rem; }
+.homeMapIntro { justify-content: flex-start; }
+.homeMapIntro h2 { max-width: none; font-size: 2rem; }
+.homeMapFrame { height: 280px; min-height: 0; aspect-ratio: auto; box-shadow: none; border-radius: var(--radius-control); }
+
+/* Service comparison and the five existing service chapters. */
+.servicesOverview .serviceCards { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.25rem; }
+.servicesOverview .serviceCard { display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem; border-top: 3px solid var(--color-eucalyptus); }
+.serviceCardSummary { width: 100%; }
+.servicesOverview .serviceCard h3 { font-size: 1.55rem; }
+.servicesOverview .serviceCardFacts { width: 100%; padding: 1rem 0 0; border-left: 0; border-top: 1px solid var(--color-cloud); gap: 1rem; margin-top: auto; }
+.servicesOverview .serviceCard:last-child:nth-child(odd) { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
+.servicesOverview .serviceCard:last-child:nth-child(odd) .serviceCardFacts { margin: 0; }
+.serviceView { max-width: 1280px; }
+.servicePageSections { max-width: none; gap: 1.5rem; }
+.serviceTheme { padding: 1.5rem 2rem; border-radius: var(--radius-control); border: 0; border-top: 3px solid var(--color-eucalyptus); }
+.serviceTheme > h2 { font-size: clamp(1.6rem,2.3vw,2.1rem); margin-bottom: 1rem; padding-bottom: .8rem; border-bottom-width: 1px; }
+.serviceThemeContent { max-width: 100%; }
+.serviceTheme .serviceRelatedLinks ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.25rem; }
+.serviceTheme .serviceRelatedLinks li + li { margin: 0; }
+.serviceSectionNav { margin-block: 0 1.5rem; padding-block: .75rem; }
+.serviceSectionNav a { background: transparent; border: 0; border-bottom: 2px solid var(--color-cloud); color: var(--color-roof-charcoal); border-radius: 0; }
+.serviceSectionNav a:hover { background: var(--color-roof-charcoal); color: white; }
+.serviceTheme .serviceBookingGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+.serviceBookingAppointment { padding: 0 0 0 2rem; margin: 0; border-top: 0; border-left: 1px solid var(--color-cloud); }
+.guidance { background: var(--color-surface-alt); border-radius: var(--radius-control); box-shadow: none; }
+.guidance h2 { max-width: none; }
+
+/* Long reading pages keep a useful dark navigation rail. */
+.newsArticle .articleContents, .faqCategoryNav { background: var(--color-roof-charcoal); color: var(--color-on-dark); border-radius: var(--radius-control); border: 0; border-top: 3px solid var(--color-safety-orange); }
+.faqCategoryNav .eyebrow, .faqCategoryNav a span { color: var(--color-cloud); }
+.faqCategoryNav a:hover, .faqCategoryNav a:active, .faqCategoryNav a[aria-current="location"] { color: var(--color-roof-charcoal); background: var(--color-surface-alt); }
+.faqCategoryNav a[aria-current="location"] span, .faqCategoryNav a:hover span { color: var(--color-steel); }
+.newsArticle .articleContents a:hover, .newsArticle .articleContents a:active { color: var(--color-on-dark); text-decoration-thickness: 2px; }
+.newsArticle .articleLayout { grid-template-columns: 260px minmax(0,1fr); gap: 2rem; }
+.newsArticle .articleBody { padding: 0 1.5rem 1.5rem; }
+.newsArticle .articleSection { margin-block: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-cloud); }
+.newsArticle .articleBody > .articleSection > p { font-size: 1.05rem; line-height: 1.8; }
+.faqQuestionGroup { padding: 1.25rem 1.5rem; border-radius: var(--radius-control); }
+.newsCard { border-top-color: var(--color-eucalyptus); }
+.newsCardImage img { height: 210px; }
+.privacyPage .privacyLayout { display: grid; grid-template-columns: minmax(0,1fr) 310px; align-items: start; gap: 2rem; max-width: 1100px; }
+.privacyPage .privacySidebar { position: sticky; top: 8rem; margin: 0; background: var(--color-roof-charcoal); color: white; border-radius: var(--radius-control); }
+.privacySidebar .eyebrow, .privacySidebar > p:not(.eyebrow) { color: var(--color-cloud); }
+
+/* Local directories, enquiries and documentary pages. */
+.districtServiceChoices { display: block; }
+.districtServiceChoices ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem 2rem; }
+.districtServiceChoices li + li { margin-top: 0; }
+.suburbPage > .suburbContact { max-width: none; display: grid; grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); align-items: start; gap: 2rem; padding: 2rem; border-radius: var(--radius-control); background: var(--color-roof-charcoal); color: white; }
+.suburbContactIntro { margin: 0; padding-right: 1rem; }
+.suburbContactIntro p { color: var(--color-cloud); }
+.suburbPage .suburbContact form { background: white; color: var(--color-roof-charcoal); padding: 1.5rem; border-radius: var(--radius-control); }
+.suburbPage .localGuideLinks { padding: 1.5rem; }
+.suburbPage .localGuideLinks h2 { font-size: 1.6rem; margin-top: 0; }
+.suburbPage > section { margin-top: 1.5rem; }
+.contactWorkspace { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 1.5rem 2rem; }
+.contactWorkspace .contactFeatureMedia { height: 260px; border-radius: var(--radius-control); }
+.contactWorkspace form { box-shadow: none; border-radius: var(--radius-control); }
+.contactSideDetails { padding: 1.5rem; background: var(--color-surface-alt); }
+.aboutNarrative { grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); gap: 2rem; }
+.aboutPage .aboutNarrative h2, .aboutPage .aboutProcess h2, .aboutPage .aboutCredentials h2 { max-width: none; font-size: clamp(1.6rem,2.5vw,2.3rem); }
+.aboutProcess { background: var(--color-surface-alt); border-radius: var(--radius-control); gap: 2rem; }
+.aboutBrandGalleryGrid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.aboutBrandGalleryGrid figure { grid-column: auto; width: 100%; min-width: 0; min-height: 0; aspect-ratio: 4/3; }
+.aboutContactActions { display: grid; justify-items: start; gap: 1rem; }
+.aboutContactBand .aboutContactActions .button { text-decoration: none; }
+.aboutContactActions .textAction { display: inline-flex; align-items: center; gap: .5rem; }
+.aboutBrandGalleryGrid img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.rooflineFaq details:nth-child(even), .rooflineFaq details:hover, .rooflineFaq details:nth-child(even):hover { transform: none; background: white; box-shadow: none; }
+.caseStudy, .cleaningCase { max-width: 1160px; }
+.caseEvidence, .caseStudyDetail, .caseStudyNext { padding-block: 1.5rem; }
+.caseStudyNext { padding: 1.5rem; background: var(--color-roof-charcoal); color: white; border-left: 4px solid var(--color-safety-orange); }
+.caseStudyNext p, .caseStudyNext p:last-child { color: var(--color-cloud); }
+.caseStudyNext .textAction { color: white; }
+
+@media (max-width: 1024px) {
+  .homeGuidance { grid-template-columns: 1fr 1fr; }
+  .homeGuidance > .operatingHours { grid-column: 1 / -1; }
+  .page .pairedHero, .aboutPage .pageMediaIntro { grid-template-columns: 1fr 1fr; }
+  .servicesOverview .serviceCardFacts { grid-template-columns: 1fr; }
+  .homeCleaningCase { grid-template-columns: 1fr minmax(0,400px); }
+}
+@media (max-width: 900px) {
+  .page .pairedHero, .aboutPage .pageMediaIntro { grid-template-columns: 1fr; }
+  .page .pairedHeroMedia img { height: 300px; min-height: 0; }
+  .aboutPage .pageFeatureMedia img { height: 300px; }
+  .contactWorkspace { grid-template-columns: 1fr; }
+  .newsArticle .articleLayout { grid-template-columns: 1fr; }
+  .newsArticle .articleContents { position: static; max-height: none; margin-bottom: 0; }
+  .newsArticle .articleBody { padding: 0; }
+}
+@media (max-width: 760px) {
+  .tradeHero { min-height: 0; padding-top: 2rem; padding-bottom: 6rem; }
+  .heroProof { bottom: 1.2rem; }
+  .homeCta, .homeGuidance, .homeCleaningCase, .homeMap,
+  .servicesOverview .serviceCards, .servicesOverview .serviceCard:last-child:nth-child(odd),
+  .serviceTheme .serviceBookingGrid, .serviceTheme .serviceRelatedLinks ul,
+  .districtServiceChoices ul, .suburbPage > .suburbContact,
+  .privacyPage .privacyLayout, .aboutNarrative { grid-template-columns: 1fr; }
+  .homeGuidance > .operatingHours { grid-column: auto; }
+  .safeObservation { grid-template-columns: 1fr; }
+  .safeObservation > div:first-child, .safeObservation > ul, .safeObservation .safetyNotes,
+  .safeObservation .safeObservationActions { grid-column: auto; grid-row: auto; }
+  .safeObservation h2 { max-width: none; }
+  .homeCta, .homeCleaningCase > div, .homeMap, .serviceTheme, .suburbPage > .suburbContact { padding: 1.25rem; }
+  .homeCta { gap: 1rem; }
+  .homeCleaningCase { padding: 0; }
+  .homeCleaningCase img { aspect-ratio: 4/3; }
+  .homeMap { gap: 1rem; }
+  .homeMapFrame { height: 240px; }
+  .serviceBookingAppointment { padding: 1.25rem 0 0; border-left: 0; border-top: 1px solid var(--color-cloud); }
+  .serviceTheme { scroll-margin-top: 11rem; }
+  .sitePageIntro, .faqIntro, .contactIntro, .privacyHeader, .caseStudyHeader.caseStudyPhotoIntro { padding: 1.25rem; margin-bottom: 1.5rem; }
+  .pairedHeroCopy, .aboutPage .pageMediaCopy { padding: 1.25rem; }
+  .sitePageIntro h1, .faqIntro h1, .contactIntro h1, .privacyHeader h1 { max-width: none; font-size: 2rem; }
+  .suburbContactIntro { padding: 0; }
+  .suburbPage .suburbContact form { padding: 1rem; }
+  .privacyPage .privacySidebar { position: static; }
+  .aboutBrandGalleryGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .newsCardImage img { height: auto; aspect-ratio: 16/10; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Selected roof-material editorial direction, 2026-10-24.
+   The raster is decorative; real page text, photographs and links remain semantic. */
+:root { --roof-editorial-texture: url('/assets/design/roof-editorial-texture.webp'); }
+.sitePageIntro, .faqIntro, .contactIntro, .privacyHeader,
+.caseStudyHeader.caseStudyPhotoIntro, .areasIdentity,
+.aboutCredentials, .homeCta, .caseStudyNext, .suburbPage > .suburbContact {
+  background-image: var(--roof-editorial-texture);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.sitePageIntro, .faqIntro, .contactIntro, .privacyHeader,
+.caseStudyHeader.caseStudyPhotoIntro { border-left: 0; padding: clamp(1.5rem,3.6vw,3rem); }
+.sitePageIntro > .eyebrow::before, .faqIntro > .eyebrow::before,
+.contactIntro > .eyebrow::before, .privacyHeader > .eyebrow::before,
+.pairedHeroCopy > .eyebrow::before, .aboutPage .pageMediaCopy > .eyebrow::before {
+  content: ''; display: block; width: 48px; margin-bottom: 1rem;
+  border-top: 3px solid var(--color-safety-orange);
+}
+.page .pairedHero, .aboutPage .pageMediaIntro {
+  grid-template-columns: minmax(0, .58fr) minmax(0, .42fr);
+  overflow: hidden;
+}
+.page .pairedHero > .pairedHeroCopy, .aboutPage .pageMediaCopy {
+  display: flex; flex-direction: column; justify-content: center;
+  margin-right: -72px; padding: 2.5rem 9rem 2.5rem 3rem;
+  border: 0; background: var(--color-roof-charcoal) var(--roof-editorial-texture) center / cover no-repeat;
+}
+.page .pairedHero h1, .aboutPage .pageMediaIntro h1 {
+  font-size: clamp(2rem,3.1vw,3rem); line-height: 1.15; letter-spacing: -.025em;
+  margin: .4rem 0 1.3rem; text-wrap: balance;
+}
+.page .newsIndexHeader h1 { max-width: 18ch; font-size: clamp(2.5rem,4vw,3.75rem); }
+html:lang(zh-CN) .newsIndexHeader h1 { max-width: 8em; text-wrap: initial; }
+.page .pairedHeroCopy > p:last-child, .aboutPage .pageMediaCopy > p:last-child { margin-bottom: 0; }
+.page .pairedHeroMedia, .aboutPage .pageFeatureMedia {
+  position: relative; margin-left: -72px; z-index: 1;
+  clip-path: polygon(72px 0,100% 0,100% 100%,0 100%);
+}
+/* A narrow seam marks the edge of the clipped photograph. */
+.page .pairedHeroMedia::before, .aboutPage .pageFeatureMedia::before {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: var(--color-safety-orange);
+  clip-path: polygon(68px 0,72px 0,4px 100%,0 100%);
+}
+.page .pairedHeroMedia picture, .aboutPage .pageFeatureMedia picture {
+  display: block; flex: 1; min-height: 0; position: relative;
+}
+.page .pairedHeroMedia img, .aboutPage .pageFeatureMedia img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  min-height: 0; max-height: none; object-fit: cover; border-radius: 0;
+}
+.page .newsIndexHeader { min-height: 400px; }
+.aboutPage .pageMediaIntro { min-height: 380px; }
+.page .pairedHeroMedia figcaption { padding-left: 1.5rem; }
+.caseStudyPhotoIntro > .pairedHeroCopy { padding: 0; border: 0; }
+.homeCleaningCase > div {
+  background: var(--color-roof-charcoal) var(--roof-editorial-texture) center / cover no-repeat;
+  border-left: 0;
+}
+@media (max-width: 1100px) and (min-width: 901px) {
+  .page .pairedHero > .pairedHeroCopy, .aboutPage .pageMediaCopy { padding: 2rem 7.5rem 2rem 2rem; }
+}
+@media (max-width: 900px) {
+  .page .pairedHero, .aboutPage .pageMediaIntro { grid-template-columns: 1fr; }
+  .page .pairedHero > .pairedHeroCopy, .aboutPage .pageMediaCopy {
+    margin-right: 0; padding: 1.75rem; background-position: left center;
+  }
+  .page .pairedHeroMedia, .aboutPage .pageFeatureMedia { margin-left: 0; clip-path: none; border-top: 3px solid var(--color-safety-orange); }
+  .page .pairedHeroMedia::before, .aboutPage .pageFeatureMedia::before { display: none; }
+  .page .pairedHeroMedia picture, .aboutPage .pageFeatureMedia picture { flex: none; height: 280px; }
+  .page .pairedHeroMedia img, .aboutPage .pageFeatureMedia img { height: 100%; }
+  .page .newsIndexHeader, .aboutPage .pageMediaIntro { min-height: 0; }
+  .sitePageIntro, .faqIntro, .contactIntro, .privacyHeader,
+  .caseStudyHeader.caseStudyPhotoIntro, .areasIdentity, .aboutCredentials,
+  .homeCta, .homeCleaningCase > div, .caseStudyNext, .suburbPage > .suburbContact { background-position: left center; }
+}
+@media (max-width: 480px) {
+  .page .pairedHero > .pairedHeroCopy, .aboutPage .pageMediaCopy,
+  .sitePageIntro, .faqIntro, .contactIntro, .privacyHeader, .caseStudyHeader.caseStudyPhotoIntro { padding: 1.4rem; }
+  .page .pairedHero h1, .page .newsIndexHeader h1, .aboutPage .pageMediaIntro h1 { font-size: 2rem; }
+  .page .pairedHeroMedia picture, .aboutPage .pageFeatureMedia picture { height: 230px; }
+}
+/* Keep the Chinese journal headline on its natural two editorial lines. */
+html:lang(zh-CN) .newsIndexHeader h1 { max-width: 5.1em; }
+.newsIndexHeader .pairedHeroMedia img { object-position: center 15%; }

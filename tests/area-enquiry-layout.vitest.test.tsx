@@ -8,6 +8,33 @@ import { SERVICE_CATALOG } from "../src/service-catalog.js";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 afterEach(cleanup);
 
+it("translates Chinese search feedback and keeps location enquiry values intact", async () => {
+  const { loadChineseTranslations } = await import('../src/i18n/runtime');
+  await loadChineseTranslations();
+  render(<AppV3 pathname="/zh/areas" />);
+  fireEvent.change(screen.getByLabelText('搜索城区'), {target: {value: 'no-such-suburb'}});
+  expect(screen.getByRole('status').textContent).toContain('没有匹配的城区');
+  fireEvent.click(screen.getByRole('button', {name: '清除城区搜索'}));
+  const link = screen.getByRole('link', {name: '咨询地区：Aranda'});
+  expect(link.getAttribute('href')).toBe('/zh/contact?area=Aranda%20%E2%80%94%20Belconnen');
+});
+
+it("switches the district without losing suburb routes, and searches across districts", () => {
+  const {container} = render(<AppV3 pathname="/areas" />);
+  expect(container.querySelectorAll('.areasSuburb')).toHaveLength(77);
+  expect(screen.queryByRole('link', {name: 'Curtin', exact: true})).toBeNull();
+  fireEvent.click(screen.getByRole('button', {name: 'Woden', exact: true}));
+  expect(screen.getByRole('link', {name: 'Curtin', exact: true}).getAttribute('href')).toBe('/areas/woden/curtin-roof-repairs');
+  expect(screen.queryByRole('link', {name: 'Aranda', exact: true})).toBeNull();
+  fireEvent.change(screen.getByLabelText('Search suburbs'), {target: {value: '  AINSLIE  '}});
+  expect(screen.getByRole('link', {name: 'Ainslie', exact: true})).toBeTruthy();
+  fireEvent.click(screen.getByRole('button', {name: 'Show search results'}));
+  expect(document.activeElement?.id).toBe('area-results');
+  fireEvent.click(screen.getByRole('button', {name: 'Clear suburb search'}));
+  expect(document.activeElement?.id).toBe('area-search');
+  expect(screen.getByRole('link', {name: 'Curtin', exact: true})).toBeTruthy();
+});
+
 it("area search offers a direct enquiry with the exact known suburb and district", () => {
   render(<AppV3 pathname="/areas" />);
   fireEvent.change(screen.getByLabelText("Search suburbs"), { target: { value: "Ainslie" } });

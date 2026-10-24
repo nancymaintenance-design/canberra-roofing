@@ -72,10 +72,9 @@ assert.match(clearingCase, /View the clearing case/);
 assert.doesNotMatch(renderedHomeMedia, /ellis-team-trust\.png|ellis-site-consultation\.png/);
 
 assert.match(renderedAbout, /\/assets\/home\/canberra-roof-hero\.png/);
-assert.match(renderedAbout, /TILE ROOF PHOTO SEQUENCE/);
-assert.match(renderedAbout, /Tile roof repair photographs/);
-assert.match(renderedAbout, /href="\/case-studies\/tile-roof-repair-canberra"/);
-assert.match(renderedAbout, /className="caseStudyRail"/);
+assert.doesNotMatch(renderedAbout, /className="caseStudyRail"/);
+assert.match(renderedAbout, /href="\/faq#faq-getting-started"/);
+assert.match(renderedAbout, /className="aboutContactActions"/);
 assert.match(renderedAbout, /className="aboutProcess"/);
 assert.match(renderedAbout, /How your roof assessment and repair are arranged\./);
 assert.match(renderedAbout, /className="aboutCredentials"/);

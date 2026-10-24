@@ -17,10 +17,11 @@ it("renders dense service cards with a practical assessment focus", () => {
   expect(html).toContain("Water marks, drips and rain-related damp patches.");
 });
 
-it("uses the roofline FAQ treatment on the About page", () => {
+it("links About enquiries to the consolidated FAQ without repeating its questions", () => {
   const html = renderToString(<AppV3 pathname="/about" />);
-  expect(html).toContain("rooflineFaq");
-  expect(html).toContain("Do I need to know the exact roof problem before I contact you?");
+  expect(html).toContain('href="/faq#faq-getting-started"');
+  expect(html).not.toContain("Do I need to know the exact roof problem before I contact you?");
+  expect(renderToString(<AppV3 pathname="/faq" />)).toContain("Do I need to know the exact roof problem before I contact you?");
 });
 
 it("uses the Canberra roof repair search intent in the home service heading", () => {

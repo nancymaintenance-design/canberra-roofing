@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Breadcrumbs, HeadManager, publishedRoutes, resolvePath } from "./route-meta";
-import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, X, Search, Phone, ClipboardList, Info } from "lucide-react";
 import "./styles.css";
+import "./site-design.css";
 import { migrateStoredData } from "./storage.js";
 import { AREA_GROUPS } from "./contact-options.js";
 import { SERVICE_CATALOG } from "./service-catalog.js";
@@ -816,6 +817,22 @@ const canonicalFaqs: Faq[] = [
     q: "Next steps / Which service should I choose?",
     a: "Choose Roof Leak Repairs for water-entry signs, Tile Roof Repairs for visible tile concerns, Chimney Flashing Repairs for a chimney junction, Rebedding & Repointing for ridge lines, or Roof Inspections if unsure. You can also use /contact.",
   },
+  {
+    q: "Getting started / Do I need to know the exact roof problem before I contact you?",
+    a: "No. Describe the visible sign and select the closest pathway. The purpose of the initial enquiry is to provide context, not to require you to diagnose a roof from the ground."
+  },
+  {
+    q: "Getting started / Can you help if I am unsure whether the roof is tile or metal?",
+    a: "Yes. Tell us the location and visible issue even if you do not know the roof material. We identify the covering and inspect its condition on site, then explain the repair plan and written quote."
+  },
+  {
+    q: "Inspections / What happens if weather makes an assessment unsafe?",
+    a: "Roof access is not attempted when conditions are unsafe. Any visit or next step is discussed with you based on safe access and the information available at the time."
+  },
+  {
+    q: "Inspections / Do I need to be at the property for an assessment?",
+    a: "Access arrangements and attendance requirements are discussed before an assessment is arranged. Let us know about gates, pets, tenants or other access considerations in your enquiry."
+  },
 ];
 const store = "canberraroofkind-content-v7";
 const load = () => {
@@ -993,8 +1010,11 @@ function HomeV2({ data }: { data: Data }) {
         </a>
       </section>
       <section className="homeCta">
+        <div className="homeCtaTitle">
         <p className="eyebrow">LOCAL ROOF REPAIR SERVICES</p>
         <h2>Looking for a roofer in Canberra for a small roof repair?</h2>
+        </div>
+        <div className="homeCtaBody">
         <p>
           Tell us your suburb and what you have noticed. We arrange an on-site assessment, identify the affected components and confirm the repair plan and written quote before work begins.
         </p>
@@ -1003,6 +1023,7 @@ function HomeV2({ data }: { data: Data }) {
         <a className="button" href="/contact">
           Request a roof assessment <ArrowRight size={18} />
         </a>
+        </div>
       </section>
       <div className="homeGuidance">
         <IntentServiceContent slug="home" />
@@ -1033,14 +1054,18 @@ function HomeV2({ data }: { data: Data }) {
         />
       </section>
       <section className="homeCta">
+        <div className="homeCtaTitle">
         <p className="eyebrow">NOT SURE WHERE TO BEGIN?</p>
         <h2>Describe what you have noticed.</h2>
+        </div>
+        <div className="homeCtaBody">
         <p>
           Select your suburb and service to request an on-site assessment and written quote. A photo is optional; a short description is enough to arrange the visit.
         </p>
         <a className="button" href="/contact">
           Request a roof assessment <ArrowRight size={18} />
         </a>
+        </div>
       </section>
     </>
   );
@@ -1066,6 +1091,10 @@ function About({ data }: { data: Data }) {
     {
       src: "/assets/about/ellis-brand-roof-planning.png",
       alt: "Roof planning documents and branded materials on a table",
+    },
+    {
+      src: "/assets/contact/service-arrival-consultation.png",
+      alt: "People discussing a roof enquiry beside a branded van",
     },
   ];
   return (
@@ -1187,11 +1216,8 @@ function About({ data }: { data: Data }) {
           </p>
         </div>
         <div className="aboutBrandGalleryGrid">
-          {gallery.map((image, index) => (
-            <figure
-              key={image.src}
-              className={index === 0 ? "galleryFeature" : ""}
-            >
+          {gallery.map((image) => (
+            <figure key={image.src}>
               <ResponsiveImage src={image.src} alt={image.alt} />
             </figure>
           ))}
@@ -1251,97 +1277,6 @@ function About({ data }: { data: Data }) {
           work is arranged.
         </p>
       </section>
-      <section className="aboutFaq" aria-labelledby="about-faq-title">
-        <div>
-          <p className="eyebrow">COMMON QUESTIONS</p>
-          <h2 id="about-faq-title">Roof assessment and booking questions</h2>
-        </div>
-        <div className="aboutFaqList rooflineFaq">
-          <details>
-            <summary>
-              Do I need to know the exact roof problem before I contact you?
-            </summary>
-            <p>
-              No. Describe the visible sign and select the closest pathway. The
-              purpose of the initial enquiry is to provide context, not to require
-              you to diagnose a roof from the ground.
-            </p>
-          </details>
-          <details>
-            <summary>Can I send a photo?</summary>
-            <p>
-              Yes. One optional JPG, PNG or WebP photo can be added to the enquiry
-              form. A safe ground-level image helps us prepare for the assessment;
-              we confirm the recommended scope after reviewing the property.
-            </p>
-          </details>
-          <details>
-            <summary>
-              What should I do if water is near an electrical fitting?
-            </summary>
-            <p>
-              Do not touch wet electrical areas. Treat an immediate life or
-              electrical danger as urgent and contact emergency services or an
-              appropriately qualified professional.
-            </p>
-          </details>
-          <details>
-            <summary>Do you confirm costs before arranging work?</summary>
-            <p>
-              Yes. Before booking, we explain the recommended scope, access
-              requirements and the applicable inspection or booking fee.
-            </p>
-          </details>
-          <details>
-            <summary>
-              What details are most useful in a roof repair enquiry?
-            </summary>
-            <p>
-              Your suburb, the room or roof area affected, when the concern first
-              appeared and whether it followed rain or wind are useful starting
-              details. Include only observations you can make safely.
-            </p>
-          </details>
-          <details>
-            <summary>
-              Can you help if I am unsure whether the roof is tile or metal?
-            </summary>
-            <p>
-              Yes. Tell us the location and visible issue even if you do not know the roof material. We identify the covering and inspect its condition on site, then explain the repair plan and written quote.
-            </p>
-          </details>
-          <details>
-            <summary>What happens if weather makes an assessment unsafe?</summary>
-            <p>
-              Roof access is not attempted when conditions are unsafe. Any visit
-              or next step is discussed with you based on safe access and the
-              information available at the time.
-            </p>
-          </details>
-          <details>
-            <summary>Do I need to be at the property for an assessment?</summary>
-            <p>
-              Access arrangements and attendance requirements are discussed before
-              an assessment is arranged. Let us know about gates, pets, tenants or
-              other access considerations in your enquiry.
-            </p>
-          </details>
-        </div>
-      </section>
-      <section
-        className="caseStudyRail"
-        aria-labelledby="about-case-study-title"
-      >
-        <p className="caseStudyRailLabel">CASE 01</p>
-        <div>
-          <p className="eyebrow">TILE ROOF PHOTO SEQUENCE</p>
-          <h2 id="about-case-study-title">Tile roof repair photographs</h2>
-          <p>Tile condition and visible work stages.</p>
-        </div>
-        <a href="/case-studies/tile-roof-repair-canberra">
-          View case study <ArrowRight size={17} />
-        </a>
-      </section>
       <section
         className="aboutContactBand"
         aria-labelledby="about-contact-title"
@@ -1360,9 +1295,14 @@ function About({ data }: { data: Data }) {
             safely observe.
           </p>
         </div>
+        <div className="aboutContactActions">
         <a className="button" href="/contact">
           Send an enquiry <ArrowRight size={17} />
         </a>
+        <a className="textAction" href="/faq#faq-getting-started">
+          Browse all questions <ArrowRight size={17} />
+        </a>
+        </div>
       </section>
     </section>
   );
@@ -1453,12 +1393,14 @@ function ServiceCards({ data }: { data: Data }) {
 function Services({ data }: { data: Data }) {
   return (
     <section className="page servicesOverview">
+      <header className="sitePageIntro">
       <p className="eyebrow">SERVICES OVERVIEW</p>
       <h1>Roof repair & maintenance services</h1>
       <p>
         We provide roof repairs, inspections, cleaning and maintenance for Canberra homes. We assess the roof on site and explain the recommended work and written quote. Choose a service below, or tell us what you have noticed if you are unsure.
       </p>
       <p className="roofScopeJump"><a className="textAction" href="#roof-work-options">Repair, renovation or replacement? Compare the options <ArrowRight size={16} /></a></p>
+      </header>
       <h2 id="repair-services">Compare roof repair and maintenance services</h2>
       <ServiceCards data={data} />
       <GapHubLinks />
@@ -1655,74 +1597,85 @@ function ServiceView({ service }: { service: Service }) {
 }
 function Areas() {
   const [query, setQuery] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState(AREA_GROUPS[0].district);
   const searchInput = useRef<HTMLInputElement>(null);
-  const visible = AREA_GROUPS.map(
-    ({ district, suburbs }) =>
-      [
-        district,
-        suburbs.filter((s) => s.toLowerCase().includes(query.trim().toLowerCase())),
-      ] as const,
-  ).filter(([, suburbs]) => suburbs.length > 0 || !query);
+  const term = query.trim().toLowerCase();
+  const groups = AREA_GROUPS.map(({ district, suburbs }) => ({
+    district,
+    suburbs: term ? suburbs.filter(s => s.toLowerCase().includes(term) || district.toLowerCase().includes(term)) : suburbs,
+  }));
+  const matchCount = groups.reduce((count, group) => count + group.suburbs.length, 0);
+  const districtSlug = (district: string) => district.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
   return (
-    <section className="page areasPage">
-      <div className="pageMediaIntro">
-        <div>
+    <section className="page areasPage areasDesk">
+      <aside className="areasIdentity">
+        <Breadcrumbs pathname={languagePath('/areas', currentLanguage())} />
+        <div className="areasIdentityCopy">
           <p className="eyebrow">CANBERRA COVERAGE DIRECTORY</p>
-          <h1>Roof repair service areas</h1>
-          <p>
-            Use this directory to find the area that best matches your address.
-            Start with your district to explore roof repair, renovation, cleaning
-            and drainage maintenance pathways, then select your suburb when you
-            are ready to make an enquiry.
-          </p>
+          <h1>{currentLanguage() === 'zh' ? <>屋顶维修<br />服务地区</> : <>Roof repair <br />service areas</>}</h1>
+          <p>Find your suburb to explore roof repairs, renovation, cleaning and gutter maintenance, or make an enquiry with your location already selected.</p>
         </div>
-        <figure className="pageFeatureMedia">
+        <figure className="areasIdentityPhoto">
           <ResponsiveImage priority
             src="/assets/areas/canberra-coverage-roofscape.png"
             alt="Canberra residential roofs and suburbs beneath Black Mountain on a cloudy day"
+            sizes="(max-width: 900px) calc(100vw - 2rem), 500px"
           />
         </figure>
-      </div>
-      <div className="areaSearch">
-      <label className="searchLabel">
-        Search suburbs
-        <input
-          ref={searchInput}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Type a suburb name"
-        />
-      </label>
-      {query && <button type="button" className="areaSearchClear" onClick={() => { setQuery(""); searchInput.current?.focus(); }}>Clear suburb search <X size={16} aria-hidden="true" /></button>}
-      </div>
-      <LocalGuideLinks />
-      <h2>Find your district and suburb</h2>
-      {visible.length === 0 && <p role="status">No suburbs match “{query}”. Clear the search or <a href="/contact">send your address to confirm coverage</a>.</p>}
-      <div className="areaGrid">
-        {visible.map(([district, suburbs]) => (
-          <article key={district}>
-            <h3><a href={`/areas/${district.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}`}>{district} roof repair services</a></h3>
-            <div>
+        <div className="areasIdentityContact">
+          <a className="areasPhone" href="tel:0405878406"><Phone size={30} aria-hidden="true" /><span><span>Call to discuss your roof</span><strong>0405878406</strong></span></a>
+          <div className="areasPreparation"><ClipboardList size={27} aria-hidden="true" /><div><h2>Before you enquire</h2><p>Have your address, roof concern and access arrangements ready.</p><a href="#area-visit-guide" onClick={() => { const guide = document.getElementById('area-visit-guide'); if (guide instanceof HTMLDetailsElement) guide.open = true; }}>Inspection and quote preparation <ArrowRight size={16} aria-hidden="true" /></a></div></div>
+        </div>
+      </aside>
+      <div className="areasFinder">
+        <header className="areasFinderHeader">
+          <hr className="areasRule" />
+          <h2>Find your suburb</h2>
+          <form className="areasSearchForm" role="search" onSubmit={e => { e.preventDefault(); document.getElementById("area-results")?.focus(); }}>
+            <label className="areasSearchLabel" htmlFor="area-search">Search suburbs</label>
+            <div className="areasSearchControl"><input id="area-search" ref={searchInput} value={query} onChange={e => setQuery(e.target.value)} placeholder="Type a suburb name" aria-controls="area-results" />
+              {query && <button type="button" className="areasClear" aria-label="Clear suburb search" onClick={() => { setQuery(""); searchInput.current?.focus(); }}><X size={20} aria-hidden="true" /></button>}
+              <button className="areasSearchSubmit" type="submit" aria-label="Show search results"><Search size={25} aria-hidden="true" /></button>
+            </div>
+          </form>
+          <p>Search by suburb, or choose a district below.</p>
+        </header>
+        <nav className="areasDistrictIndex" aria-label="Choose a district">
+          {AREA_GROUPS.map(({district}) => <button key={district} type="button" aria-pressed={!term && district === selectedDistrict} aria-controls="area-results" onClick={() => { setSelectedDistrict(district); setQuery(""); }}><span data-no-translate="true">{district}</span><ArrowRight size={20} aria-hidden="true" /></button>)}
+        </nav>
+        <div id="area-results" className="areasResults" tabIndex={-1} aria-labelledby="area-results-heading">
+          <h2 id="area-results-heading" className="areasSearchLabel" tabIndex={-1}>Find your district and suburb</h2>
+          {term && <p className="areasResultStatus" role="status">{matchCount ? <><strong>{matchCount}</strong> <span>matching suburbs</span></> : <><span>No suburbs match</span> “{query}”. <span>Clear the search or</span> <a href="/contact">send your address to confirm coverage</a>.</>}</p>}
+          {groups.map(({district, suburbs}) => (
+          <article className="areasDistrictResults" key={district} hidden={term ? !suburbs.length : district !== selectedDistrict}>
+            <header><h3 data-no-translate="true">{district}</h3><a href={`/areas/${districtSlug(district)}`}>View district details <ArrowRight size={17} aria-hidden="true" /></a></header>
+            <p>Choose a suburb for service information or an enquiry with your location selected.</p>
+            <div className="areasSuburbs">
               {suburbs.map((s) => (
-                <div className="areaLocation" key={s}><a
+                <div className="areaLocation areasSuburb" key={s}><a
                   href={getSuburbRoute(s, district) ?? "/areas"}
                 >
                   {s}
-                </a><a className="areaEnquiry" href={`/contact?area=${encodeURIComponent(`${s} — ${district}`)}`}>Enquire for {s} <ArrowRight size={14} aria-hidden="true" /></a></div>
+                </a><a className="areaEnquiry" aria-label={currentLanguage() === 'zh' ? `咨询地区：${s}` : `Enquire for ${s}`} href={`/contact?area=${encodeURIComponent(`${s} — ${district}`)}`}>Enquire <ArrowRight size={15} aria-hidden="true" /></a></div>
               ))}
             </div>
           </article>
         ))}
+          <p className="areasVisitNote"><Info size={18} aria-hidden="true" /><span>Include your address, roof concern and access arrangements when you enquire.</span></p>
+        </div>
+        <details className="areasVisitGuide" id="area-visit-guide"><summary>Prepare for your roof assessment</summary><LocalGuideLinks /></details>
       </div>
     </section>
   );
 }
 function DistrictServiceAreaPage({ profile }: { profile: any; data: Data }) {
   return <section className="page suburbPage districtPage">
+    <header className="sitePageIntro">
     <p className="eyebrow">CANBERRA DISTRICT ROOF SERVICES</p>
     <h1>{profile.h1}</h1>
     <p className="directAnswer">We arrange roof repairs, inspections, cleaning and gutter maintenance in {profile.district}. Choose a suburb below or describe the concern in the enquiry form.</p>
     <nav className="suburbPageActions districtEntryLinks" aria-label="Roof services and booking"><a className="textAction" href="/services/roof-leak-repairs">Roof Leak Repairs</a><a className="textAction" href="/services/roof-inspections">Roof Inspections</a><a className="textAction" href="/services/roof-cleaning">Roof Cleaning</a><a className="button" href="#local-enquiry">Request a roof assessment <ArrowRight size={17}/></a></nav>
+    </header>
     <section className="districtDirectory"><h2>Choose your {profile.district} enquiry location</h2><p>Choose a suburb below to view its service information or open an enquiry with that location already selected.</p>
       <div className="contentTableScroll" tabIndex={0} role="region" aria-label={`${profile.district} suburb directory`}><table><caption>{profile.district}: suburb information and booking links</caption><thead><tr><th scope="col">Location</th><th scope="col">Suburb information</th><th scope="col">Start an enquiry</th></tr></thead><tbody>{profile.bookingLocations.map((location: { suburb: string; enquiryPath: string }) => <tr key={location.suburb}><th scope="row">{location.suburb}</th><td><span className="tableCellLabel">Suburb information</span><a href={getSuburbRoute(location.suburb, profile.district) ?? "/areas"}>{location.suburb} roof services</a></td><td><span className="tableCellLabel">Start an enquiry</span><a href={location.enquiryPath}>Enquire for {location.suburb}</a></td></tr>)}</tbody></table></div>
       <p>Looking for a different location? <a href="/areas">Search the district and suburb directory</a>.</p>
@@ -1740,9 +1693,11 @@ function SuburbServiceAreaPage({ profile }: { profile: any }) {
     "roof-cleaning": "For moss, lichen and surface debris. We assess the roof material, condition and suitable cleaning approach.",
   };
   return <section className="page suburbPage">
+    <header className="sitePageIntro">
     <p className="eyebrow">LOCAL ROOF SERVICES</p><h1>{profile.h1}</h1>
     <p className="directAnswer">We provide roof repairs and maintenance in {profile.suburb}, {profile.district}. Contact us to arrange an on-site assessment; we confirm the appointment, inspect the roof and provide the repair plan and written quote.</p>
     <nav className="suburbPageActions" aria-label="Roof services and booking"><a className="button" href="#local-enquiry">Request a {profile.suburb} roof assessment <ArrowRight size={17}/></a><a className="textAction" href="#local-roof-services">Choose a roof service <ArrowRight size={17}/></a></nav>
+    </header>
     <section className="suburbFeatured" id="local-roof-services"><h2>Choose a roof service in {profile.suburb}</h2><p>Start with the concern you have noticed. You do not need to identify the cause before contacting us.</p><div className="cards">{featured.map((service) => <article className="card" key={service.slug}><h3>{service.title}</h3><p>{serviceSummaries[service.slug]}</p><a href={service.path}>Explore {service.shortLabel} <ArrowRight size={15}/></a></article>)}</div></section>
     <section className="suburbAllServices"><h2>More roof repair and maintenance services in {profile.suburb}</h2><p>For a specific roof material, damaged component, urgent leak or rental property, choose the relevant service below.</p><div>{otherServices.map((service) => <a key={service.path} href={service.path}>{service.title}</a>)}</div></section>
     <section className="suburbEvidence"><h2>Roof assessment and booking arrangements</h2>{profile.historyGuidance && <p>{profile.historyGuidance}</p>}<ul><li>On-site roof assessment of the reported concern and connected details.</li><li>Appointment timing confirmed separately, subject to weather and safe access.</li><li>Repair scope and written quote before work.</li></ul>{profile.historyGuidance && <p><a href={`/areas/${profile.slug.split('/')[0]}`}>{profile.district} roof services</a></p>}</section>
@@ -2572,7 +2527,7 @@ export function AppV3({ pathname = "/" }: { pathname?: string }) {
     <>
       <HeadManager pathname={pathname.startsWith('/zh') ? '/zh' + (path === '/' ? '/' : path) : path} />
       <LayoutV2 data={data} openAdmin={openAdmin} pathname={path}>
-        <Breadcrumbs pathname={languagePath(path,currentLanguage())} />
+        {path !== '/areas' && <Breadcrumbs pathname={languagePath(path,currentLanguage())} />}
         {content}
       </LayoutV2>
       {import.meta.env.DEV && admin && (

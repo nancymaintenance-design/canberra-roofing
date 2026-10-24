@@ -173,6 +173,16 @@ The 23 October local content candidate extends the service hub with a repair / r
 
 Service detail pages keep their five established themes. `ServiceQuotePreparation` owns a three-item, service-specific preparation list inside the existing booking section, followed by the shared optional-photo wording and existing assessment action. Urgent enquiries retain their call-first prompt. Do not add mandatory form fields, repeat generic preparation throughout the page, change contact targets, or infer a diagnosis from the enquiry questions.
 
+## Service areas hub, option 3 selected 24 October 2026
+
+The `/areas` and `/zh/areas` hub uses a dark identity column and a warm-white directory column in an approximately 36:64 desktop split. The identity column contains the existing breadcrumb, two-part page title, concise introduction, existing Canberra roofscape, phone and preparation guidance. The directory owns the orange search accent, two-column district selector and active suburb list. Preserve the existing brand, fonts and semantic heading text.
+
+Search spans all nine districts and 77 suburbs; district selection clears search. Keep every canonical suburb destination and exact enquiry query value, and retain inactive district links in the server-rendered markup. Suburb names open their existing detail pages; the separate enquiry action preselects the location. Enter focuses results; clearing search returns focus to the input. Do not introduce image links or new mandatory form fields.
+
+Below 900px the main columns stack. Below 600px omit the supporting photograph and sidebar preparation block while retaining the phone, search and full directory. Suburb rows become one column; district choices remain two columns. The complete preparation guides remain available in a native disclosure beneath results. District detail pages retain their existing table/card layout; this contract changes only the hub.
+
+This is a local candidate, not a deployed release. Evidence: `../reports/areas-redesign-2026-10-24/`.
+
 ## Local content editor, approved 16 October 2026
 
 The editor is a content workbench: a 224px searchable page directory, a flexible real-page preview and a 340px Chinese inspector. At 1190px the inspector follows the preview in document flow; at 700px all regions stack. Desktop preview retains a true 1440px page viewport scaled within its canvas, with a separate 390px phone option and a full-size preview link. This prevents a desktop editor from accidentally presenting only the website's mobile layout.
@@ -180,3 +190,31 @@ The editor is a content workbench: a 224px searchable page directory, a flexible
 Reuse the canonical runtime colors, radii, focus and scrollbar rules in `src/styles.css`; `editor/editor.css` consumes the same CSS variables. No new palette or duplicate token source. A small orange page marker indicates selection; page content supplies the visual interest. Chinese textareas grow to 480px before scrolling. Save status and inline errors remain visible; native selects own their popup geometry. Native HTML dialogs supply focus trapping and Escape semantics for unsaved work/history/new articles.
 
 Only the loopback service serves editor assets and write APIs. Open the editor directly by its local URL; neither English nor Chinese website navigation, including local previews, exposes an editor entry. Saving is explicitly a disk draft with revision history, not a publish action. Public production output contains neither editor controls nor draft APIs. See `UX-CONTRACT.md` for behavior and `docs/local-editor.md` for owner instructions.
+
+## 全站方案 3 延伸：2026-10-24
+
+本次用户要求将选定的服务地区方案延伸至全站并减少无效留白；以下约定优先于上文关于白色 FAQ 导航、较宽页框和装饰性 CTA 的旧说明。`src/site-design.css` 在基础样式后载入，负责本次视觉系统。
+
+- 标准内容最大宽度 1280px，章节间距 32–48px；保留地区查询桌的独立 1440px 外框。深炭色用于介绍、导航和行动区，橙色仅作重点边线与行动色，正文背景为暖白。
+- 图文介绍使用连续分区，照片高度有上限；禁止用巨大图片和垂直居中的短文案制造空白。首页案例照片维持既有 4:3 比例，桌面最大列宽 460px，手机放在说明下方。
+- 首页说明为三列短内容，服务总览为双列比较；服务详情继续使用五主题结构，预约区分成说明和行动两列。手机堆叠，长标题自然换行。
+- FAQ 与文章目录使用深色导航栏，原有锚点、折叠、焦点和手机横向分类保持。没有隐藏 FAQ 或删减 SEO 内容来缩短页面。
+- 联系、地区及城区表单保留原字段和参数；深色说明与白色表单形成清楚的分区。所有现有照片、图注、联系号码和路径保持，不新增原图链接。
+- 覆盖样式采用静态 CSS，未增加前端依赖、网络字体或运行时脚本。后续优先在这层调整，避免再次叠加相互冲突的全局视觉规则。
+
+## 关于页精简补充：2026-10-24
+
+用户要求取消长 FAQ 侧栏留白，并补齐图库。关于页保留紧凑 FAQ 入口，链接到主 FAQ 的预约分类；四条独有问答移至预约与检查分类，照片、安全、费用和咨询资料沿用已有主问答。图库六张均为站内现有图片，桌面三列两行、手机两列三行，统一 4:3，移除首图特殊尺寸，不增加原图链接。
+
+### 关于页入口合并：2026-10-24
+
+按用户最新反馈，移除关于页瓦屋顶案例栏（瓦屋顶维修服务已包含同一案例入口）。FAQ入口并入底部咨询栏，主按钮发送咨询、次链接查看全部常见问题，只保留一个结束区块。此前关于独立FAQ入口的说明由本条替代。
+
+## 屋面材质视觉延伸：2026-10-24
+
+用户选定第一版屋面材质页头，适用于全站相似的大面积纯色介绍区。沿用既有内容框、导航、原有配图及中英文内容。
+
+- 使用 `public/assets/design/roof-editorial-texture.webp`（1600×900，67,100 bytes）作为装饰背景，深色文字区以白色标题及短橙线建立层级。
+- 图文页头采用连续背景及橙色斜向接缝；照片、图注仍为独立语义元素。手机改成上下堆叠，以水平橙线衔接，避免斜切挤压文字。
+- 覆盖资讯、文章、服务、关于、FAQ、联系、隐私、案例、地区介绍，以及首页和城区页的对应深色行动区。导航栏、页脚及小型交互控件保持现有视觉。
+- 不增加原图链接或图片交互；未改变联系方式、表单和页面内容。仅本地预览，未发布。

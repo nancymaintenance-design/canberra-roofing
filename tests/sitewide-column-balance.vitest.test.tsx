@@ -28,7 +28,7 @@ it('consolidates contact preparation beside the form instead of repeating it bel
  expect(notes!.querySelector('a[href="/news/when-to-arrange-roof-inspection-canberra"]')).not.toBeNull();
  expect(root.querySelectorAll('.contact form')).toHaveLength(1);
 });
-it('keeps long articles, contact preparation and about FAQ out of empty side columns', async () => {
+it('keeps long articles and contact preparation out of empty side columns', async () => {
  const browser = await chromium.launch({headless:true,channel:'msedge'});
  try {
   const page=await browser.newPage({viewport:{width:1600,height:1000}});
@@ -47,9 +47,6 @@ it('keeps long articles, contact preparation and about FAQ out of empty side col
   expect(privacyAction.y).toBeGreaterThanOrEqual(privacy.y+privacy.height);
   expect(Math.abs(privacy.x+privacy.width/2-800)).toBeLessThanOrEqual(1);
   expect(privacy.width).toBeLessThanOrEqual(800);
-  await load('/about');
-  const heading=await box('.aboutFaq > div:first-child'), faq=await box('.aboutFaqList');
-  expect(faq.y).toBeGreaterThanOrEqual(heading.y+heading.height);
   await load('/contact');
   const form=await box('.contact form'), photo=await box('.contactFeatureMedia');
   const intro=await box('.contactIntro');
@@ -83,7 +80,6 @@ it('keeps long articles, contact preparation and about FAQ out of empty side col
     ['/contact','.contactFeatureMedia','.contact form'],
     ['/news/when-to-arrange-roof-inspection-canberra','#findings','.articleRelated'],
     ['/privacy','.privacyBody','.privacySidebar'],
-    ['/about','.aboutFaq > div:first-child','.aboutFaqList'],
    ]) {
     await load(path);
     const top=await box(first), bottom=await box(next);

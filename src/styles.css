@@ -4336,3 +4336,106 @@ html:lang(zh-CN) h1, html:lang(zh-CN) h2, html:lang(zh-CN) h3 { font-family: Ari
 html:lang(zh-CN) .tradeHero h1 { font-size:clamp(2.5rem,4.5vw,4.25rem); max-width:none; }
 html:lang(zh-CN) .pairedHero h1 { max-width:none; text-wrap:balance; }
 html:lang(zh-CN) main p { white-space:pre-line; }
+
+/* Service-area desk: selected Product Design direction, 24 October 2026. */
+main:has(.areasDesk) > .breadcrumbs { background: var(--color-roof-charcoal); color: var(--color-on-dark); padding-block: .65rem; }
+main:has(.areasDesk) > .breadcrumbs .breadcrumbSeparator { color: var(--color-cloud); }
+.page.areasDesk { display: grid; grid-template-columns: minmax(0, .56fr) minmax(0, 1fr); width: 100%; max-width: 1440px; padding: 0; margin: 0 auto; background: var(--color-warm-white); }
+.areasIdentity > .breadcrumbs { padding: 0; margin: -1rem 0 1.5rem; color: var(--color-cloud); font-size: .8rem; }
+.areasIdentity > .breadcrumbs .breadcrumbSeparator { color: var(--color-cloud); }
+.areasIdentity { min-width: 0; background: var(--color-roof-charcoal); color: var(--color-on-dark); padding: 2.5rem 2.5rem 2rem; }
+.areasIdentity .eyebrow { color: var(--color-cloud); border-left: 5px solid var(--color-safety-orange); padding-left: 1rem; margin: 0 0 1.5rem; }
+.areasDesk .areasIdentity h1 { font-size: clamp(2.6rem, 5.2vw, 4.5rem); line-height: 1.12; letter-spacing: -.035em; max-width: 10ch; margin: 0 0 1.6rem; overflow-wrap: normal; }
+html:lang(zh-CN) .areasDesk .areasIdentity h1 { max-width: 5em; line-height: 1.24; }
+.areasIdentityCopy > p:last-child { font-size: 1.2rem; line-height: 1.85; margin: 0 0 1.8rem; color: var(--color-cloud); }
+.areasIdentityPhoto { margin: 0 -1.5rem 1.5rem; aspect-ratio: 1.3; overflow: hidden; }
+.areasIdentityPhoto picture, .areasIdentityPhoto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.areasPhone { display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 0; border-block: 1px solid #ffffff45; }
+.areasPhone > svg, .areasPreparation > svg { flex-shrink: 0; color: var(--color-safety-orange); }
+.areasPhone span span { display: block; font-size: .95rem; }
+.areasPhone strong { display: block; font-size: clamp(1.6rem, 2.5vw, 2.2rem); line-height: 1.35; }
+.areasPhone:hover strong { text-decoration: underline; text-underline-offset: .2em; }
+.areasPreparation { display: flex; gap: 1.2rem; padding-top: 1.4rem; }
+.areasDesk .areasPreparation h2 { font-size: 1rem; margin: 0 0 .4rem; max-width: none; letter-spacing: 0; }
+.areasPreparation p { margin: 0; font-size: .95rem; color: var(--color-cloud); }
+.areasPreparation a { display: inline-flex; gap: .5rem; align-items: center; min-height: 44px; font-size: .9rem; text-decoration: underline; text-underline-offset: .2em; }
+.areasFinder { min-width: 0; padding: 2.5rem clamp(1.5rem, 3.5vw, 3.5rem); }
+.areasFinderHeader { padding-top: .35rem; }
+.areasRule { width: 52px; border: 0; border-top: 5px solid var(--color-safety-orange); margin: 0 0 1.15rem; }
+.areasDesk .areasFinderHeader h2 { font-size: clamp(2rem, 3.8vw, 3.5rem); line-height: 1.25; letter-spacing: -.025em; max-width: none; margin: 0 0 1.5rem; }
+.areasSearchLabel { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.areasSearchControl { display: flex; min-height: 60px; border: 1px solid var(--color-action-surface); border-radius: var(--radius-control); background: white; }
+.areasSearchControl input { flex: 1; width: 0; min-width: 0; border: 0; background: transparent; padding: .8rem 1rem; font-size: 1.08rem; border-radius: var(--radius-control); color: var(--color-roof-charcoal); }
+.areasSearchControl button { display: grid; place-items: center; min-width: 48px; padding: .75rem; border: 0; border-radius: 0; }
+.areasSearchControl .areasSearchSubmit { width: 68px; background: var(--color-action-surface); color: white; }
+.areasSearchControl .areasSearchSubmit:hover { background: var(--color-steel); }
+.areasSearchControl .areasClear { color: var(--color-steel); background: transparent; }
+.areasClear:hover { background: var(--color-cloud); }
+.areasFinderHeader > p { margin: .65rem 0 1.2rem; color: var(--color-steel); }
+.areasDistrictIndex { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 1.5rem; margin-bottom: 2rem; }
+.areasDistrictIndex button { display: flex; justify-content: space-between; align-items: center; gap: .75rem; min-height: 62px; padding: .85rem 1rem; text-align: left; border: 0; border-bottom: 1px solid #b8c5bf; border-radius: 0; background: transparent; color: var(--color-roof-charcoal); font-size: 1.2rem; font-weight: 700; line-height: 1.35; }
+.areasDistrictIndex button svg { color: var(--color-action-surface); flex-shrink: 0; }
+.areasDistrictIndex button[aria-pressed="true"] { background: var(--color-cloud); box-shadow: inset 0 -2px var(--color-action-surface); }
+.areasDistrictIndex button:hover { background: var(--color-surface-alt); }
+.areasDistrictIndex button:active { background: var(--color-cloud); }
+.areasResults { border-top: 1px solid #aabbb3; padding-top: 1.6rem; scroll-margin-top: 8rem; }
+.areasDistrictResults[hidden] { display: none; }
+.areasDistrictResults + .areasDistrictResults:not([hidden]) { margin-top: 1.5rem; }
+.areasDistrictResults header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.areasDesk .areasDistrictResults h3 { font-size: clamp(1.6rem,2.8vw,2.5rem); line-height: 1.25; max-width: none; margin: 0; letter-spacing: -.025em; }
+.areasDistrictResults header > a { display: inline-flex; flex-shrink: 0; align-items: center; gap: .6rem; min-height: 44px; font-size: .9rem; color: var(--color-action-surface); text-decoration: underline; text-underline-offset: .2em; }
+.areasDistrictResults > p { color: var(--color-steel); margin: .5rem 0 1rem; font-size: .95rem; }
+.areasSuburbs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 2rem; }
+.areasDesk .areasSuburb { min-width: 0; display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: center; gap: .6rem; padding: .2rem 0; border-bottom: 1px solid var(--color-cloud); }
+.areasSuburb > a { display: inline-flex; align-items: center; min-height: 44px; font-size: 1.08rem; font-weight: 700; line-height: 1.4; }
+.areasSuburb > a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.areasSuburb .areaEnquiry { flex-shrink: 0; gap: .45rem; font-size: .85rem; font-weight: 400; color: var(--color-action-surface); }
+.areasVisitNote { display: flex; align-items: flex-start; gap: .6rem; color: var(--color-steel); font-size: .85rem; margin: 1.2rem 0 0; }
+.areasVisitNote svg { flex-shrink: 0; margin-top: .15rem; }
+.areasResultStatus { margin: 0 0 1rem; }
+.areasResultStatus a { color: var(--color-action-surface); text-decoration: underline; }
+.areasVisitGuide { border: 0; border-top: 1px solid var(--color-cloud); border-radius: 0; background: transparent; padding: 1rem 0; margin-top: 1.5rem; scroll-margin-top: 8rem; }
+.areasVisitGuide summary { padding: .5rem 0; min-height: 44px; font-weight: 700; }
+.areasVisitGuide .localGuideLinks { display: block; padding: .5rem 0 0; margin: 0; background: transparent; border: 0; }
+.areasDesk .areasVisitGuide h2 { font-size: 1.2rem; max-width: none; line-height: 1.5; }
+.areasVisitGuide p { font-size: .95rem; }
+@media (max-width: 1100px) and (min-width: 901px) {
+  .areasIdentity { padding-inline: 1.5rem; }
+  .areasIdentityPhoto { margin-inline: -.5rem; }
+  .areasSuburbs { grid-template-columns: 1fr; }
+  .areasDistrictIndex { column-gap: .75rem; }
+}
+@media (max-width: 900px) {
+  .page.areasDesk { grid-template-columns: 1fr; }
+  .areasIdentity { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.25rem 2rem; padding: 1.5rem; }
+  .areasDesk .areasIdentity h1 { font-size: 2.6rem; margin-bottom: 1rem; }
+  .areasIdentityCopy > p:last-child { font-size: 1rem; margin: 0; }
+  .areasIdentityPhoto { margin: 0; align-self: stretch; aspect-ratio: auto; min-height: 200px; }
+  .areasIdentityContact { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .areasPhone { border-bottom: 0; }
+  .areasPreparation { border-top: 1px solid #ffffff45; }
+  .areasFinder { padding: 1.75rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .areasIdentity { display: block; padding: 1.5rem; }
+  .areasIdentity .eyebrow { margin-bottom: 1rem; font-size: .75rem; }
+  .areasDesk .areasIdentity h1 { font-size: 2.4rem; max-width: none; }
+  html:lang(zh-CN) .areasDesk .areasIdentity h1 { max-width: none; font-size: 2.3rem; }
+  .areasIdentityPhoto { display: none; }
+  .areasIdentityContact { display: block; }
+  .areasPhone { margin-top: 1rem; padding: .7rem 0 0; gap: 1rem; }
+  .areasPhone strong { font-size: 1.5rem; }
+  .areasPhone span span { font-size: .8rem; }
+  .areasPreparation { display: none; }
+  .areasFinder { padding: 1.5rem; }
+  .areasDesk .areasFinderHeader h2 { font-size: 1.85rem; }
+  .areasSearchControl { min-height: 54px; }
+  .areasSearchControl input { font-size: 1rem; padding-inline: .75rem; }
+  .areasSearchControl .areasSearchSubmit { width: 52px; }
+  .areasDistrictIndex { gap: 0 .75rem; margin-bottom: 1.5rem; }
+  .areasDistrictIndex button { font-size: .9rem; min-height: 64px; padding: .65rem .4rem; gap: .3rem; }
+  .areasDistrictIndex button svg { width: 16px; }
+  .areasSuburbs { grid-template-columns: 1fr; }
+  .areasDistrictResults header { flex-wrap: wrap; gap: .25rem; }
+  .areasDesk .areasDistrictResults h3 { font-size: 1.6rem; }
+}
